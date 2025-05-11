@@ -9,6 +9,9 @@ import {
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import Learn from "./pages/Learn";
+import Test from "./pages/Test";
+import Information from "./pages/Information";
 
 function App() {
   return (
@@ -18,9 +21,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/information" element={<SignUp />} />
-          <Route path="/learn" element={<SignUp />} />
-          <Route path="/test" element={<SignUp />} />
+          <Route path="/information" element={<Information />} />
+          <Route path="/learn" element={<Learn />} />
+          <Route path="/test" element={<Test />} />
 
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

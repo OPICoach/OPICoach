@@ -8,7 +8,7 @@ import sidebarLogo from "../assets/sidebar/sidebarLogo.svg";
 import { useNavigate } from "react-router-dom";
 
 const menus = [
-  { name: "Home", icon: homeIcon, path: "/home" },
+  { name: "Home", icon: homeIcon, path: "/" },
   { name: "Learn", icon: learnIcon, path: "/learn" },
   { name: "Test", icon: testIcon, path: "/test" },
   { name: "Information", icon: infoIcon, path: "/information" },

@@ -18,6 +18,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/information" element={<SignUp />} />
+          <Route path="/learn" element={<SignUp />} />
+          <Route path="/test" element={<SignUp />} />
+
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Router>

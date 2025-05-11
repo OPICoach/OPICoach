@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <div className="flex flex-row">
       <SideBar userName="Gildong Hong" />
-      <div className="flex flex-col w-full h-auto bg-white px-12 mt-10">
+      <div className="flex flex-col  bg-white px-12 mt-10">
         <HomeExistUser
           userName="Gildong Hong"
           pastLevel="Intermediate"

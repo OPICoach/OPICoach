@@ -1,3 +1,4 @@
 const LoginInput = () => {
-  return <></>;
+  return <>
+  </>;
 };

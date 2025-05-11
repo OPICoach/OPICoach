@@ -10,10 +10,10 @@ const HomeExistUser = ({
   goalLevel,
   testDate,
   surveyList,
-  onEdit,
+
 }) => {
   return (
-    <div className="flex flex-col bg-white px-12 pt-16 cursor-default">
+    <div className="flex flex-col w-[900px] bg-white px-12 pt-16 cursor-default">
       <WelcomeMessage userName={userName} />
       <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-10">
         <div className="space-y-6">
@@ -23,7 +23,7 @@ const HomeExistUser = ({
         <SurveyResponse surveyList={surveyList} />
       </div>
       <div className="mt-12 flex justify-end">
-        <EditUserInfoButton onEdit={onEdit} />
+        <EditUserInfoButton name="NEXT" />
       </div>
     </div>
   );

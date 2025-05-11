@@ -3,7 +3,7 @@ import SideBar from "../components/sidebar";
 const Home = () => {
   return (
     <div className="">
-      <SideBar userName=""/>
+      <SideBar userName="Gildong Hong"/>
       <div className=""></div>
     </div>
   );

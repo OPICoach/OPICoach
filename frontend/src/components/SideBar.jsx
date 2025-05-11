@@ -29,7 +29,7 @@ const SideBar = ({ userName }) => {
   const initial = getProfileInitial(userName);
 
   return (
-    <aside className="flex flex-col w-[280px] h-auto bg-neutral ">
+    <aside className="sticky top-0 left-0 flex flex-col w-[250px] h-screen bg-neutral ">
       {/* 로고 */}
       <div className="flex items-center justify-center h-24">
         <img src={sidebarLogo} alt="OPICoach Logo" className="h-10" />
@@ -53,7 +53,7 @@ const SideBar = ({ userName }) => {
       </nav>
       {/* 프로필 */}
       <div className="flex items-center px-5 pb-6 cursor-default">
-        <div className="w-9 h-9 bg-[#4490FB] rounded-full flex items-center justify-center mr-3">
+        <div className="w-9 h-9 bg-primary rounded-full flex items-center justify-center mr-3">
           <span className="text-white text-lg font-bold">{initial}</span>
         </div>
         <span className="text-black font-medium">{userName}</span>

@@ -1,6 +1,7 @@
 import React from "react";
 import LoginRegisterInput from "../components/LoginSignUpInput";
 import loginLogo from "../assets/loginPage/loginLogo.svg";
+import login_image from "../assets/loginPage/login_image.svg";
 
 import { useNavigate } from "react-router-dom";
 
@@ -9,9 +10,9 @@ const Login = () => {
   return (
     <div className="flex flex-row min-h-screen bg-white">
       <div className="w-1/2 flex justify-center items-center">
-        <div className="bg-opiLightGray p-1 w-[96%] h-[96%] flex justify-center items-center">
+        <div className="bg-opiLightGray p-1 w-[96%] h-[96%] flex justify-center items-center rounded-lg">
           <img
-            src="./src/assets/loginPage/login_image.svg"
+            src={login_image}
             alt="Login"
             className="w-4/5 h-auto object-contain"
           />

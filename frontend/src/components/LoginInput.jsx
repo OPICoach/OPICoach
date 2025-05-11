@@ -1,4 +1,0 @@
-const LoginInput = () => {
-  return <>
-  </>;
-};

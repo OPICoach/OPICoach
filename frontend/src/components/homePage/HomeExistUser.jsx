@@ -13,9 +13,9 @@ const HomeExistUser = ({
   onEdit,
 }) => {
   return (
-    <div className="flex flex-col w-full min-h-screen bg-white px-10 pt-16 cursor-default">
+    <div className="flex flex-col bg-white px-12 pt-16 cursor-default">
       <WelcomeMessage userName={userName} />
-      <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-10">
         <div className="space-y-6">
           <LevelInfo pastLevel={pastLevel} goalLevel={goalLevel} />
           <TestDateInfo testDate={testDate} />

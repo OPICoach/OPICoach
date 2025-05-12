@@ -1,0 +1,9 @@
+Question 
+The neighborhood is quiet and safe with friendly neighbors.
+
+Answer 
+The neighborhood is quiet and safe with friendly neighbors.
+
+Feedback 
+This sentence is grammatically correct and uses appropriate vocabulary to describe a neighborhood. 'Quiet', 'safe', and 'friendly' are good adjectives. The structure 'with friendly neighbors' is natural.
+

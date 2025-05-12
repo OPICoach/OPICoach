@@ -1,0 +1,9 @@
+Question 
+You have an appointment with one of the staff at the gym. However, you are so sick that you cannot make it. Call the gym and explain the situation. Give some alternatives to make arrangements for a schedule change.
+
+Answer 
+Hello, this is Julia Kim and I actually have an appointment with your staff member. you know I'm so sorry but I don't think I can make it to the appointment. you know, I woke up feeling very sick. I have a throbbing headache and a high fever. So um I went to see the doctor and he said that I caught the flu and have to stay home. So, I'm sorry but can I reschedule my appointment? I'm available at any time next week um except on the mornings of Monday and Tuesday. I'm so sorry again. Please let me know if I can reschedule my appointment. Thanks, bye.
+
+Feedback 
+상황 설명 및 문제 해결 태스크를 잘 수행했습니다. 전화 통화 시작과 목적 설명('This is~', 'have an appointment')이 명확합니다. 약속에 갈 수 없음을 표현할 때 'I don't think I can make it to the appointment'와 같이 원어민이 자주 사용하는 자연스러운 표현('make it to')을 사용했습니다. 아픈 상황을 설명할 때 'woke up feeling very sick', 'throbbing headache', 'high fever', 'went to see the doctor', 'caught the flu', 'stay home' 등 구체적인 증상과 상황을 묘사하여 전달력이 높습니다. 'reschedule'이라는 핵심 단어를 사용하여 일정 변경 요청을 정확하게 표현했습니다. 가능한 시간을 제시할 때 'I'm available' 표현과 함께 구체적인 요일 및 시간 예외를 언급한 것은 AL 레벨에서 좋은 평가를 받을 수 있는 디테일입니다. 'um', 'you know', 'so'와 같은 필러 워드를 적절히 사용하여 자연스러움을 더했습니다. 사과 표현('I'm so sorry')과 마지막에 'Please let me know'로 마무리하는 것도 적절합니다.
+

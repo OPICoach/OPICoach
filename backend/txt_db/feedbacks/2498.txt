@@ -1,0 +1,9 @@
+Question 
+This park is well maintained and clean.
+
+Answer 
+This park is well maintained and clean.
+
+Feedback 
+'Well maintained and clean' are important qualities for a public park.
+

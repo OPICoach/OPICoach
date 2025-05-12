@@ -1,0 +1,9 @@
+Question 
+I would like to know where you live. Describe your home. What does it look like? How many rooms does it have? Give me a description with lots of details.
+
+Answer 
+Oh. You want to know about my place? Okay. Basically, I live in four story house. This place very small place. Looks like maybe shoe box. So. But this place very, very comfortable and cozy. Because only focused me. Focused me. And so this place nearby University Kongju. Very, very good favorite. So I graduated University Kongju. So. This place very looks like uh like I feel like so comfortable. That's all.
+
+Feedback 
+The student attempts to sound natural by starting with 'Oh' and asking a question, but asking Ava a direct question is not recommended at this level (Rule 1). Using 'four story house' is awkward; simpler words like 'my home is really small' are better (Rule 2). The phrase 'This place very small place' is grammatically incorrect (missing 'is') and repeats 'place' (Rule 3). 'Looks like maybe shoe box' is missing 'a' ('a shoe box'). Using 'comfortable and cozy' connected by 'and' sounds like a script; it's better to separate descriptive words (Rule 4). The biggest issue is talking about Kongju University, which is irrelevant to describing the home (Rule 5: Talk about one thing only). Ending with 'That's all' sounds unnatural and shows a lack of confidence.
+

@@ -1,0 +1,9 @@
+Question 
+The concert hall was packed with enthusiastic fans.
+
+Answer 
+The concert hall was packed with enthusiastic fans.
+
+Feedback 
+'Packed with' is a good way to say it was full. 'Enthusiastic fans' describes the energy of the crowd.
+

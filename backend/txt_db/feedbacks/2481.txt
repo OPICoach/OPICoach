@@ -1,0 +1,9 @@
+Question 
+This cafe is a popular spot for students and working professionals.
+
+Answer 
+This cafe is a popular spot for students and working professionals.
+
+Feedback 
+'Popular spot' is a common phrase. Specifying the clientele ('students and working professionals') adds detail.
+

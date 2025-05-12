@@ -1,0 +1,9 @@
+Question 
+Is there a hotel in your neighborhood? If so, please give me a detailed description of a local hotel.
+
+Answer 
+One hotel in my neighborhood is [이름]. It's only a five minute walk from my house. It's a five star hotel and it has great facilities like a swimming pool and a computer room. Oh, and there is a fancy restaurant that sells Korean traditional food. The restaurant is located on the 10th floor of the hotel, so it offers breathtaking scenery and night view. The best dish in this restaurant is 삼계탕, which is a Korean style of chicken soup. I love this dish because it's full of nutrients. This hotel is really popular since it's connected to a big shopping mall called 코엑스. I think it's the best hotel in Korea.
+
+Feedback 
+This is a typical place description question (장소 묘사). Use the present tense as you are describing something that exists. Use fillers like 'oh and'. Give examples for facilities using 'like' or 'such as'. Describe specific features like a restaurant, its location ('is located on the 10th floor'), and the view ('breathtaking scenery and night view'). Describe specific items like the best dish and why you like it ('full of nutrients'). Use intensifiers like 'really'. Explain the reason for popularity using 'since' (instead of 'because'). This topic can be linked to others like cooking.
+

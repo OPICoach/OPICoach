@@ -1,0 +1,9 @@
+Question 
+호텔 (Hotel) 롤플레이 2번: There's a problem you need to resolve. You checked into the hotel and got to your room. However, the room is not cleaned up properly. Call the front desk and explain the situation. Give two or three suggestions to solve the problem.
+
+Answer 
+체크인 후 방 청소가 제대로 되어 있지 않은 상황을 프런트 데스크에 전화해서 설명하고 대안을 제시합니다. 문제 상황('the room is not cleaned up properly')을 그대로 말하고, 방 청소를 다시 해달라거나('Could you please clean up/clean the room now please?'), 타월이 필요하다('I need some new towels')는 등 간단한 제안을 합니다.
+
+Feedback 
+문제에서 제시된 상황('the room is not cleaned up properly')을 그대로 카피해서 말하는 연습을 하세요. 'Could you please clean up the room now please?', 'I need some new towels'와 같이 간단한 대안을 제시하는 것이 좋습니다.
+

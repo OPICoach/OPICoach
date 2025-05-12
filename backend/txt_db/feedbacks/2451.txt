@@ -1,0 +1,9 @@
+Question 
+The children's room is decorated with playful, colorful decor.
+
+Answer 
+The children's room is decorated with playful, colorful decor.
+
+Feedback 
+'Decorated with' is standard. 'Playful, colorful decor' uses good adjectives to describe the style.
+

@@ -1,0 +1,9 @@
+Question 
+I'd like to give you a situation that I need you to act it out. You're going to book two concert tickets for you and your friend. Call the ticket office and ask three or four questions to buy the tickets.
+
+Answer 
+Hello, I'd like to buy two tickets for the [Artist Name] concert on [Date]. Are there any seats available together? How much are the tickets? Can I book them over the phone?
+
+Feedback 
+'I'd like to buy two tickets...' is polite. Specifying the artist and date is important. 'Are there any seats available together?' is a common request for two tickets. 'How much are the tickets?' asks the price. 'Can I book them over the phone?' asks about the booking method. Good questions for a ticket office.
+

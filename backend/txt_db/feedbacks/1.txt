@@ -1,0 +1,9 @@
+Question 
+Role play scenario: Call a store to ask about a new cellphone.
+
+Answer 
+Hello. I want to buy a new phone like um iPhone 10.
+
+Feedback 
+Greeting 'Hello' is okay, but 'hi' or 'hi there' is often better, especially 'hi there' on the phone. 'Hi' is better in person. If unsure, use 'hi'. Explanation 'I want to buy a new phone like um iPhone 10' is a very nice job keeping it short and sweet. 'iPhone X' is grammatically better. Keep it short and go right to the next step.
+

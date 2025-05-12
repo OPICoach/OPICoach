@@ -1,0 +1,9 @@
+Question 
+The cafe is cozy with comfortable seating arrangements.
+
+Answer 
+The cafe is cozy with comfortable seating arrangements.
+
+Feedback 
+Combining 'cozy' with 'comfortable seating arrangements' provides a detailed description of the seating.
+

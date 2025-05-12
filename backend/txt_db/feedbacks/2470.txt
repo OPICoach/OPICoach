@@ -1,0 +1,9 @@
+Question 
+They serve a variety of delicious pastries and desserts.
+
+Answer 
+They serve a variety of delicious pastries and desserts.
+
+Feedback 
+'Serve a variety of' is useful for talking about options. 'Delicious pastries and desserts' specifies the food items.
+

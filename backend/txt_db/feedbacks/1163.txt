@@ -1,0 +1,9 @@
+Question 
+You went to a furniture store and want to buy a new furniture. Ask three or four questions about the furniture.
+
+Answer 
+Hi is this hackers furniture store? My friend recommended your store without hesitation. There are some questions before I go there. firstly can you tell me where the store is? secondly I wonder if you have a couch. Thirdly I'd like to know whether you have a free parking lot. That's enough. I want you to help me as soon as possible.
+
+Feedback 
+상점 이름을 확인하는 것으로 시작하며, 'My friend recommended your store without hesitation'과 같이 친구 추천이라는 상황을 추가하여 답변을 풍성하게 만듭니다. 'Can you tell me where the store is?', 'I wonder if you have a couch', 'I'd like to know whether you have a free parking lot'과 같이 간접 의문을 사용하여 복문 구조를 자연스럽게 활용합니다. 'That's enough', 'I want you to help me as soon as possible'과 같은 마무리 표현도 좋습니다. 상황 추가와 간접 의문 사용이 AL 등급을 위한 핵심 전략입니다.
+

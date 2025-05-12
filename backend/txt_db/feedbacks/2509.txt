@@ -1,0 +1,9 @@
+Question 
+The park is a perfect place to relax and escape from the bustling city life.
+
+Answer 
+The park is a perfect place to relax and escape from the bustling city life.
+
+Feedback 
+'Perfect place to relax and escape' is good. 'Bustling city life' is a common phrase for a busy city.
+

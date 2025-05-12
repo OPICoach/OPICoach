@@ -1,0 +1,9 @@
+Question 
+건강 관련 주제: 음식 및 요리에 대해 이야기해 보세요. 당신 나라의 인기 있는 요리나 전통적인 요리에 대해 말해 보세요. 그 요리의 주 재료는 무엇인가요? 건강한 음식을 먹거나 집에서 건강한 식사를 요리하나요?
+
+Answer 
+제공된 텍스트는 OPIc 시험 준비를 위한 강의 스크립트이며, 실제 학생의 답변이 포함되어 있지 않습니다. 따라서 OPIc_Answer 필드는 강의 내용에 기반한 준비 자료임을 명시합니다.
+
+Feedback 
+필수 키워드: popular dishes, traditional dishes, the main ingredients, eat healthy foods, cook healthy meals. 발음: healthy meals (TH 발음 주의).
+

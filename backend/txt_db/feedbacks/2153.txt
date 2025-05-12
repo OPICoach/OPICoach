@@ -1,0 +1,9 @@
+Question 
+So the expensive money 가치가 있다. Is worth it. (followed by questions about cost and duration)
+
+Answer 
+회당 5만 원 아니다. 6만 원. 응응. 그래도 적어도 1년은 해야 되지 않나.
+
+Feedback 
+You provided the cost and planned duration. The model translation for the duration part ('적어도 1년') is: "I'd say a year at the very least."
+

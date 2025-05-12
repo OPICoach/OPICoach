@@ -1,0 +1,9 @@
+Question 
+There is a large pond in the middle of the park.
+
+Answer 
+There is a large pond in the middle of the park.
+
+Feedback 
+Simple and clear description of a prominent feature ('large pond') and its location ('in the middle').
+

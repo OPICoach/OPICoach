@@ -1,0 +1,9 @@
+Question 
+You want to make an appointment with your friend. Call your friend and ask some questions to make an appointment.
+
+Answer 
+Hi it's me John. Do you have any plan today? Firstly, do you like to go jogging? Secondly, do you remember the Hacker's Park? Thirdly, what kind of drinks do you like? please call me back.
+
+Feedback 
+The answer is very simple and pure, which means the score will also be pure (low). One positive point is connecting it to the jogging topic. The ending 'please call me back' is not bad but not good either, it's neutral. Overall, the answer is too meager and won't get a good score.
+

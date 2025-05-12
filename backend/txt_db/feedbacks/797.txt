@@ -1,0 +1,9 @@
+Question 
+
+
+Answer 
+
+
+Feedback 
+The difficulty level you choose affects the probability of receiving advanced question types, specifically 'past experience' and 'comparison' questions. These question types are crucial for achieving higher scores (AL). Level 6-6 increases the likelihood of getting these advanced questions.
+

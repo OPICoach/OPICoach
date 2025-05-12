@@ -1,0 +1,39 @@
+네, 제공해주신 텍스트를 바탕으로 OPIc 시험 대비를 위한 구체적인 개선점과 조언을 다음과 같이 정리할 수 있습니다.
+
+OPIc 시험 대비 개선점 및 조언 (제공 텍스트 기반)
+
+1.  리스닝 능력의 절대적 중요성 인지 및 강화:
+       조언: 시험에서 질문을 80%만 이해했다면 대답하지 말고 스킵하는 것이 좋다는 점을 명심해야 합니다. 잘못 이해하고 대답하는 것이 더 안 좋은 결과를 초래할 수 있습니다.
+       개선점: 질문을 완벽하게 이해하는 것이 목표이므로, 다양한 질문을 듣고 어떤 내용인지, 어떤 카테고리인지 파악하는 연습을 꾸준히 해야 합니다.
+
+2.  질문 카테고리 파악 능력 향상:
+       조언: 질문에 포함된 특정 단어나 문구(Keywords)를 통해 질문이 어떤 유형(Past Experience, Description, Habits, Comparison, Roleplay 등)인지 빠르게 파악하는 것이 중요합니다.
+       개선점:
+           'memorable event', 'last experience', 'moved ED', 'happened ED', 'went with' 등 과거 동사나 과거 시점 관련 단어는 Past Experience (PE)일 가능성이 높습니다.
+           'What do people specifically do?', 'How people dress', 'What kinds of clothes do they wear' 등은 행동이나 습관, 또는 묘사를 묻는 질문일 수 있습니다. 특히 'do'가 반복되면 Habits일 가능성이 높습니다. (단, 'How people dress'처럼 설명에 가까운 질문도 있습니다.)
+           'How has it changed', 'What was it like when you were a child', 'How was it different from what it is like now' 등은 Comparison 질문입니다.
+           'There is a problem I need you to resolve', 'offer two or three different options' 등은 Roleplay 12 (문제 해결) 유형입니다.
+           'ask three or four questions' 등은 Roleplay 11 (질문하기) 유형입니다.
+       개선점: 다양한 OPIc 기출 또는 예상 질문을 듣고 어떤 카테고리인지 분류하는 연습을 반복해야 합니다.
+
+3.  질문 내 옵션 활용 전략 습득:
+       조언: 난이도가 높은 질문일수록 'work or leisure'처럼 선택할 수 있는 옵션을 주는 경우가 많습니다. 이는 오히려 대답하기 쉽게 만들어주는 요소이므로, 이 옵션 중 하나를 선택하여 집중해서 대답하는 것이 좋습니다.
+       개선점: 질문을 들을 때 옵션이 있는지 파악하고, 있다면 그중 가장 자신 있는 주제를 선택하여 답변을 구성하는 연습을 합니다. (제공된 옵션 외 다른 주제로 대답하는 것도 가능은 하지만, 옵션 내에서 선택하는 것이 답변의 명확성을 높이는 데 유리할 수 있습니다.)
+
+4.  카테고리별 답변 구성 전략 연습:
+       조언:
+           Comparison: 답변 시작 시 현재(Present Only) 상황에 대해서만 먼저 이야기하고, 그 후에 과거 상황을 이야기하며 대조(contrast)를 명확히 보여주는 것이 효과적입니다. 현재를 이야기할 때부터 'than before'와 같은 과거 시점 비교 표현을 사용하지 않도록 주의합니다.
+           Roleplay 12 (문제 해결): 문제 상황을 설명하고, 문제 해결을 위한 2~3가지의 구체적인 옵션을 제시해야 합니다.
+           Roleplay 11 (질문하기): 질문 3~4개를 하는 것이 일반적입니다.
+           Detailed Description: 질문에서 'detailed description'을 요구하면, 시작부터 끝까지 상세하게 설명하는 연습을 합니다.
+       개선점: 각 카테고리별 전형적인 질문에 대해 위에서 언급된 전략에 맞춰 답변을 구성하고 말해보는 연습을 합니다.
+
+5.  기본 문법 및 어휘 정확성 향상:
+       조언: 'two week ago' -> 'two weeks ago' (복수형), 'I went to bank' -> 'I went to a bank' (관사), 'the last experience' -> 'my last experience' (소유격), 'more cold' -> 'colder' (비교급) 등 기본적인 문법 오류를 줄이는 것이 중요합니다.
+       개선점: 자신의 답변을 녹음하여 들어보면서 자주 틀리는 문법이나 부자연스러운 표현을 교정하고, 'moved', 'last/most recent' 등 질문 이해에 필수적인 어휘의 정확한 의미를 파악합니다.
+
+6.  자연스러운 말하기 연습:
+       조언: 완벽하게 스크립트대로 말하기보다는, 생각하는 과정('You know, okay, my last experience at a bank, okay, when was it? I think it was like two weeks ago and...')을 자연스럽게 보여주는 것도 좋습니다.
+       개선점: 실제 대화처럼 필러(filler)를 적절히 사용하며 자연스러운 속도로 말하는 연습을 합니다.
+
+요약하자면, OPIc에서 높은 점수를 받기 위해서는 단순히 유창하게 말하는 것을 넘어, 질문을 정확히 듣고 이해하여 올바른 카테고리로 파악하고, 해당 카테고리에 맞는 전략으로 답변을 구성하며, 기본적인 문법과 어휘를 정확하게 사용하는 능력이 매우 중요합니다. 제공된 텍스트는 특히 리스닝의 중요성과 질문 유형 파악의 핵심을 잘 보여주고 있습니다.

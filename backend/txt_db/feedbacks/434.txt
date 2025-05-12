@@ -1,0 +1,9 @@
+Question 
+Tell me about a memorable experience you had.
+
+Answer 
+Once, while working on a project, my laptop suddenly crashed, displaying a dreaded blue screen error. Panicked, I tried rebooting it several times, but the problem persisted. After some troubleshooting, I realized that the issue was likely due to a hardware failure. Determined to fix it, I carefully opened up the laptop and examined the internal components. Upon closer inspection, I discovered that the problem stemmed from a faulty RAM module. Fortunately, I had a spare RAM module on hand, which I promptly installed as a replacement. After reassembling the laptop, I powered it on, relieved to see it boot up successfully. The experience taught me the importance of troubleshooting skills and having spare parts on hand for emergencies.
+
+Feedback 
+This is a model answer. Specific feedback on student errors is not applicable.
+

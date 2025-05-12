@@ -1,0 +1,9 @@
+Question 
+Pick two popular parks that you know of. Tell me about their similarities and differences. 알고 있는 인기 있는 공원 두 곳을 골라주세요. 그곳들의 유사점과 차이점에 대해 말해 주세요.
+
+Answer 
+Okay, two popular parks I know are Olympic Park and Seoul Forest. Olympic Park is very large and has many different areas, including sports facilities, walking trails, and open fields. Seoul Forest is also large but has a more natural and ecological feel, with deer enclosures, a butterfly garden, and a lake. Similarities are that both are great places for outdoor activities like walking, cycling, and picnicking. They both offer a escape from the city hustle. Differences are their focus - Olympic Park is more about sports and large events, while Seoul Forest is more focused on nature and relaxation. Olympic Park is older, built for the Olympics, while Seoul Forest was created more recently on a former industrial site.
+
+Feedback 
+You effectively compare and contrast the two parks. You clearly name the parks and provide specific details about each (sports facilities, walking trails, deer enclosures, butterfly garden). You use comparative language ('more natural and ecological feel,' 'more about sports,' 'more focused on nature') and contrasting conjunctions ('while') effectively to highlight differences. You also clearly state the similarities. The structure of discussing each park, then similarities, then differences, is logical and easy to follow.
+

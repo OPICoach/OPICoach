@@ -1,0 +1,9 @@
+Question 
+Tell me about the banks in your country. What do they typically look like? Where are they usually located?
+
+Answer 
+To be honest, when you step out of almost any subway station here in Korea, you'll instantly notice a few banks nearby. They're practically everywhere. And when you go inside, they usually have a really nice waiting area furnished with high-end couches and ottomans. Honestly, it's quite nice.
+
+Feedback 
+The provided answer jumps between location (near subway stations, everywhere) and inside description (waiting area, furniture) without a clear main point or structure. While it contains good vocabulary ('practically', 'high-end', 'ottomans'), the lack of organization makes it less clear. A better approach is to use the SMA (Main Point, Examples, Main Point) structure. Start with a main point (e.g., banks are nice because of the waiting area), provide examples or related details (e.g., location, other features like free coffee), and then return to elaborate on the main point (e.g., describe the waiting area furniture in more detail). This structure makes the answer more organized, easier for the grader to follow, and can lead to higher scores even with minor errors. Also, identify the main focus of the question (inside description is more important than location here) and ensure your main point and conclusion align with it. Use transition words like 'to be honest', 'I also like that', 'especially', 'and on top of that', and 'but I'm most impressed' to connect ideas smoothly.
+

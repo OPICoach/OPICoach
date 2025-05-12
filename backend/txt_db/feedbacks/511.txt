@@ -1,0 +1,9 @@
+Question 
+어휘 및 문장력 (반복 및 길이)
+
+Answer 
+IM2 예시: I like music. I like K-pop. IH 예시: I really like listening to music. IM2 예시: I had a good time. It was so good. IH 예시: I had an amazing time. It was incredible.
+
+Feedback 
+IH는 반복적인 표현(예: like, good 반복)을 피하고 더 길고 다양한 문장 구조를 사용합니다. IM2는 단순하고 짧은 문장을 자주 사용하며 표현이 반복될 수 있습니다.
+

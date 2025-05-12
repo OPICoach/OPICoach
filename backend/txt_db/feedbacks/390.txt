@@ -1,0 +1,9 @@
+Question 
+극장 티켓을 잘못된 날짜로 예약했습니다. 교환할 수 있는 방법이 있나요?
+
+Answer 
+I booked tickets for the wrong date for the theater. Is there any way to exchange them?
+
+Feedback 
+This is a model answer. Specific feedback on student errors is not applicable.
+

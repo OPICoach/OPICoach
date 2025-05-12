@@ -1,0 +1,9 @@
+Question 
+This park has a lot of colorful flowers.
+
+Answer 
+This park has a lot of colorful flowers.
+
+Feedback 
+'A lot of' is simple; 'plenty of' or 'numerous' could be slightly more advanced. 'Colorful flowers' is good.
+

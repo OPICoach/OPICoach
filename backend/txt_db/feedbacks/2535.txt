@@ -1,0 +1,9 @@
+Question 
+The concert ended with a thunderous applause and cheers.
+
+Answer 
+The concert ended with a thunderous applause and cheers.
+
+Feedback 
+'Thunderous applause and cheers' is a vivid description of the audience reaction.
+

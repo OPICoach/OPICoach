@@ -1,0 +1,9 @@
+Question 
+The park is surrounded by beautiful trees and flowers.
+
+Answer 
+The park is surrounded by beautiful trees and flowers.
+
+Feedback 
+'Surrounded by' is a common and useful phrase for describing the environment. 'Beautiful trees and flowers' uses simple but effective adjectives.
+

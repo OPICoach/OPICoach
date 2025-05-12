@@ -1,0 +1,9 @@
+Question 
+Imagine that you have moved into a new building. Call the manager of the building and ask three or four questions about recycling.
+
+Answer 
+Hi, this is Chloe Troy calling and I'm calling because I'm not sure about the recycling system in the building. I have a few questions if you don't mind. Well actually um this is my first time recycling and I have no idea about recycling system. So um I mean what items are okay in the recycling bins? (React: Oh, I need to separate them into paper, glass, cans and plastics. Okay, I got it. Thanks.) Oh then where is the recycling bin located? (React: Oh, near the mailbox. Yeah, all right. I see.) Oh, hey, one last thing. Then uh when is the recycling pick up? (React: Oh, every Wednesday. Okay, I got it. I got it. Oh I see.) Oh, thanks a lot for your help. Thanks anyway.
+
+Feedback 
+Use 'this is [Your Name] calling' for business calls. Clearly state the purpose: 'I'm calling because...'. Use phrases like 'I'm not sure about...' or 'I have no idea about...' when you don't know something. 'This is my first time -ing' is useful for new experiences. For questions, think of 6 Ws and 1 H (What, Where, When). Examples: 'What items are okay in the recycling bins?', 'Where is the recycling bin located?', 'When is the recycling pick up?'. Add simple reactions after asking a question, pretending to hear the answer (e.g., 'Oh, I got it', 'Okay, I see', 'Yeah, all right'). Conclude naturally, like 'Thanks a lot for your help'.
+

@@ -1,0 +1,8 @@
+chromadb
+sentence-transformers
+pandas
+openai
+pyaudio
+google-cloud-speech
+google-cloud-texttospeech
+pygame

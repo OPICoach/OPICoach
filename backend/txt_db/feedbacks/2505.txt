@@ -1,0 +1,9 @@
+Question 
+There are walking paths that go around the park.
+
+Answer 
+There are walking paths that go around the park.
+
+Feedback 
+'Walking paths' is clear. 'That go around the park' explains their layout.
+

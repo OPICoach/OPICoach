@@ -1,0 +1,9 @@
+Question 
+Not provided in source text.
+
+Answer 
+My chair makes me feel comfortable.
+
+Feedback 
+Using 'makes me feel comfortable' is often awkward, especially for tangible objects like a chair. A better way is 'My chair is so comfortable' or 'My chair is very comfortable'. 'My chair is so relaxing' is also a good alternative. Avoid the 'makes me feel' pattern when possible, especially with 'comfortable'.
+

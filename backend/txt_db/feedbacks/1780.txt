@@ -1,0 +1,9 @@
+Question 
+There is a problem that you need to resolve. A new resident from abroad has just rented an apartment in your building. However, he is not properly placing garbage in the recycling bin and other neighbors are really bothered by it. So please explain the situation to the new resident and let him know about the recycling rules.
+
+Answer 
+Hey, how are you? I wanted to chat with you about our recycling system. Well, it seems like you're confused with it. All right, let's quickly go over our recycling policy. First off, um we've got a specific day for recycling. So um every Wednesday is garbage day. Oh, also we separate waste into four categories. Plastics, cans, paper and glass. So hey, make sure not to mix them up in the recycling bin. Okay, if you ever need more help with that, feel free to ask me anytime.
+
+Feedback 
+Start with a greeting and state the purpose directly: 'I wanted to chat with you about...'. You can use 'It seems like you're confused with it' to gently point out the issue. Use 'Let's quickly go over...' to suggest reviewing the rules. For suggesting alternatives/rules, use phrases like 'First off...' and 'Also...'. Clearly state the rules, e.g., 'There is a specific day for recycling' or 'We've got a specific day...' and 'We separate waste into [number] categories'. Mention the categories if possible (plastics, cans, paper, glass). Use 'Make sure not to...' to emphasize what not to do. Conclude by offering further help: 'If you ever need more help..., feel free to ask me anytime.'
+

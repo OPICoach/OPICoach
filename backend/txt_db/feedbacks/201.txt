@@ -1,0 +1,16 @@
+Question 
+Please describe your home. Where do you live? What does it look like? Tell me about the rooms in your home.
+
+Answer 
+I live in a apartment. It is in Seoul. My apartment is not big, but it is comfortable. It have two bedroom and one living room. The living room have a sofa and a TV. The bedroom have a bed and a desk. I like my apartment because it is near the subway station. It is very convenient.
+
+Feedback 
+Your answer addresses the prompt well, providing basic information about your home. Let's look at some specific points for improvement.
+
+1.  **"I live in a apartment."**: The article before 'apartment' should be 'an' because 'apartment' starts with a vowel sound. It should be "I live in an apartment."
+2.  **"My apartment is not big"**: While correct, consider using more descriptive words like 'small', 'compact', or 'cozy' depending on the feeling you want to convey.
+3.  **"It have two bedroom and one living room."**: There are two errors here. First, for 'It', the verb 'have' should be 'has' (subject-verb agreement). Second, when talking about 'two' bedrooms, you need the plural form 'bedrooms'. The sentence should be "It has two bedrooms and one living room."
+4.  **"The living room have a sofa and a TV."**: Similar to the previous point, 'The living room' is singular, so the verb should be 'has'. It should be "The living room has a sofa and a TV."
+5.  **"The bedroom have a bed and a desk."**: Again, 'The bedroom' is singular, so use 'has'. It should be "The bedroom has a bed and a desk." If you have multiple bedrooms, you might say "Each bedroom has a bed and a desk" or "In the bedrooms, there is a bed and a desk."
+6.  **Overall**: You use simple sentences effectively. To make your description richer, you could add more detail about what you like about the rooms or what you do there. For example, instead of just "The living room has a sofa and a TV," you could say "In the living room, there's a comfortable sofa where I like to relax and watch TV." Keep practicing subject-verb agreement and plural forms.
+

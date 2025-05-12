@@ -1,0 +1,42 @@
+Question 
+Tell me about your house or apartment.
+
+Answer 
+The neighborhood is quiet and safe with friendly neighbors. This house is conveniently located near schools, parks, and shopping centers. My bedrooms are cozy and comfortable, perfect for a good night's sleep. Overall, this house is a perfect place to live. The living room is quite spacious with a big window. The living room is filled with family photos and artwork. The apartment boasts a panoramic view of the city skyline. The exterior of the house is painted an angry yellow. The study room is perfect for working from home. A flower basket is hanging by the entrance. The sun drenched windows fill the living room with natural light. There is a spacious closet to store clothes. The kitchen is fully equipped with high-end appliances. There is a spacious parking lot where I can park my car. A sun room provides a bright and inviting space for relaxation. The study is a quiet retreat for reading and working from home. The children's room is decorated with playful, colorful decor. The laundry room is conveniently located near the bedrooms. The dining room has a large table that can seat eight people. (Problematic sentence regarding 'swag' omitted as it's nonsensical). This is a spacious and modern house with plenty of natural light. The pantry is well-organized with neatly arranged shelves and labeled containers. The kitchen is equipped with modern appliances and granite countertops. The house has an energy-efficient heating and cooling system. The house is located in a quiet dead end. The home office is equipped with a desk and bookshelves for productivity. The bathroom features a luxurious spa tub for relaxation. The balcony is a great place to enjoy morning coffee. A wooden bookshelf is packed with a variety of books from classic novels to contemporary bestsellers. The toilet is equipped with a bidet, enhancing personal hygiene and comfort.
+
+Feedback 
+Here is the feedback on the sentences provided:
+1.  '안녕하세요 강주안쌤입니다. 오픽 AL을 위한 만능 답변에 익숙해지세요.' - This is an introductory remark, not part of the answer itself.
+2.  'The neighborhood is quiet and safe with friendly neighbors.' - Excellent sentence. Natural and descriptive.
+3.  '이 집은 학교, 공원 및 쇼핑센터 근처에 편리하게 위치해 있습니다.' - Good sentence. (Translation: This house is conveniently located near schools, parks, and shopping centers.)
+4.  'My bedrooms are cozy and comfortable, perfect for a good night's sleep.' - Excellent sentence. Uses good descriptive adjectives.
+5.  '전반적으로 이 집은 살기에 완벽한 공간입니다.' - Good sentence. (Translation: Overall, this house is a perfect place to live.)
+6.  'The living room is quite spacious with a big window.' - Good sentence. Simple and clear.
+7.  '거실에는 가족 사진과 예술 작품이 가득합니다.' - Good sentence. (Translation: The living room is filled with family photos and artwork.)
+8.  'The apartment boasts a panoramic view of the city skyline.' - Excellent sentence. Uses higher-level vocabulary ('boasts', 'panoramic view', 'skyline') which is good for AL.
+9.  '집 외관은 화난 노란색으로 도색되어 있습니다.' - '화난 노란색' (angry yellow) is a very creative but unusual description for a house color. While creative language can be good, this might sound a bit strange or unnatural to a native speaker. (Translation: The exterior of the house is painted an angry yellow.) Consider using more standard color descriptions or explaining *why* it looks 'angry'.
+10. 'The study room is perfect for working from home.' - Good sentence. Relevant and clear.
+11. '현관에는 꽃바구니가 걸려 있습니다.' - Good sentence. (Translation: A flower basket is hanging by the entrance.)
+12. 'The sun drenched windows fill the living room with natural light.' - Excellent sentence. 'Sun-drenched' is a great descriptive word.
+13. '옷을 보관할 수 있는 널찍한 옷장이 있어요.' - Good sentence. (Translation: There is a spacious closet to store clothes.)
+14. 'The kitchen is fully equipped with high-end appliances.' - Excellent sentence. 'Fully equipped' and 'high-end appliances' are good phrases.
+15. '차를 주차할 수 있는 넓은 주차장이 있습니다.' - Good sentence. (Translation: There is a spacious parking lot where I can park my car.)
+16. 'A sun room provides a bright and inviting space for relaxation.' - Excellent sentence. 'Inviting' is a good adjective.
+17. '서재는 독서와 재택 근무용 조용한 휴식처입니다.' - Good sentence. (Translation: The study is a quiet retreat for reading and working from home.) 'Retreat' is a good word here.
+18. 'The children's room is decorated with playful, colorful decor.' - Good sentence. Clear and descriptive.
+19. '세탁실은 침실 근처에 위치하여 편리합니다.' - Good sentence. (Translation: The laundry room is conveniently located near the bedrooms.)
+20. 'The dining room has a large table that can seat eight people.' - Good sentence. Providing specific details like the seating capacity is effective.
+21. '집의 스웩에는 체중 감량을 위한 운동 기구가 설치되어 있습니다.' - This sentence contains a significant issue. '스웩' (swag) is a slang term and is completely inappropriate and nonsensical in this context when talking about a house feature. This phrase does not make sense in English or Korean when describing a place for exercise equipment. You likely mean something like 'home gym', 'exercise area', or perhaps a specific room. This sentence needs to be completely rephrased. (Literal, nonsensical translation: In the house's swag, exercise equipment for weight loss is installed.)
+22. 'This is a spacious and modern house with plenty of natural light.' - Good summary sentence. Uses standard, effective adjectives.
+23. '식료품 저장실은 정리가 잘 되어 있으며 깔끔하게 배열된 선반과 라벨이 달린 용기가 있습니다.' - Excellent sentence. Provides specific, detailed description which is great for AL. (Translation: The pantry is well-organized with neatly arranged shelves and labeled containers.)
+24. 'The kitchen is equipped with modern appliances and granite countertops.' - Good sentence. Specific details like 'granite countertops' add realism.
+25. '이 집은 에너지 효율적인 난방 및 냉방 시스템을 갖추고 있습니다.' - Good sentence. Relevant detail about the house's features. (Translation: The house has an energy-efficient heating and cooling system.)
+26. 'The house is located in a quiet dead end.' - This is grammatically correct. 'Dead end' is understandable, but 'cul-de-sac' is the more formal term for a street with a dead end, or you could simply say 'a quiet street' or 'a quiet location'. 'Dead end' can sound a bit blunt.
+27. '집 오피스는 생산성을 위한 책상과 책장이 갖추어져 있습니다.' - Good sentence. (Translation: The home office is equipped with a desk and bookshelves for productivity.)
+28. 'The bathroom features a luxurious spa tub for relaxation.' - Excellent sentence. 'Luxurious spa tub' is good descriptive vocabulary.
+29. '발코니는 모닝 커피를 즐기기에 좋은 장소입니다.' - Good sentence. (Translation: The balcony is a great place to enjoy morning coffee.)
+30. 'A wooden bookshelf is packed with a variety of books from classic novels to contemporary bestsellers.' - Excellent sentence. Provides specific detail about the contents, showing fluency.
+31. '변기에는 비데가 장착되어 개인 위생과 쾌적성을 높였다.' - Good sentence. Specific detail. (Translation: The toilet is equipped with a bidet, enhancing personal hygiene and comfort.)
+
+Overall, most sentences are well-formed and use appropriate vocabulary for OPIc AL. Pay close attention to the sentence using '스웩' as it needs correction.
+

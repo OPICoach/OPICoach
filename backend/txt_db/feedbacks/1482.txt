@@ -1,0 +1,9 @@
+Question 
+Example: Memorable experience related to weather.
+
+Answer 
+Strategy: Use the memorized 'weather' template (Template 3). Storyline: An event happened because the weather was [adjective].
+
+Feedback 
+This template allows you to connect an experience to a common topic like weather, which can be a 돌발 주제 (돌발 주제).
+

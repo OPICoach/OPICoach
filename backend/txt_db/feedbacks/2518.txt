@@ -1,0 +1,9 @@
+Question 
+Joggers and cyclists enjoy the park's well-maintained trails.
+
+Answer 
+Joggers and cyclists enjoy the park's well-maintained trails.
+
+Feedback 
+Mentioning specific users ('joggers and cyclists') and the feature they use ('well-maintained trails') is good detail.
+

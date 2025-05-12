@@ -1,0 +1,9 @@
+Question 
+혹시 빈자리가 있다면 알려주시겠어요를 자연스럽게 영작하여 말할 수 있다.
+
+Answer 
+해당 질문을 자연스럽게 영작하여 말할 수 있으면 O, 아니면 X
+
+Feedback 
+질문의 복잡성 측정. 복잡한 질문 형태를 편안하게 말할 수 있는지 확인합니다. (예: Do you still have any remaining seats? Would you please let me know whether there are seats available?)
+

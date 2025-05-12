@@ -1,0 +1,9 @@
+Question 
+Do you think it's better to workout with a personal trainer or without a personal trainer and why?
+
+Answer 
+나는 초보자는 그 퍼스널 트레이너랑 같이 해야 된다고 생각해. 왜냐하면 그래야 효과적이고 안전하게 운동할 수 있다.
+
+Feedback 
+You gave a clear reason (effective and safe). The model translation for your answer is: "I definitely recommend a personal trainer for those just starting out. That way, it'll be a way more effective workout with a very unlikely chance of getting hurt."
+

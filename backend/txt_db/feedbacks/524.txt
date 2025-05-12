@@ -1,0 +1,9 @@
+Question 
+영어로 말할 때 과거 완료 시제로 문장을 만들 수 있다.
+
+Answer 
+과거 완료 (had + p.p.) 문장을 만들 수 있으면 O, 아니면 X
+
+Feedback 
+문장 구조의 복잡성 측정 (시제 활용). 시제를 넓게 사용할 수 있는지 확인합니다. (예: The last train had left.)
+

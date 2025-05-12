@@ -1,0 +1,9 @@
+Question 
+The park has a dedicated area for outdoor concerts and performances.
+
+Answer 
+The park has a dedicated area for outdoor concerts and performances.
+
+Feedback 
+'Dedicated area for' is a good phrase for a specific purpose. Listing activities ('outdoor concerts and performances') is specific.
+

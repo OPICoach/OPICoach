@@ -1,0 +1,9 @@
+Question 
+As soon as you got the furniture, you found out the furniture is damaged. Call the store and solve the problem.
+
+Answer 
+Excuse me I got the furniture and I think it is damaged. Firstly can you exchange this furniture? Secondly can I get a refund? I'm angry and disappointed. You need fixed right now.
+
+Feedback 
+문제를 순수하게 해결하려는 답변입니다. 'Excuse me', 'can you exchange?', 'can I get a refund?'와 같이 정중한 표현을 사용하며, 'I'm angry and disappointed'와 같은 감정 표현도 있지만 전체적으로 상황극의 느낌이 부족하고 감정 전달이 약합니다. 마치 AI처럼 느껴질 수 있습니다. AL을 위해서는 상황극에 더 몰입해야 합니다.
+

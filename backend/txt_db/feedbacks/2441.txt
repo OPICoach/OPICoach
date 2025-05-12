@@ -1,0 +1,9 @@
+Question 
+The apartment boasts a panoramic view of the city skyline.
+
+Answer 
+The apartment boasts a panoramic view of the city skyline.
+
+Feedback 
+'Boasts' is a strong verb indicating a desirable feature. 'Panoramic view' and 'city skyline' are excellent descriptive phrases for a view.
+

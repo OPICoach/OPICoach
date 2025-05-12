@@ -1,0 +1,9 @@
+Question 
+장소 관련 주제: 음식점에 대해 이야기해 보세요. 외식을 하거나 배달 음식을 시켜 먹나요? 당신 나라의 전형적인 음식점은 어떤가요?
+
+Answer 
+제공된 텍스트는 OPIc 시험 준비를 위한 강의 스크립트이며, 실제 학생의 답변이 포함되어 있지 않습니다. 따라서 OPIc_Answer 필드는 강의 내용에 기반한 준비 자료임을 명시합니다.
+
+Feedback 
+필수 키워드: visit a restaurant, eat out, get food delivered, typical restaurants, take out restaurant, delivery restaurant, my favorite restaurant, my favorite menu, serve [food]. 활용: eat out at an Italian restaurant.
+

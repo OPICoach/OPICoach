@@ -1,0 +1,9 @@
+Question 
+I'm sorry, but there is a problem which I need you to resolve. When you got to a new house, you discovered that a window is broken. Call the repair shop, explain the situation, and ask for a solution. And that's the end of the situation.
+
+Answer 
+Hello, I just moved into a new house, and I found that a window is broken. It's a big crack. I need someone to fix it quickly. Can you send a repair person? When can they come?
+
+Feedback 
+You clearly explained the problem (broken window with a big crack) and stated your need (fix it quickly, send a repair person). You also asked about availability ('When can they come?'). For a more complete response, you could provide your address, describe the location of the window (e.g., 'the living room window'), and perhaps mention the urgency or potential issue (e.g., 'it's letting in cold air'). Using phrases like 'I'd like to request a repair' or 'Could you please arrange for someone to come?' would be good.
+

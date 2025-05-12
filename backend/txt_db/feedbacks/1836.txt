@@ -1,0 +1,9 @@
+Question 
+Walking location (어디서 걷느냐)
+
+Answer 
+Talk about some household chores. (집안일에 대해 이야기)
+
+Feedback 
+Off-topic. Answered about household chores instead of walking location. (질문과 무관한 답)
+

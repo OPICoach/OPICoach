@@ -1,0 +1,24 @@
+Question 
+Please tell me about your most memorable experience that you had when you used social media. What happened? Why was it so memorable to you?
+
+Answer 
+Sample answer based on YouTube (ChatGPT generated, discussed for content and phrases):
+My most memorable experience with YouTube happened a couple of years ago. I was trying to fix my washing machine because it suddenly stopped working and I had no idea what to do. Instead of calling a repair man right away I decided to search for a solution on YouTube. To my surprise I found a detailed tutorial from someone who explained exactly what was wrong with my model. They showed step by step instructions and I followed along while pausing the video to make sure I got it right. After about an hour of work I managed to fix the machine completely on my own. This experience was so memorable because it made me realize just how useful YouTube can be for solving real life problems. It wasn't just for entertainment. It saved me time and money and gave me a sense of accomplishment. I'll never forget how empowering that felt.
+
+Feedback 
+Feedback on the sample answer:
+-   **General:** This answer is too perfect and unnatural for a human speaker. Do not memorize it directly.
+-   **Content/Strategy (Six Steps):**
+    1.  **Main Topic (Function):** YouTube.
+    2.  **Main Focus (Function):** Fixing the washing machine.
+    3.  **Other Examples (Text Type):** Could add examples like calling dad or a professional before trying YouTube.
+    4.  **Staying on Track (Content/Context):** After mentioning other examples, return to the main focus (YouTube/washing machine).
+    5.  **Insight Gained (Accuracy):** Realized YouTube's usefulness for 'solving real life problems'.
+    6.  **Summarize (Text Type):** Briefly conclude by mentioning fixing the washing machine thanks to YouTube.
+-   **Vocabulary/Phrases:**
+    -   'on my own': Good phrase for fixing something yourself.
+    -   'solving real life problems': Excellent phrase to describe YouTube's utility beyond entertainment.
+    -   'It made me realize': Useful pattern for expressing realization.
+    -   'a sense of accomplishment': Advanced phrase indicating pride or satisfaction after completing a task. Can also use 'a sense of achievement' (slightly different context).
+    -   'empowering': Difficult but impactful word to describe the feeling of being capable.
+

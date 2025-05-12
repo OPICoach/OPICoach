@@ -1,0 +1,9 @@
+Question 
+The cafe is open late, making it a great place for late night studying.
+
+Answer 
+The cafe is open late, making it a great place for late night studying.
+
+Feedback 
+Mentioning the operating hours ('open late') and its benefit ('great place for late night studying') is practical information.
+

@@ -1,0 +1,9 @@
+Question 
+People are strolling along the winding pathways.
+
+Answer 
+People are strolling along the winding pathways.
+
+Feedback 
+'Strolling along' is a good verb for leisurely walking. 'Winding pathways' is a descriptive phrase.
+

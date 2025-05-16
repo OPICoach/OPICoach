@@ -102,7 +102,7 @@ const OnboardingSurvey = ({ onComplete }) => {
     : !!currentAnswer;
 
   return (
-    <div className="bg-white rounded-xl shadow p-12 w-screen min-h-[500px] flex flex-col justify-between">
+    <div className="bg-white rounded-xl shadow p-12 flex flex-col justify-between">
       <div>
         <SurveyStep
           title={steps[step].title}

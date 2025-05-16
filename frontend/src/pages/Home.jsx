@@ -33,7 +33,7 @@ const Home = () => {
   return (
     <div className="flex flex-row">
       <SideBar userName={userName} />
-      <div className="flex flex-col bg-white px-12 mt-10">
+      <div className="flex flex-col w-full h-screen bg-white px-12 mt-10">
         {userData ? (
           <HomeExistUser
             userName={userData.userName}

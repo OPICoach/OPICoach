@@ -11,7 +11,10 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Learn from "./pages/Learn";
 import Test from "./pages/Test";
+import TestStart from "./pages/TestStart";
 import Information from "./pages/Information";
+import StudyMaterials from "./pages/StudyMaterials";
+import Fillers from "./pages/Fillers";
 
 function App() {
   return (
@@ -23,7 +26,10 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/information" element={<Information />} />
           <Route path="/learn" element={<Learn />} />
+          <Route path="/learn/studymaterials" element={<StudyMaterials />} />
+          <Route path="/learn/fillers" element={<Fillers />} />
           <Route path="/test" element={<Test />} />
+          <Route path="/test/teststart" element={<TestStart />} />
 
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

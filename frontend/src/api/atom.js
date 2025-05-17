@@ -36,3 +36,23 @@ export const sideBarState = atom({
     },
   ],
 });
+
+export const userMessagesFillerState = atom({
+  key: "userMessagesFillerState",
+  default: [],
+});
+
+export const AIMessagesFillerState = atom({
+  key: "AIMessagesFillerState",
+  default: [],
+});
+
+export const userMessagesInforState = atom({
+  key: "userMessagesInforState",
+  default: [],
+});
+
+export const AIMessagesInforState = atom({
+  key: "AIMessagesInforState",
+  default: [],
+});

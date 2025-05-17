@@ -1,15 +1,13 @@
 import { useNavigate } from "react-router-dom";
+import backButtonIcon from "../assets/back_button.svg";
 
 const BackButton = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex items-center justify-start mb-3">
-      <button
-        onClick={() => navigate(-1)}
-        className="flex items-center text-black hover:underline font-medium"
-      >
-        <span className="text-[21px] font-medium mr-1">&lt;</span>
+    <div className="flex items-center justify-start mb-4">
+      <button onClick={() => navigate(-1)}>
+        <img src={backButtonIcon} alt="뒤로가기" className="w-[10px]" />
       </button>
     </div>
   );

@@ -3,6 +3,7 @@ import LevelInfo from "./LevelInfo";
 import TestDateInfo from "./TestDateInfo";
 import SurveyResponse from "./SurveyResponse";
 import EditUserInfoButton from "./EditUserInfoButton";
+import { useNavigate } from "react-router-dom";
 
 const HomeExistUser = ({
   userName,
@@ -10,8 +11,8 @@ const HomeExistUser = ({
   goalLevel,
   testDate,
   surveyList,
-
 }) => {
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col bg-white px-12 pt-16 cursor-default">
       <WelcomeMessage userName={userName} />
@@ -23,7 +24,7 @@ const HomeExistUser = ({
         <SurveyResponse surveyList={surveyList} />
       </div>
       <div className="mt-12 flex justify-end">
-        <EditUserInfoButton name="NEXT" />
+        <EditUserInfoButton onClick={() => navigate("/edit")} />
       </div>
     </div>
   );

@@ -40,7 +40,7 @@ const SideBar = ({ userName }) => {
         aria-label={open ? "사이드바 닫기" : "사이드바 열기"}
       >
         {open ? (
-          <span className="text-2xl">&times;</span>
+          <span className="text-xl">←</span>
         ) : (
           <span className="text-xl">&#9776;</span>
         )}

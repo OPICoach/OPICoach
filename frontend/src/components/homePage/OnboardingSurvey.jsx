@@ -87,7 +87,7 @@ const OnboardingSurvey = ({ onComplete }) => {
     if (step > 0) setStep(step - 1);
   };
 
-  // 마지막 저장
+  // 저장
   const handleSave = () => {
     if (onComplete) onComplete(answers);
   };
@@ -102,7 +102,7 @@ const OnboardingSurvey = ({ onComplete }) => {
     : !!currentAnswer;
 
   return (
-    <div className="bg-white rounded-xl shadow p-12 flex flex-col justify-between">
+    <div className="bg-white rounded-xl shadow p-12 flex flex-col justify-between w-full">
       <div>
         <SurveyStep
           title={steps[step].title}

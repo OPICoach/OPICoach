@@ -1,11 +1,13 @@
 import SideBar from "../components/SideBar.jsx";
+import BackButton from "../components/BackButton.jsx";
 
 const Fillers = () => {
   return (
     <div className="flex flex-row h-screen bg-white">
       <SideBar userName="Gildong Hong" />
-      <div className="flex flex-col flex-1 px-10 py-8 h-full">
-        {/* 메시지 영역 */}
+      <div className="flex flex-col flex-1 px-10 pt-4 pb-8 h-full">
+        <BackButton />
+
         <div className="flex-1 flex flex-col gap-4 overflow-y-auto mb-4">
           <div className="self-start bg-gray-200 p-4 rounded-xl max-w-[60%]">
             Please tell me more about the difference between formal and informal

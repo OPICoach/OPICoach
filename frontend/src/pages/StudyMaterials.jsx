@@ -11,9 +11,8 @@ const StudyMaterials = () => {
 
       {/* 오른쪽 컨텐츠 영역 */}
       <div className="flex flex-col w-full bg-white">
-        <BackButton />
-
         <div className="flex-1 overflow-y-auto px-10 pt-4 pb-8 border-b border-gray-200">
+          <BackButton />
           <h2 className="text-2xl font-semibold mb-4">Study Materials</h2>
           <p className="text-gray-800 leading-relaxed whitespace-pre-line">
             In today's lesson, we discussed how to introduce yourself in various

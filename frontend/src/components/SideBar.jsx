@@ -5,7 +5,7 @@ import infoIcon from "../assets/sidebar/infor.svg";
 import settingIcon from "../assets/sidebar/setting.svg";
 import sidebarLogo from "../assets/sidebar/sidebarLogo.svg";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const menus = [
   { name: "Home", icon: homeIcon, path: "/" },
@@ -26,6 +26,7 @@ function getProfileInitial(userName) {
 
 const SideBar = ({ userName }) => {
   const navigate = useNavigate();
+  const location = useLocation(); // 현재 경로 확인
   const initial = getProfileInitial(userName);
 
   return (
@@ -36,20 +37,27 @@ const SideBar = ({ userName }) => {
       </div>
       {/* 메뉴 */}
       <nav className="flex-1 mt-8 mx-1 ">
-        {menus.map((menu) => (
-          <a
-            key={menu.name}
-            href={menu.path}
-            className="flex items-center my-[10px] mx-[5px] px-4 py-3 text-accent border-[#E5E7EB] rounded-lg hover:bg-white transition cursor-pointer"
-          >
-            <img
-              src={menu.icon}
-              alt={menu.name}
-              className="w-6 h-6 mr-[19px]"
-            />
-            <span>{menu.name}</span>
-          </a>
-        ))}
+        {menus.map((menu) => {
+          const isActive = location.pathname === menu.path;
+          return (
+            <button
+              key={menu.name}
+              onClick={() => navigate(menu.path)}
+              className={
+                "flex items-center w-full my-[10px] px-5 py-3 text-accent border-[#E5E7EB] rounded-lg transition cursor-pointer " +
+                (isActive ? "bg-white font-semibold" : "hover:bg-white")
+              }
+              style={{ outline: "none", border: "none" }}
+            >
+              <img
+                src={menu.icon}
+                alt={menu.name}
+                className="w-6 h-6 mr-[19px]"
+              />
+              <span>{menu.name}</span>
+            </button>
+          );
+        })}
       </nav>
       {/* 프로필 */}
       <div className="flex items-center px-5 pb-6 cursor-default">

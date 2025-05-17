@@ -1,3 +1,5 @@
+import SideBar from "../components/SideBar.jsx";
+
 const Fillers = () => {
   return (
     <div style={{ padding: 20 }}>

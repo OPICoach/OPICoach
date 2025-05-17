@@ -1,4 +1,4 @@
-import SideBar from "../components/sidebar";
+import SideBar from "../components/SideBar.jsx";
 import sidebarLogo from "../assets/sidebar/sidebarLogo.svg";
 import { useNavigate } from "react-router-dom";
 

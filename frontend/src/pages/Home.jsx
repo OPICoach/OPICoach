@@ -1,4 +1,4 @@
-import SideBar from "../components/sidebar";
+import SideBar from "../components/SideBar.jsx";
 import HomeExistUser from "../components/homePage/HomeExistUser";
 import HomeNewUser from "../components/homePage/HomeNewUser";
 

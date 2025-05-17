@@ -36,7 +36,7 @@ const SideBar = ({ userName }) => {
         <img src={sidebarLogo} alt="OPICoach Logo" className="h-10" />
       </div>
       {/* 메뉴 */}
-      <nav className="flex-1 mt-8 mx-1 ">
+      <nav className="flex-1 mt-10 mx-1 ">
         {menus.map((menu) => {
           const isActive = location.pathname === menu.path;
           return (

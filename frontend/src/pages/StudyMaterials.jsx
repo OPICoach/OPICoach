@@ -1,4 +1,11 @@
-import React, { useRef, useState } from "react";
+import MessageInput from "../components/chatPage/MessageInput.jsx";
+import MessageList from "../components/chatPage/MessageList.jsx";
+import React, { useState } from "react";
+import { useRecoilState } from "recoil";
+import {
+  userMessagesMaterialState,
+  AIMessagesMaterialState,
+} from "../api/atom.js";
 import SideBar from "../components/SideBar.jsx";
 import BackButton from "../components/BackButton.jsx";
 import useResizeHeight from "../hooks/useResizeHeight.jsx";
@@ -12,6 +19,18 @@ const StudyMaterials = () => {
     MIN_TOP_HEIGHT,
     MIN_BOTTOM_HEIGHT
   );
+
+  const [userMessages, setUserMessages] = useRecoilState(
+    userMessagesMaterialState
+  );
+  const [AIMessages] = useRecoilState(AIMessagesMaterialState);
+  const [input, setInput] = useState("");
+
+  const handleSend = () => {
+    if (input.trim() === "") return;
+    setUserMessages([...userMessages, input]);
+    setInput("");
+  };
 
   return (
     <div className="flex flex-row h-screen">
@@ -45,32 +64,21 @@ const StudyMaterials = () => {
           <div className="w-12 h-1 rounded-full bg-gray-400" />
         </div>
 
-        {/* 채팅/입력 영역 (남은 공간) */}
         <div
           className="flex flex-col justify-between px-10 py-6"
           style={{ flex: 1, minHeight: MIN_BOTTOM_HEIGHT }}
         >
-          <div className="flex flex-col gap-4 overflow-y-auto mb-4">
-            <div className="self-start bg-gray-200 p-4 rounded-xl max-w-[60%]">
-              Please tell me more about the difference between formal and
-              informal introductions.
-            </div>
-            <div className="self-end bg-gray-100 p-4 rounded-xl max-w-[60%]">
-              Sure! Formal introductions usually start with "Good morning" or
-              "Pleased to meet you"...
-            </div>
+          {/* MessageList에 flex-grow: 1 적용 */}
+          <div style={{ flexGrow: 1, overflowY: "auto", marginBottom: "1rem" }}>
+            <MessageList userMessages={userMessages} AIMessages={AIMessages} />
           </div>
-
-          <div className="flex items-center gap-4">
-            <input
-              type="text"
-              placeholder="Ask about this lesson..."
-              className="flex-1 border border-gray-300 px-4 py-2 rounded-full"
-            />
-            <button className="bg-primary text-white px-5 py-2 rounded-full">
-              ↑
-            </button>
-          </div>
+          {/* MessageInput은 고정 위치 */}
+          <MessageInput
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onClick={handleSend}
+            isAILoading={false}
+          />
         </div>
       </div>
     </div>

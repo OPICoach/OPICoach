@@ -44,7 +44,7 @@ export const userMessagesFillerState = atom({
 
 export const AIMessagesFillerState = atom({
   key: "AIMessagesFillerState",
-  default: [],
+  default: ["Hello!"],
 });
 
 export const userMessagesInforState = atom({
@@ -54,5 +54,17 @@ export const userMessagesInforState = atom({
 
 export const AIMessagesInforState = atom({
   key: "AIMessagesInforState",
+  default: ["Hello"],
+});
+
+export const userMessagesMaterialState = atom({
+  key: "userMessagesMaterialState",
   default: [],
+});
+
+export const AIMessagesMaterialState = atom({
+  key: "AIMessagesMaterialState",
+  default: [
+    "Please tell me more about the difference between formal and informal introductions.",
+  ],
 });

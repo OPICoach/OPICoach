@@ -29,7 +29,7 @@ const SideBar = ({ userName }) => {
   const initial = getProfileInitial(userName);
 
   return (
-    <aside className="sticky top-0 left-0 flex flex-col min-w-[240px] h-screen bg-neutral ">
+    <aside className="sticky top-0 left-0 flex flex-col min-w-[230px] h-screen bg-neutral ">
       {/* 로고 */}
       <div className="flex items-center justify-center h-24">
         <img src={sidebarLogo} alt="OPICoach Logo" className="h-10" />

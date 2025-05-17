@@ -67,7 +67,6 @@ const SideBar = ({ userName }) => {
                 key={menu.name}
                 onClick={() => {
                   navigate(menu.path);
-                  setOpen(false); // 모바일에서 메뉴 클릭 시 자동 닫기
                 }}
                 className={
                   "flex items-center w-full my-[10px] px-5 py-3 text-accent border-[#E5E7EB] rounded-lg transition cursor-pointer " +

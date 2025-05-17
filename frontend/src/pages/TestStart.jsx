@@ -1,4 +1,4 @@
-import SideBar from "../components/sidebar";
+import SideBar from "../components/SideBar.jsx";
 
 const TestTimer = () => {
   return (

@@ -1,8 +1,17 @@
+import SideBar from "../components/SideBar.jsx";
+import MessageInput from "../components/chatPage/MessageInput.jsx";
+import MessageList from "../components/chatPage/MessageList.jsx";
+import BackButton from "../components/BackButton.jsx";
+
 const Fillers = () => {
   return (
-    <div style={{ padding: 20 }}>
-      <h1>Learn Fillers Page (임시 페이지)</h1>
-      <p>This is a placeholder page for Learn Fillers.</p>
+    <div className="flex flex-row h-screen bg-white">
+      <SideBar userName="Gildong Hong" />
+      <div className="flex flex-col flex-1 px-10 pt-4 pb-8 h-full">
+        <BackButton />
+        <MessageList />
+        <MessageInput />
+      </div>
     </div>
   );
 };

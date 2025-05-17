@@ -6,8 +6,9 @@ import infoIcon from "../assets/sidebar/infor.svg";
 import settingIcon from "../assets/sidebar/setting.svg";
 import sidebarLogo from "../assets/sidebar/sidebarLogo.svg";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { sideBarState } from "../api/atom";
 
-// 메뉴 데이터
 const menus = [
   { name: "Home", icon: homeIcon, path: "/" },
   { name: "Learn", icon: learnIcon, path: "/learn" },
@@ -26,21 +27,23 @@ function getProfileInitial(userName) {
 }
 
 const SideBar = ({ userName }) => {
-  const [open, setOpen] = useState(true); // 사이드바 열림/닫힘 상태
+  const [open, setOpen] = useRecoilState(sideBarState);
   const navigate = useNavigate();
   const location = useLocation();
   const initial = getProfileInitial(userName);
 
   return (
     <>
-      {/* 사이드바 토글 버튼 */}
       <button
-        className="fixed top-1 left-3 z-40 bg-white rounded-full shadow p-3 w-10 h-10 flex items-center justify-center md:hidden select-none"
+        className={
+          "fixed top-1 left-3 z-40 bg-white rounded-full shadow p-3 w-10 h-10 flex items-center justify-center select-none " +
+          (open ? "md:hidden" : "")
+        }
         onClick={() => setOpen((prev) => !prev)}
         aria-label={open ? "사이드바 닫기" : "사이드바 열기"}
       >
         {open ? (
-          <span className="text-xl">←</span>
+          <span className="text-xl">{"\u2190"}</span>
         ) : (
           <span className="text-xl">&#9776;</span>
         )}
@@ -61,7 +64,10 @@ const SideBar = ({ userName }) => {
         {/* 메뉴 */}
         <nav className="flex-1 mt-10 mx-1">
           {menus.map((menu) => {
-            const isActive = location.pathname === menu.path;
+            const isActive =
+              menu.path === "/"
+                ? location.pathname === "/"
+                : location.pathname.startsWith(menu.path);
             return (
               <button
                 key={menu.name}

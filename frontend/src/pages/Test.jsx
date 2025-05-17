@@ -11,12 +11,9 @@ const TestStart = () => {
         <div className="flex gap-8">
           <button
             className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-blue-600"
-            onClick={() => navigate('/test/teststart')}
+            onClick={() => navigate("/test/teststart")}
           >
-            Full
-          </button>
-          <button className="bg-gray-300 text-black px-6 py-3 rounded-lg hover:bg-gray-400">
-            Mock
+            Start
           </button>
         </div>
       </div>

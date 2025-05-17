@@ -4,11 +4,9 @@ export const userDataState = atom({
   default: null,
   effects_UNSTABLE: [
     ({ setSelf, onSet }) => {
-      // 초기값을 localStorage에서 가져오기
       const saved = localStorage.getItem("userDataState");
       if (saved != null) setSelf(JSON.parse(saved));
 
-      // 값이 바뀔 때마다 localStorage에 저장
       onSet((newValue, _, isReset) => {
         if (isReset || newValue == null) {
           localStorage.removeItem("userDataState");
@@ -17,5 +15,56 @@ export const userDataState = atom({
         }
       });
     },
+  ],
+});
+
+export const sideBarState = atom({
+  key: "sideBarState",
+  default: true,
+  effects_UNSTABLE: [
+    ({ setSelf, onSet }) => {
+      const saved = localStorage.getItem("sideBarState");
+      if (saved != null) setSelf(JSON.parse(saved));
+
+      onSet((newValue, _, isReset) => {
+        if (isReset || newValue == null) {
+          localStorage.removeItem("sideBarState");
+        } else {
+          localStorage.setItem("sideBarState", JSON.stringify(newValue));
+        }
+      });
+    },
+  ],
+});
+
+export const userMessagesFillerState = atom({
+  key: "userMessagesFillerState",
+  default: [],
+});
+
+export const AIMessagesFillerState = atom({
+  key: "AIMessagesFillerState",
+  default: ["Hello!"],
+});
+
+export const userMessagesInforState = atom({
+  key: "userMessagesInforState",
+  default: [],
+});
+
+export const AIMessagesInforState = atom({
+  key: "AIMessagesInforState",
+  default: ["Hello"],
+});
+
+export const userMessagesMaterialState = atom({
+  key: "userMessagesMaterialState",
+  default: [],
+});
+
+export const AIMessagesMaterialState = atom({
+  key: "AIMessagesMaterialState",
+  default: [
+    "Please tell me more about the difference between formal and informal introductions.",
   ],
 });

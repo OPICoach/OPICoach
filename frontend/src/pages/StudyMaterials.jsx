@@ -14,22 +14,22 @@ const StudyMaterials = () => {
   );
 
   return (
-    <div className="flex flex-row h-screen select-none">
+    <div className="flex flex-row h-screen">
       <SideBar userName="Gildong Hong" />
 
-      {/* 오른쪽 컨텐츠 영역 */}
       <div
         className="flex flex-col w-full bg-white h-screen"
         ref={containerRef}
       >
-        {/* 본문 영역 (높이 조정 가능) */}
         <div
           className="overflow-y-auto px-10 pt-4 pb-8 border-b border-gray-200"
           style={{ height: topHeight }}
         >
           <BackButton />
-          <h2 className="text-2xl font-semibold mb-4">Study Materials</h2>
-          <p className="text-gray-800 leading-relaxed whitespace-pre-line">
+          <h2 className="text-2xl font-semibold mb-4 select-none">
+            Study Materials
+          </h2>
+          <p className="text-gray-800 leading-relaxed whitespace-pre-line select-none">
             In today's lesson, we discussed how to introduce yourself in various
             situations. The key expressions included: "Let me introduce myself",
             "I am currently working at...", and "In my free time, I enjoy...".
@@ -38,9 +38,8 @@ const StudyMaterials = () => {
           </p>
         </div>
 
-        {/* 리사이저 */}
         <div
-          className="w-full h-3 cursor-row-resize flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition"
+          className="w-full h-3 select-none cursor-row-resize flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition"
           onMouseDown={handleMouseDown}
         >
           <div className="w-12 h-1 rounded-full bg-gray-400" />

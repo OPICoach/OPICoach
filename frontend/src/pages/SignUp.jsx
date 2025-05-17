@@ -28,8 +28,7 @@ const SignUp = () => {
           </div>
         </div>
         <div className="w-3/5 flex flex-col gap-4 mb-6">
-          <LoginRegisterInput placeholder="first name" />
-          <LoginRegisterInput placeholder="last name" />
+          <LoginRegisterInput placeholder="name" />
           <LoginRegisterInput placeholder="email" />
           <LoginRegisterInput placeholder="id" />
           <LoginRegisterInput

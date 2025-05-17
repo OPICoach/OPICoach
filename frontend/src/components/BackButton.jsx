@@ -5,9 +5,9 @@ const BackButton = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex items-center justify-start mb-4">
+    <div className="flex items-center justify-start mb-6">
       <button onClick={() => navigate(-1)}>
-        <img src={backButtonIcon} alt="뒤로가기" className="w-[10px]" />
+        <img src={backButtonIcon} alt="뒤로가기" className="w-[9px]" />
       </button>
     </div>
   );

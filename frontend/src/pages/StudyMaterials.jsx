@@ -1,4 +1,5 @@
 import SideBar from "../components/SideBar.jsx";
+import BackButton from "../components/BackButton.jsx";
 import { useNavigate } from "react-router-dom";
 
 const StudyMaterials = () => {
@@ -10,15 +11,7 @@ const StudyMaterials = () => {
 
       {/* 오른쪽 컨텐츠 영역 */}
       <div className="flex flex-col w-full bg-white">
-        {/* 상단 뒤로가기 버튼 */}
-        <div className="flex items-center justify-start px-10 pt-3">
-          <button
-            onClick={() => navigate(-1)}
-            className="flex items-center text-black hover:underline font-medium"
-          >
-            <span className="text-[22px] font-medium mr-1">&lt;</span>
-          </button>
-        </div>
+        <BackButton />
 
         <div className="flex-1 overflow-y-auto px-10 pt-4 pb-8 border-b border-gray-200">
           <h2 className="text-2xl font-semibold mb-4">Study Materials</h2>

@@ -34,9 +34,11 @@ const SideBar = ({ userName }) => {
 
   return (
     <>
-      {/* 사이드바 토글 버튼 */}
       <button
-        className="fixed top-1 left-3 z-40 bg-white rounded-full shadow p-3 w-10 h-10 flex items-center justify-center md:hidden select-none"
+        className={
+          "fixed top-1 left-3 z-40 bg-white rounded-full shadow p-3 w-10 h-10 flex items-center justify-center select-none " +
+          (open ? "md:hidden" : "")
+        }
         onClick={() => setOpen((prev) => !prev)}
         aria-label={open ? "사이드바 닫기" : "사이드바 열기"}
       >

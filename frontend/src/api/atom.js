@@ -4,16 +4,33 @@ export const userDataState = atom({
   default: null,
   effects_UNSTABLE: [
     ({ setSelf, onSet }) => {
-      // 초기값을 localStorage에서 가져오기
       const saved = localStorage.getItem("userDataState");
       if (saved != null) setSelf(JSON.parse(saved));
 
-      // 값이 바뀔 때마다 localStorage에 저장
       onSet((newValue, _, isReset) => {
         if (isReset || newValue == null) {
           localStorage.removeItem("userDataState");
         } else {
           localStorage.setItem("userDataState", JSON.stringify(newValue));
+        }
+      });
+    },
+  ],
+});
+
+export const sideBarState = atom({
+  key: "sideBarState",
+  default: true,
+  effects_UNSTABLE: [
+    ({ setSelf, onSet }) => {
+      const saved = localStorage.getItem("sideBarState");
+      if (saved != null) setSelf(JSON.parse(saved));
+
+      onSet((newValue, _, isReset) => {
+        if (isReset || newValue == null) {
+          localStorage.removeItem("sideBarState");
+        } else {
+          localStorage.setItem("sideBarState", JSON.stringify(newValue));
         }
       });
     },

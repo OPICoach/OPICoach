@@ -1,16 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import LoginRegisterInput from "../components/LoginSignUpInput";
 import loginLogo from "../assets/loginPage/loginLogo.svg";
-import { useState } from "react";
+import { useRecoilState } from "recoil";
+import { signUpDataState } from "../recoil/authAtoms";
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const [signUpData, setSignUpData] = useState({
-    name: "",
-    email: "",
-    id: "",
-    password: ""
-  });
+  const [signUpData, setSignUpData] = useRecoilState(signUpDataState);
 
   const handleInputChange = (field, value) => {
     setSignUpData(prev => ({
@@ -33,7 +29,7 @@ const SignUp = () => {
   return (
     <div className="flex flex-row min-h-screen bg-white">
       <div className="w-1/2 flex justify-center items-center">
-        <div className="bg-opiLightGray p-1 w-[96%] h-[96%] flex justify-center items-center">
+        <div className="bg-opiLightGray p-1 w-[96%] h-[96%] flex justify-center items-center rounded-lg">
           <img
             src="./src/assets/loginPage/login_image.svg"
             alt="Sign Up"

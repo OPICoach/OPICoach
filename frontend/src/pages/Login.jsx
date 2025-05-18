@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import LoginRegisterInput from "../components/LoginSignUpInput";
 import loginLogo from "../assets/loginPage/loginLogo.svg";
 import login_image from "../assets/loginPage/login_image.svg";
-
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { loginDataState } from "../recoil/authAtoms";
 
 const Login = () => {
   const nav = useNavigate();
-  const [loginData, setLoginData] = useState({
-    id: "",
-    password: ""
-  });
+  const [loginData, setLoginData] = useRecoilState(loginDataState);
 
   const handleInputChange = (field, value) => {
     setLoginData(prev => ({

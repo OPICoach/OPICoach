@@ -1,9 +1,0 @@
-Question 
-특정 좌석이나 위치를 요청할 수 있나요?
-
-Answer 
-Can I request a specific seat or location?
-
-Feedback 
-This is a model answer. Specific feedback on student errors is not applicable.
-

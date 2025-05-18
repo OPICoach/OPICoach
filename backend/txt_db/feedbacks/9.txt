@@ -1,9 +1,0 @@
-Question 
-You have received a new phone, but the features are not what you expected. You would like to return it to get a new phone. Call the store, explain the situation, and make arrangements to get a new product.
-
-Answer 
-Oh my god. Hello. Um yesterday I bought iPhone 10, I mean iPhone 10 in pink color. But um I got um iPhone 10 with blue color. You know, um I don't like blue color, so I want to change this one. How can you change for me? Oh my god, I can't? Oh, then can I just um refund my iPhone 10? All right. Thank you. That's too bad. Bye. Oh, but um then I want to make um arrangement for my um refund schedule. Oh, okay. then maybe I'll go um next week. Thank you.
-
-Feedback 
-Start with 'Hi' instead of 'Hello'. Use 'an iPhone 10'. When talking about color, use 'in pink' or 'in blue' instead of 'pink color' or 'blue color'. Explain the problem briefly and clearly. Ask the first question to resolve the problem using phrases like 'Could you', 'Would it be possible', or 'Would you be able to'. After getting a negative response, react naturally ('Oh my gosh, you can't?'). Crucially, ask 'why' ('Well, why not?' or 'May I ask why?'). Repeat the reason given ('Oh, it's sold out'). Avoid 'That's too bad' unless confident with intonation; use 'How unfortunate' or 'That sucks' instead. Ask the second question to resolve the problem, which should get a positive response ('Then could I just get a refund?'). Repeat the response and express thanks ('All right, then I'd like a refund please. Thanks.'). Be mindful of pronoun agreement ('I could' vs 'you could'). Do not add unnecessary details or arrangements after the main problem is resolved; end the conversation once the solution is confirmed.
-

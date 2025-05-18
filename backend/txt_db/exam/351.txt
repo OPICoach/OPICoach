@@ -1,0 +1,9 @@
+Question 
+고객용 와이파이가 있나요?
+
+Answer 
+Do you have Wi-Fi access for customers?
+
+Feedback 
+This is a model answer. Specific feedback on student errors is not applicable.
+

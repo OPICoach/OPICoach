@@ -1,0 +1,9 @@
+Question 
+Do you have a boss?
+
+Answer 
+보스 없어요.
+
+Feedback 
+I'm my own boss.
+

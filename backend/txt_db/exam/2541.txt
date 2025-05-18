@@ -1,0 +1,9 @@
+Question 
+The lead vocalist had an incredible voice.
+
+Answer 
+The lead vocalist had an incredible voice.
+
+Feedback 
+'Incredible voice' is a strong positive description.
+

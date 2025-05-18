@@ -1,0 +1,9 @@
+Question 
+호텔 객실이 예약에 설명된 편의 시설과 일치하지 않습니다. 이 문제를 해결할 수 있을까요?
+
+Answer 
+The hotel room doesn't match the amenities described in the reservation. Can this be addressed?
+
+Feedback 
+This is a model answer. Specific feedback on student errors is not applicable.
+

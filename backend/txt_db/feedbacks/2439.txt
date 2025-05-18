@@ -1,9 +1,0 @@
-Question 
-The living room is quite spacious with a big window.
-
-Answer 
-The living room is quite spacious with a big window.
-
-Feedback 
-This sentence uses 'quite spacious' which is a good way to indicate a significant size. Describing a specific feature like 'a big window' adds detail.
-

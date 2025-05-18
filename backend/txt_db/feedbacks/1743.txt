@@ -1,9 +1,0 @@
-Question 
-The service at the restaurant was unsatisfactory. Can the bill be adjusted accordingly?
-
-Answer 
-This is a sample answer for this question.
-
-Feedback 
-This is sample feedback for the answer.
-

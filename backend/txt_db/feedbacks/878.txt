@@ -1,9 +1,0 @@
-Question 
-건강 관련 주제: 건강 유지에 대해 이야기해 보세요. 당신이 아는 건강한 사람을 묘사해 보세요.
-
-Answer 
-제공된 텍스트는 OPIc 시험 준비를 위한 강의 스크립트이며, 실제 학생의 답변이 포함되어 있지 않습니다. 따라서 OPIc_Answer 필드는 강의 내용에 기반한 준비 자료임을 명시합니다.
-
-Feedback 
-필수 키워드: a healthy person, maintain health, stay healthy, eat healthy, eat well, have a balanced diet, work out, try to work out. 발음: stay healthy.
-

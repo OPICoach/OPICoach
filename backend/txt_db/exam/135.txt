@@ -1,0 +1,9 @@
+Question 
+Tell me about your last experience at a bank.
+
+Answer 
+I went to bank two weeks ago.
+
+Feedback 
+Needs 'a' before 'bank'. 'I went to a bank two weeks ago' is correct.
+

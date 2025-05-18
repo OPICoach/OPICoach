@@ -1,9 +1,0 @@
-Question 
-다가오는 이벤트나 특가가 있나요?
-
-Answer 
-Are there any upcoming events or specials?
-
-Feedback 
-This is a model answer. Specific feedback on student errors is not applicable.
-

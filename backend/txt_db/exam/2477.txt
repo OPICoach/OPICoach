@@ -1,0 +1,9 @@
+Question 
+The nice smell of the baked good fills the cafe.
+
+Answer 
+The nice smell of the baked good fills the cafe.
+
+Feedback 
+'Nice smell' is simple but effective. 'Baked goods' is the correct plural. 'Fills the cafe' describes the pervasive smell.
+

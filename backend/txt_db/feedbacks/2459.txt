@@ -1,9 +1,0 @@
-Question 
-The house is located in a quiet dead end.
-
-Answer 
-The house is located in a quiet dead end.
-
-Feedback 
-'Located in a quiet dead end' is a specific and clear description of the location, implying less traffic and noise.
-

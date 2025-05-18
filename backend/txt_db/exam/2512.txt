@@ -1,0 +1,9 @@
+Question 
+There are various recreational facilities such as basketball courts and picnic areas.
+
+Answer 
+There are various recreational facilities such as basketball courts and picnic areas.
+
+Feedback 
+'Various recreational facilities' is a good general term. Using 'such as' to list examples is helpful.
+

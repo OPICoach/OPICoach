@@ -1,9 +1,0 @@
-Question 
-The cafe is decorated with vintage artwork and rustic furniture.
-
-Answer 
-The cafe is decorated with vintage artwork and rustic furniture.
-
-Feedback 
-Using specific styles like 'vintage artwork' and 'rustic furniture' provides a clear picture of the decor.
-

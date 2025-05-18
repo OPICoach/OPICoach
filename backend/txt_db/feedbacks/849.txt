@@ -1,9 +1,0 @@
-Question 
-Have you ever had a problem at a bank?
-
-Answer 
-Alright, so you mean a problem I've experienced at a bank?
-
-Feedback 
-This opening rephrases the question ('had a problem' -> 'experienced a problem') and asks for confirmation ('so you mean...?') to clarify the topic and buy time. It's a natural way to start for higher levels.
-

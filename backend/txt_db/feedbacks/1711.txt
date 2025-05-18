@@ -1,9 +1,0 @@
-Question 
-Excuse me, I purchased this item recently and it doesn't fit. Can I exchange it for a different size?
-
-Answer 
-This is a sample answer for this question.
-
-Feedback 
-This is sample feedback for the answer.
-

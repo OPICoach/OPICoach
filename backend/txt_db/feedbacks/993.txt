@@ -1,9 +1,0 @@
-Question 
-공원 가기 (Park) 롤플레이 2번: You're supposed to pick up your friend to go to the park with you. However, you have a problem so you cannot go to the park. Call your friend and explain the situation. Give two or three alternatives to your friend.
-
-Answer 
-친구를 픽업해서 공원에 가기로 했는데 문제가 생겨 못 가게 된 상황을 설명하고 대안을 제시합니다. 미안하다고 하고, 다음에 보자거나('How about we meet up next week?'), 다른 활동('hey, why don't we go to the movies tomorrow?')을 제안합니다.
-
-Feedback 
-콘서트에 못 가게 된 상황처럼 미안하다고 이유를 설명하고, 'why don't we?', 'how about?'과 같은 제안 표현을 활용하여 대안을 제시하세요.
-

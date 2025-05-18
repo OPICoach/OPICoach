@@ -1,0 +1,9 @@
+Question 
+There is a spacious parking lot where you can park your car.
+
+Answer 
+There is a spacious parking lot where you can park your car.
+
+Feedback 
+'Spacious parking lot' is clear. The relative clause 'where you can park your car' explains its function.
+

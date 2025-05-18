@@ -1,9 +1,0 @@
-Question 
-Tell me about a memorable experience you've had while recycling. Who were you with? What were you doing? What made the experience so memorable? Please tell me everything.
-
-Answer 
-Oh what? My memorable experience while recycling? Oh no, I don't have any memorable experience while recycling. I mean, seriously. I haven't experienced anything special while recycling. You know, like I said in the previous question, I hardly recycle at home. Yeah, I don't do much recycling, so I'm not sure what to say about this question. Well, if it's okay with you, I'd like to just skip this question. Yeah, I'm sorry. But I'll try my best to answer your next question.
-
-Feedback 
-Expressing surprise and the lack of a memorable experience ('Oh what?', 'Oh no,' 'don't have any') is clear. You explained why you don't have an experience by referencing your previous answer about not recycling much. Requesting to skip the question is a direct way to handle a difficult prompt, though it's generally better to attempt an answer if possible (e.g., invent a simple scenario). Promising to do better on the next question is a good recovery strategy. Phrases like 'I mean, seriously' and 'You know' are fillers.
-

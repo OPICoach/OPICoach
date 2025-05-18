@@ -1,0 +1,9 @@
+Question 
+I would like to know where you live. Can you describe your home to me? What does it look like? Blah blah blah. How many rooms does it have? Give me a description with lots of details.
+
+Answer 
+Basically, I live in a two-story house
+
+Feedback 
+This is a natural way to state where you live. The spelling 'two story house' with an 'e' is the Canadian spelling for a house with two floors (1층 2층).
+

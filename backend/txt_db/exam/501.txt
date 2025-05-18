@@ -1,0 +1,9 @@
+Question 
+Which websites and technology do you use when you work on a project?
+
+Answer 
+I use a lot of website and technology when I work on project. Google has a lot of information. YouTube has various video clips.
+
+Feedback 
+While starting by echoing the question is good, the rest of the answer is too simple and just lists general facts about Google and YouTube. It doesn't explain *how* these technologies are used specifically for projects or provide any concrete examples. Simply stating 'Google has a lot of information' or 'YouTube has various video clips' isn't enough. You need to describe their function and importance in your workflow to get a high score.
+

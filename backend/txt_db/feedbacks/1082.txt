@@ -1,9 +1,0 @@
-Question 
-어떤 운동을 즐기십니까? (What sports do you enjoy?)
-
-Answer 
-걷는 거, 뛰는 거, 요가 (Walking, jogging, yoga)
-
-Feedback 
-Sports lover 이시더라도 농구 축구 고르면 경기 규칙, 경기 결과, 장비 등 어려운 문제가 나옵니다. 걷는 거, 뛰는 거, 요가는 문제 유형이 비슷하고 덜 어렵습니다. 이 항목에서 문제가 하나 나오거나 안 나올 수 있으므로 묶어서 준비하는 것이 효율적입니다.
-

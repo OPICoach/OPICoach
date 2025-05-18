@@ -1,9 +1,0 @@
-Question 
-There was an issue with my meal. It's not what I ordered. Can you replace it or refund me?
-
-Answer 
-This is a sample answer for this question.
-
-Feedback 
-This is sample feedback for the answer.
-

@@ -1,9 +1,0 @@
-Question 
-The house has an energy efficient heating and cooling system.
-
-Answer 
-The house has an energy efficient heating and cooling system.
-
-Feedback 
-Mentioning 'energy efficient' is a modern and relevant detail. 'Heating and cooling system' is the correct term.
-

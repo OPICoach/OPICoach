@@ -1,9 +1,0 @@
-Question 
-호텔 직원이 예약 날짜를 확인합니다.
-
-Answer 
-No, March, not May. Are you all booked that night?
-
-Feedback 
-'Are you all booked that night?'는 필수 암기 표현입니다. 'booked'는 예약이 꽉 찼다는 의미이며, 숙박 시설은 '밤(night)'을 기준으로 예약 여부를 묻는 경우가 많습니다.
-

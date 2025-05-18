@@ -1,0 +1,9 @@
+Question 
+The cafe provides a quiet corner for reading or studying.
+
+Answer 
+The cafe provides a quiet corner for reading or studying.
+
+Feedback 
+'Provides a quiet corner' is a good way to describe a specific area. Listing activities ('reading or studying') is specific.
+

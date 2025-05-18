@@ -1,0 +1,9 @@
+Question 
+The walls are adorned with beautiful artwork.
+
+Answer 
+The walls are adorned with beautiful artwork.
+
+Feedback 
+Similar to the house description, 'adorned with' is a good verb. 'Beautiful artwork' describes the decoration.
+

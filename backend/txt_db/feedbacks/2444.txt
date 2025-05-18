@@ -1,9 +1,0 @@
-Question 
-The front porch is adorned with hanging flower baskets.
-
-Answer 
-The front porch is adorned with hanging flower baskets.
-
-Feedback 
-'Adorned with' is a more advanced and descriptive verb than just 'has'. 'Hanging flower baskets' creates a nice visual image.
-

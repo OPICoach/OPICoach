@@ -1,0 +1,9 @@
+Question 
+I would like to know where you live. Can you describe your home to me? What does it look like? How many rooms does it have? Give me a description with lots of details.
+
+Answer 
+어, okay. 음, you know I'm living 부천 now and it's just a apartment. So, you know it has three, 어, two, 어, actually there was 어, two bedroom at the first time, but you know my father remodeled the living room to 어, new bedroom. So, three bedroom now.
+
+Feedback 
+This is a description-based question, very common for housing topics. Good use of the filler 'you know' and the natural phrase 'it's just an apartment'. Instead of saying 'I live in a three-bedroom apartment' (which can sound scripted), it's better to describe the number of rooms more naturally. For description questions, focus on one main point or area of your home (like your bedroom or balcony) and describe that in detail using phrases like 'I think' and similes ('it's like a playground'). Be mindful of countable/uncountable grammar like 'there were two bedrooms' instead of 'there was two bedrooms'. If you make a mistake during the test, you can correct yourself immediately or just keep going if you're unsure, but avoid repeating the incorrect phrase multiple times.
+

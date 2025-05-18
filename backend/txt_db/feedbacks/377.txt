@@ -1,9 +1,0 @@
-Question 
-지정된 주차 구역이 있나요?
-
-Answer 
-Is there a designated parking area?
-
-Feedback 
-This is a model answer. Specific feedback on student errors is not applicable.
-

@@ -1,9 +1,0 @@
-Question 
-Tell me about your hobbies.
-
-Answer 
-I really like listening to music.
-
-Feedback 
-이 문장은 여러분의 답변 시작부터 사용할 수 있는 기본적인 문장입니다. '음악 듣는 것을 정말 좋아한다'는 의미로 사용됩니다.
-

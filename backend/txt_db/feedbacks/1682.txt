@@ -1,9 +1,0 @@
-Question 
-어떤 결제 수단을 받아요?
-
-Answer 
-What forms of payment do you accept?
-
-Feedback 
-
-

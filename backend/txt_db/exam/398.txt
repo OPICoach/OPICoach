@@ -1,0 +1,9 @@
+Question 
+온라인으로 구매한 영화가 재생되지 않습니다. 문제를 해결하는데 도움을 주실 수 있나요?
+
+Answer 
+The movie I purchased online won't play. Can you help troubleshoot the issue?
+
+Feedback 
+This is a model answer. Specific feedback on student errors is not applicable.
+

@@ -1,0 +1,9 @@
+Question 
+What kind of movie do you like the most? Why do you like it?
+
+Answer 
+I like romance movie. On weekend, I watch romance movie all day. I think romance movie is all about love. it takes two hours to watch the movie
+
+Feedback 
+이 답변은 너무 정직하고 단순합니다. 문장 시작이 'I'로 반복되며, 문장 구조가 짧고 단순하여 AL 등급에는 부족합니다. 예를 들어 "it takes two hours to watch the movie"와 같은 문장 구조는 너무 단순합니다. IH까지는 가능하지만, AL을 위해서는 복잡한 문장 구조와 구체적인 내용이 필요합니다.
+

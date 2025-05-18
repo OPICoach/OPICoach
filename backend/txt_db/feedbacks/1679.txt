@@ -1,9 +1,0 @@
-Question 
-예약이 필요한가요? 아니면 들어와도 되나요?
-
-Answer 
-Do I need a reservation or can I walk in?
-
-Feedback 
-
-

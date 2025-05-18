@@ -1,9 +1,0 @@
-Question 
-The exterior of the house is painted a cheerful shade of yellow.
-
-Answer 
-The exterior of the house is painted a cheerful shade of yellow.
-
-Feedback 
-This sentence provides a specific detail about the house's appearance. 'Cheerful shade of yellow' is a more descriptive way than just 'yellow'.
-

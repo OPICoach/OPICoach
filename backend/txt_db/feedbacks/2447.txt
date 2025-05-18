@@ -1,9 +1,0 @@
-Question 
-The kitchen is fully equipped with high-end appliances.
-
-Answer 
-The kitchen is fully equipped with high-end appliances.
-
-Feedback 
-'Fully equipped' and 'high-end appliances' are good phrases for describing a modern kitchen. This shows a higher level of vocabulary.
-

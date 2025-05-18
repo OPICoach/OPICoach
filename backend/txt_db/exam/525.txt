@@ -1,0 +1,9 @@
+Question 
+그 나무는 내가 본 것 중에 가장 큰 나무이다를 영작할 수 있으면 O 아니면 X.
+
+Answer 
+해당 문장을 영작할 수 있으면 O, 아니면 X
+
+Feedback 
+문장 구조의 복잡성 측정 (비교급 활용). 비교급을 다양하게 사용할 수 있는지 확인합니다. (예: is the biggest tree I've ever seen, I haven't seen any larger tree than this.)
+

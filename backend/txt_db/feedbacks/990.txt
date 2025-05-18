@@ -1,9 +1,0 @@
-Question 
-영화 보기 (Movies) 롤플레이 2번: There is a problem you need to resolve. You found out that you bought wrong tickets for the movie. Talk to the person at the ticket office and give two or three alternatives to handle the situation.
-
-Answer 
-잘못된 티켓을 산 상황을 티켓 오피스 직원에게 설명하고 대안을 제시합니다. 환불이나 티켓 교환을 요청할 수 있습니다.
-
-Feedback 
-'get a refund'(환불), 'exchange the ticket for an earlier movie'(이른 시간 영화로 교환), 'for a later movie'(늦은 시간 영화로 교환)와 같은 표현을 외워두고 대안 2개 정도를 준비하세요.
-

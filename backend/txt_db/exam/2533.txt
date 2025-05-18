@@ -1,0 +1,9 @@
+Question 
+Concert-goers waved their lighters in the air during the soulful love song.
+
+Answer 
+Concert-goers waved their lighters in the air during the soulful love song.
+
+Feedback 
+Specific action ('waved their lighters') and context ('during the soulful love song'). 'Soulful' is a good adjective for music.
+

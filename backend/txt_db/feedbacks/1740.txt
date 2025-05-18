@@ -1,9 +1,0 @@
-Question 
-The hotel room doesn't match the amenities described in the reservation. Can this be addressed?
-
-Answer 
-This is a sample answer for this question.
-
-Feedback 
-This is sample feedback for the answer.
-

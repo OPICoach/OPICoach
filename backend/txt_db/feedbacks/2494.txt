@@ -1,9 +1,0 @@
-Question 
-You can order a custom-made coffee with your choice of beans and milk.
-
-Answer 
-You can order a custom-made coffee with your choice of beans and milk.
-
-Feedback 
-'Custom-made coffee' is a good term. 'With your choice of beans and milk' specifies the customization options.
-

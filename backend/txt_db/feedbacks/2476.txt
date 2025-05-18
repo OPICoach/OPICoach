@@ -1,9 +1,0 @@
-Question 
-There is a wide variety of hot beverages available.
-
-Answer 
-There is a wide variety of hot beverages available.
-
-Feedback 
-'Wide variety of' is useful for describing options. 'Hot beverages' is specific.
-

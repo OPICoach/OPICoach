@@ -1,9 +1,0 @@
-Question 
-I would like to know where you live. Describe your house in detail. What is your favorite room at home? Please tell me everything in as much detail as you can.
-
-Answer 
-PLACEHOLDER_FOR_STUDENT_ANSWER
-
-Feedback 
-PLACEHOLDER_FOR_SPECIFIC_FEEDBACK_ON_ANSWER
-

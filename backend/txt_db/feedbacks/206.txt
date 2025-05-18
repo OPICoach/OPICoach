@@ -1,9 +1,0 @@
-Question 
-그 카페는 조용한 거리에 위치해 있어요.
-
-Answer 
-The cafe is located on a quaint street.
-
-Feedback 
-
-

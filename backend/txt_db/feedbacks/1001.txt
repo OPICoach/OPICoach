@@ -1,9 +1,0 @@
-Question 
-음식점 (Restaurant) 롤플레이 2번: There's a problem I need you to resolve. Unfortunately, you can't make a reservation at a restaurant because of problem at a restaurant. Call the restaurant and leave a voice message. Give two or three alternatives to handle the situation.
-
-Answer 
-음식점 사정으로 예약이 안 되는 상황에서 음성 메시지를 남깁니다. 음성 메시지 남기는 척 연기하고, 원하는 예약 시간을 말하며, 다른 시간('Could I then instead could I reserve a table on Sunday instead?') 등 대안을 제시합니다.
-
-Feedback 
-까다로울 수 있는 문제입니다. 음성 메시지를 남기는 척 연기하고, 원하는 시간을 말한 뒤 'Could I then instead...?'와 같은 표현으로 대안 시간을 제시하는 연습을 하세요.
-

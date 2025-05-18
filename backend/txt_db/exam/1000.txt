@@ -1,0 +1,9 @@
+Question 
+음식점 (Restaurant) 롤플레이 1번: There's a new restaurant near your house and you want to hold a party there. Call the restaurant and ask three or four questions about making a reservation.
+
+Answer 
+새로 생긴 음식점에서 파티를 열고 싶어 전화로 예약을 문의합니다. 음식점 이름 확인('Hello. 뭐 is this Jenna's Pizza?'), 전화 목적 설명('I'm calling to reserve a table', 'I'd like to hold a party this weekend'), 예약 날짜/시간 지정, 시설(주차장, 할인 등) 문의를 합니다.
+
+Feedback 
+호텔, 콘서트장, 영화관 예약 문의와 유사한 흐름입니다. 전화 목적을 밝히고, 예약 날짜/시간을 정하며, 시설/할인 관련 질문을 준비하세요.
+

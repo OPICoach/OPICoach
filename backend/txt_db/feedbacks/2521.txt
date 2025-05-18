@@ -1,9 +1,0 @@
-Question 
-There's a small cafe where visitors can grab a snack or a refreshing drink.
-
-Answer 
-There's a small cafe where visitors can grab a snack or a refreshing drink.
-
-Feedback 
-Mentioning an on-site cafe and what you can do there ('grab a snack or a refreshing drink') is practical information.
-

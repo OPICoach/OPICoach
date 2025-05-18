@@ -1,0 +1,9 @@
+Question 
+There are comfortable chairs and cozy booths.
+
+Answer 
+There are comfortable chairs and cozy booths.
+
+Feedback 
+Listing specific types of seating ('chairs', 'booths') and describing them with positive adjectives ('comfortable', 'cozy') is effective.
+

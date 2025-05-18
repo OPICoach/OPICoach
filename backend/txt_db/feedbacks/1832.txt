@@ -1,9 +1,0 @@
-Question 
-The provided text is a speech by an OPIc instructor explaining his teaching philosophy and tips, not a student's answer to an OPIc question. Therefore, I cannot identify a specific OPIc question from this text.
-
-Answer 
-The provided text is a speech by an OPIc instructor, not a student's answer. It discusses the instructor's experience, success rates, common student issues (like not having content to say in Korean), and suggests a method (thinking in Korean first, using voice dictation, organizing keywords, and practicing based on keywords) to overcome these issues. It does not contain a student's response to an OPIc prompt.
-
-Feedback 
-As the provided text is an instructor's speech and not a student's OPIc answer, I cannot provide specific feedback on a student's performance, vocabulary, grammar, or fluency based on this text. The text itself offers general advice on OPIc preparation, emphasizing that the main difficulty for many students is not English proficiency but the inability to generate content/ideas even in Korean, and suggests a method to address this by focusing on Korean content generation and then translating/expressing those ideas in English using keywords rather than memorizing full scripts.
-

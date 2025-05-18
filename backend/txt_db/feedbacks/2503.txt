@@ -1,9 +1,0 @@
-Question 
-Children are running and playing on the playground equipment.
-
-Answer 
-Children are running and playing on the playground equipment.
-
-Feedback 
-Describing the activity ('running and playing') and location ('on the playground equipment') is clear.
-

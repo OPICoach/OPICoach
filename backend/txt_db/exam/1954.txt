@@ -1,0 +1,9 @@
+Question 
+Tell me about the weather at where you live. How are the seasons? What is the weather like in each season? Which season do you personally like the best?
+
+Answer 
+Well, as I told you before, um I live in Korea, um which has uh, you know, four seasons, like spring, summer, fall, winter. And especial um how can I say? Well, one of them, um I like, you know, fall the best because um well.
+
+Feedback 
+The first weather question is always about seasons. Listing all four seasons takes too long (10 seconds to get to your favorite). It's implied that Korea has four seasons. Get to your main point (favorite season) much faster, like in 2 seconds. The Opic grader cares about your clear main point and overall message, not just listing facts.
+

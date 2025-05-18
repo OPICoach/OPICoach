@@ -1,9 +1,0 @@
-Question 
-The window seats offer a beautiful view of the bustling street outside.
-
-Answer 
-The window seats offer a beautiful view of the bustling street outside.
-
-Feedback 
-Describing the view from a specific location ('window seats'). 'Bustling street' is a good way to describe a busy street.
-

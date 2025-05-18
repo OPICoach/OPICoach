@@ -1,0 +1,9 @@
+Question 
+very 이외에 매우의 뜻을 가지고 있는 다른 부사를 두 개 이상 말할 수 있다.
+
+Answer 
+very 외에 '매우' 뜻의 부사 2개 이상 말할 수 있으면 O, 아니면 X
+
+Feedback 
+문장 구조의 복잡성 측정 (어휘/Colorful Expressions). 다양한 부사를 활용하여 표현의 색깔을 더할 수 있는지 확인합니다. (예: pretty, quite, absolutely, definitely 등)
+

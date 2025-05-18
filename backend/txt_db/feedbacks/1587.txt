@@ -1,9 +1,0 @@
-Question 
-I would like you to describe your neighborhood to me. Where is it located? What stores and businesses does it have? Does it have any other features?
-
-Answer 
-My neighborhood is located in the northern part of the city. It's mainly residential, with a mix of apartment buildings and houses. We have a few convenient stores, a couple of small supermarkets, a pharmacy, and some local restaurants and cafes. There's also a nice public park with walking paths and a playground, which is a great feature. It's a relatively quiet and safe area.
-
-Feedback 
-Clear and concise description of your neighborhood. Stating the location ('northern part of the city') and general character ('mainly residential') is a good start. Listing specific types of businesses ('convenient stores', 'small supermarkets', 'pharmacy', 'local restaurants and cafes') provides concrete details. Mentioning the park ('nice public park with walking paths and a playground') as an additional feature is good. Concluding with the overall impression ('relatively quiet and safe area') summarizes it well. The language is simple and effective.
-

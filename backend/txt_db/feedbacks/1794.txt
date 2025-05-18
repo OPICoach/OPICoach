@@ -1,9 +1,0 @@
-Question 
-호텔 직원이 성(last name)의 철자를 묻습니다.
-
-Answer 
-It's M A E X N E R.
-
-Feedback 
-예약 시에는 보통 성(last name)을 물어봅니다. 본인의 성을 스펠링으로 말하는 연습을 하세요 (예: It's K A N G 강). 스펠링을 말한 뒤 이름을 다시 말해주는 것도 좋습니다.
-

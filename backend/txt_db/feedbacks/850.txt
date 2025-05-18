@@ -1,9 +1,0 @@
-Question 
-What is your favorite piece of furniture?
-
-Answer 
-Okay, so I guess you're asking about my furniture, right?
-
-Feedback 
-This opening confirms understanding of the question using 'I guess you're asking about...' and seeks confirmation with 'right?'. It's a slightly longer, natural way to start, suitable for higher levels.
-

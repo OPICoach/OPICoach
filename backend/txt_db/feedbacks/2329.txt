@@ -1,9 +1,0 @@
-Question 
-솔직히 무슨 말을 해야 할지 모르겠어요. 질문이 너무 어렵고 제가 답변하는 데는 한계가 있네요.
-
-Answer 
-Google: I honestly don't know what to say. The question is too difficult and there are limits to my answer. Papago: Honestly, I don't know what to say. The question is too difficult and there is a limit to my answer.
-
-Feedback 
-두 번역 모두 유사합니다. 구글의 'there are limits'는 약간 딱딱하고 기사 같은 느낌이며, 파파고의 'there is a limit'도 다소 어색합니다. '제가 아는 데는 한계가 있다'는 의미를 더 자연스럽게 표현하려면 'There is only so much I know and can say'와 같은 표현이 좋습니다.
-

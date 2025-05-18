@@ -1,9 +1,0 @@
-Question 
-You decide to take dance lessons together with your friends. To your great disappointment, it was actually quite boring and you want to leave. Tell your friend about it and give two to three alternatives.
-
-Answer 
-Yeah, well, I don't know about this class. It's not what I've expected before I came, so can we just go now? Oh, no. That's your mother? Seriously? Okay, then, um, let me think. Um, how about uh, we tell her that I'm not feeling well, so you have to take me out to the hospital or something. Would that work for you? Yeah. Okay, thank you. Let's go.
-
-Feedback 
-The answer effectively addresses the prompt by expressing dissatisfaction and proposing alternatives. Using 'I don't know' is a good way to show honesty. The structure of RP12 is outlined: situation -> first question (what if?) -> second question (based on response). The first question 'Can we just go now?' is direct and relevant. The reaction 'Oh, no.' adds good emotion. Repeating the friend's statement ('That's your mother?') and reacting ('Seriously?') is effective. Using fillers like 'um' and 'let me think' shows processing time, which is natural. The second suggestion ('tell her that I'm not feeling well...') is detailed and followed by a confirming question ('Would that work for you?'), showing problem-solving skill. Suggestion: Practice using 'what about' instead of 'how about' for a more native sound. For the final response, consider showing the friend's agreement before your final statement (e.g., 'That works for you? Yeah. Okay, thank you. Let's go.'). Remember RP12 questions are specific problem-solving questions, unlike generic questions where you don't need to show the other person's response.
-

@@ -1,9 +1,0 @@
-Question 
-음악을 언제 어디서 듣는지, 당신의 음악 감상 경향에 대해 말해주세요.
-
-Answer 
-언제(when), 어디서(where) 듣는지에 초점을 맞춰 답변했습니다. 시간 순서대로 아침에 일어나서, 이동 중에('when I'm on the move'), 집에 가는 길에('on my way home'), 자기 전에('before I go to bed') 등을 언급하고, 장소는 집('at home'), 폰('on my phone'), 유튜브, 라이브 콘서트('live concerts') 등을 이야기했습니다.
-
-Feedback 
-음악 감상 경향 문제는 언제, 어디서, 어떻게(how) 듣는지 묶어서 준비하는 것이 좋습니다. 다양한 시점과 장소를 구체적으로 언급하고, 음악을 듣는 기기('what kind of device')에 대한 질문에도 대비하세요.
-

@@ -1,9 +1,0 @@
-Question 
-호텔 숙박 비용이 너무 많이 청구되었습니다. 요금을 검토하고 청구서를 수정할 수 있나요?
-
-Answer 
-I was overcharged for my hotel stay. Can you review the charges and correct the billing?
-
-Feedback 
-This is a model answer. Specific feedback on student errors is not applicable.
-

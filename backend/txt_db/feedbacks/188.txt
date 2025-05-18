@@ -1,9 +1,0 @@
-Question 
-Tell me about yourself.
-
-Answer 
-PLACEHOLDER_FOR_STUDENT_ANSWER
-
-Feedback 
-PLACEHOLDER_FOR_SPECIFIC_FEEDBACK_ON_ANSWER
-

@@ -1,9 +1,0 @@
-Question 
-Example: Experience with a broken item.
-
-Answer 
-Strategy: Use the memorized 'broken item' template. Storyline: [Item] broke, problem was [problem], how it was fixed, outcome.
-
-Feedback 
-This template is applicable to problems with phones, technology, home appliances, etc. It covers a frequent type of experience question.
-

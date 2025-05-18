@@ -1,9 +1,0 @@
-Question 
-I'd like to give you a situation and ask you to act it out. You are trying to find a store that has just opened recently, but got lost while doing so. Go to the closest restaurant and ask three or four questions about where the new store is.
-
-Answer 
-Excuse me, I'm looking for the new [Type of Store] store that just opened. Do you know where it is? Is it far from here? Can you give me directions?
-
-Feedback 
-'Excuse me, I'm looking for the new [Type of Store] store...' clearly states what you're looking for. 'Do you know where it is?' is the primary question. 'Is it far from here?' helps gauge the distance. 'Can you give me directions?' is the logical follow-up if they know. Good questions for asking for directions.
-

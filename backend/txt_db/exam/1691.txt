@@ -1,0 +1,9 @@
+Question 
+피크 시간에는 평균 대기 시간이 얼마나 되나요?
+
+Answer 
+What is the average wait time during peak hours?
+
+Feedback 
+
+

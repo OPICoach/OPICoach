@@ -1,9 +1,0 @@
-Question 
-You have indicated in the survey that you like to go to a theater. Can you tell me about a theater you often go to? What is it? Why do you often go to that theater rather than others?
-
-Answer 
-Student answer not provided in the input.
-
-Feedback 
-Feedback requires student answer, which was not provided.
-

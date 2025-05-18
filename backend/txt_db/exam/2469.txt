@@ -1,0 +1,9 @@
+Question 
+The aroma of freshly brewed coffee fills the air.
+
+Answer 
+The aroma of freshly brewed coffee fills the air.
+
+Feedback 
+'Aroma' is a good word for smell, especially pleasant ones. 'Freshly brewed coffee' is specific. 'Fills the air' is a common expression.
+

@@ -1,9 +1,0 @@
-Question 
-Could you describe your most memorable trip? Maybe something funny, unexpected or challenging happened. Start by telling me when and where you were traveling and who you were with. Tell me everything in detail.
-
-Answer 
-PLACEHOLDER_FOR_STUDENT_ANSWER
-
-Feedback 
-PLACEHOLDER_FOR_SPECIFIC_FEEDBACK_ON_ANSWER
-

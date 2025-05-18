@@ -1,0 +1,9 @@
+Question 
+공원 가기 (Park) 롤플레이 1번: You want to go to the park with your friend. Call your friend and ask him or her to go to the park with you.
+
+Answer 
+친구에게 전화해서 같이 공원에 가자고 제안합니다. 친구의 바쁜지 묻고('Are you free?', 'what are you doing tonight?'), 약속 시간('how about we meet up at 6:00?')과 공원에서 할 일(산책, 밥 먹기 등)을 제안합니다.
+
+Feedback 
+친구에게 바쁜지 묻고 약속을 잡는 표현, 시간/장소를 제안하는 표현, 공원에서 할 일을 제안하는 표현을 준비하세요.
+

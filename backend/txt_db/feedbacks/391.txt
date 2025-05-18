@@ -1,9 +1,0 @@
-Question 
-호텔 방에 문제가 있었습니다. 제 예약과 일치하지 않습니다. 바로 잡을 수 있을까요?
-
-Answer 
-There was an issue with my hotel room. It doesn't match my reservation. Can it be corrected?
-
-Feedback 
-This is a model answer. Specific feedback on student errors is not applicable.
-

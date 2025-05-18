@@ -1,9 +1,0 @@
-Question 
-Tell me about any issues regarding cell phones. For example, there can be some people who are addicted to using their smartphone. Why is that a big issue or concern? What do people do to deal with the problems? Please tell me in detail.
-
-Answer 
-You're totally right. People are addicted to their phones and use them like all the time. Even when they shouldn't, you know. And using your phone too much can be bad for your health. It's kind of sad that most people can't seem to control it. So um I think um I think this is all I can tell you about your question because I don't know much about this issue ever.
-
-Feedback 
-Excellent strategy to acknowledge the questioner's point ('You're totally right'). Using 'addicted to' directly from the prompt is good. Phrases like 'all the time' (instead of just 'always'), 'can be bad for your health', and 'can't seem to control it' are natural and effective. The concluding sentence 'this is all I can tell you... because I don't know much about this issue' is a great way to end fluently when you don't have extensive details, suitable for AL.
-

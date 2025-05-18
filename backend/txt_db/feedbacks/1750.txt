@@ -1,9 +1,0 @@
-Question 
-호텔 직원이 흡연/비흡연 여부를 묻습니다.
-
-Answer 
-Non-smoking, please.
-
-Feedback 
-시험에서는 직원의 말을 받아서 좀 더 길게 말하는 것이 좋습니다. 예: 'I'd like a non-smoking room, please.' 또는 'I'd like non-smoking, please.'
-

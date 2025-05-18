@@ -1,0 +1,9 @@
+Question 
+어휘 및 문장력 (다양성)
+
+Answer 
+IM2 예시: My apartment is small. IH 예시: My apartment is kind of small but it's very cozy. IM2 예시: IU is a great singer. IH 예시: IU is such a talented musician.
+
+Feedback 
+IH는 다양한 어휘와 형용사(예: kind of small, cozy, talented)를 사용하여 구체적으로 묘사하며, IM2에서 자주 나타나는 단순하고 단조로운 문장(예: small, great)을 피합니다.
+

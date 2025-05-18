@@ -1,0 +1,9 @@
+Question 
+Tell me about the weather at where you live. How are the seasons? What is the weather like in each season? Which season do you personally like?
+
+Answer 
+Well, as you know, uh, we have uh, very distinct four different seasons here in Korea, but now this change very a lot because we, I guess we only have two seasons like summer and winter and you know, um, these days is in summer season.
+
+Feedback 
+IH requires more control than IM2. This answer uses control words like 'as you know' and 'I guess'. While 'as you know' is used, 'as you may already know' is suggested as a more skillful alternative. 'I guess' is highlighted as a good control word, similar to 'I think', showing thought process. Starting with a short general statement before focusing on one thing is important for IH.
+

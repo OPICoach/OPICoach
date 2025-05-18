@@ -1,0 +1,9 @@
+Question 
+Example: Experience purchasing something.
+
+Answer 
+Strategy: Use the memorized 'purchase' template. Storyline: Bought [item], price was [price], bought with [person], bought at [place], liked [design], satisfaction level, used [discount coupon].
+
+Feedback 
+This template is useful for questions about shopping, recent internet activities, or fashion purchases. Memorize the key points and deliver naturally.
+

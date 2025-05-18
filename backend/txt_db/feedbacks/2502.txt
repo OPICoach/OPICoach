@@ -1,9 +1,0 @@
-Question 
-There is a playground with swings and slides for children.
-
-Answer 
-There is a playground with swings and slides for children.
-
-Feedback 
-Listing specific playground equipment ('swings and slides') is good detail.
-

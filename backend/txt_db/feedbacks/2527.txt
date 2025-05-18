@@ -1,9 +1,0 @@
-Question 
-The stage was brightly lit, creating an electrifying atmosphere.
-
-Answer 
-The stage was brightly lit, creating an electrifying atmosphere.
-
-Feedback 
-Describing the lighting ('brightly lit') and its effect ('creating an electrifying atmosphere') is good.
-

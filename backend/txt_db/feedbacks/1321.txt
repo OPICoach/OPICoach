@@ -1,9 +1,0 @@
-Question 
-Provided text does not contain an OPIc question.
-
-Answer 
-Provided text does not contain a student's OPIc answer. It is a lesson transcript.
-
-Feedback 
-Provided text does not contain feedback on a student's answer. It provides definitions, examples, and practice for 10 advanced emotional adjectives (terrified, furious, frustrated, taken aback, ashamed, delighted, intrigued, irritated, fascinated, relieved) for OPIc preparation.
-

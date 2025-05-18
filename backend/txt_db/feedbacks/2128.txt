@@ -1,9 +1,0 @@
-Question 
-null
-
-Answer 
-null
-
-Feedback 
-This lesson provides pronunciation feedback on common English words and phrases, particularly useful for OPIc/TOEIC speaking tests. Key points include: 1. Pronunciation of 'a' as /ə/ (uh), not /a/ (ah), and linking it to the next word (e.g., 'have a desk'). 2. Pronunciation of 'an' as /æn/, not /ɒn/ (on), and linking (e.g., 'an expensive'). 3. Pronunciation of 'on' as /ɒn/, not using the Korean '오' sound; similarly for words like 'oh', 'so', 'do', 'because' (Korean '오' often corresponds to English /ə/ or /oʊ/). 4. The choice between 'a'/'an' and 'the'/'the' depends on the *sound* of the following word, not just the letter (e.g., 'an R' because 'R' sounds like 'ar', 'a one' because 'one' sounds like 'wun', 'the one' because 'one' sounds like 'wun'). 5. For OPIc/TOEIC, if you lack content, connect topics (like hotels or cafes) to cost using idioms like 'cost me an arm and a leg' or 'made a huge dent in my wallet' to describe something expensive.
-

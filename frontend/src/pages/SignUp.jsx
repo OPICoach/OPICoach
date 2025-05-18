@@ -3,6 +3,7 @@ import LoginRegisterInput from "../components/LoginSignUpInput";
 import loginLogo from "../assets/loginPage/loginLogo.svg";
 import { useRecoilState } from "recoil";
 import { signUpDataState } from "../recoil/authAtoms";
+import axios from "axios";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -15,15 +16,24 @@ const SignUp = () => {
     }));
   };
 
-  const handleSignUp = () => {
+  const handleSignUp = async () => {
     const signUpInfo = {
-      userName: signUpData.name,
-      userEmail: signUpData.email,
-      userId: signUpData.id,
-      userPassword: signUpData.password
+      name: signUpData.name,
+      email: signUpData.email,
+      id: signUpData.id,
+      pw: signUpData.password
     };
-    console.log("회원가입 정보:", JSON.stringify(signUpInfo, null, 2));
-    navigate("/login");
+    try {
+      const response = await axios.post("http://localhost:8000/api/users/signup", signUpInfo);
+      console.log("회원가입 응답 코드:", response.status);
+      // 성공 시 로그인 페이지로 이동 등 추가 동작 가능
+    } catch (error) {
+      if (error.response) {
+        console.log("회원가입 에러 응답 코드:", error.response.status);
+      } else {
+        console.log("회원가입 요청 실패:", error.message);
+      }
+    }
   };
 
   return (

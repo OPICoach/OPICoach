@@ -19,12 +19,26 @@ const Fillers = () => {
     setInput("");
   };
 
+  // userMessages, AIMessages를 messages로 합치는 함수
+  const mergeMessages = (userMessages, AIMessages) => {
+    const messages = [];
+    let u = 0,
+      a = 0;
+    while (u < userMessages.length || a < AIMessages.length) {
+      if (a < AIMessages.length)
+        messages.push({ role: "ai", content: AIMessages[a++] });
+      if (u < userMessages.length)
+        messages.push({ role: "user", content: userMessages[u++] });
+    }
+    return messages;
+  };
+
   return (
     <div className="flex flex-row h-screen bg-white">
       <SideBar userName="Gildong Hong" />
       <div className="flex flex-col flex-1 px-10 pt-4 pb-8 h-full">
         <BackButton />
-        <MessageList userMessages={userMessages} AIMessages={AIMessages} />
+        <MessageList messages={mergeMessages(userMessages, AIMessages)} />
         <MessageInput
           value={input}
           onChange={(e) => setInput(e.target.value)}

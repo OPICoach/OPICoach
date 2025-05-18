@@ -32,6 +32,20 @@ const StudyMaterials = () => {
     setInput("");
   };
 
+  // userMessages, AIMessages를 messages로 합치는 함수
+  const mergeMessages = (userMessages, AIMessages) => {
+    const messages = [];
+    let u = 0,
+      a = 0;
+    while (u < userMessages.length || a < AIMessages.length) {
+      if (a < AIMessages.length)
+        messages.push({ role: "ai", content: AIMessages[a++] });
+      if (u < userMessages.length)
+        messages.push({ role: "user", content: userMessages[u++] });
+    }
+    return messages;
+  };
+
   return (
     <div className="flex flex-row h-screen">
       <SideBar userName="Gildong Hong" />
@@ -68,11 +82,10 @@ const StudyMaterials = () => {
           className="flex flex-col justify-between px-10 py-6"
           style={{ flex: 1, minHeight: MIN_BOTTOM_HEIGHT }}
         >
-          {/* MessageList에 flex-grow: 1 적용 */}
           <div style={{ flexGrow: 1, overflowY: "auto", marginBottom: "1rem" }}>
-            <MessageList userMessages={userMessages} AIMessages={AIMessages} />
+            <MessageList messages={mergeMessages(userMessages, AIMessages)} />
           </div>
-          {/* MessageInput은 고정 위치 */}
+
           <MessageInput
             value={input}
             onChange={(e) => setInput(e.target.value)}

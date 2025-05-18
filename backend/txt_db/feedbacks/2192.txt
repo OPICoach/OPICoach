@@ -1,9 +1,0 @@
-Question 
-Describe a movie you recently watched.
-
-Answer 
-The good thing about the movie is that it is touching and moving.
-
-Feedback 
-Instead of just saying 'I liked the movie. It was touching.', this answer uses the 'The good thing about... is that...' structure to create a more complex and connected sentence, which is a key criterion for achieving an IH score.
-

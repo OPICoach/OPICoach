@@ -1,9 +1,0 @@
-Question 
-The house is conveniently located near schools, parks and shopping centers.
-
-Answer 
-The house is conveniently located near schools, parks and shopping centers.
-
-Feedback 
-This sentence is well-formed. 'Conveniently located' is a common and useful phrase for describing location. Listing multiple amenities like 'schools, parks and shopping centers' provides good detail.
-

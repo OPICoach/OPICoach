@@ -1,0 +1,9 @@
+Question 
+그것이 가능하지 않다면 더 좋은 해결책을 알려주시겠어요를 자연스럽게 영작하여 말할 수 있다.
+
+Answer 
+해당 질문을 자연스럽게 영작하여 말할 수 있으면 O, 아니면 X
+
+Feedback 
+질문의 복잡성 측정. IM 등급 구별에 사용되며, 복잡한 질문을 편안하게 할 수 있는지 확인합니다. (예: If it is not possible, can you come up with another idea that can solve the problem?)
+

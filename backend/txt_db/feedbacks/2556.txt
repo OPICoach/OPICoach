@@ -1,9 +1,0 @@
-Question 
-The plot of the movie was full of unexpected twists and turns.
-
-Answer 
-The plot of the movie was full of unexpected twists and turns.
-
-Feedback 
-'Full of' is good. 'Unexpected twists and turns' is a common and effective phrase for describing a complex plot.
-

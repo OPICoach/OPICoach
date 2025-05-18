@@ -1,9 +1,0 @@
-Question 
-The park is filled with lush greenery and vibrant flowers.
-
-Answer 
-The park is filled with lush greenery and vibrant flowers.
-
-Feedback 
-'Filled with' is good. 'Lush greenery' and 'vibrant flowers' are more descriptive adjectives than just 'green' and 'colorful'.
-

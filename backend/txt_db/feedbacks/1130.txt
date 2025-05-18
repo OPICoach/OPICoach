@@ -1,9 +1,0 @@
-Question 
-Do you think our answer sheet is evaluated by only one rater or various others more than two?
-
-Answer 
-A single rater listens to questions 1 through 15. Then another rater listens to all of them. If the scores match, that's the score. If they don't match, a third rater is involved, and the score is averaged.
-
-Feedback 
-This is my understanding, but I could be wrong. Essentially, two raters listen to your entire test, and possibly a third if their scores differ.
-

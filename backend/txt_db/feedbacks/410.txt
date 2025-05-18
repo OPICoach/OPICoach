@@ -1,9 +1,0 @@
-Question 
-레스토랑의 서비스는 만족스럽지 못했습니다. 이에 따라 청구서를 조정할 수 있나요?
-
-Answer 
-The service at the restaurant was unsatisfactory. Can the bill be adjusted accordingly?
-
-Feedback 
-This is a model answer. Specific feedback on student errors is not applicable.
-

@@ -1,9 +1,0 @@
-Question 
-휴일 관련 주제: 약속 및 예약에 대해 이야기해 보세요. 약속을 잡거나 예약을 할 때 주로 어떻게 하나요? 전화로 예약하나요?
-
-Answer 
-제공된 텍스트는 OPIc 시험 준비를 위한 강의 스크립트이며, 실제 학생의 답변이 포함되어 있지 않습니다. 따라서 OPIc_Answer 필드는 강의 내용에 기반한 준비 자료임을 명시합니다.
-
-Feedback 
-필수 키워드: an appointment, make an appointment, set up an appointment, at [location], over the phone, meet someone, meet up with, get in touch with, make phone calls, text. 발음: an appointment (연음 주의).
-

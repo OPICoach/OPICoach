@@ -1,9 +1,0 @@
-Question 
-How often do you go? (to the gym)
-
-Answer 
-PT는 두 번 가고 그다음에 다른 날에는 한두 번 더 가니깐 한 네 번?
-
-Feedback 
-Model translation for your answer: "I get personal training twice and aside from that, I go alone maybe about two more times, so four times a week."
-

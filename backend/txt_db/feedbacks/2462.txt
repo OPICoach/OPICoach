@@ -1,9 +1,0 @@
-Question 
-The balcony provides a lovely spot for enjoying morning coffee.
-
-Answer 
-The balcony provides a lovely spot for enjoying morning coffee.
-
-Feedback 
-'Provides a lovely spot' is a pleasant description. 'For enjoying morning coffee' gives a specific example of how the space is used.
-

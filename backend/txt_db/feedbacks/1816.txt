@@ -1,9 +1,0 @@
-Question 
-Intermediate level prompts (e.g., about current situations)
-
-Answer 
-The candidate fully met all criteria for the intermediate level and was able to perform all intermediate level tasks fully with the required accuracy.
-
-Feedback 
-This candidate fully meets all criteria for the intermediate level. and is able to perform all intermediate level tasks fully. with the required accuracy.
-

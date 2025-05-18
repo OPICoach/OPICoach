@@ -1,9 +1,0 @@
-Question 
-This movie is a captivating thriller filled with suspense.
-
-Answer 
-This movie is a captivating thriller filled with suspense.
-
-Feedback 
-'Captivating thriller' is a good description of the genre and its effect. 'Filled with suspense' is clear.
-

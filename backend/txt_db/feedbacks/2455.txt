@@ -1,9 +1,0 @@
-Question 
-This is a spacious and modern house with plenty of natural light.
-
-Answer 
-This is a spacious and modern house with plenty of natural light.
-
-Feedback 
-Combining multiple positive adjectives ('spacious', 'modern') and mentioning 'plenty of natural light' provides a good overall description.
-

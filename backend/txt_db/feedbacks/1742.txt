@@ -1,9 +1,0 @@
-Question 
-The online order confirmation email hasn't arrived. Can you resend it or confirm my order status?
-
-Answer 
-This is a sample answer for this question.
-
-Feedback 
-This is sample feedback for the answer.
-

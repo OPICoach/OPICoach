@@ -1,9 +1,0 @@
-Question 
-일단 아는 부분에 대해서 설명을 드릴게요. 기억이 잘 안 나요. 너무 어릴적 이야기거든요. 제가 어릴 적에는 약간 소심한 편이었어요.
-
-Answer 
-Google: Let me explain what you know. I don't remember well. It's a story so young. I was a bit timid when I was young. Papago: Let me explain what I know. I don't remember much. It's about when I was too young. I was a little timid when I was young.
-
-Feedback 
-구글 번역은 'what you know' 사용 오류, 'remember well'의 어색함, 'It's a story so young'의 부자연스러움 등 문제가 많습니다. 파파고 번역은 'what I know', 'remember much', 'It's about when I was too young' 등 과거 시제 및 표현이 훨씬 자연스럽고 정확합니다. 파파고의 압승입니다.
-

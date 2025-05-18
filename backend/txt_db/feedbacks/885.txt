@@ -1,9 +1,0 @@
-Question 
-사는 곳 관련 주제: 집안일에 대해 이야기해 보세요. 집에서 어떤 집안일 책임(household responsibilities)을 맡고 있나요?
-
-Answer 
-제공된 텍스트는 OPIc 시험 준비를 위한 강의 스크립트이며, 실제 학생의 답변이 포함되어 있지 않습니다. 따라서 OPIc_Answer 필드는 강의 내용에 기반한 준비 자료임을 명시합니다.
-
-Feedback 
-필수 키워드: do housework, do house chores, do household chores, household responsibilities. 발음: household chores.
-

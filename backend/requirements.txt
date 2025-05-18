@@ -1,8 +1,14 @@
-chromadb
+fastapi
+uvicorn[standard]
 sentence-transformers
-pandas
+chromadb
 openai
+pytest
+pytest-asyncio
 pyaudio
+pygame
 google-cloud-speech
 google-cloud-texttospeech
-pygame
+protobuf<=3.20.1
+pymysql
+bcrypt

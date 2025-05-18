@@ -1,0 +1,9 @@
+Question 
+장소로의 지도나 안내를 제공하나요?
+
+Answer 
+Do you provide a map or directions to your location?
+
+Feedback 
+This is a model answer. Specific feedback on student errors is not applicable.
+

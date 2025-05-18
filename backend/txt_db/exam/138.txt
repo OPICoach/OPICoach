@@ -1,0 +1,9 @@
+Question 
+I would like to know about some recipes you have tried. Pick one of the dishes you like to cook and give me a detailed description of its recipe.
+
+Answer 
+description
+
+Feedback 
+Correct, Description. 'Detailed description' is a clear instruction. Higher difficulty questions often ask for 'detailed description', 'from beginning to end', etc. You can ignore the options given (e.g., ramen, pasta, burgers) and talk about something else like fried rice, but it's recommended to choose one of the options for clearer quality.
+

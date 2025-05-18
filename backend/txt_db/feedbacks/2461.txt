@@ -1,9 +1,0 @@
-Question 
-The bathroom features a luxurious spa tub for relaxation.
-
-Answer 
-The bathroom features a luxurious spa tub for relaxation.
-
-Feedback 
-'Features' is a good verb for highlighting a specific item. 'Luxurious spa tub' is a detailed and appealing description. 'For relaxation' explains its use.
-

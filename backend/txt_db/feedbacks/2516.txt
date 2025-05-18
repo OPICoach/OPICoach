@@ -1,9 +1,0 @@
-Question 
-The park is equipped with clean restrooms and convenient amenities for visitors.
-
-Answer 
-The park is equipped with clean restrooms and convenient amenities for visitors.
-
-Feedback 
-'Equipped with' is good. Mentioning practical facilities ('clean restrooms', 'convenient amenities') is useful.
-

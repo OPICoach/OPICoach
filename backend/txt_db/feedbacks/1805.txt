@@ -1,9 +1,0 @@
-Question 
-호텔 직원이 예약 확정 및 방문 날짜를 안내합니다.
-
-Answer 
-Okay, goodbye.
-
-Feedback 
-대화를 마무리하는 표현입니다.
-

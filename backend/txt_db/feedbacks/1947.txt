@@ -1,9 +1,0 @@
-Question 
-You've indicated that you'd like to go to the beach. Describe your favorite beach for me. Where is it? What does it look like?
-
-Answer 
-음. 음. 음. I love some many things about that beach. A clean is a beautiful sand. A very sexy girl.
-
-Feedback 
-답변 시작 전 '음 음 음'과 같은 filler 사용이 길어 10초 가량 소요되었습니다. 이는 점수 감점의 원인이 될 수 있습니다. 차라리 아무 말 하지 않고 생각하는 것이 낫습니다. 'I love some many things about that beach'에서 'some'은 'so'로 바꾸는 것이 자연스럽습니다. 'so many things'는 너무 포괄적이어서 답변을 한 가지 주제로 집중하기 어렵게 만들 수 있습니다. 'A clean is a beautiful sand'는 문법적으로 어색하며, 'beautiful sand'와 같이 단어로만 나열되었습니다. 'A very sexy girl'은 질문의 맥락과 맞지 않고 부적절한 표현입니다. 답변의 내용이 매우 부족함에도 불구하고 시간이 오래 걸렸습니다 (약 40초 소요). 초보 레벨(IL, IM1)에서는 30초 내외로 주 내용(MP)과 덧붙일 내용(+2)에 집중하여 간결하게 답변하는 연습이 필요합니다.
-

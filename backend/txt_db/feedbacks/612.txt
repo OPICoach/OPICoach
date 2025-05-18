@@ -1,9 +1,0 @@
-Question 
-Sam, 467910 and 13 are past experiences. Can I repeat the same information?
-
-Answer 
-모든 질문이 항상 과거 경험에 대한 것은 아닙니다. 그리고 똑같은 정보를 계속 반복하면 스크립트처럼 들립니다. 스크립트 냄새가 나면 낮은 점수를 받게 됩니다. 반복하면 안 됩니다.
-
-Feedback 
-모든 질문이 항상 과거 경험에 대한 것은 아닙니다.
-

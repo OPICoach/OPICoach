@@ -1,9 +1,0 @@
-Question 
-I would like to know where you live. Can you describe your home to me? What does it look like? Blah blah blah. How many rooms does it have? Give me a description with lots of details.
-
-Answer 
-and my room is on the second floor.
-
-Feedback 
-This sentence allows the listener to visually imagine the layout of the house.
-

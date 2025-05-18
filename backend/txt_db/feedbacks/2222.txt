@@ -1,9 +1,0 @@
-Question 
-User did not provide an OPIc question.
-
-Answer 
-User did not provide a student's OPIc answer.
-
-Feedback 
-Please provide the OPIc question and the student's answer so I can generate the feedback based on the provided schema.
-

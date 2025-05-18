@@ -1,9 +1,0 @@
-Question 
-Please tell me about the banks in your country. When do they open and close? What do they look like?
-
-Answer 
-Student answer not provided in the input.
-
-Feedback 
-Feedback requires student answer, which was not provided.
-

@@ -1,9 +1,0 @@
-Question 
-호텔 직원이 스위트룸 가격을 알려줍니다.
-
-Answer 
-Oh, that's a little too expensive for me. Do you have a cheaper room available?
-
-Feedback 
-'That's a little too expensive for me'와 'Do you have a cheaper room available?'은 필수 암기 표현입니다. 더 저렴한 방이 있는지 물어볼 때 유용합니다. (대화에 나온 'either on the 20th or the 22nd'처럼 다른 날짜를 제시하는 것은 시험에서 필수는 아닙니다.)
-

@@ -1,9 +1,0 @@
-Question 
-Imagine you are at a furniture store to buy new furniture. Please ask the staff three or four questions to get some information about the furniture.
-
-Answer 
-Hello, I'd like to buy a new [item, e.g., bed]. / I'm looking to buy a new [item]. Well, can I ask you a few questions? First, do you have any [item]? / Do you have a [specific type of item, e.g., king size bed]? (Reaction: Oh, that's nice. / Oh, that's pretty nice.) Then, how much is the item? / How much is it? / How much is the one [description, e.g., right next to the queen size bed]? (Reaction: Oh, I think that's more expensive than I thought.) Lastly, can I get a discount? / Is there any chance for a discount? / Could you give me a discount? (Optional: I'm a loyal customer. / I've been shopping here for a while.) (Reaction: Oh no. All right, okay. I see.) Oh, thank you for your help anyway. / Thanks anyway. Bye.
-
-Feedback 
-Aim for naturalness using fillers (well, um, you know). Briefly summarize the situation (1-2 sentences) at the start. Ask 3-4 questions, but prioritize fluency; ending after 2-3 questions fluently is better than struggling for more. Use specific phrasing like 'Can I get a discount?' and 'Do you have a king size bed?'. Add simple reactions after asking questions to enhance the roleplay feel. Keep the answer concise, ideally around 1 minute or less. Pay attention to pronunciation. Remember to end the conversation properly.
-

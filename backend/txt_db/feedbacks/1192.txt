@@ -1,9 +1,0 @@
-Question 
-A great question (combining exclamations).
-
-Answer 
-Oh wow, awesome. What a great question.
-
-Feedback 
-You can combine multiple interjections and exclamations in one response. Use them with emotion. This example combines 'Oh wow', 'awesome', and 'What a great question'.
-

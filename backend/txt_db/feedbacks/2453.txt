@@ -1,9 +1,0 @@
-Question 
-The dining room has a large table that can seat eight people.
-
-Answer 
-The dining room has a large table that can seat eight people.
-
-Feedback 
-Describing the size of the table and its capacity ('can seat eight people') is a good detail.
-

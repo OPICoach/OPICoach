@@ -1,9 +1,0 @@
-Question 
-I have a spacious walk-in closet to store my clothes.
-
-Answer 
-I have a spacious walk-in closet to store my clothes.
-
-Feedback 
-'Spacious walk-in closet' is a specific and desirable feature. 'To store my clothes' explains its purpose.
-

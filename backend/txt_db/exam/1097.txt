@@ -1,0 +1,9 @@
+Question 
+Tell me about your favorite park. What does it look like and what makes it special?
+
+Answer 
+N/A
+
+Feedback 
+This is a typical question asking you to describe a place you like. You can link this with the beach question by creating a 'beach park'.
+

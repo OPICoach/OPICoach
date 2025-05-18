@@ -1,9 +1,0 @@
-Question 
-Step 5: Repeat the response.
-
-Answer 
-Oh, nice. You have pink one.
-
-Feedback 
-Good reaction 'Oh, nice.' and repeats the response 'You have a pink one.'. Recommended to add a feeling at the end, like 'That's great.'.
-

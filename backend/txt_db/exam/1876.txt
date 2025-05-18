@@ -1,0 +1,9 @@
+Question 
+Not provided in source text.
+
+Answer 
+My sofa makes me feel comfortable.
+
+Feedback 
+Similar to the chair example, 'makes me feel comfortable' is awkward for a tangible item. Better options include 'My sofa is very relaxing', 'My sofa is so soft', or 'My sofa is very comfortable'. 'It's just so cozy' is also a good alternative, though 'cozy' is often used for small, warm spaces.
+

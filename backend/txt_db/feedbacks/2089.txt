@@ -1,9 +1,0 @@
-Question 
-You are looking for a new home to rent. Call the real estate and ask what kind of houses and services they provide.
-
-Answer 
-Hello, I'm calling because I'm looking for a house to rent. Can you tell me what kind of properties you have available? I'm looking for a two-bedroom apartment, maybe near the subway station. Also, what services do you provide for renters? Do you help with the contract or maintenance issues?
-
-Feedback 
-This is a good start for the role-play. You clearly stated your purpose for calling and asked relevant questions about available properties and services. To make it more natural and detailed for OPIc, you could add a polite opening and closing, mention your preferred move-in date or budget, and ask more specific questions about the services, like 'Do you handle the paperwork?' or 'What happens if something breaks?'.
-

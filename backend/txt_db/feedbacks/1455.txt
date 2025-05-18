@@ -1,9 +1,0 @@
-Question 
-Is the furniture in your house is different from the furniture you had before?
-
-Answer 
-Okay, I think it is really different. I have a couch in my living room. It is really comfortable. I bought this couch from IKEA.
-
-Feedback 
-This answer is not bad, but it lacks phrases that significantly boost the score. This is because it primarily uses simple, short sentences. Also, sentences often start with 'I', making the narrative subjective rather than objective, which makes it difficult to get a high score. To improve, use complex sentences, vary sentence beginnings (e.g., with prepositional phrases or gerunds), and incorporate more descriptive or idiomatic expressions.
-

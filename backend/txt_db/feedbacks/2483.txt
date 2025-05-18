@@ -1,9 +1,0 @@
-Question 
-The cafe is a perfect spot for catching up with friends or enjoying some alone time.
-
-Answer 
-The cafe is a perfect spot for catching up with friends or enjoying some alone time.
-
-Feedback 
-'Perfect spot for' is useful. Listing different uses ('catching up with friends', 'enjoying some alone time') shows versatility.
-

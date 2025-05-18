@@ -1,9 +1,0 @@
-Question 
-Couples are having romantic moments on the park benches.
-
-Answer 
-Couples are having romantic moments on the park benches.
-
-Feedback 
-Describing the activity ('having romantic moments') and location ('on the park benches').
-

@@ -1,9 +1,0 @@
-Question 
-The cafe's cappuccinos are topped with a perfect frothy layer of foam.
-
-Answer 
-The cafe's cappuccinos are topped with a perfect frothy layer of foam.
-
-Feedback 
-Specific detail about a drink ('cappuccinos') and its appearance ('perfect frothy layer of foam') is good for describing food/drinks.
-

@@ -1,9 +1,0 @@
-Question 
-What is the weather like in your city today?
-
-Answer 
-
-
-Feedback 
-This is a sample question from the actual OPIc test. The video demonstrates the replay button functionality for this question.
-

@@ -1,9 +1,0 @@
-Question 
-You are going on a trip on business to another country. Call a hotel that you want to stay at and ask three or four questions about the hotel.
-
-Answer 
-Hello, I'm planning a business trip and would like to book a room from [Start Date] to [End Date]. Do you have a business center? Is breakfast included? Is the hotel close to the business district?
-
-Feedback 
-'I'm planning a business trip and would like to book a room...' clearly states the purpose and dates. 'Do you have a business center?' is relevant for a business trip. 'Is breakfast included?' is a common hotel question. 'Is the hotel close to the business district?' is important for convenience on a business trip. Good questions.
-

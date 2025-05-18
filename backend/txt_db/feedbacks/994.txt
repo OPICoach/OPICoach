@@ -1,9 +1,0 @@
-Question 
-해변 가기 (Going to the beach) 롤플레이 1번: Call your friend to go to the beach with you.
-
-Answer 
-친구에게 전화해서 같이 바다에 가자고 제안합니다. 공원 가기 1번 문제와 동일하게 답변할 수 있습니다.
-
-Feedback 
-공원 가기 1번 문제와 동일한 유형입니다.
-

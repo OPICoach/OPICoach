@@ -1,9 +1,0 @@
-Question 
-There's a problem I'd like you to solve. You've ordered some furniture and it's just been delivered. However, the furniture that's arrived is not what you ordered. Call the furniture store to explain the situation and suggest two or three alternatives to the problem.
-
-Answer 
-Hello. Is this Hacker's Furniture? I'm calling because there seems to be a problem with the item I purchased. Yes, my name is Jenna Kim, and I ordered a coffee table in brown last week, but I got a gray one. I'm not sure what happened, but I really wanted the dark brown one that I ordered. So I was wondering, could you come back to pick it up for a return sometime today or tomorrow? I actually need the table on Saturday, so would it be possible to get a new one sometime this week? Well, if that's not possible, I'm afraid I should just get a refund. Yes, if you could deliver the one I ordered by tomorrow, it would be perfect. Sure, no problem. Please check and give me a call. Thank you. Bye.
-
-Feedback 
-This roleplay response effectively handles the problem situation. The speaker clearly identifies the store, states the problem (wrong color delivered), provides necessary details (name, item, ordered vs. received), and offers multiple alternative solutions (pick up/return, get a new one this week, get a refund), meeting the requirement. The language is clear, polite but firm, and appropriate for a customer service call. The response demonstrates strong problem-solving and communication skills.
-

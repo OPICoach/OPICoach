@@ -1,0 +1,9 @@
+Question 
+This park offers a great view of the city skyline.
+
+Answer 
+This park offers a great view of the city skyline.
+
+Feedback 
+'Offers a great view' is a good phrase. 'City skyline' is specific.
+

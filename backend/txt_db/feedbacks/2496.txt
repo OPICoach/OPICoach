@@ -1,9 +1,0 @@
-Question 
-There are benches scattered around for people to rest.
-
-Answer 
-There are benches scattered around for people to rest.
-
-Feedback 
-'Scattered around' is a good way to describe the placement. 'For people to rest' explains the purpose of the benches.
-

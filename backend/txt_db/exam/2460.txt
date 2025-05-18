@@ -1,0 +1,9 @@
+Question 
+The home office is equipped with a desk and bookshelves for productivity.
+
+Answer 
+The home office is equipped with a desk and bookshelves for productivity.
+
+Feedback 
+Listing specific furniture ('desk and bookshelves') and explaining the purpose ('for productivity') is effective.
+

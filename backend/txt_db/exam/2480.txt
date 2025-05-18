@@ -1,0 +1,9 @@
+Question 
+There are delicious pastries and cakes on display.
+
+Answer 
+There are delicious pastries and cakes on display.
+
+Feedback 
+'On display' is a good phrase for describing items available for purchase that are visible.
+

@@ -1,9 +1,0 @@
-Question 
-공연 보러 가기 (Performance) 롤플레이 1번: You want to go to see a performance with your friend. Call the theater and ask questions about getting tickets for it.
-
-Answer 
-극장에 전화해서 티켓 구입 관련 질문을 합니다. 가격, 주차장, 매점 등 시설에 대해 물어볼 수 있습니다.
-
-Feedback 
-티켓 가격, 주차장(Do you have a parking lot?), 매점(스낵바) 등 시설 관련 질문을 미리 준비하세요.
-

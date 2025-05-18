@@ -1,0 +1,9 @@
+Question 
+The crowd swayed and danced to the rhythm of the music.
+
+Answer 
+The crowd swayed and danced to the rhythm of the music.
+
+Feedback 
+Describing the crowd's actions ('swayed and danced') and the cause ('to the rhythm of the music') is good.
+

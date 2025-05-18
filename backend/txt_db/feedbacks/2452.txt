@@ -1,9 +1,0 @@
-Question 
-The laundry room is conveniently located near the bedrooms.
-
-Answer 
-The laundry room is conveniently located near the bedrooms.
-
-Feedback 
-'Conveniently located' is repeated from an earlier sentence, which is fine. 'Near the bedrooms' explains the convenience.
-

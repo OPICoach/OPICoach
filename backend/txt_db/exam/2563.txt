@@ -1,0 +1,9 @@
+Question 
+The film's cinematography is stunning, with breathtaking visuals.
+
+Answer 
+The film's cinematography is stunning, with breathtaking visuals.
+
+Feedback 
+'Cinematography is stunning' and 'breathtaking visuals' are excellent phrases for describing the visual quality of a film.
+

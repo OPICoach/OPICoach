@@ -1,9 +1,0 @@
-Question 
-장소 관련 주제: 호텔에 대해 이야기해 보세요. 기억에 남는 호텔 경험이 있나요? 호텔 시설에 대해 묘사해 보세요.
-
-Answer 
-제공된 텍스트는 OPIc 시험 준비를 위한 강의 스크립트이며, 실제 학생의 답변이 포함되어 있지 않습니다. 따라서 OPIc_Answer 필드는 강의 내용에 기반한 준비 자료임을 명시합니다.
-
-Feedback 
-필수 키워드: hotel, make a reservation for a room, stay at a hotel, arrive at a hotel, check in at a hotel, a memorable hotel, facilities, unique facilities. 발음: hotel (텔에 강세), at a hotel.
-

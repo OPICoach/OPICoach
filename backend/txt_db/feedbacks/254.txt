@@ -1,9 +1,0 @@
-Question 
-Do you have any memorable experience that happened while you were at a restaurant? Tell me what happened in detail.
-
-Answer 
-PLACEHOLDER_FOR_STUDENT_ANSWER
-
-Feedback 
-PLACEHOLDER_FOR_SPECIFIC_FEEDBACK_ON_ANSWER
-

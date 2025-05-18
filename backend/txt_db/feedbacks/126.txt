@@ -1,9 +1,0 @@
-Question 
-I would like to know where you live. Can you describe your home to me? What does it look like? Blah blah blah. How many rooms does it have? Give me a description with lots of details.
-
-Answer 
-And it's the first time living in the two-story house
-
-Feedback 
-This adds a personal touch and context to the description of the home.
-

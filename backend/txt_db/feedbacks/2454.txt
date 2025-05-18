@@ -1,9 +1,0 @@
-Question 
-The home gym is equipped with exercise equipment for staying fit.
-
-Answer 
-The home gym is equipped with exercise equipment for staying fit.
-
-Feedback 
-'Equipped with exercise equipment' is clear. 'For staying fit' explains the purpose of the room and equipment.
-

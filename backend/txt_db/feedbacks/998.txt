@@ -1,9 +1,0 @@
-Question 
-옷가게 (Clothing store) 롤플레이 1번: You're at a clothing store and need to buy some clothes. Ask the clerk three or four questions about the clothes you're looking for.
-
-Answer 
-옷가게에 있는 상황에서 직원에게 옷에 대해 질문합니다. 직원을 부르고('Excuse me'), 안부를 묻고('How are you?'), 찾고 있는 옷('I'm looking for...', 'I'd like to buy...')에 대해 말하며, 가격, 할인/프로모션('Do you have special promotions or discounts?') 여부를 묻습니다.
-
-Feedback 
-직원을 부르는 표현, 찾고 있는 옷을 설명하는 표현, 가격, 할인/프로모션('Do you have special promotions or discounts?') 관련 질문을 준비하세요.
-

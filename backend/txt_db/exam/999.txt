@@ -1,0 +1,9 @@
+Question 
+옷가게 (Clothing store) 롤플레이 2번: There's a problem you need to resolve. You've bought some clothes but just found out that one of the shirts has a problem. Call the clothing store and explain the situation. Give two or three alternatives to solve the problem.
+
+Answer 
+옷을 샀는데 셔츠 한 장에 문제가 있는 상황을 매장에 전화해서 설명하고 대안을 제시합니다. 환불('get a refund')이나 새 셔츠로 교환('exchange the ticket to a new shirt')을 요청할 수 있습니다.
+
+Feedback 
+옷에 문제가 있음을 설명하고, 환불('get a refund')이나 교환('exchange the ticket to a new shirt') 관련 표현을 꼭 알아두세요.
+

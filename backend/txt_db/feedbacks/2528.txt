@@ -1,9 +1,0 @@
-Question 
-The lead singer captivated the audience with her powerful vocals.
-
-Answer 
-The lead singer captivated the audience with her powerful vocals.
-
-Feedback 
-'Captivated the audience' is a strong verb. 'Powerful vocals' is a good phrase for describing singing.
-

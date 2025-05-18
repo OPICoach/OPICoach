@@ -1,9 +1,0 @@
-Question 
-Tell me about the problems you have experienced at home. Pick one of the problems you've mentioned earlier and tell me in detail about what happened.
-
-Answer 
-PLACEHOLDER_FOR_STUDENT_ANSWER
-
-Feedback 
-PLACEHOLDER_FOR_SPECIFIC_FEEDBACK_ON_ANSWER
-

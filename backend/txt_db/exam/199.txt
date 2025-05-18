@@ -1,0 +1,9 @@
+Question 
+You have indicated in the survey that you go on trips internationally. I would like you to describe one of the countries or cities you have visited. What was it like over there? And what kind of impression did you get from the locals?
+
+Answer 
+PLACEHOLDER_FOR_STUDENT_ANSWER
+
+Feedback 
+PLACEHOLDER_FOR_SPECIFIC_FEEDBACK_ON_ANSWER
+

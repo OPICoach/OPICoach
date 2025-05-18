@@ -1,0 +1,9 @@
+Question 
+Tell me about the geography of your country. Are there a lot of lakes, rivers, or mountains? Please describe it in as much detail as possible.
+
+Answer 
+My country, South Korea, has many mountains. About 70% of the land is mountains. We also have rivers, like the Han River in Seoul. There are not so many big lakes, but some small ones. The east coast has mountains near the sea, and the west coast is flatter with islands.
+
+Feedback 
+This is a good description of Korea's geography, mentioning mountains, rivers, and coastal differences. Using percentages ('About 70%') is a nice touch. To improve, you could use more descriptive adjectives (e.g., 'steep mountains,' 'winding rivers,' 'picturesque islands') and perhaps mention the climate's influence on the landscape or specific famous geographical features.
+

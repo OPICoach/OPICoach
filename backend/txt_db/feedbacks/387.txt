@@ -1,9 +1,0 @@
-Question 
-주문한 음식이 식어서 배달되었습니다. 교체나 환불을 받을 수 있나요?
-
-Answer 
-My food order was delivered cold. Can I get a replacement or a refund?
-
-Feedback 
-This is a model answer. Specific feedback on student errors is not applicable.
-

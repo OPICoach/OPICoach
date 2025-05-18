@@ -1,9 +1,0 @@
-Question 
-온라인 주문 확인 이메일이 도착하지 않았습니다. 다시 보내 주시거나 주문 상태를 확인해 주실 수 있나요?
-
-Answer 
-The online order confirmation email hasn't arrived. Can you resend it or confirm my order status?
-
-Feedback 
-This is a model answer. Specific feedback on student errors is not applicable.
-

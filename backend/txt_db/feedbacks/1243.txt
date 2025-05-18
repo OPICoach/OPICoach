@@ -1,9 +1,0 @@
-Question 
-How much is it for a ticket?
-
-Answer 
-[Question format]
-
-Feedback 
-This is a direct question asking about price. The structure 'How much is it for [noun]?' is a common and correct way to ask about the cost of something.
-

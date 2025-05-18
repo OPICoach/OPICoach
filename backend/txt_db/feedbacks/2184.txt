@@ -1,9 +1,0 @@
-Question 
-I would like to know where you live. Can you describe your home to me? What does it look like? How many rooms does it have? Give me a description with lots of details.
-
-Answer 
-you know my home my place is kind of kind of big I think. And so my room is also big. And I like to buy some stuff. So in my room there are a lot of stuff like drawers, closet, clothes I mean. So I don't need much of cleaning. So that's why I like my room. That's like a lot to say about it.
-
-Feedback 
-My place is kind of big I think: Good start, impressive sentence length for AL. Kind of is good. And so my room is also big: Good transition. 음 (filler): Replace with 'um' or 'uh'. 음 is a Korean filler. And I like to buy some stuff: Okay. So in my room there are a lot of stuff: 'There are a lot of stuff' is okay, but 'there is a lot of stuff' is more common. like drawers, closet, clothes I mean: Good examples. So I don't need much of cleaning: This part is confusing in English and should be removed for clarity. It contradicts liking a big room. So that's why I like my room: Clear conclusion for the room part. That's like a lot to say about it: Good concluding phrase for the answer. Overall: Good main point (home/room is big and liked). Need to add more feeling/emotion (e.g., 'And I love that!'). Use fillers like 'um' or 'uh' instead of '음'. Consider a structured approach: Main Point (MP) -> Positive feeling -> Body (e.g., opposite feeling/contrast) -> Return to MP -> Conclusion/Control. Example for body: Why do you love the big room? Because you can buy a lot of furniture and still have space. Example for conclusion: Like I said, everything about my home is big, especially my room. I never want to leave.
-

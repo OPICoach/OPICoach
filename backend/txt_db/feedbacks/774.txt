@@ -1,9 +1,0 @@
-Question 
-You wanna go to a new coffee shop near your place. Call the coffee shop and ask three questions about the place.
-
-Answer 
-IH Level: Hi I want to go there with my family. I need more information. Firstly where is the coffee shop? Secondly what do you when do you open and close? Thirdly what kind of drinks do you have? Lastly please let me know. AL Level: Hi is this Hackers Box? All my friends said your store is the best place in my community. There are some questions before I go there tonight. Firstly I want to know where the coffee shop is. Secondly I wonder if you have ice the tea. Thirdly I'd like to know whether you have free wifi. enough. Please let me know. I'm in a rush.
-
-Feedback 
-IH Level: 무난하게 시키는 내용은 잘 따랐기 때문에 IH까지 가능합니다. AL Level: 상황 설정(Hackers Box, 친구 추천)으로 점수를 추가로 얻고, 간접 의문문(I want to know where..., I wonder if..., I'd like to know whether...)을 세 번 사용했으며, 마지막까지 연기를 했습니다. 간접 의문문과 연기를 통해 만점을 받을 수 있습니다.
-

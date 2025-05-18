@@ -1,0 +1,9 @@
+Question 
+호텔 (Hotel) 롤플레이 1번: You're planning to stay at a hotel for a trip. Call the hotel and ask three or four questions to find out whether you want to stay at that place.
+
+Answer 
+호텔 투숙을 위해 전화로 예약 관련 문의를 합니다. 호텔 이름 확인('Hello. Is this Hotel Shilla?'), 전화 목적 설명('I'm calling to reserve a room', 'I'm calling to book a room'), 가격, 할인/프로모션, 주차('Could I park there for free?', 'would it be possible to park there for free?'), 시설 관련 질문을 합니다.
+
+Feedback 
+음식점 예약 문의와 유사한 흐름입니다. 전화 목적을 밝히고, 가격, 할인, 주차('Could I park there for free?'), 시설 등 어떤 영업점에서든 물어볼 수 있는 질문을 준비하세요.
+

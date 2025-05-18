@@ -1,9 +1,0 @@
-Question 
-You indicated that you like listening to music in the survey. What types of music do you enjoy listening to? And tell me about your favorite music.
-
-Answer 
-I like two different types of music, dance and classical. When I feel depressed and unhappy, I listen to dance music, which makes me refreshed and energetic. On the other hand, I listen to classical music when I'm tired or suffer from insomnia. The gentle sound of the classical music helps me relax and sleep tight. It also clears my mind, so that I can focus on what I do and what I can do.
-
-Feedback 
-types of music에서 types는 복수, music은 불가산 명사이므로 music에 s를 붙이지 않도록 주의해야 합니다. when을 사용하여 두 문장을 연결하는 능력은 최소 IM2 이상을 보여줍니다. which makes me refreshed and energetic와 같이 which 절을 사용하여 세 문장 구조를 만드는 것은 IM3 이상을 시사하며, which makes me feel refreshed로 수정하는 것이 더 자연스럽습니다. on the other hand와 같은 연결어구 사용은 고득점(IH 이상)의 특징입니다. helps me relax and sleep tight와 같이 5형식 구문을 사용하는 것은 문장 복잡성을 높여 고득점에 유리합니다. so that I can focus on what I do and what I can do에서 so that 구문 사용은 목적을 나타내며, focus on으로 수정하는 것이 맞습니다. 전반적으로 눈에 띄는 사소한 실수(noticeable mistakes)가 있어 Advanced 대신 IH를 받게 되는 요인이 됩니다. 복잡한 문장 구조 사용 능력은 IH/Advanced의 중요한 특징입니다.
-

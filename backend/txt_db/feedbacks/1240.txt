@@ -1,9 +1,0 @@
-Question 
-Tell me about your neighborhood.
-
-Answer 
-We talked about a dog that often barks in our neighborhood.
-
-Feedback 
-This sentence uses a relative clause ('that often barks') correctly. 'that' is appropriate for an animal. 'often barks' is a good descriptive phrase. 'neighborhood' is relevant vocabulary.
-

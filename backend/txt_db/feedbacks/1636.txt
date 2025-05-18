@@ -1,9 +1,0 @@
-Question 
-제공된 텍스트에는 특정 OPIc 질문이 포함되어 있지 않습니다. 이 텍스트는 OPIc 고득점 전략에 대한 강의입니다.
-
-Answer 
-제공된 텍스트에는 특정 학생의 답변이 포함되어 있지 않습니다. 이 텍스트는 답변을 구성하는 방법에 대한 지침을 제공합니다.
-
-Feedback 
-제공된 텍스트는 OPIc 고득점(AL)을 받기 위해 문장 구조를 복잡하게 만드는 방법론에 대한 피드백을 제공합니다. 단순한 문장 구조는 낮은 등급으로 이어지므로, 쉬운 단어를 사용하더라도 복잡한 문장 구조를 활용하는 것이 중요합니다. 복잡한 문장 구조를 만드는 가장 쉬운 방법으로 다음과 같은 도입 표현을 활용하는 것을 제안합니다: 1. 일반적인 사실을 말할 때: "It is normal/general/common that..." 또는 "It seems normal/general/common that..." (예: It seems common that people go shopping on the weekend.) 2. 자주 언급되는 사실을 말할 때: "It is often/usually/traditionally/always said that..." (예: It is often said that English is the universal language.) 3. 부인할 수 없는 사실을 말할 때: "There's no denying that..." (예: There's no denying that learning English takes a lot of money and effort.) 4. 사실임을 강조할 때: "It is true that..." (예: It is true that I like shopping.) 5. 의심할 여지가 없음을 말할 때: "There's no doubt that..." (예: There's no doubt that technology is everywhere.) 이러한 표현들을 문장 앞에 붙여 사용하면 답변의 초반부를 원어민처럼 복잡하게 구성하여 높은 등급을 받을 수 있습니다. 특히 질문 2, 5, 8, 14번에서 일반적인 사실을 말할 때 유용합니다. 이러한 표현들을 반복 연습하여 자연스럽게 사용할 수 있도록 익히는 것이 중요합니다.
-

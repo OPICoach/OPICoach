@@ -1,9 +1,0 @@
-Question 
-The movie I purchased online won't play. Can you help troubleshoot the issue?
-
-Answer 
-This is a sample answer for this question.
-
-Feedback 
-This is sample feedback for the answer.
-

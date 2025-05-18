@@ -1,9 +1,0 @@
-Question 
-Can you describe one of your favorite restaurants? What does it look like? What kind of dishes does it serve? Tell me in as much detail as possible.
-
-Answer 
-PLACEHOLDER_FOR_STUDENT_ANSWER
-
-Feedback 
-PLACEHOLDER_FOR_SPECIFIC_FEEDBACK_ON_ANSWER
-

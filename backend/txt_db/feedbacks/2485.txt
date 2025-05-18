@@ -1,9 +1,0 @@
-Question 
-The menu offers a variety of teas, including herbal blends and exotic flavors.
-
-Answer 
-The menu offers a variety of teas, including herbal blends and exotic flavors.
-
-Feedback 
-'Offers a variety of' is good. Specifying types of tea ('herbal blends', 'exotic flavors') adds detail and shows a wider vocabulary.
-

@@ -1,9 +1,0 @@
-Question 
-Describe where you go jogging. (조깅 장소 묘사)
-
-Answer 
-공원에 가면 many trees가 있고 in the middle of the park 공원 중간은 어쩌고 그리고 뒤에 뭐 트랙이 있고... (공원 묘사)
-
-Feedback 
-Repeated description pattern ('many trees,' 'in the middle,' 'on the right,' 'on the left') by the same test-taker across multiple answers (jogging location, baseball field, language school). (동일인에게서 반복된 묘사 패턴)
-

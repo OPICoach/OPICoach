@@ -1,9 +1,0 @@
-Question 
-The cafe is located on a quaint street.
-
-Answer 
-The cafe is located on a quaint street.
-
-Feedback 
-'Quaint' is a good adjective to describe a charming, old-fashioned street.
-

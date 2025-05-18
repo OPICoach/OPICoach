@@ -1,9 +1,0 @@
-Question 
-null
-
-Answer 
-볶음밥을 만들기 위해서는 밥과 계란 밥 한 그릇과 넣고 싶은 재료가 필요합니다. To make it, you need a bowl of rice, an egg, and any ingredients you want to put in the rice.
-
-Feedback 
-null
-

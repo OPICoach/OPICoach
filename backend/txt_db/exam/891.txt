@@ -1,0 +1,9 @@
+Question 
+기술 관련 주제: 기술에 대해 이야기해 보세요. 새로운 종류의 기술이나 인기 있는 기술 장비에 대해 말해 보세요. 기술적인 문제를 겪었던 경험이 있나요?
+
+Answer 
+제공된 텍스트는 OPIc 시험 준비를 위한 강의 스크립트이며, 실제 학생의 답변이 포함되어 있지 않습니다. 따라서 OPIc_Answer 필드는 강의 내용에 기반한 준비 자료임을 명시합니다.
+
+Feedback 
+필수 키워드: technology, technologies, a new kind/type of technology, a popular piece/type/kind of technology, device, a technological device, technological problem. 활용: a new kind of technology.
+

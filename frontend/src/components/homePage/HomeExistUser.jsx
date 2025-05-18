@@ -14,7 +14,7 @@ const HomeExistUser = ({
 }) => {
   const navigate = useNavigate();
   return (
-    <div className="flex flex-col bg-white px-12 pt-16 cursor-default">
+    <div className="flex flex-col bg-white px-12 pt-10 cursor-default">
       <WelcomeMessage userName={userName} />
       <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-10">
         <div className="space-y-6">

@@ -64,7 +64,5 @@ export const userMessagesMaterialState = atom({
 
 export const AIMessagesMaterialState = atom({
   key: "AIMessagesMaterialState",
-  default: [
-    "Please tell me more about the difference between formal and informal introductions.",
-  ],
+  default: ["Hello! How can I assist you today?"],
 });

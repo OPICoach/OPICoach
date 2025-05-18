@@ -51,7 +51,7 @@ const SideBar = ({ userName }) => {
 
       {/* 사이드바 */}
       <aside
-        className={`sticky top-0 left-0 flex flex-col h-screen bg-neutral z-30 transition-all duration-300
+        className={`sticky top-0 left-0 flex flex-col h-dvh bg-neutral z-30 transition-all duration-300
           ${open ? "min-w-[230px] w-[230px]" : "min-w-0 w-0 overflow-hidden"}
           ${open ? "shadow-lg" : ""}
           `}

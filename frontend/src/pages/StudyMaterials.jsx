@@ -9,6 +9,7 @@ import {
 import SideBar from "../components/SideBar.jsx";
 import BackButton from "../components/BackButton.jsx";
 import useResizeHeight from "../hooks/useResizeHeight.jsx";
+import axios from "axios";
 
 const MIN_TOP_HEIGHT = 120; // 최소 본문 높이
 const MIN_BOTTOM_HEIGHT = 120; // 최소 입력창 영역 높이
@@ -23,13 +24,26 @@ const StudyMaterials = () => {
   const [userMessages, setUserMessages] = useRecoilState(
     userMessagesMaterialState
   );
-  const [AIMessages] = useRecoilState(AIMessagesMaterialState);
+  const [AIMessages, setAIMessages] = useRecoilState(AIMessagesMaterialState);
   const [input, setInput] = useState("");
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (input.trim() === "") return;
     setUserMessages([...userMessages, input]);
-    setInput("");
+    setInput(""); // 먼저 입력창 초기화
+    try {
+      const response = await axios.post("http://localhost:8000/learning/response", {
+        session_id: "study-material-demo-session", // 임의의 세션 ID
+        question: input,
+        chat_history: [
+          ...userMessages.map(msg => ({ role: "user", content: msg })),
+          ...AIMessages.map(msg => ({ role: "assistant", content: msg }))
+        ]
+      });
+      setAIMessages([...AIMessages, response.data.answer]);
+    } catch (error) {
+      setAIMessages([...AIMessages, "서버와의 통신에 실패했습니다."]);
+    }
   };
 
   // userMessages, AIMessages를 messages로 합치는 함수

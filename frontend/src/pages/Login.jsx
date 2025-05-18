@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import LoginRegisterInput from "../components/LoginSignUpInput";
 import loginLogo from "../assets/loginPage/loginLogo.svg";
 import login_image from "../assets/loginPage/login_image.svg";
@@ -7,6 +7,27 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const nav = useNavigate();
+  const [loginData, setLoginData] = useState({
+    id: "",
+    password: ""
+  });
+
+  const handleInputChange = (field, value) => {
+    setLoginData(prev => ({
+      ...prev,
+      [field]: value
+    }));
+  };
+
+  const handleLogin = () => {
+    const loginInfo = {
+      userId: loginData.id,
+      userPassword: loginData.password
+    };
+    console.log("로그인 정보:", JSON.stringify(loginInfo, null, 2));
+    nav("/");
+  };
+
   return (
     <div className="flex flex-row min-h-screen bg-white">
       <div className="w-1/2 flex justify-center items-center">
@@ -25,16 +46,22 @@ const Login = () => {
           </div>
         </div>
         <div className="w-3/5 flex flex-col gap-4 mb-6">
-          <LoginRegisterInput placeholder="id" />
+          <LoginRegisterInput 
+            placeholder="id" 
+            value={loginData.id}
+            onChange={(e) => handleInputChange("id", e.target.value)}
+          />
           <LoginRegisterInput
             placeholder="pw"
             type="password"
             showToggle={true}
+            value={loginData.password}
+            onChange={(e) => handleInputChange("password", e.target.value)}
           />
         </div>
         <button
           className="w-3/5 py-3 rounded-md bg-blue-500 text-white font-semibold text-lg mb-6 hover:bg-blue-600 transition"
-          onClick={() => nav("/")}
+          onClick={handleLogin}
         >
           Login
         </button>

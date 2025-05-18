@@ -1,12 +1,32 @@
 import { useNavigate } from "react-router-dom";
 import LoginRegisterInput from "../components/LoginSignUpInput";
 import loginLogo from "../assets/loginPage/loginLogo.svg";
+import { useState } from "react";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const [signUpData, setSignUpData] = useState({
+    name: "",
+    email: "",
+    id: "",
+    password: ""
+  });
+
+  const handleInputChange = (field, value) => {
+    setSignUpData(prev => ({
+      ...prev,
+      [field]: value
+    }));
+  };
 
   const handleSignUp = () => {
-    // 회원가입 처리 로직 추가
+    const signUpInfo = {
+      userName: signUpData.name,
+      userEmail: signUpData.email,
+      userId: signUpData.id,
+      userPassword: signUpData.password
+    };
+    console.log("회원가입 정보:", JSON.stringify(signUpInfo, null, 2));
     navigate("/login");
   };
 
@@ -28,13 +48,27 @@ const SignUp = () => {
           </div>
         </div>
         <div className="w-3/5 flex flex-col gap-4 mb-6">
-          <LoginRegisterInput placeholder="name" />
-          <LoginRegisterInput placeholder="email" />
-          <LoginRegisterInput placeholder="id" />
+          <LoginRegisterInput 
+            placeholder="name" 
+            value={signUpData.name}
+            onChange={(e) => handleInputChange("name", e.target.value)}
+          />
+          <LoginRegisterInput 
+            placeholder="email" 
+            value={signUpData.email}
+            onChange={(e) => handleInputChange("email", e.target.value)}
+          />
+          <LoginRegisterInput 
+            placeholder="id" 
+            value={signUpData.id}
+            onChange={(e) => handleInputChange("id", e.target.value)}
+          />
           <LoginRegisterInput
             placeholder="pw"
             type="password"
             showToggle={true}
+            value={signUpData.password}
+            onChange={(e) => handleInputChange("password", e.target.value)}
           />
         </div>
         <button

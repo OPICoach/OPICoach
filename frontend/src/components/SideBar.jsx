@@ -58,8 +58,13 @@ const SideBar = ({ userName }) => {
         style={{}}
       >
         {/* 로고 */}
-        <div className="flex items-center justify-center h-24">
-          <img src={sidebarLogo} alt="OPICoach Logo" className="h-10" />
+        <div className="flex items-center justify-center h-24 cursor-pointer">
+          <img
+            src={sidebarLogo}
+            alt="OPICoach Logo"
+            className="h-10"
+            onClick={() => navigate("/")}
+          />
         </div>
         {/* 메뉴 */}
         <nav className="flex-1 mt-10 mx-1">

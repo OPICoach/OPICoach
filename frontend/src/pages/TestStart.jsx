@@ -1,7 +1,13 @@
 import SideBar from "../components/SideBar.jsx";
 import { useEffect, useRef } from "react";
 import { useRecoilState } from "recoil";
-import { timeLeftState, isRunningState, isStoppedState, audioURLState, isRecordingState } from "../recoil/atoms";
+import {
+  timeLeftState,
+  isRunningState,
+  isStoppedState,
+  audioURLState,
+  isRecordingState,
+} from "../api/atom.js";
 
 const TestTimer = () => {
   const [timeLeft, setTimeLeft] = useRecoilState(timeLeftState);
@@ -9,7 +15,7 @@ const TestTimer = () => {
   const [isStopped, setIsStopped] = useRecoilState(isStoppedState);
   const [audioURL, setAudioURL] = useRecoilState(audioURLState);
   const [isRecording, setIsRecording] = useRecoilState(isRecordingState);
-  
+
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
   const audioRef = useRef(null);
@@ -36,7 +42,9 @@ const TestTimer = () => {
       };
 
       mediaRecorder.onstop = () => {
-        const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/wav' });
+        const audioBlob = new Blob(audioChunksRef.current, {
+          type: "audio/wav",
+        });
         const audioUrl = URL.createObjectURL(audioBlob);
         setAudioURL(audioUrl);
       };
@@ -44,7 +52,7 @@ const TestTimer = () => {
       mediaRecorder.start();
       setIsRecording(true);
     } catch (err) {
-      console.error('마이크 접근 권한이 필요합니다:', err);
+      console.error("마이크 접근 권한이 필요합니다:", err);
     }
   };
 
@@ -52,7 +60,9 @@ const TestTimer = () => {
     if (mediaRecorderRef.current && isRecording) {
       mediaRecorderRef.current.stop();
       setIsRecording(false);
-      mediaRecorderRef.current.stream.getTracks().forEach(track => track.stop());
+      mediaRecorderRef.current.stream
+        .getTracks()
+        .forEach((track) => track.stop());
     }
   };
 
@@ -65,7 +75,9 @@ const TestTimer = () => {
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
-    return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+    return `${minutes.toString().padStart(2, "0")}:${remainingSeconds
+      .toString()
+      .padStart(2, "0")}`;
   };
 
   const handleStartStopReset = () => {
@@ -102,7 +114,7 @@ const TestTimer = () => {
           {formatTime(timeLeft)}
         </div>
         <div className="flex gap-8 mt-10">
-          <button 
+          <button
             onClick={handleStartStopReset}
             className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-blue-600"
           >
@@ -112,17 +124,15 @@ const TestTimer = () => {
             onClick={handlePlay}
             disabled={!audioURL}
             className={`px-6 py-3 rounded-lg ${
-              audioURL 
-                ? "bg-green-500 text-white hover:bg-green-600" 
+              audioURL
+                ? "bg-green-500 text-white hover:bg-green-600"
                 : "bg-gray-300 text-gray-500 cursor-not-allowed"
             }`}
           >
             Play
           </button>
         </div>
-        {audioURL && (
-          <audio ref={audioRef} src={audioURL} className="hidden" />
-        )}
+        {audioURL && <audio ref={audioRef} src={audioURL} className="hidden" />}
       </div>
     </div>
   );

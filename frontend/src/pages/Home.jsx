@@ -17,17 +17,10 @@ import { userDataState } from "../api/atom.js";
 const Home = () => {
   const [userData, setUserData] = useRecoilState(userDataState);
   const userName = "Gildong Hong";
+  const testDate = "2025-8-15"; // 예시
 
-  // 온보딩 완료 처리 함수
-  const handleOnboardingComplete = (surveyAnswers) => {
-    // 실제로는 API 호출 후 응답 데이터 저장
-    setUserData({
-      userName,
-      pastLevel: "Intermediate",
-      goalLevel: "Advanced",
-      testDate: "2025-8-15",
-      surveyList: Array.isArray(surveyAnswers) ? surveyAnswers : [],
-    });
+  const handleOnboardingComplete = (info) => {
+    setUserData(info); // info는 HomeNewUser에서 전달한 객체
   };
 
   return (
@@ -44,7 +37,11 @@ const Home = () => {
             onEdit={() => console.log("Edit User Info")}
           />
         ) : (
-          <HomeNewUser onComplete={handleOnboardingComplete} />
+          <HomeNewUser
+            userName={userName}
+            testDate={testDate}
+            onComplete={handleOnboardingComplete}
+          />
         )}
       </div>
     </div>

@@ -11,23 +11,24 @@ const Edit = () => {
   const handleEditComplete = (answers) => {
     setUserData({
       ...userData,
-      // 아래는 예시! 실제로는 answers 구조에 맞게 매핑 필요
       pastLevel: answers[0],
       goalLevel: answers[1],
       background: answers[2],
       major: answers[3],
-      surveyList: answers[4],
+      surveyList: [answers[2], answers[3], answers[4]],
     });
     navigate("/"); // 홈으로 이동
   };
 
-  // 기존 정보로 초기값 세팅 (OnboardingSurvey에 prop으로 전달)
   const initialAnswers = [
     userData?.pastLevel || null,
     userData?.goalLevel || null,
     userData?.background || null,
     userData?.major || null,
-    Array.isArray(userData?.surveyList) ? userData.surveyList : [],
+
+    Array.isArray(userData?.surveyList) && userData.surveyList.length === 3
+      ? userData.surveyList[2]
+      : [],
   ];
 
   return (

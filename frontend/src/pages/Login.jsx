@@ -4,7 +4,7 @@ import loginLogo from "../assets/loginPage/loginLogo.svg";
 import login_image from "../assets/loginPage/login_image.svg";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { loginDataState } from "../recoil/authAtoms";
+import { loginDataState } from "../api/authAtoms";
 
 const Login = () => {
   const nav = useNavigate();

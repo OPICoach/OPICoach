@@ -2,17 +2,17 @@ import { useNavigate } from "react-router-dom";
 import LoginRegisterInput from "../components/LoginSignUpInput";
 import loginLogo from "../assets/loginPage/loginLogo.svg";
 import { useRecoilState } from "recoil";
-import { signUpDataState } from "../recoil/authAtoms";
-import axios from "axios";
+import { signUpDataState } from "../api/authAtoms";
+import { signupUserAPI } from "../api/api";
 
 const SignUp = () => {
   const navigate = useNavigate();
   const [signUpData, setSignUpData] = useRecoilState(signUpDataState);
 
   const handleInputChange = (field, value) => {
-    setSignUpData(prev => ({
+    setSignUpData((prev) => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }));
   };
 
@@ -21,12 +21,13 @@ const SignUp = () => {
       name: signUpData.name,
       email: signUpData.email,
       id: signUpData.id,
-      pw: signUpData.password
+      pw: signUpData.password,
     };
     try {
-      const response = await axios.post("http://localhost:8000/api/users/signup", signUpInfo);
-      console.log("회원가입 응답 코드:", response.status);
-      // 성공 시 로그인 페이지로 이동 등 추가 동작 가능
+      const response = await signupUserAPI(signUpInfo);
+      console.log("회원가입 성공:", response);
+      // 예시: 회원가입 성공 시 로그인 페이지로 이동
+      navigate("/login");
     } catch (error) {
       if (error.response) {
         console.log("회원가입 에러 응답 코드:", error.response.status);
@@ -54,18 +55,18 @@ const SignUp = () => {
           </div>
         </div>
         <div className="w-3/5 flex flex-col gap-4 mb-6">
-          <LoginRegisterInput 
-            placeholder="name" 
+          <LoginRegisterInput
+            placeholder="name"
             value={signUpData.name}
             onChange={(e) => handleInputChange("name", e.target.value)}
           />
-          <LoginRegisterInput 
-            placeholder="email" 
+          <LoginRegisterInput
+            placeholder="email"
             value={signUpData.email}
             onChange={(e) => handleInputChange("email", e.target.value)}
           />
-          <LoginRegisterInput 
-            placeholder="id" 
+          <LoginRegisterInput
+            placeholder="id"
             value={signUpData.id}
             onChange={(e) => handleInputChange("id", e.target.value)}
           />

@@ -5,29 +5,43 @@ import login_image from "../assets/loginPage/login_image.svg";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { loginDataState } from "../api/authAtoms";
+import { loginUserAPI } from "../api/api";
 
 const Login = () => {
   const nav = useNavigate();
   const [loginData, setLoginData] = useRecoilState(loginDataState);
 
   const handleInputChange = (field, value) => {
-    setLoginData(prev => ({
+    setLoginData((prev) => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }));
   };
 
-  const handleLogin = () => {
+  // 로그인 처리 함수
+  const handleLogin = async () => {
     const loginInfo = {
-      userId: loginData.id,
-      userPassword: loginData.password
+      id: loginData.id,
+      pw: loginData.password,
     };
-    console.log("로그인 정보:", JSON.stringify(loginInfo, null, 2));
-    nav("/");
+    try {
+      const result = await loginUserAPI(loginInfo);
+      console.log("로그인 성공:", result);
+      // 예시: 로그인 성공 시 메인 페이지로 이동
+      nav("/");
+    } catch (error) {
+      if (error.response) {
+        console.log("로그인 실패 코드:", error.response.status);
+        alert("로그인 실패: " + (error.response.data?.message || "서버 오류"));
+      } else {
+        console.log("로그인 요청 실패:", error.message);
+        alert("로그인 요청 실패: " + error.message);
+      }
+    }
   };
 
   return (
-    <div className="flex flex-row min-h-screen bg-white">
+    <div className="flex flex-row min-h-screen bg-white select-none">
       <div className="w-1/2 flex justify-center items-center">
         <div className="bg-opiLightGray p-1 w-[96%] h-[96%] flex justify-center items-center rounded-lg">
           <img
@@ -44,8 +58,8 @@ const Login = () => {
           </div>
         </div>
         <div className="w-3/5 flex flex-col gap-4 mb-6">
-          <LoginRegisterInput 
-            placeholder="id" 
+          <LoginRegisterInput
+            placeholder="id"
             value={loginData.id}
             onChange={(e) => handleInputChange("id", e.target.value)}
           />

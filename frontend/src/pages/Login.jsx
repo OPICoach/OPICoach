@@ -11,23 +11,23 @@ const Login = () => {
   const [loginData, setLoginData] = useRecoilState(loginDataState);
 
   const handleInputChange = (field, value) => {
-    setLoginData(prev => ({
+    setLoginData((prev) => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }));
   };
 
   const handleLogin = () => {
     const loginInfo = {
       userId: loginData.id,
-      userPassword: loginData.password
+      userPassword: loginData.password,
     };
     console.log("로그인 정보:", JSON.stringify(loginInfo, null, 2));
     nav("/");
   };
 
   return (
-    <div className="flex flex-row min-h-screen bg-white">
+    <div className="flex flex-row min-h-screen bg-white select-none">
       <div className="w-1/2 flex justify-center items-center">
         <div className="bg-opiLightGray p-1 w-[96%] h-[96%] flex justify-center items-center rounded-lg">
           <img
@@ -44,8 +44,8 @@ const Login = () => {
           </div>
         </div>
         <div className="w-3/5 flex flex-col gap-4 mb-6">
-          <LoginRegisterInput 
-            placeholder="id" 
+          <LoginRegisterInput
+            placeholder="id"
             value={loginData.id}
             onChange={(e) => handleInputChange("id", e.target.value)}
           />

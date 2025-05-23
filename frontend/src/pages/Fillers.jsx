@@ -38,6 +38,9 @@ const Fillers = () => {
       <SideBar userName="Gildong Hong" />
       <div className="flex flex-col flex-1 px-10 pt-4 pb-8 h-full">
         <BackButton />
+        <h2 className="text-2xl font-semibold mb-10 select-none">
+          Learn Fillers
+        </h2>
         <MessageList messages={mergeMessages(userMessages, AIMessages)} />
         <MessageInput
           value={input}

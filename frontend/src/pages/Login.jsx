@@ -19,9 +19,21 @@ const Login = ({ setIsLoggedIn }) => {
     }));
   };
 
-  // 로그인 처리 함수
+  // 백엔드 서버 안 켰을 때
+
+  // const handleLogin = () => {
+  //   if (loginData.id === "1" && loginData.password === "test") {
+  //     setUserPk(1); // 임의의 pk
+  //     setIsLoggedIn(true);
+  //     nav("/");
+  //   } else {
+  //     alert("아이디 또는 비밀번호가 올바르지 않습니다.");
+  //   }
+  // };
+
+  // 백엔드 서버 켰을 때
+
   const handleLogin = async () => {
-    // 서버 돌아갈 때
     const loginInfo = {
       id: loginData.id,
       pw: loginData.password,
@@ -31,12 +43,12 @@ const Login = ({ setIsLoggedIn }) => {
 
       if (!result || !result.pk) {
         alert("아이디 또는 비밀번호가 올바르지 않습니다.");
-        return; // 로그인 상태 변경 및 이동 금지
+        return;
       }
 
       console.log("로그인 성공:", result);
       setUserPk(result.pk);
-      setIsLoggedIn(true); // 로그인 상태 변경
+      setIsLoggedIn(true);
       nav("/");
     } catch (error) {
       if (error.response) {

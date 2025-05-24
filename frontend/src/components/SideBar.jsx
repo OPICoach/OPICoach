@@ -3,7 +3,7 @@ import homeIcon from "../assets/sidebar/home.svg";
 import learnIcon from "../assets/sidebar/learn.svg";
 import testIcon from "../assets/sidebar/test.svg";
 import infoIcon from "../assets/sidebar/infor.svg";
-import settingIcon from "../assets/sidebar/setting.svg";
+import logoutIcon from "../assets/sidebar/log-out.svg";
 import sidebarLogo from "../assets/sidebar/sidebarLogo.svg";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useRecoilState } from "recoil";
@@ -142,7 +142,7 @@ const SideBar = () => {
             title="로그아웃"
             onClick={handleLogout}
           >
-            <img src={settingIcon} alt="로그아웃" className="w-5 h-5" />
+            <img src={logoutIcon} alt="로그아웃" className="w-5 h-5" />
           </button>
         </div>
       </aside>

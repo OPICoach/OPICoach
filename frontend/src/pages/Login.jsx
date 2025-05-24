@@ -21,45 +21,45 @@ const Login = ({ setIsLoggedIn }) => {
 
   // 백엔드 서버 안 켰을 때
 
-  // const handleLogin = () => {
-  //   if (loginData.id === "1" && loginData.password === "test") {
-  //     setUserPk(1); // 임의의 pk
-  //     setIsLoggedIn(true);
-  //     nav("/");
-  //   } else {
-  //     alert("아이디 또는 비밀번호가 올바르지 않습니다.");
-  //   }
-  // };
+  const handleLogin = () => {
+    if (loginData.id === "1" && loginData.password === "test") {
+      setUserPk(1); // 임의의 pk
+      setIsLoggedIn(true);
+      nav("/");
+    } else {
+      alert("아이디 또는 비밀번호가 올바르지 않습니다.");
+    }
+  };
 
   // 백엔드 서버 켰을 때
 
-  const handleLogin = async () => {
-    const loginInfo = {
-      id: loginData.id,
-      pw: loginData.password,
-    };
-    try {
-      const result = await loginUserAPI(loginInfo);
+  // const handleLogin = async () => {
+  //   const loginInfo = {
+  //     id: loginData.id,
+  //     pw: loginData.password,
+  //   };
+  //   try {
+  //     const result = await loginUserAPI(loginInfo);
 
-      if (!result || !result.pk) {
-        alert("아이디 또는 비밀번호가 올바르지 않습니다.");
-        return;
-      }
+  //     if (!result || !result.pk) {
+  //       alert("아이디 또는 비밀번호가 올바르지 않습니다.");
+  //       return;
+  //     }
 
-      console.log("로그인 성공:", result);
-      setUserPk(result.pk);
-      setIsLoggedIn(true);
-      nav("/");
-    } catch (error) {
-      if (error.response) {
-        console.log("로그인 실패 코드:", error.response.status);
-        alert("로그인 실패: " + (error.response.data?.message || "서버 오류"));
-      } else {
-        console.log("로그인 요청 실패:", error.message);
-        alert("로그인 요청 실패: " + error.message);
-      }
-    }
-  };
+  //     console.log("로그인 성공:", result);
+  //     setUserPk(result.pk);
+  //     setIsLoggedIn(true);
+  //     nav("/");
+  //   } catch (error) {
+  //     if (error.response) {
+  //       console.log("로그인 실패 코드:", error.response.status);
+  //       alert("로그인 실패: " + (error.response.data?.message || "서버 오류"));
+  //     } else {
+  //       console.log("로그인 요청 실패:", error.message);
+  //       alert("로그인 요청 실패: " + error.message);
+  //     }
+  //   }
+  // };
 
   return (
     <div className="flex flex-row min-h-screen bg-white select-none">

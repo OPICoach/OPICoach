@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import homeIcon from "../assets/sidebar/home.svg";
 import learnIcon from "../assets/sidebar/learn.svg";
 import testIcon from "../assets/sidebar/test.svg";
@@ -7,7 +7,9 @@ import settingIcon from "../assets/sidebar/setting.svg";
 import sidebarLogo from "../assets/sidebar/sidebarLogo.svg";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { sideBarState } from "../api/atom";
+import { sideBarState, userInfoState } from "../api/atom";
+import { getUserInfoAPI } from "../api/api";
+import { userPkState } from "../api/authAtoms";
 
 const menus = [
   { name: "Home", icon: homeIcon, path: "/" },
@@ -16,21 +18,43 @@ const menus = [
   { name: "Information", icon: infoIcon, path: "/information" },
 ];
 
-// 유저 네임 앞자리만 가져오기
+// 유저 네임 앞자리 가져오기
 function getProfileInitial(userName) {
   if (!userName) return "";
+
+  // 영문 이름인 경우 (예: Gildong Hong)
   const parts = userName.trim().split(" ");
   if (parts.length > 1) {
-    return parts[1][0] || "";
+    return parts[1][0] || parts[0][0];
   }
   return userName[0];
 }
 
-const SideBar = ({ userName }) => {
+const SideBar = () => {
   const [open, setOpen] = useRecoilState(sideBarState);
+  const [userData, setUserData] = useRecoilState(userInfoState);
+  const [userPk, setUserPk] = useRecoilState(userPkState);
   const navigate = useNavigate();
   const location = useLocation();
-  const initial = getProfileInitial(userName);
+
+  // userData가 있을 때만 initial을 계산
+  const initial = userData?.name ? getProfileInitial(userData.name) : "";
+
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      try {
+        if (userPk) {
+          const response = await getUserInfoAPI(userPk);
+          console.log("사용자 정보:", response); // 디버깅을 위한 로그
+          setUserData(response);
+        }
+      } catch (error) {
+        console.error("사용자 정보를 가져오는데 실패했습니다:", error);
+      }
+    };
+
+    fetchUserInfo();
+  }, [userPk, setUserData]);
 
   return (
     <>
@@ -100,7 +124,7 @@ const SideBar = ({ userName }) => {
           <div className="w-9 h-9 bg-primary rounded-full flex items-center justify-center mr-3">
             <span className="text-white text-lg font-bold">{initial}</span>
           </div>
-          <span className="text-black font-medium">{userName}</span>
+          <span className="text-black font-medium">{userData?.name}</span>
           <button
             className="ml-auto hover:bg-gray-100 rounded-full"
             title="설정"

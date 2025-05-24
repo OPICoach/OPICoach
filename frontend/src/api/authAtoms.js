@@ -4,12 +4,22 @@ const localStorageEffect =
   (key) =>
   ({ setSelf, onSet }) => {
     const savedValue = localStorage.getItem(key);
-    if (savedValue != null) {
-      setSelf(JSON.parse(savedValue));
+    // "undefined", null, 빈문자열 등 예외처리
+    if (
+      savedValue !== null &&
+      savedValue !== "undefined" &&
+      savedValue !== ""
+    ) {
+      try {
+        setSelf(JSON.parse(savedValue));
+      } catch (e) {
+        // 파싱 에러 시 초기화
+        setSelf(null);
+      }
     }
 
-    onSet((newValue) => {
-      if (newValue === null) {
+    onSet((newValue, _, isReset) => {
+      if (isReset || newValue == null) {
         localStorage.removeItem(key);
       } else {
         localStorage.setItem(key, JSON.stringify(newValue));
@@ -23,7 +33,12 @@ export const loginDataState = atom({
     id: "",
     password: "",
   },
-  effects: [localStorageEffect("loginData")],
+});
+
+export const userPkState = atom({
+  key: "userPkState",
+  default: null,
+  effects: [localStorageEffect("userPk")],
 });
 
 export const signUpDataState = atom({

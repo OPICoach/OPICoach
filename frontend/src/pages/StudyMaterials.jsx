@@ -62,7 +62,7 @@ const StudyMaterials = () => {
 
   return (
     <div className="flex flex-row h-screen">
-      <SideBar userName="Gildong Hong" />
+      <SideBar />
 
       <div
         className="flex flex-col w-full bg-white h-screen"

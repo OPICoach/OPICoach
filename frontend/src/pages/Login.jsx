@@ -4,12 +4,13 @@ import loginLogo from "../assets/loginPage/loginLogo.svg";
 import login_image from "../assets/loginPage/login_image.svg";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { loginDataState } from "../api/authAtoms";
+import { loginDataState, userPkState } from "../api/authAtoms";
 import { loginUserAPI } from "../api/api";
 
 const Login = () => {
   const nav = useNavigate();
   const [loginData, setLoginData] = useRecoilState(loginDataState);
+  const [userPk, setUserPk] = useRecoilState(userPkState);
 
   const handleInputChange = (field, value) => {
     setLoginData((prev) => ({
@@ -23,6 +24,7 @@ const Login = () => {
     // 테스트 계정
     if (loginData.id === "" && loginData.password === "") {
       console.log("테스트 계정 로그인 성공");
+      setUserPk("0");
       nav("/");
       return;
     }
@@ -35,6 +37,7 @@ const Login = () => {
     try {
       const result = await loginUserAPI(loginInfo);
       console.log("로그인 성공:", result);
+      setUserPk(result.pk); // pk 저장
       nav("/");
     } catch (error) {
       if (error.response) {

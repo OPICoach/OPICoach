@@ -12,7 +12,7 @@ const Learn = () => {
 
   return (
     <div className="flex flex-row">
-      <SideBar userName="Gildong Hong" />
+      <SideBar />
       <div className="flex flex-col justify-center items-center w-full h-screen bg-white">
         <img
           src={sidebarLogo}

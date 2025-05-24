@@ -108,7 +108,7 @@ const TestTimer = () => {
 
   return (
     <div className="flex flex-row">
-      <SideBar userName="Gildong Hong" />
+      <SideBar />
       <div className="flex flex-col justify-center items-center w-full h-screen bg-white">
         <div className="w-[200px] h-[200px] border-4 border-primary rounded-full flex items-center justify-center text-4xl font-bold text-black">
           {formatTime(timeLeft)}

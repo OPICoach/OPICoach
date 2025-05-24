@@ -7,7 +7,7 @@ const Test = () => {
 
   return (
     <div className="flex flex-row h-screen">
-      <SideBar userName="Gildong Hong" />
+      <SideBar />
       <main className="flex flex-col w-full bg-white h-screen">
         <div className=" bg-white px-16 pt-4 pb-4 mt-12">
           <h2 className="text-3xl font-semibold mb-10 select-none">
@@ -31,7 +31,7 @@ const Test = () => {
                 scored by AI.
               </li>
               <li>
-                Once the test is over, you’ll receive an estimated score based
+                Once the test is over, you'll receive an estimated score based
                 on the official OPIc grades.
               </li>
               <li>

@@ -40,6 +40,18 @@ const SideBar = () => {
   // userData가 있을 때만 initial을 계산
   const initial = userData?.name ? getProfileInitial(userData.name) : "";
 
+  const handleLogout = () => {
+    if (window.confirm("로그아웃 하시겠습니까?")) {
+      // 로그인 상태 및 유저 정보 모두 초기화
+      setUserPk(null); // userPk 리코일 atom 초기화
+      setUserData(null); // userInfoState 리코일 atom 초기화
+      localStorage.removeItem("isLoggedIn"); // 로그인 상태 로컬스토리지 제거
+      localStorage.removeItem("userPk"); // userPk 로컬스토리지 제거(리코일 effect에서 자동으로 처리되지만 명시적으로)
+      // 필요하다면 추가로 관련 상태도 초기화
+      navigate("/login");
+    }
+  };
+
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
@@ -127,9 +139,10 @@ const SideBar = () => {
           <span className="text-black font-medium">{userData?.name}</span>
           <button
             className="ml-auto hover:bg-gray-100 rounded-full"
-            title="설정"
+            title="로그아웃"
+            onClick={handleLogout}
           >
-            <img src={settingIcon} alt="설정" className="w-5 h-5" />
+            <img src={settingIcon} alt="로그아웃" className="w-5 h-5" />
           </button>
         </div>
       </aside>

@@ -35,7 +35,7 @@ const Fillers = () => {
 
   return (
     <div className="flex flex-row h-screen bg-white">
-      <SideBar userName="Gildong Hong" />
+      <SideBar />
       <div className="flex flex-col flex-1 px-10 pt-4 pb-8 h-full">
         <BackButton />
         <h2 className="text-2xl font-semibold mb-10 select-none">

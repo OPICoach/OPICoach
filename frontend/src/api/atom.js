@@ -1,40 +1,42 @@
 import { atom } from "recoil";
-export const userDataState = atom({
-  key: "userDataState",
-  default: null,
-  effects_UNSTABLE: [
-    ({ setSelf, onSet }) => {
-      const saved = localStorage.getItem("userDataState");
-      if (saved != null) setSelf(JSON.parse(saved));
 
-      onSet((newValue, _, isReset) => {
-        if (isReset || newValue == null) {
-          localStorage.removeItem("userDataState");
-        } else {
-          localStorage.setItem("userDataState", JSON.stringify(newValue));
-        }
-      });
-    },
-  ],
+const localStorageEffect =
+  (key) =>
+  ({ setSelf, onSet }) => {
+    const savedValue = localStorage.getItem(key);
+    if (savedValue != null) {
+      setSelf(JSON.parse(savedValue));
+    }
+
+    onSet((newValue) => {
+      if (newValue === null) {
+        localStorage.removeItem(key);
+      } else {
+        localStorage.setItem(key, JSON.stringify(newValue));
+      }
+    });
+  };
+
+// 사용자 정보 조회를 위한 atom
+export const userInfoState = atom({
+  key: "userInfoState",
+  default: {
+    id: null,
+    name: "",
+    email: "",
+    user_id: "",
+    past_opic_level: "",
+    goal_opic_level: "",
+    background: "",
+    occupation_or_major: "",
+    topics_of_interest: [],
+  },
+  effects: [localStorageEffect("userData")],
 });
 
 export const sideBarState = atom({
   key: "sideBarState",
   default: true,
-  effects_UNSTABLE: [
-    ({ setSelf, onSet }) => {
-      const saved = localStorage.getItem("sideBarState");
-      if (saved != null) setSelf(JSON.parse(saved));
-
-      onSet((newValue, _, isReset) => {
-        if (isReset || newValue == null) {
-          localStorage.removeItem("sideBarState");
-        } else {
-          localStorage.setItem("sideBarState", JSON.stringify(newValue));
-        }
-      });
-    },
-  ],
 });
 
 export const userMessagesFillerState = atom({

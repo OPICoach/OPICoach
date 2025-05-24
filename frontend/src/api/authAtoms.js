@@ -1,11 +1,44 @@
 import { atom } from "recoil";
 
+const localStorageEffect =
+  (key) =>
+  ({ setSelf, onSet }) => {
+    const savedValue = localStorage.getItem(key);
+    // "undefined", null, 빈문자열 등 예외처리
+    if (
+      savedValue !== null &&
+      savedValue !== "undefined" &&
+      savedValue !== ""
+    ) {
+      try {
+        setSelf(JSON.parse(savedValue));
+      } catch (e) {
+        // 파싱 에러 시 초기화
+        setSelf(null);
+      }
+    }
+
+    onSet((newValue, _, isReset) => {
+      if (isReset || newValue == null) {
+        localStorage.removeItem(key);
+      } else {
+        localStorage.setItem(key, JSON.stringify(newValue));
+      }
+    });
+  };
+
 export const loginDataState = atom({
   key: "loginDataState",
   default: {
     id: "",
-    password: ""
-  }
+    password: "",
+  },
+});
+
+export const userPkState = atom({
+  key: "userPkState",
+  default: null,
+  effects: [localStorageEffect("userPk")],
 });
 
 export const signUpDataState = atom({
@@ -14,6 +47,6 @@ export const signUpDataState = atom({
     name: "",
     email: "",
     id: "",
-    password: ""
-  }
-}); 
+    password: "",
+  },
+});

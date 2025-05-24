@@ -4,12 +4,13 @@ import loginLogo from "../assets/loginPage/loginLogo.svg";
 import login_image from "../assets/loginPage/login_image.svg";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { loginDataState } from "../api/authAtoms";
+import { loginDataState, userPkState } from "../api/authAtoms";
 import { loginUserAPI } from "../api/api";
 
-const Login = () => {
+const Login = ({ setIsLoggedIn }) => {
   const nav = useNavigate();
   const [loginData, setLoginData] = useRecoilState(loginDataState);
+  const [userPk, setUserPk] = useRecoilState(userPkState);
 
   const handleInputChange = (field, value) => {
     setLoginData((prev) => ({
@@ -18,7 +19,20 @@ const Login = () => {
     }));
   };
 
-  // 로그인 처리 함수
+  // 백엔드 서버 안 켰을 때
+
+  // const handleLogin = () => {
+  //   if (loginData.id === "1" && loginData.password === "test") {
+  //     setUserPk(1); // 임의의 pk
+  //     setIsLoggedIn(true);
+  //     nav("/");
+  //   } else {
+  //     alert("아이디 또는 비밀번호가 올바르지 않습니다.");
+  //   }
+  // };
+
+  // 백엔드 서버 켰을 때
+
   const handleLogin = async () => {
     const loginInfo = {
       id: loginData.id,
@@ -26,8 +40,15 @@ const Login = () => {
     };
     try {
       const result = await loginUserAPI(loginInfo);
+
+      if (!result || !result.pk) {
+        alert("아이디 또는 비밀번호가 올바르지 않습니다.");
+        return;
+      }
+
       console.log("로그인 성공:", result);
-      // 예시: 로그인 성공 시 메인 페이지로 이동
+      setUserPk(result.pk);
+      setIsLoggedIn(true);
       nav("/");
     } catch (error) {
       if (error.response) {

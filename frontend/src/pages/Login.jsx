@@ -20,6 +20,14 @@ const Login = () => {
 
   // 로그인 처리 함수
   const handleLogin = async () => {
+    // 테스트 계정
+    if (loginData.id === "" && loginData.password === "") {
+      console.log("테스트 계정 로그인 성공");
+      nav("/");
+      return;
+    }
+
+    // 서버 돌아갈 때
     const loginInfo = {
       id: loginData.id,
       pw: loginData.password,
@@ -27,7 +35,6 @@ const Login = () => {
     try {
       const result = await loginUserAPI(loginInfo);
       console.log("로그인 성공:", result);
-      // 예시: 로그인 성공 시 메인 페이지로 이동
       nav("/");
     } catch (error) {
       if (error.response) {

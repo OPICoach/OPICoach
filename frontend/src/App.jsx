@@ -17,21 +17,63 @@ import StudyMaterials from "./pages/StudyMaterials";
 import Fillers from "./pages/Fillers";
 import Edit from "./pages/Edit";
 
+import { useEffect } from "react";
+
 function App() {
+  // 백엔드 서버 켰을 때는 false로 변경
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+
+  useEffect(() => {
+    const loginData = localStorage.getItem("loginData");
+    setIsLoggedIn(!!loginData);
+  }, []);
+
   return (
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={isLoggedIn ? <Home /> : <Navigate to="/login" replace />}
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/information" element={<Information />} />
-          <Route path="/learn" element={<Learn />} />
-          <Route path="/learn/studymaterials" element={<StudyMaterials />} />
-          <Route path="/learn/fillers" element={<Fillers />} />
-          <Route path="/test" element={<Test />} />
-          <Route path="/test/teststart" element={<TestStart />} />
-          <Route path="/edit" element={<Edit />} />
+          <Route
+            path="/information"
+            element={
+              isLoggedIn ? <Information /> : <Navigate to="/login" replace />
+            }
+          />
+          <Route
+            path="/learn"
+            element={isLoggedIn ? <Learn /> : <Navigate to="/login" replace />}
+          />
+          <Route
+            path="/learn/studymaterials"
+            element={
+              isLoggedIn ? <StudyMaterials /> : <Navigate to="/login" replace />
+            }
+          />
+          <Route
+            path="/learn/fillers"
+            element={
+              isLoggedIn ? <Fillers /> : <Navigate to="/login" replace />
+            }
+          />
+          <Route
+            path="/test"
+            element={isLoggedIn ? <Test /> : <Navigate to="/login" replace />}
+          />
+          <Route
+            path="/test/teststart"
+            element={
+              isLoggedIn ? <TestStart /> : <Navigate to="/login" replace />
+            }
+          />
+          <Route
+            path="/edit"
+            element={isLoggedIn ? <Edit /> : <Navigate to="/login" replace />}
+          />
 
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

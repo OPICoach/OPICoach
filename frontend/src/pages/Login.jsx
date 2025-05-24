@@ -7,7 +7,7 @@ import { useRecoilState } from "recoil";
 import { loginDataState, userPkState } from "../api/authAtoms";
 import { loginUserAPI } from "../api/api";
 
-const Login = () => {
+const Login = ({ setIsLoggedIn }) => {
   const nav = useNavigate();
   const [loginData, setLoginData] = useRecoilState(loginDataState);
   const [userPk, setUserPk] = useRecoilState(userPkState);
@@ -21,14 +21,6 @@ const Login = () => {
 
   // 로그인 처리 함수
   const handleLogin = async () => {
-    // 테스트 계정
-    if (loginData.id === "" && loginData.password === "") {
-      console.log("테스트 계정 로그인 성공");
-      setUserPk("0");
-      nav("/");
-      return;
-    }
-
     // 서버 돌아갈 때
     const loginInfo = {
       id: loginData.id,
@@ -36,8 +28,15 @@ const Login = () => {
     };
     try {
       const result = await loginUserAPI(loginInfo);
+
+      if (!result || !result.pk) {
+        alert("아이디 또는 비밀번호가 올바르지 않습니다.");
+        return; // 로그인 상태 변경 및 이동 금지
+      }
+
       console.log("로그인 성공:", result);
-      setUserPk(result.pk); // pk 저장
+      setUserPk(result.pk);
+      setIsLoggedIn(true); // 로그인 상태 변경
       nav("/");
     } catch (error) {
       if (error.response) {

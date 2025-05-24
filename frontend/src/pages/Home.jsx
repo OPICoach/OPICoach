@@ -46,7 +46,7 @@ const Home = () => {
     <div className="flex flex-row">
       <SideBar />
       <div className="flex flex-col w-full h-screen bg-white px-12 mt-10 select-none">
-        {userData?.past_opic_level ? (
+        {userData?.topics_of_interest ? (
           <HomeExistUser
             userName={userData.name}
             pastLevel={userData.past_opic_level}

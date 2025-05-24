@@ -37,20 +37,6 @@ export const userInfoState = atom({
 export const sideBarState = atom({
   key: "sideBarState",
   default: true,
-  effects_UNSTABLE: [
-    ({ setSelf, onSet }) => {
-      const saved = localStorage.getItem("sideBarState");
-      if (saved != null) setSelf(JSON.parse(saved));
-
-      onSet((newValue, _, isReset) => {
-        if (isReset || newValue == null) {
-          localStorage.removeItem("sideBarState");
-        } else {
-          localStorage.setItem("sideBarState", JSON.stringify(newValue));
-        }
-      });
-    },
-  ],
 });
 
 export const userMessagesFillerState = atom({

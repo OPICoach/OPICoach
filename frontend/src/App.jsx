@@ -18,15 +18,22 @@ import Fillers from "./pages/Fillers";
 import Edit from "./pages/Edit";
 
 import { useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { userPkState } from "./api/authAtoms";
 
 function App() {
-  // 백엔드 서버 켰을 때는 false로 변경
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    !!localStorage.getItem("isLoggedIn")
+  );
+  const [userPk, setUserPk] = useRecoilState(userPkState);
 
   useEffect(() => {
-    const loginData = localStorage.getItem("loginData");
-    setIsLoggedIn(!!loginData);
-  }, []);
+    if (isLoggedIn) {
+      localStorage.setItem("isLoggedIn", "true");
+    } else {
+      localStorage.removeItem("isLoggedIn");
+    }
+  }, [isLoggedIn]);
 
   return (
     <>
@@ -36,7 +43,10 @@ function App() {
             path="/"
             element={isLoggedIn ? <Home /> : <Navigate to="/login" replace />}
           />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/login"
+            element={<Login setIsLoggedIn={setIsLoggedIn} />}
+          />
           <Route path="/signup" element={<SignUp />} />
           <Route
             path="/information"

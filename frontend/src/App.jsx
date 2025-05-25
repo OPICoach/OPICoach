@@ -13,8 +13,6 @@ import Learn from "./pages/Learn";
 import Test from "./pages/Test";
 import TestStart from "./pages/TestStart";
 import Information from "./pages/Information";
-import StudyMaterials from "./pages/StudyMaterials";
-import Fillers from "./pages/Fillers";
 import Edit from "./pages/Edit";
 
 import { useEffect } from "react";
@@ -55,20 +53,8 @@ function App() {
             }
           />
           <Route
-            path="/learn"
+            path="/learn/session/:session_id"
             element={isLoggedIn ? <Learn /> : <Navigate to="/login" replace />}
-          />
-          <Route
-            path="/learn/studymaterials"
-            element={
-              isLoggedIn ? <StudyMaterials /> : <Navigate to="/login" replace />
-            }
-          />
-          <Route
-            path="/learn/fillers"
-            element={
-              isLoggedIn ? <Fillers /> : <Navigate to="/login" replace />
-            }
           />
           <Route
             path="/test"

@@ -34,19 +34,28 @@ export const userInfoState = atom({
   effects: [localStorageEffect("userData")],
 });
 
+// sidebar 열림 닫힘 상태를 관리
 export const sideBarState = atom({
   key: "sideBarState",
   default: true,
 });
 
-export const userMessagesFillerState = atom({
-  key: "userMessagesFillerState",
+// learning page user message
+export const userMessagesLearnState = atom({
+  key: "userMessagesLearnState",
   default: [],
 });
 
-export const AIMessagesFillerState = atom({
-  key: "AIMessagesFillerState",
-  default: ["Hello!"],
+// learning page ai message
+export const AIMessagesLearnState = atom({
+  key: "AIMessagesLearnState",
+  default: [],
+});
+
+// learning page messages (통합))
+export const messagesLearnState = atom({
+  key: "messagesLearnState",
+  default: [],
 });
 
 export const userMessagesInforState = atom({
@@ -59,15 +68,25 @@ export const AIMessagesInforState = atom({
   default: ["Hello"],
 });
 
-export const userMessagesMaterialState = atom({
-  key: "userMessagesMaterialState",
-  default: [],
-});
+// export const userMessagesMaterialState = atom({
+//   key: "userMessagesMaterialState",
+//   default: [],
+// });
 
-export const AIMessagesMaterialState = atom({
-  key: "AIMessagesMaterialState",
-  default: ["Hello! How can I assist you today?"],
-});
+// export const AIMessagesMaterialState = atom({
+//   key: "AIMessagesMaterialState",
+//   default: ["Hello! How can I assist you today?"],
+// });
+
+// export const userMessagesFillerState = atom({
+//   key: "userMessagesFillerState",
+//   default: [],
+// });
+
+// export const AIMessagesFillerState = atom({
+//   key: "AIMessagesFillerState",
+//   default: ["Hello!"],
+// });
 
 export const timeLeftState = atom({
   key: "timeLeftState",
@@ -92,4 +111,32 @@ export const audioURLState = atom({
 export const isRecordingState = atom({
   key: "isRecordingState",
   default: false,
+});
+
+// learnSession 관련 상태 관리
+
+export const learnSessionIdState = atom({
+  key: "learnSessionIdState",
+  default: [],
+});
+
+export const learnSessionState = atom({
+  key: "sessionState",
+  default: {
+    id: null,
+    session_id: "",
+    title: "",
+    user_pk: null,
+    created_at: null,
+  },
+});
+
+export const learnSessionListState = atom({
+  key: "learnSessionListState",
+  default: [],
+});
+
+export const learnSessionResponseState = atom({
+  key: "learnSessionResponseState",
+  default: "",
 });

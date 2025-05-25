@@ -43,8 +43,8 @@ export async function updateUserInfoAPI(data) {
 
 // 학습 모드
 
-// 새로운 학습 세션 생성
-export async function postLearningSessionAPI(user_pk, title, session_id) {
+// 새로운 학습 세션 생성 (완)
+export async function postLearningSessionAPI(user_pk, session_id, title) {
   const response = await axios.post(`${API_BASE_URL}/learning/sessions`, {
     user_pk,
     session_id,
@@ -53,7 +53,7 @@ export async function postLearningSessionAPI(user_pk, title, session_id) {
   return response.data;
 }
 
-// 학습 모드에서 사용자의 질문에 대한 답변 생성
+// 학습 모드에서 사용자의 질문에 대한 답변 생성 (완)
 export async function postLearningResponseAPI({
   user_pk,
   session_id,

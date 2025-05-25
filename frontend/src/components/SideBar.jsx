@@ -5,12 +5,14 @@ import testIcon from "../assets/sidebar/test.svg";
 import infoIcon from "../assets/sidebar/infor.svg";
 import logoutIcon from "../assets/sidebar/log-out.svg";
 import sidebarLogo from "../assets/sidebar/sidebarLogo.svg";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, matchPath } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { sideBarState, userInfoState } from "../api/atom";
 import { getUserInfoAPI } from "../api/api";
 import { userPkState } from "../api/authAtoms";
+import { postLearningSessionAPI, endLearningSessionAPI } from "../api/api";
 import useRandomSessionId from "../hooks/useRandomSessionId";
+import { messagesLearnState, learnSessionIdState } from "../api/atom";
 
 const menus = [
   { name: "Home", icon: homeIcon, path: "/" },
@@ -35,6 +37,9 @@ const SideBar = () => {
   const [open, setOpen] = useRecoilState(sideBarState);
   const [userData, setUserData] = useRecoilState(userInfoState);
   const [userPk, setUserPk] = useRecoilState(userPkState);
+  const [messages, setMessages] = useRecoilState(messagesLearnState);
+  const [learnSessionId, setLearnSessionId] =
+    useRecoilState(learnSessionIdState);
   const navigate = useNavigate();
   const location = useLocation();
   const getRandomSessionId = useRandomSessionId();
@@ -114,11 +119,48 @@ const SideBar = () => {
             return (
               <button
                 key={menu.name}
-                onClick={() => {
+                onClick={async () => {
+                  // 현재 세션 페이지라면 세션 종료 처리
+                  const match = matchPath(
+                    "/learn/session/:session_id",
+                    location.pathname
+                  );
+                  // learnSessionIdState에서 session_id를 사용
+                  const currentSessionId = match
+                    ? match.params.session_id
+                    : learnSessionId;
+
+                  // Learn이 아닌 다른 탭 클릭 시 세션 종료
+                  if (menu.name !== "Learn" && currentSessionId) {
+                    try {
+                      await endLearningSessionAPI({
+                        user_pk: userPk,
+                        session_id: currentSessionId,
+                      });
+                      setLearnSessionId(""); // 세션 종료 후 상태 초기화
+                    } catch (e) {
+                      // 실패해도 이동은 계속
+                      console.error("세션 종료 실패", e);
+                      setLearnSessionId(""); // 상태는 초기화
+                    }
+                  }
+
                   if (menu.name === "Learn") {
-                    // Learn 클릭 시 랜덤 세션으로 이동
-                    const sessionId = getRandomSessionId();
-                    navigate(`/learn/session/${sessionId}`);
+                    if (match) {
+                      // 이미 세션 페이지라면 새로고침 효과
+                      navigate(location.pathname);
+                    } else {
+                      // 새로운 세션 생성
+                      const sessionId = getRandomSessionId();
+                      const title = "New Session";
+                      try {
+                        await postLearningSessionAPI(userPk, sessionId, title);
+                        setLearnSessionId(sessionId); // 새 세션 id 저장
+                        navigate(`/learn/session/${sessionId}`);
+                      } catch (e) {
+                        alert("새 세션 생성에 실패했습니다.");
+                      }
+                    }
                   } else {
                     navigate(menu.path);
                   }

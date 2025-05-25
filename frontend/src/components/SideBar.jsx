@@ -10,6 +10,7 @@ import { useRecoilState } from "recoil";
 import { sideBarState, userInfoState } from "../api/atom";
 import { getUserInfoAPI } from "../api/api";
 import { userPkState } from "../api/authAtoms";
+import useRandomSessionId from "../hooks/useRandomSessionId";
 
 const menus = [
   { name: "Home", icon: homeIcon, path: "/" },
@@ -36,6 +37,7 @@ const SideBar = () => {
   const [userPk, setUserPk] = useRecoilState(userPkState);
   const navigate = useNavigate();
   const location = useLocation();
+  const getRandomSessionId = useRandomSessionId();
 
   // userData가 있을 때만 initial을 계산
   const initial = userData?.name ? getProfileInitial(userData.name) : "";
@@ -113,7 +115,13 @@ const SideBar = () => {
               <button
                 key={menu.name}
                 onClick={() => {
-                  navigate(menu.path);
+                  if (menu.name === "Learn") {
+                    // Learn 클릭 시 랜덤 세션으로 이동
+                    const sessionId = getRandomSessionId();
+                    navigate(`/learn/session/${sessionId}`);
+                  } else {
+                    navigate(menu.path);
+                  }
                 }}
                 className={
                   "flex items-center w-full my-[10px] px-5 py-3 text-accent border-[#E5E7EB] rounded-lg transition cursor-pointer " +

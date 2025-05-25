@@ -40,16 +40,23 @@ export const sideBarState = atom({
   default: true,
 });
 
+// learning page user message
 export const userMessagesLearnState = atom({
   key: "userMessagesLearnState",
   default: [],
 });
 
+// learning page ai message
 export const AIMessagesLearnState = atom({
   key: "AIMessagesLearnState",
   default: [],
 });
 
+// learning page messages (통합))
+export const messagesLearnState = atom({
+  key: "messagesLearnState",
+  default: [],
+});
 
 export const userMessagesInforState = atom({
   key: "userMessagesInforState",
@@ -107,6 +114,11 @@ export const isRecordingState = atom({
 });
 
 // learnSession 관련 상태 관리
+
+export const learnSessionIdState = atom({
+  key: "learnSessionIdState",
+  default: [],
+});
 
 export const learnSessionState = atom({
   key: "sessionState",

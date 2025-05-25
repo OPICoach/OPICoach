@@ -1,77 +1,107 @@
-import SideBar from "../components/SideBar.jsx";
-import sidebarLogo from "../assets/sidebar/sidebarLogo.svg";
-import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { userMessagesLearnState } from "../api/atom.js";
 import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { postLearningResponseAPI, postLearningSessionAPI } from "../api/api.js";
+import { userPkState } from "../api/authAtoms.js";
+import SideBar from "../components/SideBar.jsx";
 import MessageInput from "../components/chatPage/MessageInput.jsx";
 import MessageList from "../components/chatPage/MessageList.jsx";
-import { useEffect } from "react";
-
-// const learnMenus = [
-//   { name: "Study Materials", path: "/learn/studymaterials" },
-//   { name: "Learn Fillers", path: "/learn/fillers" },
-// ];
+import { messagesLearnState } from "../api/atom.js";
+import useRandomSessionId from "../hooks/useRandomSessionId";
 
 const Learn = () => {
-  const navigate = useNavigate();
-  const [userMessages, setUserMessages] = useRecoilState(
-    userMessagesLearnState
-  );
-  const [AIMessages] = useRecoilState(userMessagesLearnState);
+  const [user_pk] = useRecoilState(userPkState);
+  const [messages, setMessages] = useRecoilState(messagesLearnState);
   const [input, setInput] = useState("");
+  const [isAILoading, setIsAILoading] = useState(false);
+  const navigate = useNavigate();
+  const { session_id } = useParams();
+  const getRandomSessionId = useRandomSessionId();
 
-  const handleSend = () => {
-    if (input.trim() === "") return;
-    setUserMessages([...userMessages, input]);
-    setInput("");
+  // + 버튼 클릭 시 새로운 세션 생성 및 이동
+  const handleNewSession = async () => {
+    const randomSessionId = getRandomSessionId();
+    const title = "New Session";
+    try {
+      await postLearningSessionAPI(user_pk, randomSessionId, title);
+      setMessages([]);
+      navigate(`/learn/session/${randomSessionId}`);
+    } catch (e) {
+      alert("새 세션 생성에 실패했습니다.");
+    }
   };
 
-  // userMessages, AIMessages를 messages로 합치는 함수
-  const mergeMessages = (userMessages, AIMessages) => {
-    const messages = [];
-    let u = 0,
-      a = 0;
-    while (u < userMessages.length || a < AIMessages.length) {
-      if (a < AIMessages.length)
-        messages.push({ role: "ai", content: AIMessages[a++] });
-      if (u < userMessages.length)
-        messages.push({ role: "user", content: userMessages[u++] });
+  const handleSend = async () => {
+    if (input.trim() === "") return;
+
+    const newUserMessage = { role: "user", content: input };
+    setMessages((prev) => [
+      ...prev,
+      newUserMessage,
+      { role: "ai", content: "loading...", isLoading: true },
+    ]);
+    setInput("");
+    setIsAILoading(true);
+
+    try {
+      const response = await postLearningResponseAPI({
+        user_pk,
+        session_id: session_id || "study-material-demo-session",
+        question: input,
+      });
+
+      setMessages((prev) => {
+        const lastIndex = prev.length - 1;
+        if (prev[lastIndex]?.isLoading) {
+          return [
+            ...prev.slice(0, lastIndex),
+            { role: "ai", content: response.answer },
+          ];
+        }
+        return [...prev, { role: "ai", content: response.answer }];
+      });
+    } catch (error) {
+      setMessages((prev) => {
+        const lastIndex = prev.length - 1;
+        if (prev[lastIndex]?.isLoading) {
+          return [
+            ...prev.slice(0, lastIndex),
+            { role: "ai", content: "서버와의 통신에 실패했습니다." },
+          ];
+        }
+        return [
+          ...prev,
+          { role: "ai", content: "서버와의 통신에 실패했습니다." },
+        ];
+      });
+    } finally {
+      setIsAILoading(false);
     }
-    return messages;
   };
 
   return (
     <div className="flex flex-row h-screen bg-white">
       <SideBar />
       <div className="flex flex-col flex-1 px-10 pt-8 pb-8 h-full">
-        <h2 className="text-2xl font-semibold mb-10 select-none">Learn</h2>
-        <MessageList messages={mergeMessages(userMessages, AIMessages)} />
+        <div className="flex items-center justify-between mb-10">
+          <h2 className="text-2xl font-semibold select-none">Learn</h2>
+          <button
+            onClick={handleNewSession}
+            className="ml-4 px-2.5 py-1.5 text-base rounded-full bg-blue-500 text-white hover:bg-blue-600 transition"
+            title="새 세션 만들기"
+            style={{ minWidth: 32, minHeight: 32, lineHeight: "1.1" }}
+          >
+            +
+          </button>
+        </div>
+        <MessageList messages={messages} />
         <MessageInput
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onClick={handleSend}
-          isAILoading={false}
+          isAILoading={isAILoading}
         />
       </div>
-      {/* <div className="flex flex-col justify-center items-center w-full h-screen bg-white">
-        <img
-          src={sidebarLogo}
-          alt="OPICoach Logo"
-          className="w-[200px] shrink-0 mt-[-40px] mb-[100px]"
-        />
-        <div className="flex flex-col gap-10">
-          {learnMenus.map((menu) => (
-            <button
-              key={menu.name}
-              onClick={() => navigate(menu.path)}
-              className="w-[300px] h-[80px] bg-gray-100 text-black text-xl rounded-xl hover:bg-gray-200 transition"
-            >
-              {menu.name}
-            </button>
-          ))}
-        </div>
-      </div> */}
     </div>
   );
 };

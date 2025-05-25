@@ -44,9 +44,10 @@ export async function updateUserInfoAPI(data) {
 // 학습 모드
 
 // 새로운 학습 세션 생성
-export async function postLearningSessionAPI(user_pk, title) {
+export async function postLearningSessionAPI(user_pk, title, session_id) {
   const response = await axios.post(`${API_BASE_URL}/learning/sessions`, {
     user_pk,
+    session_id,
     title,
   });
   return response.data;
@@ -132,7 +133,7 @@ export async function postLearningNoteAPI({ user_pk, session_id, title }) {
 // 사용자의 학습 노트 목록 조회
 export async function getLearningNotesAPI(user_pk) {
   const response = await axios.get(`${API_BASE_URL}/learning/notes/${user_pk}`);
-  return response.data; 
+  return response.data;
 }
 
 // 특정 학습 노트 삭제

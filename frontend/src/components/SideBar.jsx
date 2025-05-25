@@ -5,7 +5,7 @@ import testIcon from "../assets/sidebar/test.svg";
 import infoIcon from "../assets/sidebar/infor.svg";
 import logoutIcon from "../assets/sidebar/log-out.svg";
 import sidebarLogo from "../assets/sidebar/sidebarLogo.svg";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, matchPath } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { sideBarState, userInfoState } from "../api/atom";
 import { getUserInfoAPI } from "../api/api";
@@ -116,9 +116,19 @@ const SideBar = () => {
                 key={menu.name}
                 onClick={() => {
                   if (menu.name === "Learn") {
-                    // Learn 클릭 시 랜덤 세션으로 이동
-                    const sessionId = getRandomSessionId();
-                    navigate(`/learn/session/${sessionId}`);
+                    // 현재 경로가 /learn/session/:session_id에 매칭되는지 확인
+                    const match = matchPath(
+                      "/learn/session/:session_id",
+                      location.pathname
+                    );
+                    if (match) {
+                      // 이미 learn 페이지라면 현재 session_id로 이동
+                      navigate(location.pathname);
+                    } else {
+                      // 아니면 랜덤 session id로 이동
+                      const sessionId = getRandomSessionId();
+                      navigate(`/learn/session/${sessionId}`);
+                    }
                   } else {
                     navigate(menu.path);
                   }

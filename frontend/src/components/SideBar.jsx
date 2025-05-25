@@ -10,7 +10,9 @@ import { useRecoilState } from "recoil";
 import { sideBarState, userInfoState } from "../api/atom";
 import { getUserInfoAPI } from "../api/api";
 import { userPkState } from "../api/authAtoms";
+import { postLearningSessionAPI } from "../api/api";
 import useRandomSessionId from "../hooks/useRandomSessionId";
+import { messagesLearnState } from "../api/atom";
 
 const menus = [
   { name: "Home", icon: homeIcon, path: "/" },
@@ -35,6 +37,7 @@ const SideBar = () => {
   const [open, setOpen] = useRecoilState(sideBarState);
   const [userData, setUserData] = useRecoilState(userInfoState);
   const [userPk, setUserPk] = useRecoilState(userPkState);
+  const [messages, setMessages] = useRecoilState(messagesLearnState);
   const navigate = useNavigate();
   const location = useLocation();
   const getRandomSessionId = useRandomSessionId();
@@ -114,20 +117,26 @@ const SideBar = () => {
             return (
               <button
                 key={menu.name}
-                onClick={() => {
+                onClick={async () => {
                   if (menu.name === "Learn") {
-                    // 현재 경로가 /learn/session/:session_id에 매칭되는지 확인
                     const match = matchPath(
                       "/learn/session/:session_id",
                       location.pathname
                     );
                     if (match) {
-                      // 이미 learn 페이지라면 현재 session_id로 이동
+                      // 이미 세션 페이지라면 현재 세션 유지 (새로고침 효과)
                       navigate(location.pathname);
                     } else {
-                      // 아니면 랜덤 session id로 이동
+                      // 새로운 세션 생성
                       const sessionId = getRandomSessionId();
-                      navigate(`/learn/session/${sessionId}`);
+                      const title = "New Session";
+                      try {
+                        await postLearningSessionAPI(userPk, sessionId, title);
+                        setMessages([]);
+                        navigate(`/learn/session/${sessionId}`);
+                      } catch (e) {
+                        alert("새 세션 생성에 실패했습니다.");
+                      }
                     }
                   } else {
                     navigate(menu.path);

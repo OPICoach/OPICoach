@@ -117,7 +117,7 @@ export const isRecordingState = atom({
 
 export const learnSessionIdState = atom({
   key: "learnSessionIdState",
-  default: [],
+  default: "",
 });
 
 export const learnSessionState = atom({

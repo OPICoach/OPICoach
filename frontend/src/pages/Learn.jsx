@@ -87,7 +87,7 @@ const Learn = () => {
           <h2 className="text-2xl font-semibold select-none">Learn</h2>
           <button
             onClick={handleNewSession}
-            className="ml-4 px-2.5 py-1.5 text-base rounded-full bg-blue-500 text-white hover:bg-blue-600 transition"
+            className="px-1 py-1 text-xl rounded-full bg-primary text-white hover:bg-blue-600 transition"
             title="새 세션 만들기"
             style={{ minWidth: 32, minHeight: 32, lineHeight: "1.1" }}
           >

@@ -144,3 +144,4 @@ export async function deleteLearningNoteAPI(note_id, user_pk) {
   );
   return response.data;
 }
+

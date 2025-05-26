@@ -4,7 +4,7 @@ import loginLogo from "../assets/loginPage/loginLogo.svg";
 import login_image from "../assets/loginPage/login_image.svg";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { loginDataState, userPkState } from "../api/authAtoms";
+import { loginDataState, userPkState } from "../atom/authAtoms";
 import { loginUserAPI } from "../api/api";
 
 const Login = ({ setIsLoggedIn }) => {

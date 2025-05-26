@@ -1,18 +1,19 @@
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import {
-  learnOpenState,
   learningSessionListState,
-  loadingSessionsState,
   messagesLearnState,
   learnSessionIdState,
-} from "../../api/atom";
+} from "../../atom/learnAtom";
+
+import { learnOpenState, loadingSessionsState } from "../../atom/sidebarAtom";
+
 import {
   getLearningSessionsAPI,
   getLearningSessionAPI,
   postLearningSessionAPI,
 } from "../../api/api";
-import { userPkState } from "../../api/authAtoms";
+import { userPkState } from "../../atom/authAtoms";
 import { useNavigate, useParams } from "react-router-dom";
 
 import useRandomSessionId from "../../hooks/useRandomSessionId";

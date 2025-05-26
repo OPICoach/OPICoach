@@ -7,14 +7,13 @@ import logoutIcon from "../../assets/sidebar/log-out.svg";
 import sidebarLogo from "../../assets/sidebar/sidebarLogo.svg";
 import { useNavigate, useLocation, matchPath } from "react-router-dom";
 import { useRecoilState, useResetRecoilState } from "recoil";
+import { messagesLearnState, learnSessionIdState } from "../../atom/learnAtom";
 import {
-  sideBarState,
-  userInfoState,
-  messagesLearnState,
-  learnSessionIdState,
   learnOpenState,
-} from "../../api/atom";
-import { userPkState } from "../../api/authAtoms";
+  loadingSessionsState,
+  sideBarState,
+} from "../../atom/sidebarAtom";
+import { userPkState, userInfoState } from "../../atom/authAtoms";
 import {
   postLearningSessionAPI,
   endLearningSessionAPI,

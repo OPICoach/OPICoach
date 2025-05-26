@@ -57,28 +57,29 @@ const SideBarLearnSection = ({ menu, isActive, learnSessionId }) => {
   const { session_id } = useParams();
   const getRandomSessionId = useRandomSessionId();
 
-  // 세션 목록 불러오기
+  // 세션 목록 불러오기 + 없으면 새 세션 생성
   const fetchSessions = async () => {
     if (!userPk) return;
     setLoadingSessions(true);
     try {
       const data = await getLearningSessionsAPI(userPk);
       setLearningSessionList(data || []);
+      // 세션 목록을 받아온 후, 세션이 없을 때만 새 세션 생성
+      if (!data || data.length === 0) {
+        await createNewSession();
+      }
     } catch (e) {
       setLearningSessionList([]);
+      await createNewSession(); // 에러로 세션 목록을 못 받아올 때도 새 세션 생성
     }
     setLoadingSessions(false);
   };
 
-  // Learn 탭 토글 시 세션 목록 불러오기 또는 세션 생성
+  // Learn 탭 토글 시 세션 목록 불러오기
   const handleLearnToggle = async () => {
     setLearnOpen((prev) => !prev);
     if (!learnOpen) {
       await fetchSessions();
-      // 세션이 없으면 새 세션 생성
-      if (learningSessionList.length === 0) {
-        await createNewSession();
-      }
     }
   };
 

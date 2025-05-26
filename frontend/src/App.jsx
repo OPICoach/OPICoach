@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
   Navigate,
+  Outlet
 } from "react-router-dom";
 
 import Home from "./pages/Home";
@@ -12,12 +13,13 @@ import SignUp from "./pages/SignUp";
 import Learn from "./pages/Learn";
 import Test from "./pages/Test";
 import TestStart from "./pages/TestStart";
-import Information from "./pages/Information";
+import Note from "./pages/Note";
 import Edit from "./pages/Edit";
 
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { userPkState } from "./atom/authAtoms";
+import { sideBarState } from "./atom/sidebarAtom";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(
@@ -47,10 +49,8 @@ function App() {
           />
           <Route path="/signup" element={<SignUp />} />
           <Route
-            path="/information"
-            element={
-              isLoggedIn ? <Information /> : <Navigate to="/login" replace />
-            }
+            path="/note"
+            element={isLoggedIn ? <Note /> : <Navigate to="/login" replace />}
           />
           <Route
             path="/learn/session/:session_id"

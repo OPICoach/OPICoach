@@ -1,13 +1,23 @@
 import SideBar from "../components/sideBar/SideBar.jsx";
 import { useNavigate } from "react-router-dom";
 import OnboardingButton from "../components/homePage/OnboardingButton.jsx";
+import { sideBarState } from "../atom/sidebarAtom";
+import { useRecoilState } from "recoil";
 
 const Test = () => {
   const navigate = useNavigate();
+  const [open] = useRecoilState(sideBarState);
 
   return (
     <div className="flex flex-row h-screen">
-      <SideBar />
+      <div
+        className={`transition-all duration-300 ${
+          open ? "w-[230px] min-w-[230px]" : "w-0 min-w-0"
+        }`}
+        style={{ overflow: open ? "visible" : "hidden" }}
+      >
+        <SideBar />
+      </div>
       <main className="flex flex-col w-full bg-white h-screen">
         <div className=" bg-white px-16 pt-4 pb-4 mt-12">
           <h2 className="text-3xl font-semibold mb-10 select-none">

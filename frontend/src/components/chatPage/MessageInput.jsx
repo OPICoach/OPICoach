@@ -1,6 +1,14 @@
 import MessageButton from "./MessageButton";
+import MenuSettingsButton from "./MenuSettingsButton";
 
-const MessageInput = ({ value, onClick, onChange, isAILoading }) => {
+const MessageInput = ({
+  value,
+  onClick,
+  onChange,
+  isAILoading,
+  onCreateNote,
+  onChangeModel,
+}) => {
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -10,6 +18,11 @@ const MessageInput = ({ value, onClick, onChange, isAILoading }) => {
 
   return (
     <div className="flex items-center gap-4 pt-3 pb-2 bg-white">
+      <MenuSettingsButton
+        onCreateNote={onCreateNote}
+        onChangeModel={onChangeModel}
+        isDisabled={isAILoading}
+      />
       <input
         type="text"
         placeholder="Ask about this lesson..."

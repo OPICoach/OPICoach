@@ -1,4 +1,4 @@
-import SideBar from "../components/SideBar.jsx";
+import SideBar from "../components/sideBar/SideBar.jsx";
 import MessageInput from "../components/chatPage/MessageInput.jsx";
 import MessageList from "../components/chatPage/MessageList.jsx";
 import { useState } from "react";

@@ -1,4 +1,4 @@
-import SideBar from "../components/SideBar.jsx";
+import SideBar from "../components/sideBar/SideBar.jsx";
 import { useNavigate } from "react-router-dom";
 import OnboardingButton from "../components/homePage/OnboardingButton.jsx";
 

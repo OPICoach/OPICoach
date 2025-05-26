@@ -1,16 +1,22 @@
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   postLearningResponseAPI,
   postLearningSessionAPI,
   endLearningSessionAPI,
+  getLearningSessionAPI,
+  getLearningSessionsAPI,
 } from "../api/api.js";
 import { userPkState } from "../api/authAtoms.js";
-import SideBar from "../components/SideBar.jsx";
+import SideBar from "../components/sideBar/SideBar.jsx";
 import MessageInput from "../components/chatPage/MessageInput.jsx";
 import MessageList from "../components/chatPage/MessageList.jsx";
-import { messagesLearnState, learnSessionIdState } from "../api/atom.js";
+import {
+  messagesLearnState,
+  learnSessionIdState,
+  learningSessionListState,
+} from "../api/atom.js";
 import useRandomSessionId from "../hooks/useRandomSessionId";
 
 function getTitleFromMessage(message) {
@@ -29,6 +35,7 @@ const Learn = () => {
   const [isAILoading, setIsAILoading] = useState(false);
   const [learnSessionId, setLearnSessionId] =
     useRecoilState(learnSessionIdState);
+  const setLearningSessionList = useSetRecoilState(learningSessionListState);
   const navigate = useNavigate();
   const { session_id } = useParams();
   const getRandomSessionId = useRandomSessionId();
@@ -36,6 +43,26 @@ const Learn = () => {
   useEffect(() => {
     if (session_id) setLearnSessionId(session_id);
   }, [session_id, setLearnSessionId]);
+
+  // session_id가 변경될 때마다 메시지 로드
+  useEffect(() => {
+    const fetchSessionMessages = async () => {
+      if (user_pk && session_id) {
+        try {
+          setIsAILoading(true); // 로딩 상태 추가
+          const sessionData = await getLearningSessionAPI(user_pk, session_id);
+          setMessages(sessionData.messages || []);
+        } catch (e) {
+          console.error("세션 메시지 로드 실패:", e);
+          setMessages([]);
+        } finally {
+          setIsAILoading(false);
+        }
+      }
+    };
+
+    fetchSessionMessages();
+  }, [session_id, user_pk, setMessages]);
 
   // + 버튼 클릭 시 새로운 세션 생성 및 이동
   const handleNewSession = async () => {
@@ -49,14 +76,16 @@ const Learn = () => {
     }
 
     let title = "New Session";
-
-    // 새 세션 생성
     const randomSessionId = getRandomSessionId();
     try {
       await postLearningSessionAPI(user_pk, randomSessionId, title);
       setLearnSessionId(randomSessionId);
       setMessages([]);
       navigate(`/learn/session/${randomSessionId}`);
+
+      // 새 세션 생성 후 세션 목록 새로고침
+      const sessions = await getLearningSessionsAPI(user_pk);
+      setLearningSessionList(sessions || []);
     } catch (e) {
       alert("새 세션 생성에 실패했습니다.");
     }

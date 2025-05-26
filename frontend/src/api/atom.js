@@ -131,12 +131,21 @@ export const learnSessionState = atom({
   },
 });
 
-export const learnSessionListState = atom({
-  key: "learnSessionListState",
+// sidebar learn page 메뉴 상태
+export const learnOpenState = atom({
+  key: "learnOpenState",
+  default: false,
+});
+
+// 학습 세션 목록 상태
+export const learningSessionListState = atom({
+  key: "learningSessionsState",
   default: [],
 });
 
-export const learnSessionResponseState = atom({
-  key: "learnSessionResponseState",
-  default: "",
+// 
+export const loadingSessionsState = atom({
+  key: "loadingSessionsState",
+  default: false,
 });
+

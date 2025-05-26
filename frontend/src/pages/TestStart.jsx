@@ -1,4 +1,4 @@
-import SideBar from "../components/SideBar.jsx";
+import SideBar from "../components/sideBar/SideBar.jsx";
 import { useEffect, useRef } from "react";
 import { useRecoilState } from "recoil";
 import {

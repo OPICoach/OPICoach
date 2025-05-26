@@ -90,7 +90,7 @@ export async function endLearningSessionWithChatAPI(
   return response.data;
 }
 
-// 사용자의 학습 세션 목록 조회
+// 사용자의 학습 세션 목록 조회 (완)
 export async function getLearningSessionsAPI(user_pk) {
   const response = await axios.get(
     `${API_BASE_URL}/learning/sessions/${user_pk}`

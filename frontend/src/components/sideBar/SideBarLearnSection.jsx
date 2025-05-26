@@ -1,0 +1,147 @@
+import { useEffect } from "react";
+import { useRecoilState } from "recoil";
+import {
+  learnOpenState,
+  learningSessionListState,
+  loadingSessionsState,
+  messagesLearnState,
+  learnSessionIdState,
+} from "../../api/atom";
+import { getLearningSessionsAPI, getLearningSessionAPI } from "../../api/api";
+import { userPkState } from "../../api/authAtoms";
+import { useNavigate, useParams } from "react-router-dom";
+
+const ChevronDownIcon = () => (
+  <svg
+    width="20"
+    height="20"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    viewBox="0 0 24 24"
+  >
+    <path d="M6 9l6 6 6-6" />
+  </svg>
+);
+
+const ChevronUpIcon = () => (
+  <svg
+    width="20"
+    height="20"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    viewBox="0 0 24 24"
+  >
+    <path d="M6 15l6-6 6 6" />
+  </svg>
+);
+
+const SideBarLearnSection = ({ menu, isActive, learnSessionId }) => {
+  const [learnOpen, setLearnOpen] = useRecoilState(learnOpenState);
+  const [learningSessionList, setLearningSessionList] = useRecoilState(
+    learningSessionListState
+  );
+  const [loadingSessions, setLoadingSessions] =
+    useRecoilState(loadingSessionsState);
+  const [userPk] = useRecoilState(userPkState);
+  const [, setMessages] = useRecoilState(messagesLearnState);
+  const [, setLearnSessionId] = useRecoilState(learnSessionIdState);
+  const navigate = useNavigate();
+  const { session_id } = useParams();
+
+  // 세션 목록 불러오기
+  const fetchSessions = async () => {
+    if (!userPk) return;
+    setLoadingSessions(true);
+    try {
+      const data = await getLearningSessionsAPI(userPk);
+      setLearningSessionList(data || []);
+    } catch (e) {
+      setLearningSessionList([]);
+    }
+    setLoadingSessions(false);
+  };
+
+  // Learn 탭 토글 시 세션 목록 불러오기
+  const handleLearnToggle = async () => {
+    setLearnOpen((prev) => !prev);
+    if (!learnOpen) await fetchSessions();
+  };
+
+  // 세션 클릭 시 learnSessionId도 업데이트
+  const handleSessionClick = (session) => {
+    setLearnSessionId(session.session_id); // 현재 세션 id 업데이트
+    navigate(`/learn/session/${session.session_id}`);
+  };
+
+  // Learn 탭 진입 시 가장 최근 세션 자동 로드
+  useEffect(() => {
+    if (learnOpen && learningSessionList.length > 0) {
+      const latest = learningSessionList[learningSessionList.length - 1];
+      if (latest && learnSessionId !== latest.session_id) {
+        handleSessionClick(latest);
+      }
+    }
+    // eslint-disable-next-line
+  }, [learnOpen, learningSessionList]);
+
+  return (
+    <div>
+      <button
+        onClick={handleLearnToggle}
+        className={
+          "flex items-center w-full my-[10px] px-5 py-3 text-accent border-[#E5E7EB] rounded-lg transition cursor-pointer " +
+          (isActive ? "bg-white font-semibold" : "hover:bg-white")
+        }
+        style={{ outline: "none", border: "none", position: "relative" }}
+      >
+        <img src={menu.icon} alt={menu.name} className="w-6 h-6 mr-[19px]" />
+        <span>{menu.name}</span>
+        <span className="ml-auto flex items-center">
+          {learnOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
+        </span>
+      </button>
+      {learnOpen && (
+        <div
+          className="ml-8 mt-2"
+          style={{
+            maxHeight: "210px",
+            overflowY: "auto",
+            scrollbarWidth: "thin",
+          }}
+        >
+          {loadingSessions ? (
+            <div>로딩 중...</div>
+          ) : learningSessionList.length === 0 ? (
+            <div className="text-gray-400 text-sm">저장된 세션이 없습니다.</div>
+          ) : (
+            <ul>
+              {learningSessionList.map((session) => (
+                <li
+                  key={session.session_id}
+                  className={`py-2 px-2 rounded cursor-pointer transition 
+                    ${
+                      learnSessionId === session.session_id
+                        ? "bg-blue-100 font-bold"
+                        : ""
+                    }`}
+                  onClick={() => handleSessionClick(session)}
+                  style={{
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                  }}
+                >
+                  {session.title || "제목 없음"}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default SideBarLearnSection;

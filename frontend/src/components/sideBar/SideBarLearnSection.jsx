@@ -91,7 +91,7 @@ const SideBarLearnSection = ({ menu, isActive, learnSessionId }) => {
   // 세션 생성 함수 추가
   const createNewSession = async () => {
     if (!userPk) return;
-    let title = "New Session!";
+    let title = "제일 처음일 때";
     const randomSessionId = getRandomSessionId();
     try {
       const newSession = await postLearningSessionAPI(
@@ -109,15 +109,13 @@ const SideBarLearnSection = ({ menu, isActive, learnSessionId }) => {
     }
   };
 
-  // Learn 탭 진입 시 가장 최근 세션 자동 로드
   useEffect(() => {
     if (learnOpen && learningSessionList.length > 0) {
-      const latest = learningSessionList[learningSessionList.length - 1];
-      if (latest && learnSessionId !== latest.session_id) {
-        handleSessionClick(latest);
+      const first = learningSessionList[0];
+      if (first && learnSessionId !== first.session_id) {
+        handleSessionClick(first);
       }
     }
-    // eslint-disable-next-line
   }, [learnOpen, learningSessionList]);
 
   return (

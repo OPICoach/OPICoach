@@ -77,16 +77,29 @@ const Learn = () => {
 
     let title = "New Session";
     const randomSessionId = getRandomSessionId();
-    try {
-      await postLearningSessionAPI(user_pk, randomSessionId, title);
-      setLearnSessionId(randomSessionId);
-      setMessages([]);
-      navigate(`/learn/session/${randomSessionId}`);
 
-      // 새 세션 생성 후 세션 목록 새로고침
+    try {
+      // 세션 생성 API 호출 및 응답 대기
+      const newSession = await postLearningSessionAPI(
+        user_pk,
+        randomSessionId,
+        title
+      );
+
+      // 세션 ID 상태 업데이트
+      setLearnSessionId(randomSessionId);
+
+      // 메시지 초기화
+      setMessages([]);
+
+      // 세션 목록 새로고침
       const sessions = await getLearningSessionsAPI(user_pk);
       setLearningSessionList(sessions || []);
+
+      // 새 세션 페이지로 이동 (마지막에 실행)
+      navigate(`/learn/session/${randomSessionId}`);
     } catch (e) {
+      console.error("새 세션 생성 실패:", e);
       alert("새 세션 생성에 실패했습니다.");
     }
   };

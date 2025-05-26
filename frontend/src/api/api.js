@@ -67,7 +67,7 @@ export async function postLearningResponseAPI({
   return response.data; // { answer: "..." }
 }
 
-// 학습 세션의 채팅 내용 종료 처리
+// 학습 세션의 채팅 내용 종료 처리 (완)
 export async function endLearningSessionAPI({ user_pk, session_id }) {
   const response = await axios.post(`${API_BASE_URL}/learning/sessions/end`, {
     user_pk,
@@ -76,7 +76,7 @@ export async function endLearningSessionAPI({ user_pk, session_id }) {
   return response.data;
 }
 
-// 학습 세션 채팅 내용 전달
+// 학습 세션 채팅 내용 전달 (보류 -> 아직 사용 X)
 export async function endLearningSessionWithChatAPI(
   user_pk,
   session_id,
@@ -90,7 +90,7 @@ export async function endLearningSessionWithChatAPI(
   return response.data;
 }
 
-// 사용자의 학습 세션 목록 조회
+// 사용자의 학습 세션 목록 조회 (완)
 export async function getLearningSessionsAPI(user_pk) {
   const response = await axios.get(
     `${API_BASE_URL}/learning/sessions/${user_pk}`

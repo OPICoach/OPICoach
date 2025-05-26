@@ -3,7 +3,7 @@ import { userInfoState } from "../api/atom";
 import { useNavigate } from "react-router-dom";
 import OnboardingSurvey from "../components/homePage/OnboardingSurvey";
 import { updateUserInfoAPI } from "../api/api";
-import SideBar from "../components/SideBar.jsx";
+import SideBar from "../components/sideBar/SideBar.jsx";
 import { userPkState } from "../api/authAtoms.js";
 
 const Edit = () => {

@@ -27,7 +27,7 @@ const menus = [
   { name: "Home", icon: homeIcon, path: "/" },
   { name: "Learn", icon: learnIcon, path: "/learn" },
   { name: "Test", icon: testIcon, path: "/test" },
-  { name: "Information", icon: infoIcon, path: "/information" },
+  { name: "Note", icon: infoIcon, path: "/note" },
 ];
 
 // 유저 네임 앞자리 가져오기
@@ -202,7 +202,7 @@ const SideBar = () => {
           })}
         </nav>
         {/* 프로필 */}
-        <div className="flex items-center px-5 pb-6 cursor-default">
+        <div className="flex items-center px-5 pb-6 select-none">
           <div className="w-9 h-9 bg-primary rounded-full flex items-center justify-center mr-3">
             <span className="text-white text-lg font-bold">{initial}</span>
           </div>

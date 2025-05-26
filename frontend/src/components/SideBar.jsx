@@ -155,7 +155,8 @@ const SideBar = () => {
                       const title = "New Session";
                       try {
                         await postLearningSessionAPI(userPk, sessionId, title);
-                        setLearnSessionId(sessionId); // 새 세션 id 저장
+                        setLearnSessionId(sessionId);
+                        setMessages([]);
                         navigate(`/learn/session/${sessionId}`);
                       } catch (e) {
                         alert("새 세션 생성에 실패했습니다.");

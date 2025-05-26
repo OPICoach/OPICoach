@@ -47,11 +47,9 @@ const Learn = () => {
         console.error("세션 종료 실패", e);
       }
     }
-    // title: 첫 메시지의 맨 앞 줄 10글자 (없으면 "New Session")
+
     let title = "New Session";
-    if (messages.length > 0 && messages[0].role === "user") {
-      title = getTitleFromMessage(messages[0].content) || "New Session";
-    }
+
     // 새 세션 생성
     const randomSessionId = getRandomSessionId();
     try {

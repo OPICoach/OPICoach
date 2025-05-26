@@ -113,7 +113,7 @@ export const isRecordingState = atom({
   default: false,
 });
 
-// learnSession 관련 상태 관리
+// learn Session 관련 상태 관리
 
 export const learnSessionIdState = atom({
   key: "learnSessionIdState",

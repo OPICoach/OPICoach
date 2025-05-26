@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
   Navigate,
+  Outlet
 } from "react-router-dom";
 
 import Home from "./pages/Home";
@@ -18,6 +19,7 @@ import Edit from "./pages/Edit";
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { userPkState } from "./atom/authAtoms";
+import { sideBarState } from "./atom/sidebarAtom";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(

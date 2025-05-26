@@ -12,6 +12,7 @@ import {
   getLearningNotesAPI,
   deleteLearningNoteAPI,
 } from "../api/api";
+import { sideBarState } from "../atom/sidebarAtom";
 
 // Trash Icon
 const TrashIcon = () => (
@@ -40,6 +41,7 @@ const Note = () => {
   const [creating, setCreating] = useState(false);
   const [error, setError] = useState("");
   const [noteLoading, setNoteLoading] = useState(false);
+  const [open] = useRecoilState(sideBarState);
 
   // Fetch session list
   useEffect(() => {
@@ -176,7 +178,8 @@ const Note = () => {
       return (
         <div className="flex flex-col gap-4">
           <div className="text-gray-400">
-            No note for this session.<br />
+            No note for this session.
+            <br />
             Click the button below to create a note.
           </div>
           <button
@@ -201,7 +204,14 @@ const Note = () => {
 
   return (
     <div className="flex flex-row h-screen bg-white">
-      <SideBar />
+      <div
+        className={`transition-all duration-300 ${
+          open ? "w-[230px] min-w-[230px]" : "w-0 min-w-0"
+        }`}
+        style={{ overflow: open ? "visible" : "hidden" }}
+      >
+        <SideBar />
+      </div>
       <div className="flex flex-col flex-1 px-10 pt-8 pb-8 h-full">
         <h2 className="text-2xl font-semibold mb-10 select-none">Note</h2>
         <div className="flex flex-row gap-10 h-full">

@@ -18,6 +18,7 @@ import {
   learningSessionListState,
 } from "../atom/learnAtom.js";
 import useRandomSessionId from "../hooks/useRandomSessionId";
+import { sideBarState } from "../atom/sidebarAtom";
 
 function getTitleFromMessage(message) {
   // 첫 줄만 추출
@@ -39,6 +40,7 @@ const Learn = () => {
   const navigate = useNavigate();
   const { session_id } = useParams();
   const getRandomSessionId = useRandomSessionId();
+  const [open] = useRecoilState(sideBarState);
 
   useEffect(() => {
     if (session_id) setLearnSessionId(session_id);
@@ -154,7 +156,14 @@ const Learn = () => {
 
   return (
     <div className="flex flex-row h-screen bg-white">
-      <SideBar />
+      <div
+        className={`transition-all duration-300 ${
+          open ? "w-[230px] min-w-[230px]" : "w-0 min-w-0"
+        }`}
+        style={{ overflow: open ? "visible" : "hidden" }}
+      >
+        <SideBar />
+      </div>
       <div className="flex flex-col flex-1 px-10 pt-8 pb-8 h-full">
         <div className="flex items-center justify-between mb-10">
           <h2 className="text-2xl font-semibold select-none">Learn</h2>

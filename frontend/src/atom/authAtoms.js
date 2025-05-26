@@ -50,3 +50,20 @@ export const signUpDataState = atom({
     password: "",
   },
 });
+
+// 사용자 정보 조회를 위한 atom
+export const userInfoState = atom({
+  key: "userInfoState",
+  default: {
+    id: null,
+    name: "",
+    email: "",
+    user_id: "",
+    past_opic_level: "",
+    goal_opic_level: "",
+    background: "",
+    occupation_or_major: "",
+    topics_of_interest: [],
+  },
+  effects: [localStorageEffect("userData")],
+});

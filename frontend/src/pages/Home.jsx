@@ -2,9 +2,8 @@ import SideBar from "../components/sideBar/SideBar.jsx";
 import HomeExistUser from "../components/homePage/HomeExistUser";
 import HomeNewUser from "../components/homePage/HomeNewUser";
 import { useRecoilState } from "recoil";
-import { userInfoState } from "../api/atom.js";
+import { userInfoState, userPkState } from "../atom/authAtoms.js";
 import { updateUserInfoAPI } from "../api/api";
-import { userPkState } from "../api/authAtoms.js";
 
 const Home = () => {
   const [userData, setUserData] = useRecoilState(userInfoState);

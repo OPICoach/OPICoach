@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import LoginRegisterInput from "../components/LoginSignUpInput";
 import loginLogo from "../assets/loginPage/loginLogo.svg";
 import { useRecoilState } from "recoil";
-import { signUpDataState } from "../api/authAtoms";
+import { signUpDataState } from "../atom/authAtoms";
 import { signupUserAPI } from "../api/api";
 
 const SignUp = () => {

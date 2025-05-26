@@ -7,7 +7,7 @@ import {
   isStoppedState,
   audioURLState,
   isRecordingState,
-} from "../api/atom.js";
+} from "../atom/testAtom.js";
 
 const TestTimer = () => {
   const [timeLeft, setTimeLeft] = useRecoilState(timeLeftState);

@@ -17,7 +17,7 @@ import Edit from "./pages/Edit";
 
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { userPkState } from "./api/authAtoms";
+import { userPkState } from "./atom/authAtoms";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(

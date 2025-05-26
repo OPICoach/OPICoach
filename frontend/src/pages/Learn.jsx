@@ -8,7 +8,7 @@ import {
   getLearningSessionAPI,
   getLearningSessionsAPI,
 } from "../api/api.js";
-import { userPkState } from "../api/authAtoms.js";
+import { userPkState } from "../atom/authAtoms.js";
 import SideBar from "../components/sideBar/SideBar.jsx";
 import MessageInput from "../components/chatPage/MessageInput.jsx";
 import MessageList from "../components/chatPage/MessageList.jsx";
@@ -16,7 +16,7 @@ import {
   messagesLearnState,
   learnSessionIdState,
   learningSessionListState,
-} from "../api/atom.js";
+} from "../atom/learnAtom.js";
 import useRandomSessionId from "../hooks/useRandomSessionId";
 
 function getTitleFromMessage(message) {

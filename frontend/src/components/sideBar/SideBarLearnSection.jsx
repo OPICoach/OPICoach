@@ -7,9 +7,15 @@ import {
   messagesLearnState,
   learnSessionIdState,
 } from "../../api/atom";
-import { getLearningSessionsAPI, getLearningSessionAPI } from "../../api/api";
+import {
+  getLearningSessionsAPI,
+  getLearningSessionAPI,
+  postLearningSessionAPI,
+} from "../../api/api";
 import { userPkState } from "../../api/authAtoms";
 import { useNavigate, useParams } from "react-router-dom";
+
+import useRandomSessionId from "../../hooks/useRandomSessionId";
 
 const ChevronDownIcon = () => (
   <svg
@@ -49,6 +55,7 @@ const SideBarLearnSection = ({ menu, isActive, learnSessionId }) => {
   const [, setLearnSessionId] = useRecoilState(learnSessionIdState);
   const navigate = useNavigate();
   const { session_id } = useParams();
+  const getRandomSessionId = useRandomSessionId();
 
   // 세션 목록 불러오기
   const fetchSessions = async () => {
@@ -63,16 +70,43 @@ const SideBarLearnSection = ({ menu, isActive, learnSessionId }) => {
     setLoadingSessions(false);
   };
 
-  // Learn 탭 토글 시 세션 목록 불러오기
+  // Learn 탭 토글 시 세션 목록 불러오기 또는 세션 생성
   const handleLearnToggle = async () => {
     setLearnOpen((prev) => !prev);
-    if (!learnOpen) await fetchSessions();
+    if (!learnOpen) {
+      await fetchSessions();
+      // 세션이 없으면 새 세션 생성
+      if (learningSessionList.length === 0) {
+        await createNewSession();
+      }
+    }
   };
 
   // 세션 클릭 시 learnSessionId도 업데이트
   const handleSessionClick = (session) => {
     setLearnSessionId(session.session_id); // 현재 세션 id 업데이트
     navigate(`/learn/session/${session.session_id}`);
+  };
+
+  // 세션 생성 함수 추가
+  const createNewSession = async () => {
+    if (!userPk) return;
+    let title = "New Session!";
+    const randomSessionId = getRandomSessionId();
+    try {
+      const newSession = await postLearningSessionAPI(
+        userPk,
+        randomSessionId,
+        title
+      );
+      if (newSession) {
+        setLearningSessionList((prev) => [...prev, newSession]);
+        setLearnSessionId(newSession.session_id);
+        navigate(`/learn/session/${newSession.session_id}`);
+      }
+    } catch (e) {
+      // 에러 처리 (예: 알림)
+    }
   };
 
   // Learn 탭 진입 시 가장 최근 세션 자동 로드

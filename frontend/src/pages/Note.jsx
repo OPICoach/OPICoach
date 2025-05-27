@@ -43,14 +43,14 @@ const Note = () => {
   const [noteLoading, setNoteLoading] = useState(false);
   const [open] = useRecoilState(sideBarState);
 
-  // Fetch session list
+  // 세션 목록 불러오기
   useEffect(() => {
     async function fetchSessions() {
       if (!userPk) return;
       setLoading(true);
       try {
-        const sessions = await getLearningSessionsAPI(userPk);
-        setLearningSessionList(sessions || []);
+        const res = await getLearningSessionsAPI(userPk);
+        setLearningSessionList(res?.data?.sessions || []);
       } catch (e) {
         setLearningSessionList([]);
       }
@@ -59,13 +59,13 @@ const Note = () => {
     fetchSessions();
   }, [userPk, setLearningSessionList]);
 
-  // Fetch notes list
+  // 노트 목록 불러오기
   const fetchNotes = async () => {
     if (!userPk) return;
     setNoteLoading(true);
     try {
-      const notes = await getLearningNotesAPI(userPk);
-      setNoteList(notes || []);
+      const res = await getLearningNotesAPI(userPk);
+      setNoteList(res?.data?.notes || []);
     } catch (e) {
       setNoteList([]);
     }
@@ -76,13 +76,13 @@ const Note = () => {
     fetchNotes();
   }, [userPk]);
 
-  // Select session (do not create note)
+  // 세션 선택
   const handleSessionSelect = (session) => {
     setSelectedSession(session);
     setError("");
   };
 
-  // Create note button
+  // 노트 생성
   const handleCreateNote = async () => {
     if (!selectedSession || !userPk) return;
     setCreating(true);
@@ -90,57 +90,53 @@ const Note = () => {
     try {
       await postLearningNoteAPI({
         user_pk: userPk,
-        session_id: selectedSession.session_id,
+        session_pk: selectedSession.id,
         title: selectedSession.title || "Untitled",
       });
       await fetchNotes();
     } catch (e) {
-      setError("Failed to create note.");
+      setError("노트 생성에 실패했습니다.");
     }
     setCreating(false);
   };
 
-  // Delete note
+  // 노트 삭제
   const handleDeleteNote = async (noteId) => {
     if (!userPk) return;
     setNoteLoading(true);
     try {
-      await deleteLearningNoteAPI(noteId, userPk);
+      await deleteLearningNoteAPI(userPk, noteId);
       setNoteList((prev) => prev.filter((note) => note.id !== noteId));
-      // If the deleted note belongs to the selected session, deselect
+      // 삭제된 노트가 선택된 세션의 노트라면 선택 해제
       if (selectedSession) {
         const deletedNote = noteList.find((n) => n.id === noteId);
-        if (
-          deletedNote &&
-          deletedNote.session_id === selectedSession.session_id
-        ) {
+        if (deletedNote && deletedNote.session_pk === selectedSession.id) {
           setSelectedSession(null);
         }
       }
     } catch (e) {
-      setError("Failed to delete note.");
+      setError("노트 삭제에 실패했습니다.");
     }
     setNoteLoading(false);
   };
 
-  // Find note by session
-  const getNoteBySession = (session_id) =>
-    noteList.find((n) => n.session_id === session_id);
+  // 세션별 노트 찾기
+  const getNoteBySession = (session_pk) =>
+    noteList.find((n) => n.session_pk === session_pk);
 
-  // Improved session list UI
+  // 세션 리스트 UI
   const renderSessionList = () => (
     <ul className="space-y-1">
       {learningSessionList.length === 0 ? (
-        <li className="text-gray-400 text-sm">No sessions found.</li>
+        <li className="text-gray-400 text-sm">세션이 없습니다.</li>
       ) : (
         learningSessionList.map((session) => {
-          const note = getNoteBySession(session.session_id);
+          const note = getNoteBySession(session.id);
           return (
             <li
-              key={session.session_id}
+              key={session.id}
               className={`flex items-center justify-between px-3 py-2 rounded cursor-pointer transition ${
-                selectedSession &&
-                selectedSession.session_id === session.session_id
+                selectedSession && selectedSession.id === session.id
                   ? "bg-blue-100 font-semibold"
                   : "hover:bg-gray-100"
               }`}
@@ -150,7 +146,7 @@ const Note = () => {
               {note && (
                 <button
                   className="ml-2"
-                  title="Delete note"
+                  title="노트 삭제"
                   onClick={(e) => {
                     e.stopPropagation();
                     handleDeleteNote(note.id);
@@ -166,28 +162,28 @@ const Note = () => {
     </ul>
   );
 
-  // Note content UI
+  // 노트 내용 UI
   const renderNoteContent = () => {
-    if (noteLoading) return <div>Loading note...</div>;
-    if (creating) return <div>Creating note...</div>;
+    if (noteLoading) return <div>노트 불러오는 중...</div>;
+    if (creating) return <div>노트 생성 중...</div>;
     if (error) return <div className="text-red-500">{error}</div>;
     if (!selectedSession)
-      return <div className="text-gray-400">Select a session.</div>;
-    const note = getNoteBySession(selectedSession.session_id);
+      return <div className="text-gray-400">세션을 선택하세요.</div>;
+    const note = getNoteBySession(selectedSession.id);
     if (!note)
       return (
         <div className="flex flex-col gap-4">
           <div className="text-gray-400">
-            No note for this session.
+            이 세션에 대한 노트가 없습니다.
             <br />
-            Click the button below to create a note.
+            아래 버튼을 눌러 노트를 생성하세요.
           </div>
           <button
             className="w-fit px-6 py-2 rounded-lg bg-primary text-white font-semibold shadow hover:bg-blue-600 transition"
             onClick={handleCreateNote}
             disabled={creating}
           >
-            Create Note
+            노트 생성
           </button>
         </div>
       );
@@ -213,13 +209,13 @@ const Note = () => {
         <SideBar />
       </div>
       <div className="flex flex-col flex-1 px-10 pt-8 pb-8 h-full">
-        <h2 className="text-2xl font-semibold mb-10 select-none">Note</h2>
+        <h2 className="text-2xl font-semibold mb-10 select-none">노트</h2>
         <div className="flex flex-row gap-10 h-full">
           <div className="w-80 bg-gray-50 rounded-xl p-5 shadow-sm h-fit">
-            <h3 className="font-bold mb-4 text-gray-700">Session List</h3>
-            {loading ? <div>Loading...</div> : renderSessionList()}
+            <h3 className="font-bold mb-4 text-gray-700">세션 목록</h3>
+            {loading ? <div>불러오는 중...</div> : renderSessionList()}
             <div className="mt-4 text-xs text-gray-400">
-              Select a session and click the create note button.
+              세션을 선택하고 노트 생성 버튼을 클릭하세요.
             </div>
           </div>
           <div className="flex-1">{renderNoteContent()}</div>

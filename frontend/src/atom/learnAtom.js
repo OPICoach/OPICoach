@@ -40,6 +40,7 @@ export const messagesLearnState = atom({
 export const learnSessionPkState = atom({
   key: "learnSessionPkState",
   default: null,
+  effects: [localStorageEffect("sessionPk")],
 });
 
 export const learnSessionState = atom({

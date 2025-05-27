@@ -37,24 +37,23 @@ export const messagesLearnState = atom({
 
 // learn Session 관련 상태 관리
 
-export const learnSessionIdState = atom({
-  key: "learnSessionIdState",
-  default: "",
+export const learnSessionPkState = atom({
+  key: "learnSessionPkState",
+  default: null,
+  effects: [localStorageEffect("sessionPk")],
 });
 
 export const learnSessionState = atom({
-  key: "sessionState",
+  key: "learnSessionState",
   default: {
-    id: null,
-    session_id: "",
+    session_pk: null,
     title: "",
     user_pk: null,
     created_at: null,
   },
 });
 
-// 학습 세션 목록 상태
 export const learningSessionListState = atom({
-  key: "learningSessionsState",
+  key: "learningSessionListState",
   default: [],
 });

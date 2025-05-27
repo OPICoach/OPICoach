@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import homeIcon from "../../assets/sidebar/home.svg";
 import learnIcon from "../../assets/sidebar/learn.svg";
 import testIcon from "../../assets/sidebar/test.svg";
@@ -7,34 +7,27 @@ import logoutIcon from "../../assets/sidebar/log-out.svg";
 import sidebarLogo from "../../assets/sidebar/sidebarLogo.svg";
 import { useNavigate, useLocation, matchPath } from "react-router-dom";
 import { useRecoilState, useResetRecoilState } from "recoil";
-import { messagesLearnState, learnSessionIdState } from "../../atom/learnAtom";
-import {
-  learnOpenState,
-  loadingSessionsState,
-  sideBarState,
-} from "../../atom/sidebarAtom";
+import { messagesLearnState, learnSessionPkState } from "../../atom/learnAtom";
+import { learnOpenState, sideBarState } from "../../atom/sidebarAtom";
 import { userPkState, userInfoState } from "../../atom/authAtoms";
 import {
-  postLearningSessionAPI,
-  endLearningSessionAPI,
   getLearningSessionAPI,
+  patchLearningSessionAPI,
   getUserInfoAPI,
 } from "../../api/api";
-
 import SideBarLearnSection from "./SideBarLearnSection";
 
+// 메뉴 목록
 const menus = [
   { name: "Home", icon: homeIcon, path: "/" },
   { name: "Learn", icon: learnIcon, path: "/learn" },
-  { name: "Test", icon: testIcon, path: "/test" },
   { name: "Note", icon: infoIcon, path: "/note" },
+  { name: "Test", icon: testIcon, path: "/test" },
 ];
 
-// 유저 네임 앞자리 가져오기
+// 유저 네임 앞자리
 function getProfileInitial(userName) {
   if (!userName) return "";
-
-  // 영문 이름인 경우 (예: Gildong Hong)
   const parts = userName.trim().split(" ");
   if (parts.length > 1) {
     return parts[1][0] || parts[0][0];
@@ -42,6 +35,32 @@ function getProfileInitial(userName) {
   return userName[0];
 }
 
+function getSafeSessionTitle(messages, sessionPk, serverTitle) {
+  // 1. messages에서 첫 user 메시지 content 앞 10글자
+  const userMsg = messages?.find?.(
+    (m) =>
+      m.role === "user" &&
+      typeof m.content === "string" &&
+      m.content.trim() !== ""
+  );
+  if (userMsg) {
+    const firstLine = userMsg.content.split("\n")[0];
+    const trimmed = firstLine.slice(0, 10).trim();
+    if (trimmed) return trimmed;
+  }
+  // 2. 서버 title이 있으면 사용
+  if (
+    serverTitle &&
+    typeof serverTitle === "string" &&
+    serverTitle.trim() !== ""
+  ) {
+    return serverTitle.trim();
+  }
+  // 3. fallback: 세션 PK 기반
+  return `Session_${sessionPk ?? "Unknown"}`;
+}
+
+// 메시지 비교 함수
 function isMessagesEqual(a, b) {
   if (!a || !b) return false;
   if (a.length !== b.length) return false;
@@ -55,46 +74,46 @@ const SideBar = () => {
   const [open, setOpen] = useRecoilState(sideBarState);
   const [userData, setUserData] = useRecoilState(userInfoState);
   const [userPk, setUserPk] = useRecoilState(userPkState);
-  const [learnSessionId, setLearnSessionId] =
-    useRecoilState(learnSessionIdState);
+  const [learnSessionPk, setLearnSessionPk] =
+    useRecoilState(learnSessionPkState);
   const resetLearnOpen = useResetRecoilState(learnOpenState);
   const [messages] = useRecoilState(messagesLearnState);
 
   const navigate = useNavigate();
   const location = useLocation();
 
-  // userData가 있을 때만 initial을 계산
   const initial = userData?.name ? getProfileInitial(userData.name) : "";
 
   const handleLogout = () => {
     if (window.confirm("로그아웃 하시겠습니까?")) {
-      // 로그인 상태 및 유저 정보 모두 초기화
-      setUserPk(null); // userPk 리코일 atom 초기화
-      setUserData(null); // userInfoState 리코일 atom 초기화
-      localStorage.removeItem("isLoggedIn"); // 로그인 상태 로컬스토리지 제거
-      localStorage.removeItem("userPk"); // userPk 로컬스토리지 제거(리코일 effect에서 자동으로 처리되지만 명시적으로)
+      setUserPk(null);
+      setUserData(null);
+      localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("userPk");
       navigate("/login");
     }
   };
 
-  const handleTabMove = async (menu, currentSessionId) => {
-    // Learn 이외 탭 이동 시
-    if (menu.name !== "Learn" && currentSessionId) {
+  // 탭 이동 시 세션 update 처리
+  const handleTabMove = async (menu, currentSessionPk) => {
+    if (menu.name !== "Learn" && currentSessionPk) {
       try {
         const sessionData = await getLearningSessionAPI(
           userPk,
-          currentSessionId
+          currentSessionPk
         );
-        const serverMessages = sessionData.messages || [];
-        if (!isMessagesEqual(messages, serverMessages)) {
-          await endLearningSessionAPI({
-            user_pk: userPk,
-            session_id: currentSessionId,
-          });
-        }
-        setLearnSessionId("");
+        const serverTitle = sessionData.data.title;
+        const chatHistory = sessionData.data.chat_history || [];
+        const title = getSafeSessionTitle(
+          messages,
+          currentSessionPk,
+          serverTitle
+        );
+
+        await patchLearningSessionAPI(userPk, currentSessionPk, title);
       } catch (e) {
-        setLearnSessionId("");
+        console.error("세션 업데이트 실패:", e);
+        alert("세션 업데이트에 실패했습니다.");
       }
     }
     navigate(menu.path);
@@ -105,14 +124,12 @@ const SideBar = () => {
       try {
         if (userPk) {
           const response = await getUserInfoAPI(userPk);
-          console.log("사용자 정보:", response); // 디버깅을 위한 로그
           setUserData(response);
         }
       } catch (error) {
         console.error("사용자 정보를 가져오는데 실패했습니다:", error);
       }
     };
-
     fetchUserInfo();
   }, [userPk, setUserData]);
 
@@ -133,15 +150,12 @@ const SideBar = () => {
         )}
       </button>
 
-      {/* 사이드바 */}
       <aside
         className={`fixed top-0 left-0 flex flex-col h-dvh bg-neutral z-30 transition-all duration-300
           ${open ? "min-w-[230px] w-[230px]" : "min-w-0 w-0 overflow-hidden"}
           ${open ? "shadow-lg" : ""}
           `}
-        style={{}}
       >
-        {/* 로고 */}
         <div className="flex items-center justify-center h-24 cursor-pointer">
           <img
             src={sidebarLogo}
@@ -150,7 +164,6 @@ const SideBar = () => {
             onClick={() => navigate("/")}
           />
         </div>
-        {/* 메뉴 */}
         <nav className="flex-1 mt-10 mx-1">
           {menus.map((menu) => {
             const isActive =
@@ -163,26 +176,16 @@ const SideBar = () => {
                   key={menu.name}
                   menu={menu}
                   isActive={isActive}
-                  learnSessionId={learnSessionId}
                 />
               );
             }
-            // 나머지 메뉴는 기존 방식 그대로
             return (
               <div key={menu.name}>
                 <button
                   onClick={async () => {
-                    // Learn 토글 닫기
                     resetLearnOpen();
-                    // 기존 탭 이동/세션 종료 로직
-                    const match = matchPath(
-                      "/learn/session/:session_id",
-                      location.pathname
-                    );
-                    const currentSessionId = match
-                      ? match.params.session_id
-                      : learnSessionId;
-                    await handleTabMove(menu, currentSessionId);
+
+                    await handleTabMove(menu, learnSessionPk);
                   }}
                   className={
                     "flex items-center w-full my-[10px] px-5 py-3 text-accent border-[#E5E7EB] rounded-lg transition cursor-pointer " +
@@ -201,7 +204,6 @@ const SideBar = () => {
             );
           })}
         </nav>
-        {/* 프로필 */}
         <div className="flex items-center px-5 pb-6 select-none">
           <div className="w-9 h-9 bg-primary rounded-full flex items-center justify-center mr-3">
             <span className="text-white text-lg font-bold">{initial}</span>

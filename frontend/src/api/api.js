@@ -138,7 +138,7 @@ export async function getLearningSessionAPI(user_pk, session_pk) {
 }
 
 // 학습 세션 정보 업데이트 (title)
-export async function patchLearningSessionAPI(user_pk, session_pk, { title }) {
+export async function patchLearningSessionAPI(user_pk, session_pk, title) {
   const response = await axios.post(
     `${API_BASE_URL}/learning/sessions/update`,
     {

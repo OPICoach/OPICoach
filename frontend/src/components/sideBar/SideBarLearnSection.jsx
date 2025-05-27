@@ -42,6 +42,31 @@ const ChevronUpIcon = () => (
   </svg>
 );
 
+function getSafeSessionTitle(messages, sessionPk, serverTitle) {
+  // 1. messages에서 첫 user 메시지 content 앞 10글자
+  const userMsg = messages?.find?.(
+    (m) =>
+      m.role === "user" &&
+      typeof m.content === "string" &&
+      m.content.trim() !== ""
+  );
+  if (userMsg) {
+    const firstLine = userMsg.content.split("\n")[0];
+    const trimmed = firstLine.slice(0, 10).trim();
+    if (trimmed) return trimmed;
+  }
+  // 2. 서버 title이 있으면 사용
+  if (
+    serverTitle &&
+    typeof serverTitle === "string" &&
+    serverTitle.trim() !== ""
+  ) {
+    return serverTitle.trim();
+  }
+  // 3. fallback: 세션 PK 기반
+  return `Session_${sessionPk ?? "Unknown"}`;
+}
+
 const SideBarLearnSection = ({ menu, isActive }) => {
   const [open, setOpen] = useRecoilState(learnOpenState);
   const [learningSessionList, setLearningSessionList] = useRecoilState(
@@ -78,37 +103,25 @@ const SideBarLearnSection = ({ menu, isActive }) => {
     prevSessionPkRef.current = sessionPk;
   }, [sessionPk]);
 
-  const patchPrevSessionIfNeeded = async () => {
-    const prevPk = prevSessionPkRef.current;
-    const prevMsgs = prevMessagesRef.current;
-    if (!userPk || !prevPk || !prevMsgs) return;
-    try {
-      // 세션 데이터 불러오기
-      const res = await getLearningSessionAPI(userPk, prevPk);
-      const serverHistory = res.data?.chat_history || [];
+const patchPrevSessionIfNeeded = async () => {
+  const prevPk = prevSessionPkRef.current;
+  const prevMsgs = prevMessagesRef.current;
+  if (!userPk || !prevPk || !prevMsgs) return;
+  try {
+    const res = await getLearningSessionAPI(userPk, prevPk);
+    const serverHistory = res.data?.chat_history || [];
+    const serverTitle = res.data?.title;
 
-      // title 생성: 첫 메시지 content 앞 10글자 + sessionPk
-      let title = "";
-      if (prevMsgs.length > 0 && prevMsgs[0].content) {
-        title = prevMsgs[0].content.slice(0, 10) + `_${prevPk}`;
-      } else if (
-        res.data?.title &&
-        typeof res.data.title === "string" &&
-        res.data.title.trim() !== ""
-      ) {
-        title = res.data.title;
-      } else {
-        title = `session_${prevPk}`;
-      }
+    const title = getSafeSessionTitle(prevMsgs, prevPk, serverTitle);
 
-      // 변경사항 비교
-      if (JSON.stringify(serverHistory) !== JSON.stringify(prevMsgs)) {
-        await patchLearningSessionAPI(userPk, prevPk, title);
-      }
-    } catch (e) {
-      // 실패 시 무시 또는 로깅
+    if (JSON.stringify(serverHistory) !== JSON.stringify(prevMsgs)) {
+      await patchLearningSessionAPI(userPk, prevPk, title);
     }
-  };
+  } catch (e) {
+    // 실패 시 무시 또는 로깅
+  }
+};
+
 
   // Learn 탭 토글
   const handleLearnToggle = async () => {
@@ -235,7 +248,7 @@ const SideBarLearnSection = ({ menu, isActive }) => {
                 >
                   {session.title && session.title.trim() !== ""
                     ? session.title
-                    : "제목 없음"}
+                    : "null"}
                 </li>
               ))}
             </ul>

@@ -19,6 +19,24 @@ import {
 import { sideBarState, loadingSessionsState } from "../atom/sidebarAtom.js";
 import { useNavigate } from "react-router-dom";
 
+function getSafeSessionTitle(messages, sessionPk) {
+  // 1. messages에서 첫 user 메시지 content 앞 10글자
+  const userMsg = messages?.find?.(
+    (m) =>
+      m.role === "user" &&
+      typeof m.content === "string" &&
+      m.content.trim() !== ""
+  );
+  if (userMsg) {
+    const firstLine = userMsg.content.split("\n")[0];
+    const trimmed = firstLine.slice(0, 10).trim();
+    if (trimmed) return trimmed;
+  }
+
+  // 3. fallback: 세션 PK 기반
+  return `Session_${sessionPk ?? "Unknown"}`;
+}
+
 const Learn = () => {
   const [input, setInput] = useState("");
   const [isAILoading, setIsAILoading] = useState(false);
@@ -30,28 +48,12 @@ const Learn = () => {
 
   const handleNewSession = async () => {
     try {
-      // 1. 기존 세션이 있으면 title을 patch
-      if (sessionPk && messages.length > 0) {
-        // 메시지에서 앞 10글자 추출
-        const userMsg = messages.find((m) => m.role === "user");
-        if (userMsg) {
-          const firstLine = userMsg.content.split("\n")[0];
-          const newTitle = `${firstLine.slice(0, 10)} (${sessionPk})`;
-          await patchLearningSessionAPI(userPk, sessionPk, newTitle);
-        }
-      } else {
-        await patchLearningSessionAPI(
-          userPk,
-          sessionPk,
-          `session_${sessionPk}`
-        );
-      }
-
-      // 2. 새 세션 생성
+      let title = getSafeSessionTitle(messages, sessionPk);
+      await patchLearningSessionAPI(userPk, sessionPk, title);
 
       const newSession = await postLearningSessionAPI(
         userPk,
-        `New Session (${sessionPk + 1})`
+        `Session_${(sessionPk ?? 0) + 1}`
       );
       setSessionPk(newSession.session_pk);
       setMessages([]);
@@ -61,7 +63,6 @@ const Learn = () => {
       alert("새 세션 생성에 실패했습니다.");
     }
   };
-
   const handleSend = async () => {
     if (input.trim() === "") return;
 

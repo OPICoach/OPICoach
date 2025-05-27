@@ -35,6 +35,31 @@ function getProfileInitial(userName) {
   return userName[0];
 }
 
+function getSafeSessionTitle(messages, sessionPk, serverTitle) {
+  // 1. messages에서 첫 user 메시지 content 앞 10글자
+  const userMsg = messages?.find?.(
+    (m) =>
+      m.role === "user" &&
+      typeof m.content === "string" &&
+      m.content.trim() !== ""
+  );
+  if (userMsg) {
+    const firstLine = userMsg.content.split("\n")[0];
+    const trimmed = firstLine.slice(0, 10).trim();
+    if (trimmed) return trimmed;
+  }
+  // 2. 서버 title이 있으면 사용
+  if (
+    serverTitle &&
+    typeof serverTitle === "string" &&
+    serverTitle.trim() !== ""
+  ) {
+    return serverTitle.trim();
+  }
+  // 3. fallback: 세션 PK 기반
+  return `Session_${sessionPk ?? "Unknown"}`;
+}
+
 // 메시지 비교 함수
 function isMessagesEqual(a, b) {
   if (!a || !b) return false;
@@ -77,10 +102,14 @@ const SideBar = () => {
           userPk,
           currentSessionPk
         );
-        let title = sessionData.data.title;
-        if (!title || typeof title !== "string" || title.trim() === "") {
-          title = `session_${currentSessionPk}`;
-        }
+        const serverTitle = sessionData.data.title;
+        const chatHistory = sessionData.data.chat_history || [];
+        const title = getSafeSessionTitle(
+          messages,
+          currentSessionPk,
+          serverTitle
+        );
+
         await patchLearningSessionAPI(userPk, currentSessionPk, title);
       } catch (e) {
         console.error("세션 업데이트 실패:", e);

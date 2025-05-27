@@ -3,7 +3,7 @@ import SideBar from "../components/sideBar/SideBar.jsx";
 import { useRecoilState } from "recoil";
 import {
   learningSessionListState,
-  learnSessionIdState,
+  learnSessionPkState,
 } from "../atom/learnAtom";
 import { userPkState } from "../atom/authAtoms";
 import {
@@ -33,7 +33,7 @@ const Note = () => {
     learningSessionListState
   );
   const [learnSessionId, setLearnSessionId] =
-    useRecoilState(learnSessionIdState);
+    useRecoilState(learnSessionPkState);
 
   const [noteList, setNoteList] = useState([]);
   const [selectedSession, setSelectedSession] = useState(null);

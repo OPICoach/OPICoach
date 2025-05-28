@@ -15,6 +15,8 @@ import TestStart from "./pages/TestStart";
 import Information from "./pages/Information";
 import StudyMaterials from "./pages/StudyMaterials";
 import Fillers from "./pages/Fillers";
+import TestResult from "./pages/TestResult";
+import TestFeedback from "./pages/TestFeedback";
 
 function App() {
   return (
@@ -29,8 +31,9 @@ function App() {
           <Route path="/learn/studymaterials" element={<StudyMaterials />} />
           <Route path="/learn/fillers" element={<Fillers />} />
           <Route path="/test" element={<Test />} />
-          <Route path="/test/teststart" element={<TestStart />} />
-
+          <Route path="/test/start" element={<TestStart />} />
+          <Route path="/test/result" element={<TestResult />} />
+          <Route path="/test/feedback" element={<TestFeedback />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Router>

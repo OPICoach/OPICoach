@@ -1,6 +1,6 @@
 import SideBar from "../components/sidebar";
 
-const TestTimer = () => {
+const TestStart = () => {
   return (
     <div className="flex flex-row">
       <SideBar userName="Gildong Hong" />
@@ -21,4 +21,4 @@ const TestTimer = () => {
   );
 };
 
-export default TestTimer;
+export default TestStart;

@@ -25,28 +25,28 @@ const steps = [
   {
     title: "3. Choose your background.",
     options: [
-      "Student",
-      "Office Worker",
-      "Freelancer",
-      "Self Employed",
-      "Unemployed",
+      "student",
+      "office worker",
+      "freelancer",
+      "self employed",
+      "unemployed",
     ],
     multiple: false,
   },
   {
     title: "4. What is your occupation or major?",
     options: [
-      "Computer Science",
-      "Business Administration",
-      "Marketing",
-      "Visual Design",
-      "Physical Education",
+      "computer science",
+      "business administration",
+      "marketing",
+      "visual design",
+      "physical education",
     ],
     multiple: false,
   },
   {
     title: "5. Select 2-3 topics of interest.",
-    options: ["Shopping", "Movie", "Music", "Sports", "Reading books"],
+    options: ["shopping", "movie", "music", "sports", "reading books"],
     multiple: true,
   },
 ];
@@ -87,7 +87,7 @@ const OnboardingSurvey = ({ onComplete }) => {
     if (step > 0) setStep(step - 1);
   };
 
-  // 마지막 저장
+  // 저장
   const handleSave = () => {
     if (onComplete) onComplete(answers);
   };
@@ -102,7 +102,7 @@ const OnboardingSurvey = ({ onComplete }) => {
     : !!currentAnswer;
 
   return (
-    <div className="bg-white rounded-xl shadow p-12 w-screen min-h-[500px] flex flex-col justify-between">
+    <div className="bg-white rounded-xl shadow p-12 flex flex-col justify-between w-full">
       <div>
         <SurveyStep
           title={steps[step].title}

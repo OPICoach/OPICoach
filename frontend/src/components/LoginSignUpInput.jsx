@@ -4,16 +4,20 @@ const LoginRegisterInput = ({
   placeholder,
   type = "text",
   showToggle = false,
+  value,
+  onChange
 }) => {
   const [visible, setVisible] = useState(false);
   const isPassword = type === "password";
 
   return (
-    <div className="w-full relative">
+    <div className="w-full relative select-none">
       <input
         type={isPassword && !visible ? "password" : "text"}
         placeholder={placeholder}
         className="px-4 py-3 rounded-md bg-opiLightGray text-gray-600 w-full focus:outline-none pr-10 placeholder-opiGray"
+        value={value}
+        onChange={onChange}
       />
       {showToggle && isPassword && (
         <button

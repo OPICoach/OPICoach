@@ -47,16 +47,6 @@ const MenuSettingsButton = ({ onCreateNote, onChangeModel, isDisabled }) => {
             className="flex items-center w-full gap-2 px-4 py-2 text-gray-700 hover:bg-blue-50 transition rounded-md"
             onClick={() => {
               setOpen(false);
-              onCreateNote();
-            }}
-          >
-            <FaRegNoteSticky className="text-yellow-500" />
-            노트 생성
-          </button>
-          <button
-            className="flex items-center w-full gap-2 px-4 py-2 text-gray-700 hover:bg-blue-50 transition rounded-md"
-            onClick={() => {
-              setOpen(false);
               onChangeModel && onChangeModel();
             }}
           >

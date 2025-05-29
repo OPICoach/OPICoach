@@ -110,8 +110,12 @@ const SideBarLearnSection = ({ menu, isActive }) => {
 
     try {
       const res = await getLearningSessionAPI(userPk, prevPk);
-      const serverTitle = res.data?.title;
-      await patchLearningSessionAPI(userPk, prevPk, serverTitle);
+      const sessionTitle = getSafeSessionTitle(
+        prevMsgs,
+        prevPk,
+        res.data?.title
+      );
+      await patchLearningSessionAPI(userPk, prevPk, sessionTitle);
     } catch (e) {
       // 실패 시 무시 또는 로깅
     }

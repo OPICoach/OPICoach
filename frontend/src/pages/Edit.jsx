@@ -4,11 +4,13 @@ import { useNavigate } from "react-router-dom";
 import OnboardingSurvey from "../components/homePage/OnboardingSurvey";
 import { updateUserInfoAPI } from "../api/api";
 import SideBar from "../components/sideBar/SideBar.jsx";
+import { sideBarState } from "../atom/sidebarAtom";
 
 const Edit = () => {
   const [userData, setUserData] = useRecoilState(userInfoState);
   const [userPk, setUserPK] = useRecoilState(userPkState);
   const navigate = useNavigate();
+  const [open] = useRecoilState(sideBarState);
 
   const handleEditComplete = async (answers) => {
     try {
@@ -46,7 +48,14 @@ const Edit = () => {
 
   return (
     <div className="flex flex-row">
-      <SideBar />
+      <div
+        className={`transition-all duration-300 ${
+          open ? "w-[230px] min-w-[230px]" : "w-0 min-w-0"
+        }`}
+        style={{ overflow: open ? "visible" : "hidden" }}
+      >
+        <SideBar />
+      </div>
       <div className="flex flex-col w-full h-screen bg-white px-12 mt-10 select-none">
         <div className="w-full max-w-2xl">
           <h2 className="text-2xl font-bold mb-8">Edit User Information</h2>

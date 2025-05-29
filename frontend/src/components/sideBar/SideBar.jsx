@@ -18,6 +18,7 @@ import {
   getLearningSessionAPI,
   patchLearningSessionAPI,
   getUserInfoAPI,
+  getLearningSessionsAPI,
 } from "../../api/api";
 import SideBarLearnSection from "./SideBarLearnSection";
 
@@ -98,12 +99,23 @@ const SideBar = () => {
     }
   };
 
-  // 탭 이동 시 세션 update 처리
   const handleTabMove = async (menu, currentSessionPk) => {
-    if (isAILoading) return; // AI 로딩 중이면 이동 금지
+    if (isAILoading) return;
 
+    // Learn 탭이 아니고, currentSessionPk가 있을 때만 처리
     if (menu.name !== "Learn" && currentSessionPk) {
       try {
+        // 1. 세션 목록 조회
+        const sessionsResponse = await getLearningSessionsAPI(userPk);
+        const sessions = sessionsResponse.data || [];
+        
+        // 2. 세션이 없으면 업데이트하지 않음
+        if (sessions.length === 0) {
+          navigate(menu.path);
+          return;
+        }
+
+        // 3. 세션이 있으면 기존 로직 실행
         const sessionData = await getLearningSessionAPI(
           userPk,
           currentSessionPk

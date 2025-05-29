@@ -15,6 +15,7 @@ import {
   learnSessionPkState,
   learnSessionState,
   learningSessionListState,
+  aiLoadingState,
 } from "../atom/learnAtom.js";
 import { sideBarState, loadingSessionsState } from "../atom/sidebarAtom.js";
 import { useNavigate } from "react-router-dom";
@@ -38,7 +39,7 @@ function getSafeSessionTitle(messages, sessionPk) {
 
 const Learn = () => {
   const [input, setInput] = useState("");
-  const [isAILoading, setIsAILoading] = useState(false);
+  const [isAILoading, setIsAILoading] = useRecoilState(aiLoadingState);
   const [sessionPk, setSessionPk] = useRecoilState(learnSessionPkState);
   const [open, setOpen] = useRecoilState(sideBarState);
   const [userPk] = useRecoilState(userPkState);

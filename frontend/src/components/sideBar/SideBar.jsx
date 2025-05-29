@@ -7,7 +7,11 @@ import logoutIcon from "../../assets/sidebar/log-out.svg";
 import sidebarLogo from "../../assets/sidebar/sidebarLogo.svg";
 import { useNavigate, useLocation, matchPath } from "react-router-dom";
 import { useRecoilState, useResetRecoilState } from "recoil";
-import { messagesLearnState, learnSessionPkState } from "../../atom/learnAtom";
+import {
+  messagesLearnState,
+  learnSessionPkState,
+  aiLoadingState,
+} from "../../atom/learnAtom";
 import { learnOpenState, sideBarState } from "../../atom/sidebarAtom";
 import { userPkState, userInfoState } from "../../atom/authAtoms";
 import {
@@ -36,7 +40,7 @@ function getProfileInitial(userName) {
 }
 
 function getSafeSessionTitle(messages, sessionPk, serverTitle) {
-  // 1. messages에서 첫 user 메시지 content 앞 10글자
+  // 1. messages에서 첫 user 메시지
   const userMsg = messages?.find?.(
     (m) =>
       m.role === "user" &&
@@ -77,6 +81,7 @@ const SideBar = () => {
     useRecoilState(learnSessionPkState);
   const resetLearnOpen = useResetRecoilState(learnOpenState);
   const [messages] = useRecoilState(messagesLearnState);
+  const [isAILoading, setIsAILoading] = useRecoilState(aiLoadingState);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -95,6 +100,8 @@ const SideBar = () => {
 
   // 탭 이동 시 세션 update 처리
   const handleTabMove = async (menu, currentSessionPk) => {
+    if (isAILoading) return; // AI 로딩 중이면 이동 금지
+
     if (menu.name !== "Learn" && currentSessionPk) {
       try {
         const sessionData = await getLearningSessionAPI(
@@ -188,7 +195,10 @@ const SideBar = () => {
                   }}
                   className={
                     "flex items-center w-full my-[10px] px-5 py-3 text-accent border-[#E5E7EB] rounded-lg transition cursor-pointer " +
-                    (isActive ? "bg-white font-semibold" : "hover:bg-white")
+                    (isActive ? "bg-white font-semibold" : "hover:bg-white") +
+                    (isAILoading
+                      ? " opacity-50 cursor-not-allowed"
+                      : " cursor-pointer")
                   }
                   style={{ outline: "none", border: "none" }}
                 >

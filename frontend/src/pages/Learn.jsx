@@ -29,8 +29,7 @@ function getSafeSessionTitle(messages, sessionPk) {
   );
   if (userMsg) {
     const firstLine = userMsg.content.split("\n")[0];
-    const trimmed = firstLine.slice(0, 10).trim();
-    if (trimmed) return trimmed;
+    if (firstLine) return firstLine;
   }
 
   // 3. fallback: 세션 PK 기반
@@ -63,6 +62,7 @@ const Learn = () => {
       alert("새 세션 생성에 실패했습니다.");
     }
   };
+
   const handleSend = async () => {
     if (input.trim() === "") return;
 

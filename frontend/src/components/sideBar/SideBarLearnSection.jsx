@@ -52,8 +52,7 @@ function getSafeSessionTitle(messages, sessionPk, serverTitle) {
   );
   if (userMsg) {
     const firstLine = userMsg.content.split("\n")[0];
-    const trimmed = firstLine.slice(0, 10).trim();
-    if (trimmed) return trimmed;
+    if (firstLine) return firstLine;
   }
   // 2. 서버 title이 있으면 사용
   if (
@@ -146,7 +145,7 @@ const patchPrevSessionIfNeeded = async () => {
           navigate(`/learn/session/${sessions[0].id}`);
         } else {
           // 세션 없으면 새로 생성
-          const uniqueTitle = `New Session (${Date.now()})`;
+          const uniqueTitle = `New Session_${Date.now()}`;
           const newSession = await postLearningSessionAPI(userPk, uniqueTitle);
           const res2 = await getLearningSessionsAPI(userPk);
           const newSessions = res2.data?.sessions || [];

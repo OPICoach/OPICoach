@@ -211,7 +211,7 @@ export async function postLearningNoteAPI({ user_pk, session_pk, title }) {
 }
 
 // 학습 노트 조회 (전체 목록 또는 특정 노트)
-export async function getLearningNotesAPI(user_pk, note_pk = 0) {
+export async function getLearningNotesAPI(user_pk, note_pk) {
   const response = await axios.post(`${API_BASE_URL}/note/notes/get`, {
     user_pk,
     note_pk, // 전체 목록 조회 시 note_pk: 0

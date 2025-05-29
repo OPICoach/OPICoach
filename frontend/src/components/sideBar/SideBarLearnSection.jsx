@@ -12,6 +12,7 @@ import {
   learningSessionListState,
   learnSessionPkState,
   messagesLearnState,
+  aiLoadingState,
 } from "../../atom/learnAtom";
 import { userPkState } from "../../atom/authAtoms";
 import { learnOpenState } from "../../atom/sidebarAtom";
@@ -43,7 +44,7 @@ const ChevronUpIcon = () => (
 );
 
 function getSafeSessionTitle(messages, sessionPk, serverTitle) {
-  // 1. messages에서 첫 user 메시지 content 앞 10글자
+  // 1. messages에서 첫 user 메시지 content
   const userMsg = messages?.find?.(
     (m) =>
       m.role === "user" &&
@@ -76,6 +77,7 @@ const SideBarLearnSection = ({ menu, isActive }) => {
   const [messages, setMessages] = useRecoilState(messagesLearnState);
   const [sessionPk, setSessionPk] = useRecoilState(learnSessionPkState);
   const navigate = useNavigate();
+  const [isAILoading, setIsAILoading] = useRecoilState(aiLoadingState);
 
   // 이전 isActive 추적
   const prevIsActiveRef = useRef(isActive);
@@ -102,28 +104,23 @@ const SideBarLearnSection = ({ menu, isActive }) => {
     prevSessionPkRef.current = sessionPk;
   }, [sessionPk]);
 
-const patchPrevSessionIfNeeded = async () => {
-  const prevPk = prevSessionPkRef.current;
-  const prevMsgs = prevMessagesRef.current;
-  if (!userPk || !prevPk || !prevMsgs) return;
-  try {
-    const res = await getLearningSessionAPI(userPk, prevPk);
-    const serverHistory = res.data?.chat_history || [];
-    const serverTitle = res.data?.title;
+  const patchPrevSessionIfNeeded = async () => {
+    const prevPk = prevSessionPkRef.current;
+    const prevMsgs = prevMessagesRef.current;
 
-    const title = getSafeSessionTitle(prevMsgs, prevPk, serverTitle);
-
-    if (JSON.stringify(serverHistory) !== JSON.stringify(prevMsgs)) {
-      await patchLearningSessionAPI(userPk, prevPk, title);
+    try {
+      const res = await getLearningSessionAPI(userPk, prevPk);
+      const serverTitle = res.data?.title;
+      await patchLearningSessionAPI(userPk, prevPk, serverTitle);
+    } catch (e) {
+      // 실패 시 무시 또는 로깅
     }
-  } catch (e) {
-    // 실패 시 무시 또는 로깅
-  }
-};
-
+  };
 
   // Learn 탭 토글
   const handleLearnToggle = async () => {
+    if (isAILoading) return; // AI 로딩 중이면 무시
+
     if (!open) {
       setLoading(true);
       // 탭 전환 전 patch
@@ -169,6 +166,8 @@ const patchPrevSessionIfNeeded = async () => {
 
   // 세션 클릭 시 이전 세션 patch 후 이동
   const handleSessionClick = async (session) => {
+    if (isAILoading) return; // AI 로딩 중이면 무시
+
     if (sessionPk !== session.id) {
       await patchPrevSessionIfNeeded();
     }
@@ -236,7 +235,8 @@ const patchPrevSessionIfNeeded = async () => {
                   key={session.id ?? `temp-session-${idx}`}
                   className={
                     "py-2 px-2 rounded cursor-pointer transition " +
-                    (sessionPk === session.id ? "bg-blue-100 font-bold" : "")
+                    (sessionPk === session.id ? "bg-blue-100 font-bold" : "") +
+                    (isAILoading ? " opacity-50 cursor-not-allowed" : "")
                   }
                   style={{
                     whiteSpace: "nowrap",

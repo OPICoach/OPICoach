@@ -35,6 +35,11 @@ export const messagesLearnState = atom({
   default: [],
 });
 
+export const aiLoadingState = atom({
+  key: "aiLoadingState",
+  default: false,
+});
+
 // learn Session 관련 상태 관리
 
 export const learnSessionPkState = atom({
@@ -57,3 +62,4 @@ export const learningSessionListState = atom({
   key: "learningSessionListState",
   default: [],
 });
+

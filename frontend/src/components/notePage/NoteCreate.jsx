@@ -9,9 +9,15 @@ const NoteCreate = ({
 }) => (
   <div className="flex items-center mb-6 space-x-4">
     <select
-      className="border border-gray-300 rounded-lg px-3 py-2"
+      className="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-400  transition cursor-pointer"
       value={learnSessionId || ""}
       onChange={(e) => setLearnSessionId(Number(e.target.value))}
+      style={{
+        backgroundImage: `url("data:image/svg+xml,%3csvg fill='none' stroke='%236B7280' stroke-width='2' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'%3e%3c/path%3e%3c/svg%3e")`,
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "right 0.75rem center",
+        backgroundSize: "1.2em 1.2em",
+      }}
     >
       <option value="" disabled>
         Select Session for Note Creation

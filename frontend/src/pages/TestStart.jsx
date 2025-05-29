@@ -9,7 +9,7 @@ import {
   isRecordingState,
 } from "../atom/testAtom.js";
 
-const TestTimer = () => {
+const TestStart = () => {
   const [timeLeft, setTimeLeft] = useRecoilState(timeLeftState);
   const [isRunning, setIsRunning] = useRecoilState(isRunningState);
   const [isStopped, setIsStopped] = useRecoilState(isStoppedState);

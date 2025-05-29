@@ -45,8 +45,7 @@ function getSafeSessionTitle(messages, sessionPk, serverTitle) {
   );
   if (userMsg) {
     const firstLine = userMsg.content.split("\n")[0];
-    const trimmed = firstLine.slice(0, 10).trim();
-    if (trimmed) return trimmed;
+    if (firstLine) return firstLine;
   }
   // 2. 서버 title이 있으면 사용
   if (

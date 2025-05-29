@@ -13,6 +13,7 @@ import {
   deleteLearningNoteAPI,
 } from "../api/api";
 import { sideBarState } from "../atom/sidebarAtom";
+import { noteListState, notePkState } from "../atom/noteAtom"; // 추가
 
 // Trash Icon
 const TrashIcon = () => (
@@ -35,7 +36,9 @@ const Note = () => {
   const [learnSessionId, setLearnSessionId] =
     useRecoilState(learnSessionPkState);
 
-  const [noteList, setNoteList] = useState([]);
+  const [noteList, setNoteList] = useRecoilState(noteListState); // Recoil 사용
+  const [currentNotePk, setCurrentNotePk] = useRecoilState(notePkState); // Recoil 사용
+
   const [selectedSession, setSelectedSession] = useState(null);
   const [loading, setLoading] = useState(false);
   const [creating, setCreating] = useState(false);
@@ -59,27 +62,57 @@ const Note = () => {
     fetchSessions();
   }, [userPk, setLearningSessionList]);
 
-  // 노트 목록 불러오기
-  const fetchNotes = async () => {
-    if (!userPk) return;
-    setNoteLoading(true);
-    try {
-      const res = await getLearningNotesAPI(userPk);
-      setNoteList(res?.data?.notes || []);
-    } catch (e) {
-      setNoteList([]);
-    }
-    setNoteLoading(false);
-  };
-
+  // 전체 노트 목록 불러오기 (세션 리스트에 노트 유무 표시용)
   useEffect(() => {
-    fetchNotes();
-  }, [userPk]);
+    async function fetchAllNotes() {
+      if (!userPk) return;
+      try {
+        const res = await getLearningNotesAPI(userPk, 0); // 전체 목록
+        setNoteList(res?.data?.notes || []);
+      } catch (e) {
+        setNoteList([]);
+      }
+    }
+    fetchAllNotes();
+  }, [userPk, setNoteList]);
+
+  // notePk가 바뀔 때마다 해당 노트만 조회해서 noteList에 저장
+  useEffect(() => {
+    async function fetchNoteByPk() {
+      if (!userPk || !currentNotePk) return;
+      setNoteLoading(true);
+      try {
+        const res = await getLearningNotesAPI(userPk, currentNotePk);
+        if (res?.data?.notes && Array.isArray(res.data.notes)) {
+          setNoteList(res.data.notes);
+        } else if (res?.data?.note) {
+          setNoteList([res.data.note]);
+        } else {
+          setNoteList([]);
+        }
+      } catch (e) {
+        setNoteList([]);
+      }
+      setNoteLoading(false);
+    }
+    fetchNoteByPk();
+  }, [userPk, currentNotePk, setNoteList]);
+
+  // 세션별 노트 찾기 (전체 목록에서)
+  const getNoteBySession = (session_pk) =>
+    noteList.find((n) => n.session_pk === session_pk);
 
   // 세션 선택
   const handleSessionSelect = (session) => {
     setSelectedSession(session);
     setError("");
+    // 해당 세션의 노트가 있으면 notePkState에 저장
+    const note = getNoteBySession(session.id);
+    if (note) {
+      setCurrentNotePk(note.id);
+    } else {
+      setCurrentNotePk(null);
+    }
   };
 
   // 노트 생성
@@ -88,12 +121,19 @@ const Note = () => {
     setCreating(true);
     setError("");
     try {
-      await postLearningNoteAPI({
+      const res = await postLearningNoteAPI({
         user_pk: userPk,
         session_pk: selectedSession.id,
         title: selectedSession.title || "Untitled",
       });
-      await fetchNotes();
+      // API 응답에서 note_pk 추출
+      const newNotePk = res?.note_pk || res?.data?.note_pk;
+      if (newNotePk) {
+        setCurrentNotePk(newNotePk); // 생성된 노트 pk로 변경
+      }
+      // 전체 노트 목록도 다시 불러오기 (세션 리스트 갱신용)
+      const allNotesRes = await getLearningNotesAPI(userPk, 0);
+      setNoteList(allNotesRes?.data?.notes || []);
     } catch (e) {
       setError("노트 생성에 실패했습니다.");
     }
@@ -107,7 +147,9 @@ const Note = () => {
     try {
       await deleteLearningNoteAPI(userPk, noteId);
       setNoteList((prev) => prev.filter((note) => note.id !== noteId));
-      // 삭제된 노트가 선택된 세션의 노트라면 선택 해제
+      if (currentNotePk === noteId) {
+        setCurrentNotePk(null);
+      }
       if (selectedSession) {
         const deletedNote = noteList.find((n) => n.id === noteId);
         if (deletedNote && deletedNote.session_pk === selectedSession.id) {
@@ -119,10 +161,6 @@ const Note = () => {
     }
     setNoteLoading(false);
   };
-
-  // 세션별 노트 찾기
-  const getNoteBySession = (session_pk) =>
-    noteList.find((n) => n.session_pk === session_pk);
 
   // 세션 리스트 UI
   const renderSessionList = () => (
@@ -169,7 +207,8 @@ const Note = () => {
     if (error) return <div className="text-red-500">{error}</div>;
     if (!selectedSession)
       return <div className="text-gray-400">세션을 선택하세요.</div>;
-    const note = getNoteBySession(selectedSession.id);
+    // 현재 노트
+    const note = noteList && noteList.length > 0 ? noteList[0] : null;
     if (!note)
       return (
         <div className="flex flex-col gap-4">
@@ -192,7 +231,7 @@ const Note = () => {
         <div className="font-bold text-lg mb-2">{note.title}</div>
         <div>{note.content}</div>
         <div className="text-xs text-gray-400 mt-3">
-          {new Date(note.created_at).toLocaleString()}
+          {note.created_at ? new Date(note.created_at).toLocaleString() : ""}
         </div>
       </div>
     );
@@ -209,7 +248,7 @@ const Note = () => {
         <SideBar />
       </div>
       <div className="flex flex-col flex-1 px-10 pt-8 pb-8 h-full">
-        <h2 className="text-2xl font-semibold mb-10 select-none">노트</h2>
+        <h2 className="text-2xl font-semibold mb-10 select-none">Note</h2>
         <div className="flex flex-row gap-10 h-full">
           <div className="w-80 bg-gray-50 rounded-xl p-5 shadow-sm h-fit">
             <h3 className="font-bold mb-4 text-gray-700">세션 목록</h3>

@@ -25,5 +25,4 @@ export const noteListState = atom({
 export const notePkState = atom({
   key: "notePkState",
   default: null,
-  effects: [localStorageEffect("notePk")],
 });

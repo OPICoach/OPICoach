@@ -200,15 +200,20 @@ export async function postLearningNoteAPI({ user_pk, session_pk, title }) {
     title,
   });
   return response.data;
-  //   {
-  //   "success": true,
-  //   "message": "string",
-  //   "data": {
-  //     "additionalProp1": {}
-  //   },
-  //   "note_pk": 0
-  // }
 }
+// {
+//   "success": true,
+//   "message": "학습 노트가 성공적으로 생성되었습니다.",
+//   "data": {
+//     "id": 3,
+//     "user_pk": 1,
+//     "session_pk": 1,
+//     "title": "과자",
+//     "content": "OPIC "
+//     "created_at": "2025-05-29T22:19:07"
+//   },
+//  "note_pk": 3
+// }
 
 // 학습 노트 조회 (전체 목록 또는 특정 노트)
 export async function getLearningNotesAPI(user_pk, note_pk) {
@@ -217,15 +222,21 @@ export async function getLearningNotesAPI(user_pk, note_pk) {
     note_pk, // 전체 목록 조회 시 note_pk: 0
   });
   return response.data;
-  //   {
-  //   "success": true,
-  //   "message": "string",
-  //   "data": {
-  //     "additionalProp1": {}
-  //   },
-  //   "note_pk": 0
-  // }
 }
+// {  
+//   "success": true,
+//   "message": "학습 노트 조회가 완료되었습니다.",
+//   "data": {
+//     "id": 1,
+//     "user_pk": 1,
+//     "session_pk": 1,
+//     "title": "과자",
+//     "content": "OPIC 시험 준비를 위한 노트입니다.",
+//     "created_at": "2025-05-29T20:14:34"
+//   },
+//   "note_pk": 1
+// }
+
 
 // 학습 노트 삭제
 export async function deleteLearningNoteAPI(user_pk, note_pk) {

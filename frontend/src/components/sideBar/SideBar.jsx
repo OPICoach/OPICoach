@@ -93,8 +93,10 @@ const SideBar = () => {
     if (window.confirm("로그아웃 하시겠습니까?")) {
       setUserPk(null);
       setUserData(null);
+      setLearnSessionPk(null);
       localStorage.removeItem("isLoggedIn");
       localStorage.removeItem("userPk");
+      localStorage.removeItem("sessionPk");
       navigate("/login");
     }
   };
@@ -107,7 +109,7 @@ const SideBar = () => {
       try {
         // 1. 세션 목록 조회
         const sessionsResponse = await getLearningSessionsAPI(userPk);
-        const sessions = sessionsResponse.data || [];
+        const sessions = sessionsResponse.data.sessions || [];
 
         // 2. 세션이 없으면 업데이트하지 않음
         if (sessions.length === 0) {

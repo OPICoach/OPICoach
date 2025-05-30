@@ -1,10 +1,21 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaRobot } from "react-icons/fa6";
+import { aiModelState } from "../../atom/learnAtom";
+import { useRecoilState } from "recoil";
 
 const MenuSettingsButton = ({ onChangeModel, isDisabled }) => {
   const [active, setActive] = useState(false);
   const [open, setOpen] = useState(false); // 메뉴 팝업용 (원래 기능 유지)
   const menuRef = useRef(null);
+  const [aiModel, setAiModel] = useRecoilState(aiModelState); // AI 모델 상태 관리
+
+  useEffect(() => {
+    if (active) {
+      setAiModel("gemini-2.5-pro-preview-05-06"); // 추론 모드 활성화 시 모델 변경
+    } else {
+      setAiModel("gemini-2.0-flash"); // 기본 모드 활성화 시 모델 변경
+    }
+  }, [active]);
 
   // 바깥 클릭 시 메뉴 닫기 (원래 기능 유지)
   useEffect(() => {

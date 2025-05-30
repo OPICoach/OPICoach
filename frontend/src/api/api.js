@@ -68,11 +68,13 @@ export async function postLearningResponseAPI({
   user_pk,
   session_pk,
   question,
+  LLM_model = "gemini-2.0-flash", // 기본값
 }) {
   const response = await axios.post(`${API_BASE_URL}/learning/response`, {
     user_pk,
     session_pk,
     question,
+    LLM_model,
   });
   return response.data; // { answer: "..." }
 }
@@ -223,7 +225,7 @@ export async function getLearningNotesAPI(user_pk, note_pk) {
   });
   return response.data;
 }
-// {  
+// {
 //   "success": true,
 //   "message": "학습 노트 조회가 완료되었습니다.",
 //   "data": {
@@ -236,7 +238,6 @@ export async function getLearningNotesAPI(user_pk, note_pk) {
 //   },
 //   "note_pk": 1
 // }
-
 
 // 학습 노트 삭제
 export async function deleteLearningNoteAPI(user_pk, note_pk) {

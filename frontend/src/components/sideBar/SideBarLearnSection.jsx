@@ -146,7 +146,7 @@ const SideBarLearnSection = ({ menu, isActive }) => {
           navigate(`/learn/session/${sessions[0].id}`);
         } else {
           // 세션 없으면 새로 생성
-          const uniqueTitle = `New Session_${Date.now()}`;
+          const uniqueTitle = "New Session";
           const newSession = await postLearningSessionAPI(userPk, uniqueTitle);
           const res2 = await getLearningSessionsAPI(userPk);
           const newSessions = res2.data?.sessions || [];
@@ -209,7 +209,8 @@ const SideBarLearnSection = ({ menu, isActive }) => {
         onClick={handleLearnToggle}
         className={
           "flex items-center w-full my-[10px] px-5 py-3 text-accent border-[#E5E7EB] rounded-lg transition cursor-pointer " +
-          (isActive ? "bg-white font-semibold" : "hover:bg-white")
+          (isActive ? "bg-white font-semibold" : "hover:bg-white") +
+          (isAILoading ? " opacity-50 cursor-not-allowed" : "")
         }
         style={{ outline: "none", border: "none", position: "relative" }}
       >
@@ -233,7 +234,7 @@ const SideBarLearnSection = ({ menu, isActive }) => {
           ) : learningSessionList.length === 0 ? (
             <div className="text-gray-400 text-sm">저장된 세션이 없습니다.</div>
           ) : (
-            <ul>
+            <ul className={isAILoading ? "opacity-50 cursor-not-allowed" : ""}>
               {learningSessionList.map((session, idx) => (
                 <li
                   key={session.id ?? `temp-session-${idx}`}

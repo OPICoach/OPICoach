@@ -108,7 +108,7 @@ const SideBar = () => {
         // 1. 세션 목록 조회
         const sessionsResponse = await getLearningSessionsAPI(userPk);
         const sessions = sessionsResponse.data || [];
-        
+
         // 2. 세션이 없으면 업데이트하지 않음
         if (sessions.length === 0) {
           navigate(menu.path);

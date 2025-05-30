@@ -18,7 +18,6 @@ import NoteCreate from "../components/notePage/NoteCreate.jsx";
 import NoteList from "../components/notePage/NoteList.jsx";
 import NoteDetail from "../components/notePage/NoteDetail.jsx";
 
-
 const Note = () => {
   const [userPk] = useRecoilState(userPkState);
   const [learningSessionList] = useRecoilState(learningSessionListState);
@@ -138,12 +137,8 @@ const Note = () => {
         <h2 className="text-2xl font-semibold mb-6 select-none">Note</h2>
 
         <NoteCreate
-          learningSessionList={learningSessionList}
-          learnSessionId={learnSessionId}
-          setLearnSessionId={setLearnSessionId}
           newNoteTitle={newNoteTitle}
           setNewNoteTitle={setNewNoteTitle}
-          creating={creating}
           onCreateNote={handleCreateNote}
         />
 
@@ -151,8 +146,6 @@ const Note = () => {
           <div className="w-1/4 border border-gray-200 rounded-lg p-4 overflow-y-auto">
             <h3 className="font-semibold mb-4">All Notes</h3>
             <NoteList
-              noteList={noteList}
-              currentNotePk={currentNotePk}
               onSelectNote={handleSelectNote}
               loadingNotes={loadingNotes}
             />

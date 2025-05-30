@@ -1,4 +1,10 @@
-const NoteList = ({ noteList, currentNotePk, onSelectNote, loadingNotes }) => {
+import { noteListState, notePkState } from "../../atom/noteAtom";
+import { useRecoilState } from "recoil";
+
+const NoteList = ({ onSelectNote, loadingNotes }) => {
+  const [noteList, setNoteList] = useRecoilState(noteListState);
+  const [currentNotePk, setCurrentNotePk] = useRecoilState(notePkState);
+
   if (loadingNotes) return <p>Loading notes...</p>;
   if (noteList.length === 0) return <p>No notes available.</p>;
 

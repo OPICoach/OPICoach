@@ -146,7 +146,7 @@ const SideBarLearnSection = ({ menu, isActive }) => {
           navigate(`/learn/session/${sessions[0].id}`);
         } else {
           // 세션 없으면 새로 생성
-          const uniqueTitle = `New Session_${Date.now()}`;
+          const uniqueTitle = "New Session";
           const newSession = await postLearningSessionAPI(userPk, uniqueTitle);
           const res2 = await getLearningSessionsAPI(userPk);
           const newSessions = res2.data?.sessions || [];

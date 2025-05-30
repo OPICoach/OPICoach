@@ -93,8 +93,10 @@ const SideBar = () => {
     if (window.confirm("로그아웃 하시겠습니까?")) {
       setUserPk(null);
       setUserData(null);
+      setLearnSessionPk(null);
       localStorage.removeItem("isLoggedIn");
       localStorage.removeItem("userPk");
+      localStorage.removeItem("sessionPk");
       navigate("/login");
     }
   };

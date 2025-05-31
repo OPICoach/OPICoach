@@ -254,3 +254,47 @@ export async function deleteLearningNoteAPI(user_pk, note_pk) {
   //   "note_pk": 0
   // }
 }
+
+
+// 테스트
+
+// 질문 생성
+export async function fetchExamQuestion(user_pk) {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/exam/question`, {
+      params: { user_pk }
+    });
+    return response.data; // { question: "..." }
+  } catch (error) {
+    console.error('Error fetching exam question:', error);
+    throw error;
+  }
+}
+
+// 시험 피드백 요청
+export async function fetchExamFeedback({ question, user_answer, user_pk }) {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/exam/feedback`, {
+      question,
+      user_answer,
+      user_pk,
+    });
+    return response.data; // { Good_Point, Bad_Point, Overall_Feedback, Teachers_Answer }
+  } catch (error) {
+    console.error("피드백 요청 실패:", error);
+    throw error;
+  }
+}
+
+// 저장된 시험 피드백 전체 가져오기
+export async function fetchExamHistory(userPk) {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/api/exam/history`, {
+      params: { user_pk: userPk },
+    });
+    return response.data.history;
+  } catch (error) {
+    console.error("시험 히스토리 가져오기 실패:", error);
+    return [];
+  }
+}

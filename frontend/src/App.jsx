@@ -13,6 +13,7 @@ import SignUp from "./pages/SignUp";
 import Learn from "./pages/Learn";
 import Test from "./pages/Test";
 import TestStart from "./pages/TestStart";
+import TestFeedback from "./pages/TestFeedback";
 import Note from "./pages/Note";
 import Edit from "./pages/Edit";
 
@@ -64,6 +65,12 @@ function App() {
             path="/test/teststart"
             element={
               isLoggedIn ? <TestStart /> : <Navigate to="/login" replace />
+            }
+          />
+          <Route
+            path="/testfeedback"
+            element={
+              isLoggedIn ? <TestFeedback /> : <Navigate to="/login" replace />
             }
           />
           <Route

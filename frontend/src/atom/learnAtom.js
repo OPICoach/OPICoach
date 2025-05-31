@@ -63,3 +63,9 @@ export const learningSessionListState = atom({
   default: [],
 });
 
+export const aiModelState = atom({
+  key: "aiModelState",
+  default: "gemini-2.0-flash",
+});
+
+// "gemini-2.5-pro-preview-05-06", "gemini-2.0-flash"

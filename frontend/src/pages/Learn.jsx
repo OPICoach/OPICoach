@@ -16,6 +16,7 @@ import {
   learnSessionState,
   learningSessionListState,
   aiLoadingState,
+  aiModelState,
 } from "../atom/learnAtom.js";
 import { sideBarState, loadingSessionsState } from "../atom/sidebarAtom.js";
 import { useNavigate } from "react-router-dom";
@@ -45,6 +46,7 @@ const Learn = () => {
   const [userPk] = useRecoilState(userPkState);
   const [messages, setMessages] = useRecoilState(messagesLearnState);
   const navigate = useNavigate();
+  const [aiModel, setAiModel] = useRecoilState(aiModelState);
 
   const handleNewSession = async () => {
     try {
@@ -83,7 +85,10 @@ const Learn = () => {
         user_pk: userPk,
         session_pk: sessionPk,
         question: input,
+        LLM_model: aiModel,
       });
+
+      console.log("AI model:", aiModel);
 
       setMessages((prev) => {
         const lastIndex = prev.length - 1;

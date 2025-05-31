@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { FaRobot } from "react-icons/fa6";
-import { aiModelState } from "../../atom/learnAtom";
+import { aiModelState } from "../../atom/learnAtom.js";
 import { useRecoilState } from "recoil";
 
 const MenuSettingsButton = ({ onChangeModel, isDisabled }) => {

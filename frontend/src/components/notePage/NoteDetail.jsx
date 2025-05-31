@@ -1,4 +1,7 @@
 import TrashIcon from "./TrashIcon.jsx";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 
 const NoteDetail = ({ noteDetail, onDeleteNote }) => (
   <div className="flex-1 border border-gray-200 rounded-lg p-4 overflow-y-auto relative">
@@ -16,9 +19,26 @@ const NoteDetail = ({ noteDetail, onDeleteNote }) => (
     {noteDetail ? (
       <div>
         <h4 className="text-xl font-bold mb-2">{noteDetail.title}</h4>
-        <p className="whitespace-pre-wrap">
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          rehypePlugins={[rehypeRaw]}
+          components={{
+            h3: ({ node, ...props }) => (
+              <h3 className="text-lg font-semibold" {...props} />
+            ),
+            ul: ({ node, ...props }) => (
+              <ul className="list-disc pl-5 space-y-1" {...props} />
+            ),
+            li: ({ node, ...props }) => (
+              <li className="text-base leading-relaxed" {...props} />
+            ),
+            strong: ({ node, ...props }) => (
+              <strong className="font-bold" {...props} />
+            ),
+          }}
+        >
           {noteDetail.content || "No content available."}
-        </p>
+        </ReactMarkdown>
         <p className="text-sm text-gray-500 mt-4">
           Created At: {new Date(noteDetail.created_at).toLocaleString()}
         </p>

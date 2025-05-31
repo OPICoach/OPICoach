@@ -8,11 +8,13 @@ import {
   isRecordingState,
 } from "../atom/testAtom.js";
 import { userPkState } from "../atom/authAtoms.js";
-import axios from "axios";
+import { fetchExamQuestion, fetchExamFeedback } from "../api/api.js";
 
 const TestStart = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [currentQuestion, setCurrentQuestion] = useState("");
+  const [questions, setQuestions] = useState([]);
+  const [isTestStarted, setIsTestStarted] = useState(false);
+  const [numQuestions, setNumQuestions] = useState(1);
 
   const [timeLeft, setTimeLeft] = useRecoilState(timeLeftState);
   const [isRunning, setIsRunning] = useRecoilState(isRunningState);
@@ -20,215 +22,256 @@ const TestStart = () => {
   const [isRecording, setIsRecording] = useRecoilState(isRecordingState);
   const userPk = useRecoilValue(userPkState);
 
-  const mediaRecorderRef = useRef(null);
-  const audioChunksRef = useRef([]);
-  const audioRef = useRef(null);
   const speechSynthesisRef = useRef(window.speechSynthesis);
 
-  // 🟡 질문 불러오기
-  const fetchQuestion = async (index) => {
+  const [feedbacks, setFeedbacks] = useState([]);
+  const [userAnswer, setUserAnswer] = useState("");
+  const [isTestFinished, setIsTestFinished] = useState(false);
+  const [isFetchingFeedback, setIsFetchingFeedback] = useState(false);
+
+  const fetchQuestions = async () => {
+    if (!userPk) {
+      alert("사용자 정보가 없습니다. 로그인 후 이용해주세요.");
+      return;
+    }
+
     try {
-      console.log(`👉 질문 ${index + 1} 불러오는 중...`);
-      const res = await axios.get(`/api/opic/question?index=${index}`);
-      if (res.data && res.data.question) {
-        console.log("✅ 질문 불러오기 성공:", res.data.question);
-        setCurrentQuestion(res.data.question);
-      } else {
-        console.warn("⚠️ 질문 없음");
-        setCurrentQuestion("");
+      const fetchedQuestions = [];
+      for (let i = 0; i < numQuestions; i++) {
+        const data = await fetchExamQuestion(userPk);
+        if (data && data.question) {
+          fetchedQuestions.push(data.question);
+        } else {
+          console.warn("문제가 응답에 없습니다:", data);
+        }
       }
+
+      if (fetchedQuestions.length === 0) {
+        alert("문제를 불러오지 못했습니다.");
+        return;
+      }
+
+      setQuestions(fetchedQuestions);
+      setIsTestStarted(true);
+      setCurrentQuestionIndex(0);
+      setAudioURL(null);
+      setFeedbacks([]);
+      setUserAnswer("");
+      setIsTestFinished(false);
+      console.log("시험 문제 불러오기 성공:", fetchedQuestions);
     } catch (err) {
-      console.error("❌ 질문 불러오기 실패:", err);
-      setCurrentQuestion("");
+      console.error("문제 불러오기 실패:", err);
+      alert("문제 로딩 중 오류가 발생했습니다.");
     }
   };
 
-  // 🕒 타이머
   useEffect(() => {
     let timer;
     if (isRunning && timeLeft > 0) {
-      console.log("⏳ 타이머 시작");
       timer = setInterval(() => {
         setTimeLeft((prev) => prev - 1);
       }, 1000);
-    } else if (timeLeft === 0 && isRunning) {
-      console.log("🛑 타이머 종료, 자동 녹음 종료");
-      stopRecording();
+    } else if (isRunning && timeLeft === 0) {
+      proceedNextQuestion();
     }
+
     return () => clearInterval(timer);
-  }, [isRunning, timeLeft, setTimeLeft]);
+  }, [isRunning, timeLeft]);
 
-  // 📌 질문 인덱스 바뀔 때마다 새 질문 가져오기
   useEffect(() => {
-    console.log(`🔄 질문 인덱스 바뀜: ${currentQuestionIndex}`);
-    if (currentQuestionIndex < 1000) {
-      fetchQuestion(currentQuestionIndex);
-    }
-  }, [currentQuestionIndex]);
+    if (!isTestStarted || questions.length === 0) return;
 
-  // 🎤 질문 텍스트가 세팅되면 음성 읽고 녹음 시작
-  useEffect(() => {
-    if (currentQuestionIndex >= 1) {
-      console.log("🎉 모든 질문 완료");
+    if (currentQuestionIndex >= questions.length) {
       setIsRunning(false);
-      alert("모든 질문이 완료되었습니다. 감사합니다!");
+      setIsTestFinished(true);
+      alert("시험이 종료되었습니다!");
+      console.log("시험 종료: 모든 질문 완료");
       return;
     }
 
-    if (currentQuestion) {
-      console.log("📢 질문 읽고 녹음 시작:", currentQuestion);
-      playQuestionAndRecord(currentQuestion);
-    }
-  }, [currentQuestion, currentQuestionIndex]);
+    playQuestion(questions[currentQuestionIndex]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentQuestionIndex, isTestStarted]);
 
-  // 📢 질문 읽고 녹음 시작
-  const playQuestionAndRecord = (text) => {
+  const playQuestion = (text) => {
     if (!speechSynthesisRef.current) {
       alert("Speech Synthesis를 지원하지 않는 브라우저입니다.");
+      console.error("Speech Synthesis 미지원");
       return;
     }
 
+    speechSynthesisRef.current.cancel();
     setIsRunning(false);
-    setTimeLeft(120);
+    setTimeLeft(10);
+    setAudioURL(null);
 
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = "ko-KR";
 
     utterance.onend = () => {
-      console.log("🗣️ 질문 읽기 완료");
-      startRecording();
+      setUserAnswer("Umm...I don't know"); // 추후 음성 입력으로 대체
       setIsRunning(true);
+      console.log("질문 재생 완료, 답변 시작");
     };
 
-    console.log("🗣️ 질문 읽기 시작:", text);
-    speechSynthesisRef.current.cancel();
+    utterance.onerror = (e) => {
+      console.error("음성 재생 오류:", e);
+      alert("음성 재생에 실패했습니다.");
+    };
+
     speechSynthesisRef.current.speak(utterance);
+    console.log("질문 음성 재생 시작:", text);
   };
 
-  // 🎙️ 녹음 시작
-  const startRecording = async () => {
-    try {
-      console.log("🎙️ 녹음 시작 요청");
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const mediaRecorder = new MediaRecorder(stream);
-      mediaRecorderRef.current = mediaRecorder;
-      audioChunksRef.current = [];
+  const proceedNextQuestion = async () => {
+    setIsRunning(false);
+    setTimeLeft(0);
 
-      mediaRecorder.ondataavailable = (event) => {
-        audioChunksRef.current.push(event.data);
-      };
+    const currentQuestion = questions[currentQuestionIndex];
+    const currentAnswer = userAnswer;
 
-      mediaRecorder.onstop = () => {
-        console.log("🛑 녹음 중지, Blob 생성 및 업로드 시작");
-        const audioBlob = new Blob(audioChunksRef.current, { type: "audio/wav" });
-        const audioUrl = URL.createObjectURL(audioBlob);
-        setAudioURL(audioUrl);
-        uploadAudio(audioBlob);
-      };
+    if (isFetchingFeedback) return;
 
-      mediaRecorder.start();
-      setIsRecording(true);
-      console.log("✅ 녹음 시작됨");
-    } catch (err) {
-      console.error("❌ 마이크 접근 실패:", err);
-      alert("마이크 권한이 필요합니다. 설정을 확인해주세요.");
-    }
-  };
-
-  // 🛑 녹음 중지 + 다음 질문
-  const stopRecording = () => {
-    if (mediaRecorderRef.current && isRecording) {
-      console.log("🛑 녹음 중지 요청");
-      mediaRecorderRef.current.stop();
-      setIsRecording(false);
-      mediaRecorderRef.current.stream.getTracks().forEach((track) => track.stop());
-      setIsRunning(false);
-      setTimeLeft(0);
-      setCurrentQuestionIndex((prev) => prev + 1);
-    }
-  };
-
-  // ⬆️ 오디오 업로드
-  const uploadAudio = async (audioBlob) => {
-    if (!userPk) {
-      console.warn("❗ userPk 없음");
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append("userPk", userPk);
-    formData.append("audio", audioBlob, `recording_question_${currentQuestionIndex + 1}.wav`);
-    formData.append("duration", 120 - timeLeft);
-    formData.append("question", currentQuestion);
+    setIsFetchingFeedback(true);
+    setFeedbacks((prev) => [
+      ...prev,
+      {
+        good_point: "",
+        bad_point: "",
+        overall_feedback: "",
+        teachers_answer: "",
+      },
+    ]);
 
     try {
-      const response = await axios.post("/api/audio/upload", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
+      const feedbackData = await fetchExamFeedback({
+        question: currentQuestion,
+        user_answer: currentAnswer,
+        user_pk: userPk,
       });
-      console.log("⬆️ 오디오 업로드 성공:", response.data);
+
+      const newFeedback = feedbackData
+        ? {
+            good_point: feedbackData.good_point || "",
+            bad_point: feedbackData.bad_point || "",
+            overall_feedback: feedbackData.overall_feedback || "",
+            teachers_answer: feedbackData.teachers_answer || "",
+          }
+        : {
+            good_point: "",
+            bad_point: "",
+            overall_feedback: "",
+            teachers_answer: "",
+          };
+
+      setFeedbacks((prev) => {
+        const copy = [...prev];
+        copy[copy.length - 1] = newFeedback;
+        return copy;
+      });
     } catch (error) {
-      console.error("❌ 오디오 업로드 실패:", error);
+      console.error("피드백 호출 실패:", error);
+    } finally {
+      setIsFetchingFeedback(false);
     }
+
+    setUserAnswer("");
+    setCurrentQuestionIndex((prev) => prev + 1);
   };
 
-  // ▶️ 오디오 재생
-  const handlePlayAudio = () => {
-    if (audioRef.current) {
-      console.log("▶️ 오디오 재생");
-      audioRef.current.play();
-    }
-  };
-
-  // ⏱️ 타이머 포맷
   const formatTime = (seconds) => {
     const m = Math.floor(seconds / 60).toString().padStart(2, "0");
     const s = (seconds % 60).toString().padStart(2, "0");
     return `${m}:${s}`;
   };
 
+  const goToFeedbackPage = () => {
+    window.location.href = "/test/feedback";
+  };
+
   return (
     <div className="flex flex-row">
       <SideBar />
       <div className="flex flex-col justify-center items-center w-full h-screen bg-white p-6">
-        <div className="mb-8 text-2xl font-bold">
-          질문 {currentQuestionIndex + 1} /
-        </div>
-        <div className="w-[280px] h-[280px] border-4 border-primary rounded-full flex items-center justify-center text-5xl font-bold text-black">
-          {formatTime(timeLeft)}
-        </div>
-
-        <div className="flex gap-6 mt-8">
-          <button
-            onClick={() => {
-              if (!isRunning && !isRecording && currentQuestion) {
-                console.log("🔁 다시 시작 클릭");
-                playQuestionAndRecord(currentQuestion);
-              }
-            }}
-            disabled={isRunning || isRecording || !currentQuestion}
-            className={`px-6 py-3 rounded-lg text-white ${
-              isRunning || isRecording || !currentQuestion
-                ? "bg-gray-300 cursor-not-allowed"
-                : "bg-primary hover:bg-blue-600"
-            }`}
-          >
-            {currentQuestion ? "다시 시작" : "끝"}
-          </button>
-
-          <button
-            onClick={handlePlayAudio}
-            disabled={!audioURL}
-            className={`px-6 py-3 rounded-lg ${
-              audioURL
-                ? "bg-green-500 text-white hover:bg-green-600"
-                : "bg-gray-300 text-gray-500 cursor-not-allowed"
-            }`}
-          >
-            답변 재생
-          </button>
-        </div>
-
-        {audioURL && <audio ref={audioRef} src={audioURL} className="hidden" />}
+        {!isTestStarted ? (
+          <div className="flex flex-col items-center gap-4">
+            <h2 className="text-2xl font-bold text-center">
+              문제 개수를 선택하세요
+              <br />
+              (문제 생성에 시간이 걸릴 수 있습니다.)
+            </h2>
+            <select
+              value={numQuestions}
+              onChange={(e) => setNumQuestions(Number(e.target.value))}
+              className="px-4 py-2 border rounded-md"
+            >
+              {[1, 2, 3, 5, 10].map((n) => (
+                <option key={n} value={n}>
+                  {n}개
+                </option>
+              ))}
+            </select>
+            <button
+              onClick={fetchQuestions}
+              className="bg-primary hover:bg-blue-600 text-white px-6 py-3 rounded-lg"
+            >
+              Test Start
+            </button>
+          </div>
+        ) : isTestFinished ? (
+          <div className="max-w-xl w-full p-6 bg-yellow-50 border rounded text-center">
+            <h2 className="text-2xl font-bold mb-4">Test finished.</h2>
+            <h3 className="font-semibold mb-2">You can get your feedback.</h3>
+            <button
+              onClick={goToFeedbackPage}
+              className="mt-4 bg-primary text-white px-6 py-3 rounded hover:bg-blue-600"
+            >
+              Get Feedback
+            </button>
+            <button
+              onClick={() => {
+                setIsTestStarted(false);
+                setQuestions([]);
+                setFeedbacks([]);
+                setUserAnswer("");
+                setCurrentQuestionIndex(0);
+                setIsTestFinished(false);
+                setAudioURL(null);
+              }}
+              className="mt-6 bg-gray-600 text-white px-6 py-2 rounded hover:bg-gray-700"
+            >
+              Restart
+            </button>
+          </div>
+        ) : (
+          <>
+            <div className="mb-8 text-2xl font-bold">
+              Question {currentQuestionIndex + 1} / {questions.length}
+            </div>
+            <div className="mb-4 text-lg font-medium">
+              Time Left: {formatTime(timeLeft)}
+            </div>
+            <div className="flex gap-4">
+              <button
+                onClick={() => playQuestion(questions[currentQuestionIndex])}
+                className="bg-primary text-white px-4 py-2 rounded hover:bg-blue-600"
+              >
+                질문 다시 듣기
+              </button>
+              <button
+                onClick={proceedNextQuestion}
+                disabled={isFetchingFeedback}
+                className={`px-4 py-2 rounded text-white ${
+                  isFetchingFeedback
+                    ? "bg-gray-400"
+                    : "bg-green-600 hover:bg-green-700"
+                }`}
+              >
+                다음 문제
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

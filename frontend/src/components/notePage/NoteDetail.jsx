@@ -28,6 +28,9 @@ const NoteDetail = ({ noteDetail, onDeleteNote }) => {
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeRaw]}
               components={{
+                p: ({ node, ...props }) => (
+                  <p className="text-black" {...props} />
+                ),
                 h2: ({ node, ...props }) => (
                   <h3 className="text-xl font-semibold" {...props} />
                 ),

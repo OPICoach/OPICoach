@@ -12,6 +12,9 @@ const AIMessage = ({ message }) => {
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[rehypeRaw]}
           components={{
+            p: ({ node, ...props }) => (
+              <p className="text-black" {...props} />
+            ),
             h3: ({ node, ...props }) => (
               <h3 className="text-xl font-semibold" {...props} />
             ),

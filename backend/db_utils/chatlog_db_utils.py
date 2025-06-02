@@ -1,47 +1,61 @@
-# chatlog_db_utils.py
 import pymysql
 from .mysql_db_setup import get_db_connection  # MySQL 연결 함수 가져오기
+import json
+from typing import List, Dict, Optional
 
-def save_chat_history(user_id: int, session_id: str, messages: list):
-    """MySQL에 채팅 기록을 저장합니다."""
+def save_chat_history(user_pk: int, session_pk: int, messages: List[Dict]) -> bool:
+    """채팅 기록을 저장합니다."""
     try:
-        db = get_db_connection()
-        cursor = db.cursor()
-        sql = "INSERT INTO chat_logs (user_id, session_id, role, content, timestamp) VALUES (%s, %s, %s, %s, NOW())"
-        for message in messages:
-            cursor.execute(sql, (user_id, session_id, message['role'], message['content']))
-        db.commit()
-        cursor.close()
-        db.close()
-    except pymysql.Error as e:
-        print(f"MySQL 오류 발생: {e}")
+        with get_db_connection() as conn:
+            with conn.cursor() as cursor:
+                # 기존 기록 삭제 후 새로운 기록 저장
+                cursor.execute("""
+                    DELETE FROM chat_logs
+                    WHERE user_pk = %s AND session_pk = %s
+                """, (user_pk, session_pk))
+                
+                # 새로운 채팅 기록 저장
+                cursor.execute("""
+                    INSERT INTO chat_logs (user_pk, session_pk, messages)
+                    VALUES (%s, %s, %s)
+                """, (user_pk, session_pk, json.dumps(messages)))
+                conn.commit()
+                return True
+    except Exception as e:
+        print(f"Error saving chat history: {e}")
+        return False
 
-def load_chat_history(session_id: str) -> list:
-    """MySQL에서 특정 세션 ID의 채팅 기록을 불러옵니다."""
-    history = []
+def load_chat_history(user_pk: int, session_pk: int) -> Optional[List[Dict]]:
+    """채팅 기록을 로드합니다."""
     try:
-        db = get_db_connection()
-        cursor = db.cursor(pymysql.cursors.DictCursor)
-        sql = "SELECT role, content FROM chat_logs WHERE session_id = %s ORDER BY timestamp"
-        cursor.execute(sql, (session_id,))
-        history = cursor.fetchall()
-        cursor.close()
-        db.close()
-    except pymysql.Error as e:
-        print(f"MySQL 오류 발생: {e}")
-    return history
+        with get_db_connection() as conn:
+            with conn.cursor(pymysql.cursors.DictCursor) as cursor:
+                cursor.execute("""
+                    SELECT messages FROM chat_logs
+                    WHERE user_pk = %s AND session_pk = %s
+                """, (user_pk, session_pk))
+                results = cursor.fetchall()
+                all_messages = []
+                if results:
+                    for result in results:
+                        if result and result['messages']:
+                            all_messages.extend(json.loads(result['messages']))
+                return all_messages
+    except Exception as e:
+        print(f"Error loading chat history: {e}")
+        return []
 
-def get_chat_history_by_user_id(user_id: int) -> list:
-    """MySQL에서 특정 사용자 ID의 모든 채팅 기록을 불러옵니다."""
-    history = []
+def delete_chat_history(user_pk: int, session_pk: int) -> bool:
+    """채팅 기록을 삭제합니다."""
     try:
-        db = get_db_connection()
-        cursor = db.cursor(pymysql.cursors.DictCursor)
-        sql = "SELECT session_id, role, content, timestamp FROM chat_logs WHERE user_id = %s ORDER BY timestamp"
-        cursor.execute(sql, (user_id,))
-        history = cursor.fetchall()
-        cursor.close()
-        db.close()
-    except pymysql.Error as e:
-        print(f"MySQL 오류 발생: {e}")
-    return history
+        with get_db_connection() as conn:
+            with conn.cursor() as cursor:
+                cursor.execute("""
+                    DELETE FROM chat_logs
+                    WHERE user_pk = %s AND session_pk = %s
+                """, (user_pk, session_pk))
+                conn.commit()
+                return True
+    except Exception as e:
+        print(f"Error deleting chat history: {e}")
+        return False

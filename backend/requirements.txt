@@ -2,13 +2,10 @@ fastapi
 uvicorn[standard]
 sentence-transformers
 chromadb
-openai
-pytest
-pytest-asyncio
-pyaudio
-pygame
+openai==1.12.0
 google-cloud-speech
 google-cloud-texttospeech
 protobuf<=3.20.1
 pymysql
 bcrypt
+httpx==0.27.2

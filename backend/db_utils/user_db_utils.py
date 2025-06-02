@@ -3,9 +3,8 @@ import pymysql
 import bcrypt
 from .mysql_db_setup import get_db_connection, hash_password  # database.py에서 함수 가져오기
 
-def signup(request_body):
+def signup(data):
     try:
-        data = json.loads(request_body)
         name = data.get('name')
         email = data.get('email')
         user_id = data.get('id')
@@ -41,9 +40,8 @@ def signup(request_body):
     except Exception as e:
         return {'status': 'fail', 'message': f'서버 오류: {str(e)}'}
 
-def login(request_body):
+def login(data):
     try:
-        data = json.loads(request_body)
         user_id = data.get('id')
         pw = data.get('pw')
 
@@ -71,9 +69,8 @@ def login(request_body):
     except Exception as e:
         return {'status': 'fail', 'message': f'서버 오류: {str(e)}'}
 
-def update_info(request_body):
+def update_info(data):
     try:
-        data = json.loads(request_body)
         pk = data.get('user_pk') or data.get('pk')  # 클라이언트가 user_pk 또는 pk 키 중 하나라도 보내도록
 
         if not pk:

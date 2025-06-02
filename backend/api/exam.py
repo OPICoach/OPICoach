@@ -1,7 +1,9 @@
-# api/exam.py
+from datetime import datetime
+from typing import List
 from fastapi import APIRouter, HTTPException, Query
 from pydantic import BaseModel, Field
 from exam_mode import generate_exam_question, generate_exam_feedback
+from db_utils.exam_db_utils import load_exam_history
 
 router = APIRouter(tags=["Exam Mode"]) 
 
@@ -11,10 +13,25 @@ class ExamFeedbackRequest(BaseModel):
     user_pk: int = Field(..., description="사용자 PK (DB 기본키)")
 
 class ExamFeedbackResponse(BaseModel):
-    feedback: str
+    Good_Point: str
+    Bad_Point: str
+    Overall_Feedback: str
+    Teachers_Answer: str
 
 class ExamQuestionResponse(BaseModel):
     question: str
+
+class ExamHistoryItem(BaseModel):
+    question: str
+    user_answer: str
+    good_point: str
+    bad_point: str
+    overall_feedback: str
+    teachers_answer: str
+    created_at: datetime
+
+class ExamHistoryResponse(BaseModel):
+    history: List[ExamHistoryItem]
 
 @router.get("/question", response_model=ExamQuestionResponse)
 async def api_generate_exam_question(user_pk: int = Query(..., description="사용자 PK (DB 기본키)")):
@@ -29,7 +46,16 @@ async def api_generate_exam_question(user_pk: int = Query(..., description="사�
 async def api_generate_exam_feedback(request: ExamFeedbackRequest):
     try:
         feedback = await generate_exam_feedback(request.user_pk, request.question, request.user_answer)
-        return {"feedback": feedback}
+        return feedback  
     except Exception as e:
         print(f"Error in /api/exam/feedback: {e}")
         raise HTTPException(status_code=500, detail="피드백 생성 중 오류가 발생했습니다.")
+
+@router.get("/history", response_model=ExamHistoryResponse)
+async def api_get_exam_history(user_pk: int = Query(..., description="사용자 PK (DB 기본키)")):
+    try:
+        history = load_exam_history(user_pk)
+        return {"history": history}
+    except Exception as e:
+        print(f"Error in /api/exam/history: {e}")
+        raise HTTPException(status_code=500, detail="시험 기록 불러오기 중 오류가 발생했습니다.")

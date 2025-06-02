@@ -19,7 +19,7 @@
 
 ## 페이지 구성
 
-| 페이지명 | 주요 기능 |
+| 페이지 | 주요 기능 |
 | --- | --- |
 | Home | 로그인 후 사용자 정보 및 주요 메뉴 표시 |
 | Login | 로그인, 비밀번호 찾기, 정보 수정 |
@@ -27,6 +27,13 @@
 | Learn | AI와 QnA, 대화형 학습, 피드백, 과거 대화 불러오기 |
 | Test | OPIc 스타일 모의 시험, 음성 답변 녹음/제출, AI 피드백 |
 | Note | 학습 대화 기반 노트 생성 및 관리 |
+
+![image](https://github.com/user-attachments/assets/462396e3-e817-4fbf-95cf-43bf96d7acf4)
+![image](https://github.com/user-attachments/assets/474d9528-d647-4e33-9e1e-5676e6ef9ef4)
+![image](https://github.com/user-attachments/assets/d815b60e-e171-4bf3-8538-1dca7a8dd644)
+![image](https://github.com/user-attachments/assets/b01560c7-0ab5-4e7f-96d2-f54db8a6bbcc)
+![image](https://github.com/user-attachments/assets/bf356771-f4ed-4a20-ad85-f40d482c6b23)
+![image](https://github.com/user-attachments/assets/cdb1c494-38d1-4751-8594-d33a0e9d6111)
 
 ---
 

@@ -15,9 +15,9 @@ $env:OPENAI_API_KEY = "my_api_key"
 지정된 `DB_NAME` 데이터베이스(스키마)는 미리 생성되어 있어야 합니다.
 
 # 기본 mysql db (user, chat log)
-python ./db_utils/mysql_db_setup.py
+python -m db_utils.mysql_db_setup
 
-# chroma db 설정
+# chroma db 설정 (초기 1 회만)
 python ./db_utils/chroma_db_setup.py
 
 # fastapi 서버 열기

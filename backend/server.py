@@ -1,7 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from api import users, exam, learning, note  # api 폴더 내 각각 모듈
+from api import users, exam, learning, note
+from api.vocab_idiom import router as vocab_router  # 추가
 
 from db_utils.mysql_db_setup import (
     init_db,
@@ -32,6 +33,7 @@ app.include_router(users.router, prefix="/api/users")
 app.include_router(exam.router, prefix="/api/exam")
 app.include_router(learning.router, prefix="/api/learning")
 app.include_router(note.router, prefix="/api/note")
+app.include_router(vocab_router, prefix="/api/vocab")  # 추가
 
 @app.on_event("startup")
 async def startup_event():

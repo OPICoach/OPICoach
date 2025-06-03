@@ -9,3 +9,5 @@ protobuf<=3.20.1
 pymysql
 bcrypt
 httpx==0.27.2
+pandas
+openpyxl

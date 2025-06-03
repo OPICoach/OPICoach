@@ -1,13 +1,19 @@
+import os
+import sys
 import pymysql
 import bcrypt
 from typing import Optional
-import os
+
+# 현재 디렉토리를 Python 경로에 추가
+current_dir = os.path.dirname(os.path.abspath(__file__))
+if current_dir not in sys.path:
+    sys.path.append(current_dir)
 
 # MySQL DB 설정
 DB_HOST = 'localhost'
 DB_PORT = 3306
 DB_USER = 'root'
-DB_PASSWD = '1222'  # 기본 비밀번호 설정
+DB_PASSWD = '1234'  # 기본 비밀번호 설정
 DB_NAME = 'opicoach'
 DB_CHARSET = 'utf8mb4'
 
@@ -175,6 +181,26 @@ def create_learning_sessions_table():
         cursor.close()
         db.close()
 
+def create_vocab_items_table():
+    db = get_db_connection()
+    cursor = db.cursor()
+    cursor.execute("SHOW TABLES LIKE 'vocab_items'")
+    result = cursor.fetchone()
+    if result:
+        print("✅ Table 'vocab_items' already exists.")
+    else:
+        create_table_query = """
+        CREATE TABLE vocab_items (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            word VARCHAR(255) NOT NULL,
+            meaning TEXT NOT NULL
+        )
+        """
+        cursor.execute(create_table_query)
+        print("🆕 Table 'vocab_items' created successfully.")
+    cursor.close()
+    db.close()
+
 def hash_password(plain_password: str) -> str:
     return bcrypt.hashpw(plain_password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 
@@ -187,6 +213,7 @@ def setup_all():
     create_chat_logs_table()  # chat_logs는 learning_sessions를 참조하므로 나중에 생성
     create_exams_table()
     create_learning_notes_table()
+    create_vocab_items_table()  # vocab_items 테이블 생성
 
 def init_db():
     """데이터베이스와 테이블을 초기화합니다."""
@@ -213,6 +240,7 @@ def init_db():
             create_chat_logs_table()  # chat_logs는 learning_sessions를 참조하므로 나중에 생성
             create_exams_table()
             create_learning_notes_table()
+            create_vocab_items_table()  # vocab_items 테이블 생성
             
             print("✅ 데이터베이스와 테이블이 성공적으로 초기화되었습니다.")
             
@@ -224,3 +252,11 @@ def init_db():
 
 if __name__ == "__main__":
     init_db()
+    try:
+        # 상대 경로로 import
+        from .vocab_idiom_db_utils import insert_vocab_from_excel
+        # 엑셀 파일 경로를 절대 경로로 수정
+        excel_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'vocab_db', 'vocab_idiom.xlsx')
+        insert_vocab_from_excel(excel_path)
+    except Exception as e:
+        print(f"❌ vocab 데이터 자동 삽입 실패: {e}")

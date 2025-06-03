@@ -3,22 +3,17 @@ import SideBar from "../components/sideBar/SideBar.jsx";
 import { useRecoilState } from "recoil";
 import { sideBarState } from "../atom/sidebarAtom";
 import { fetchVocabQuestion } from "../api/api";
+import { useNavigate } from "react-router-dom";
 
 const VocabPage = () => {
   const [open] = useRecoilState(sideBarState);
   const [question, setQuestion] = useState(null);
   const [loading, setLoading] = useState(false);
   const userPk = 1; // TODO: 실제 로그인 유저 PK로 교체
+  const navigate = useNavigate();
 
-  const handleStart = async () => {
-    setLoading(true);
-    try {
-      const data = await fetchVocabQuestion(userPk);
-      setQuestion(data);
-    } catch (e) {
-      alert("문제 불러오기 실패");
-    }
-    setLoading(false);
+  const handleStart = () => {
+    navigate("/vocab/study");
   };
 
   return (
@@ -42,7 +37,7 @@ const VocabPage = () => {
           onClick={handleStart}
           disabled={loading}
         >
-          {loading ? "로딩 중..." : question ? "다음 문제" : "Start"}
+          Start
         </button>
       </div>
     </div>

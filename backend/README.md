@@ -7,7 +7,7 @@ myenv\Scripts\activate
 pip install -r requirements.txt
 
 # API 키 세팅
-$env:OPENAI_API_KEY = "my_api_key"
+$env:OPENAI_API_KEY = "AIzaSyAiHjEj_FVetwfXYpunHrBlbmqdLuMQ1_Y"
 
 # mysql 설치 및 설정
 로컬 또는 원격 MySQL 서버가 실행 중이어야 합니다.

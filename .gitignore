@@ -28,3 +28,5 @@ opicoach-e1cb367c0382.json
 node_modules
 myenv
 else.py
+
+backend/backendenv/

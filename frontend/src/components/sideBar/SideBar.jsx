@@ -4,6 +4,7 @@ import learnIcon from "../../assets/sidebar/learn.svg";
 import testIcon from "../../assets/sidebar/test.svg";
 import infoIcon from "../../assets/sidebar/infor.svg";
 import logoutIcon from "../../assets/sidebar/log-out.svg";
+import vocabIcon from "../../assets/sidebar/vocab.svg";
 import sidebarLogo from "../../assets/sidebar/sidebarLogo.svg";
 import { useNavigate, useLocation, matchPath } from "react-router-dom";
 import { useRecoilState, useResetRecoilState } from "recoil";
@@ -27,6 +28,7 @@ const menus = [
   { name: "Home", icon: homeIcon, path: "/" },
   { name: "Learn", icon: learnIcon, path: "/learn" },
   { name: "Note", icon: infoIcon, path: "/note" },
+  { name: "Vocab/Idiom", icon: vocabIcon, path: "/vocab" },
   { name: "Test", icon: testIcon, path: "/test" },
   { name: "Exam History", icon: infoIcon, path: "/exam/history" },
 ];

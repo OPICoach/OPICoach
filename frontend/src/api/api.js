@@ -482,3 +482,13 @@ export const fetchTestHistory = async (userPk) => {
     throw error;
   }
 };
+
+// vocab
+
+// 단어 문제 받아오기
+export async function fetchVocabQuestion(user_pk) {
+  const response = await axios.get(`${API_BASE_URL}/vocab/question`, {
+    params: { user_pk }
+  });
+  return response.data; // { id, word }
+}

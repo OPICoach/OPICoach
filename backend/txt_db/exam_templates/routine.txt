@@ -1,0 +1,19 @@
+3. 루틴 (Routine)
+일상적 습관/행동 묘사 (Describing Daily Routines/Habits)
+"What is your normal routine at home on a typical weekday?" 
+"What do you usually do on weekend mornings? Please describe your weekend morning routine."
+"Can you tell me about your typical day at home? What kind of chores do you usually take care of?" 
+"Please tell me about your routine for how you usually spend your evenings after finishing your daily tasks."
+"What activities do you usually do at home? What are some daily routines you engage in? Tell me about the things that you do when you are at home during the weekdays and on weekends." 
+특정 활동의 절차/과정 설명 (Explaining Processes/Steps for an Activity)
+"How do you recycle at home? When and how often do you recycle? Describe each step of the process from beginning to end."
+"Please tell me what you do when you arrive at a hotel. What steps do you take? Tell me everything from beginning to end." 
+"What learning process do you usually follow when learning a new skill or knowledge? Please explain step-by-step."
+"Please describe in detail, step-by-step from beginning to end, the process of making a dish you are most confident in cooking."
+"When you go shopping, how do you decide what to buy? Does anyone help you? Tell me the steps you go through when you want to buy something new." 
+특정 주제 관련 습관 (Habits Related to Specific Topics)
+"When and where do you usually listen to music? Describe your typical music listening habits." 
+"How often do you go to a park? What things do you usually do at the park?"
+"You indicated that you surf the Internet. When and where do you search online? How often do you do it? Why do you usually surf the Internet? Give me as many details as you can." 
+"What are the specific steps or methods you follow when sorting and recycling household waste?"
+"Do you have any special shopping habits or considerations when buying new clothes or items?"

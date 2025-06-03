@@ -1,0 +1,25 @@
+2. 묘사 (Description)
+장소 묘사 (Describing Places)
+"Please describe the house you live in, in detail. What do you like most about it?"
+"Tell me about the cafes or coffee houses in your community. Please describe it in detail." 
+"You indicated in the survey that you like to go to parks. Tell me about one of the parks that you often visit. What makes it so special?" 
+"I'd like to know about a bar you often go to. Where is your favorite bar located? What does it look like? Please describe everything about that bar in detail."
+"What is your favorite room in your house? What does it look like? Why do you like that room? What do you usually do there?" 
+사물/대상 묘사 (Describing Objects/Things)
+"Please describe the public transportation system in your country. What types are there mainly, and how do people use them?"
+"What technology do you use most frequently in your daily life? Please describe it in detail."
+"If you have a piece of furniture or an item in your house that you cherish the most, what is it? Please describe it in detail."
+"What is your favorite furniture in your house? What does it look like? What do you like about the furniture? Tell me about the furniture in detail." 
+"There are many popular websites on the internet. Tell me about your favorite website to visit when surfing the internet. What is it? Why is it your favorite?" 
+사람 묘사 (Describing People)
+"Please describe your best friend in detail. Explain their personality and what they mean to you."
+"Could you choose one member of your family and describe their appearance, personality, and your relationship with them?"
+"Who is the person you admire most in your life, and why? Please describe their characteristics."
+"Please describe one of your neighbors. What kind of person are they?"
+"Who do you think is the most creative person you know? Describe what makes them creative."
+활동/취미 묘사 (Describing Activities/Hobbies)
+"Explain the types of music you enjoy listening to. Discuss some of your favorite composers and/or musicians, and why you like them." 
+"What is your favorite movie genre? Please describe its characteristics and appeal in detail."
+"You indicated in the survey that you enjoy watching movies. What is your favorite movie? Give me a description with lots of details." 
+"What kinds of books do you read now? Are they the same books you liked when you were younger? How has your taste in books developed over the years?"
+"If you have an exercise or sport you enjoy, what is it, why do you like it, and how do you do it? Please explain."

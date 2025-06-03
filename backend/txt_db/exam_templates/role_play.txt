@@ -1,0 +1,61 @@
+6. 롤플레이 (Role-Play)
+
+11번 유형: 정보요청 (Information Request)
+일반적 정보 문의 (General Information Inquiry)
+"You will be going on a trip next month, so you will need to make some travel arrangements. Contact the travel agency in order to ask three to four questions to gather the information necessary in order to plan your trip."
+"You are planning a vacation with one of your friends. Call a travel agent to discuss the vacation you hope to go on. Ask 3 or 4 questions to determine what things you need to do for this vacation." 
+"I'd like to give you a situation and ask you to act it out. You are on vacation in New York City. Now you are at a car rental company. You need to rent a car, and you are speaking to the person who works at the car rental company. Ask him 3 or 4 questions about renting a car." 
+"Pretend that you want to spend time with your friends this weekend. Call your friend and invite him or her to some activities over the weekend." 
+"I'd like to give you a situation to act out. Pretend that you have been invited to a party but you don't know what the dress code is. Ask your friend three or four questions about the dress code." 
+구매 관련 문의 (Purchase Inquiry)
+"You are trying to buy a new camera at an electronics store. You found a model you like. Ask the salesperson 3-4 questions about its features, price, warranty period, etc."
+"You are planning to buy a new smartphone. Call a mobile carrier store and ask 3-4 questions about the key features of a specific model, its connection with phone plans, purchase benefits, etc."
+"You want to buy a new bicycle. Go to a bicycle specialty store and ask the staff for recommendations suitable for your needs, along with 3-4 questions about a few models."
+"You are trying to order flowers for a friend's birthday present. Call a flower shop and ask 3-4 questions about recommended bouquets, price ranges, delivery availability, and times."
+"You intend to purchase new business software. Call the software company and ask 3-4 questions about the program's main features, system compatibility, pricing policy, technical support, etc."
+예약 관련 문의 (Reservation Inquiry - e.g., hotel, tickets)
+"You are planning to stay at a hotel with a friend over the weekend. Call the hotel reservations department and ask 2-3 questions about room types, prices, availability, amenities, etc."
+"You want to book tickets for your favorite singer's concert. Call the ticket office and ask 2-3 questions about prices by seating grade, booking methods, refund policies, concert information, etc."
+"You want to book a dinner reservation at a popular restaurant to celebrate a special occasion. Call the restaurant and ask 3-4 questions about available reservation times, menu recommendations, whether special requests are possible, etc." 
+"You need to book airline tickets for a family trip. Call the airline and ask 3-4 questions about flight schedules to a specific destination, ticket prices, baggage regulations, points to note when traveling with an infant, etc." 
+"You plan to rent a car to use during your vacation. Call the rental car company and ask 3-4 questions about available car models, rental costs, insurance conditions, pick-up and return procedures, etc." 
+약속 정하기 관련 문의 (Appointment Setting Inquiry)
+"You want to make dinner plans with a friend you haven't seen in a long time. Call your friend and ask 2-3 questions about mutually available times, a place you'd like to meet, activities or food menus you'd like to have together, etc."
+"You need to make a doctor's appointment for a health check-up. Call the hospital administration office and ask 3-4 questions about available dates and times, necessary preparations, estimated duration, examination costs, etc."
+"You want to schedule a meeting with your university academic advisor for career counseling. Email or call your professor to ask 3-4 questions about available meeting times and places, what you need to prepare, etc."
+"You want to make an appointment at a hair salon to change your hairstyle. Call the salon and ask 3-4 questions about your desired stylist's availability, prices for different services, estimated duration, etc."
+"The air conditioner at your home is broken, and you need to schedule a visit from a repair technician. Call the service center and ask 3-4 questions about the earliest available visit time, estimated travel and repair costs, whether warranty repair is possible, etc."
+
+12번 유형: 문제 상황 설명 및 대안 제시 (Explaining a Problem & Suggesting Alternatives)
+상품/서비스 문제 상황 및 대안 제시 (Product/Service Issue & Alternatives)
+"Imagine you purchased a non-refundable ticket but cannot travel on the planned date due to personal reasons. Call the travel agency to explain your situation. What would you say to request a solution or alternative options?"
+"You bought a movie ticket at the theater, but when you got home and checked, it wasn't for the movie or time you wanted. Call the theater the next day, explain the situation, and suggest 2-3 alternatives, such as changing the ticket or getting a refund."
+"You ordered clothes from an online shopping mall, but an item of a completely different color and size was delivered. Call customer service, explain the problem, and propose 2-3 solutions such as an exchange for the correct item, a return and refund, or a discount coupon."
+"Your internet service has been continuously unstable for the past few days, significantly disrupting your work. Call your internet service provider, explain the problem situação in detail, and demand 2-3 alternatives such as immediate technical support, a fee reduction, or contract termination."
+"A foreign object was found in the food you ordered at a restaurant. Inform the staff member of this serious issue and suggest 2-3 appropriate compensation measures, such as a replacement dish, waiving the price of that menu item, or a discount on the entire meal."
+약속 변경/취소 상황 및 대안 제시 (Appointment Change/Cancellation & Alternatives)
+"For some reason, the travel agency informs you that the trip that you wanted to go on is unavailable. Call your friend, leave a message to explain the situation, and give 2 or 3 options to solve this problem." 
+"You were going to invite your friends, but one of your family members is sick. Call one of your friends and explain this situation. And suggest two or three alternatives to meet in the future." 
+"You have an important meeting with a client scheduled for tomorrow morning, but heavy snowfall overnight is expected to paralyze traffic. Call the client in advance, explain the situation, and suggest 2-3 alternatives such as switching to an online video conference, postponing to the afternoon, or rescheduling for the next day."
+"After you checked your wardrobe when you got home, you realized that you don't have suitable clothing for the party. Call your friend to explain what happened and ask him or her for some suggestions." 
+"You promised to help a friend move, but on the morning of the move, an urgent work matter came up, and you won't be able to make it on time. Call your friend, apologize, and express your regret by suggesting 2-3 alternatives, such as joining later, asking another friend to help instead, or helping with organizing after the move."
+물건 고장/분실 상황 및 대안 제시 (Item Broken/Lost & Alternatives)
+"You accidentally spilled coffee on a book you borrowed from the library, severely damaging it. Go to the librarian, politely apologize, explain the situation, and then suggest 2-3 ways to compensate, such as replacing it with the same new book, paying for repair costs, or compensating in another way."
+"While playing at a friend's house, you accidentally broke a decoration that your friend cherishes. Immediately inform your friend, apologize, and suggest 2-3 ways to make up for it, such as buying the same item, repairing it, or expressing your feelings with another gift."
+"I'm sorry, but there is a problem that you need to resolve. I'm not sure if you are allowed to rent a car because you don't have an international driver's license or an American driver's license. Please explain what your license says and suggest 2 or 3 alternatives to rent a car." 
+"Your new laptop, which you bought less than a week ago, won't turn on. Call the place of purchase, explain the problem, and strongly demand 2-3 options, such as an immediate exchange for a new product, a full refund, or a free repair."
+"While driving a rental car during an overseas trip, you got a flat tire. Call the rental car company's emergency roadside assistance, explain your current location and situation, and inquire about 2-3 solutions, such as requesting immediate assistance to replace it with a spare tire, getting information on the nearest repair shop, or receiving a replacement vehicle."
+예상치 못한 문제 상황 및 대안 제시 (Unexpected Problem & Alternatives - e.g., venue closed)
+"You received a notice that the national park you planned to visit with a friend over the weekend has been temporarily closed due to sudden bad weather. Inform your friend of this and suggest 2-3 alternatives, such as other indoor attractions or activities to visit instead, or postponing the plan to next week."
+"On the day of a long-awaited concert by an international artist, you arrived at the venue only to be informed that the concert was suddenly canceled due to issues on the organizer's side. Explain this absurd situation to the friend you went with, and suggest 2-3 alternative activities, such as finding a nearby good restaurant for dinner, going to see another movie, or going home to soothe your disappointment."
+"On your way to an important job interview, the subway suddenly stopped due to a breakdown. It seems certain that you will be late for the interview. Call the interviewer at the company, accurately explain the current situation, and inquire about 2-3 possible actions, such as switching to a video interview, adjusting the interview time, or requesting another opportunity."
+"On the day of a company workshop scheduled to be held outdoors, it started pouring rain from the morning. As the workshop coordinator, inform your team members of this situation, and suggest 2-3 alternatives such as replacing it with an indoor program, postponing the workshop schedule, or conducting it online, and gather their opinions."
+"Upon arriving at the hotel you booked for your overseas trip, you were informed that your reservation was missing due to a mistake by the hotel and there are no rooms available. Strongly protest to the hotel manager, explain the situation, and demand 2-3 solutions, such as immediately arranging a room in another hotel of the same or higher class, providing appropriate monetary compensation, or taking responsibility for all inconveniences related to tonight's accommodation."
+
+13번 유형: 롤플레이 상황 관련 과거 경험 (Past Experience Related to Role-Play Scenario)
+롤플레이 주제 관련 과거 경험 이야기하기 (Talking about past experiences related to the role-play topic)
+"Can you tell me about a trip where you had an unexpected, surprising, or unforgettable experience? What made it so memorable and unique for you?" 
+"Reflect back to the time when you had any problems while you were planning a trip. What was the problem, and how did you deal with it? Tell me what happened from beginning to end." 
+"Have you ever rented a car for your traveling? What was the reason you rented a car? Did something crazy or terrible happen? What happened, and how did you solve it? Why was the experience so memorable?" 
+"Have you ever been in a situation where you had to cancel an appointment because of your family? What was the problem? How did you solve it? Tell me everything." 
+"Have you experienced any problems when planning to attend an event? Describe one difficulty you faced and explain how it happened. How did you solve the problem? Were you able to attend the event?"

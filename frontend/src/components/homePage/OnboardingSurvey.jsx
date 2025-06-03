@@ -1,12 +1,12 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SurveyStep from "./SurveyStep";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import OnboardingMessage from "./OnboardingMessage";
 import OnboardingButton from "./OnboardingButton";
 
 const steps = [
   {
-    title: "1. What’s your past OPIc level?",
+    title: "1. What's your past OPIc level?",
     options: [
       "AL",
       "IH",
@@ -18,55 +18,62 @@ const steps = [
     multiple: false,
   },
   {
-    title: "2. What’s your goal level?",
+    title: "2. What's your goal level?",
     options: ["AL", "IH", "IM", "IL", "Or below"],
     multiple: false,
   },
   {
     title: "3. Choose your background.",
     options: [
-      "Student",
-      "Office Worker",
-      "Freelancer",
-      "Self Employed",
-      "Unemployed",
+      "student",
+      "office worker",
+      "freelancer",
+      "self employed",
+      "unemployed",
     ],
     multiple: false,
   },
   {
     title: "4. What is your occupation or major?",
     options: [
-      "Computer Science",
-      "Business Administration",
-      "Marketing",
-      "Visual Design",
-      "Physical Education",
+      "computer science",
+      "business administration",
+      "marketing",
+      "visual design",
+      "physical education",
     ],
     multiple: false,
   },
   {
     title: "5. Select 2-3 topics of interest.",
-    options: ["Shopping", "Movie", "Music", "Sports", "Reading books"],
+    options: ["shopping", "movie", "music", "sports", "reading books"],
     multiple: true,
   },
 ];
 
-const OnboardingSurvey = ({ onComplete }) => {
+const OnboardingSurvey = ({ onComplete, initialData = [] }) => {
   const [step, setStep] = useState(0);
-  const [answers, setAnswers] = useState([
-    null,
-    null,
-    null,
-    null,
-    [], // 마지막은 배열(다중선택)
-  ]);
+  const [answers, setAnswers] = useState([null, null, null, null, []]);
+  const location = useLocation();
+  const isEditPage = location.pathname === "/edit";
 
-  // 선택 핸들러
+  useEffect(() => {
+    if (initialData.length > 0) {
+      const processedData = [...initialData];
+      if (!Array.isArray(processedData[4])) {
+        processedData[4] = [];
+      }
+      setAnswers(processedData);
+      if (isEditPage) {
+        setStep(1);
+      }
+    }
+  }, [initialData, isEditPage]);
+
   const handleSelect = (option) => {
     const newAnswers = [...answers];
     if (steps[step].multiple) {
-      // 다중 선택
-      let selected = newAnswers[step] || [];
+      let selected = Array.isArray(newAnswers[step]) ? [...newAnswers[step]] : [];
       if (selected.includes(option)) {
         selected = selected.filter((item) => item !== option);
       } else if (selected.length < 3) {
@@ -84,7 +91,13 @@ const OnboardingSurvey = ({ onComplete }) => {
   };
 
   const handlePrev = () => {
-    if (step > 0) setStep(step - 1);
+    if (step > 0) {
+      // Edit 페이지에서는 past level(step 0)으로 돌아갈 수 없음
+      if (isEditPage && step === 1) {
+        return;
+      }
+      setStep(step - 1);
+    }
   };
 
   // 저장

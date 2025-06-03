@@ -13,8 +13,8 @@ const MessageList = ({ messages }) => {
   return (
     <div className="flex-1 flex flex-col gap-4 overflow-y-auto mb-4">
       {messages.map((msg, idx) =>
-        msg.role === "ai" ? (
-          <AIMessage key={`ai-${idx}`} message={msg.content} />
+        msg.role === "assistant" ? (
+          <AIMessage key={`assistant-${idx}`} message={msg.content} />
         ) : (
           <UserMessage key={`user-${idx}`} message={msg.content} />
         )

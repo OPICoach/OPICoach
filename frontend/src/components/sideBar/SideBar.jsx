@@ -5,6 +5,7 @@ import testIcon from "../../assets/sidebar/test.svg";
 import infoIcon from "../../assets/sidebar/infor.svg";
 import logoutIcon from "../../assets/sidebar/log-out.svg";
 import sidebarLogo from "../../assets/sidebar/sidebarLogo.svg";
+import vocabIcon from "../../assets/sidebar/vocab.svg";
 import { useNavigate, useLocation, matchPath } from "react-router-dom";
 import { useRecoilState, useResetRecoilState } from "recoil";
 import {
@@ -29,6 +30,9 @@ const menus = [
   { name: "Note", icon: infoIcon, path: "/note" },
   { name: "Test", icon: testIcon, path: "/test" },
 ];
+
+// vocab/idiom 메뉴 추가
+const vocabMenu = { name: "Vocab/Idiom", icon: vocabIcon, path: "/vocab" };
 
 // 유저 네임 앞자리
 function getProfileInitial(userName) {
@@ -88,6 +92,7 @@ const SideBar = () => {
   const location = useLocation();
 
   const initial = userData?.name ? getProfileInitial(userData.name) : "";
+  const isVocabActive = location.pathname.startsWith("/vocab");
 
   const handleLogout = () => {
     if (window.confirm("로그아웃 하시겠습니까?")) {
@@ -226,7 +231,26 @@ const SideBar = () => {
               </div>
             );
           })}
+          {/* Vocab/Idiom 메뉴를 Test 아래에 추가 */}
+          <div>
+            <button
+              onClick={() => navigate(vocabMenu.path)}
+              className={
+                "flex items-center w-full my-[10px] px-5 py-3 text-accent border-[#E5E7EB] rounded-lg transition cursor-pointer " +
+                (isVocabActive ? "bg-white font-semibold" : "hover:bg-white")
+              }
+              style={{ outline: "none", border: "none" }}
+            >
+              <img
+                src={vocabMenu.icon}
+                alt={vocabMenu.name}
+                className="w-6 h-6 mr-[19px] filter grayscale brightness-75"
+              />
+              <span>{vocabMenu.name}</span>
+            </button>
+          </div>
         </nav>
+        {/* 유저 정보 */}
         <div className="flex items-center px-5 pb-6 select-none">
           <div className="w-9 h-9 bg-primary rounded-full flex items-center justify-center mr-3">
             <span className="text-white text-lg font-bold">{initial}</span>

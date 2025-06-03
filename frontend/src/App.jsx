@@ -16,6 +16,7 @@ import TestStart from "./pages/TestStart";
 import TestFeedback from "./pages/TestFeedback";
 import Note from "./pages/Note";
 import Edit from "./pages/Edit";
+import VocabPage from "./pages/VocabPage";
 
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
@@ -76,6 +77,10 @@ function App() {
           <Route
             path="/edit"
             element={isLoggedIn ? <Edit /> : <Navigate to="/login" replace />}
+          />
+          <Route
+            path="/vocab"
+            element={isLoggedIn ? <VocabPage /> : <Navigate to="/login" replace />}
           />
 
           <Route path="*" element={<Navigate to="/" replace />} />

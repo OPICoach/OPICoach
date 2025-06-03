@@ -25,7 +25,7 @@ const Test = () => {
       <main className="flex flex-col w-full bg-white h-screen">
         <div className=" bg-white px-16 pt-4 pb-4 mt-12">
           <h2 className="text-3xl font-semibold mb-10 select-none">
-            Mock OPIc Speaking Test
+            OPIc Speaking Mock Test
           </h2>
           <div className="">
             <h2 className="text-xl font-semibold mb-6 text-gray-800">

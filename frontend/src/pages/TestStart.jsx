@@ -15,11 +15,14 @@ const TestStart = () => {
   const [questions, setQuestions] = useState([]);
   const [isTestStarted, setIsTestStarted] = useState(false);
   const [numQuestions, setNumQuestions] = useState(1);
+  const [recordedAnswers, setRecordedAnswers] = useState([]);
+  const [isRecording, setIsRecording] = useState(false);
+  const mediaRecorderRef = useRef(null);
+  const audioChunksRef = useRef([]);
 
   const [timeLeft, setTimeLeft] = useRecoilState(timeLeftState);
   const [isRunning, setIsRunning] = useRecoilState(isRunningState);
   const [audioURL, setAudioURL] = useRecoilState(audioURLState);
-  const [isRecording, setIsRecording] = useRecoilState(isRecordingState);
   const userPk = useRecoilValue(userPkState);
 
   const speechSynthesisRef = useRef(window.speechSynthesis);
@@ -28,6 +31,47 @@ const TestStart = () => {
   const [userAnswer, setUserAnswer] = useState("");
   const [isTestFinished, setIsTestFinished] = useState(false);
   const [isFetchingFeedback, setIsFetchingFeedback] = useState(false);
+
+  // 녹음 시작 함수
+  const startRecording = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      mediaRecorderRef.current = new MediaRecorder(stream);
+      audioChunksRef.current = [];
+
+      mediaRecorderRef.current.ondataavailable = (event) => {
+        audioChunksRef.current.push(event.data);
+      };
+
+      mediaRecorderRef.current.onstop = () => {
+        const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/wav' });
+        const audioUrl = URL.createObjectURL(audioBlob);
+        setRecordedAnswers(prev => [...prev, audioUrl]);
+        setUserAnswer("녹음 완료");
+      };
+
+      mediaRecorderRef.current.start();
+      setIsRecording(true);
+    } catch (err) {
+      console.error("녹음 시작 실패:", err);
+      alert("마이크 접근 권한이 필요합니다.");
+    }
+  };
+
+  // 녹음 중지 함수
+  const stopRecording = () => {
+    if (mediaRecorderRef.current && isRecording) {
+      mediaRecorderRef.current.stop();
+      setIsRecording(false);
+      mediaRecorderRef.current.stream.getTracks().forEach(track => track.stop());
+    }
+  };
+
+  // 녹음 재생 함수
+  const playRecording = (index) => {
+    const audio = new Audio(recordedAnswers[index]);
+    audio.play();
+  };
 
   const fetchQuestions = async () => {
     if (!userPk) {
@@ -72,6 +116,7 @@ const TestStart = () => {
         setTimeLeft((prev) => prev - 1);
       }, 1000);
     } else if (isRunning && timeLeft === 0) {
+      stopRecording();
       proceedNextQuestion();
     }
 
@@ -102,14 +147,14 @@ const TestStart = () => {
 
     speechSynthesisRef.current.cancel();
     setIsRunning(false);
-    setTimeLeft(10);
+    setTimeLeft(30);  // 30초로 변경
     setAudioURL(null);
 
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = "ko-KR";
 
     utterance.onend = () => {
-      setUserAnswer("Umm...I don't know"); // 추후 음성 입력으로 대체
+      startRecording();  // 질문 재생이 끝나면 녹음 시작
       setIsRunning(true);
       console.log("질문 재생 완료, 답변 시작");
     };
@@ -200,23 +245,25 @@ const TestStart = () => {
               <br />
               (문제 생성에 시간이 걸릴 수 있습니다.)
             </h2>
-            <select
-              value={numQuestions}
-              onChange={(e) => setNumQuestions(Number(e.target.value))}
-              className="px-4 py-2 border rounded-md"
-            >
-              {[1, 2, 3, 5, 10].map((n) => (
-                <option key={n} value={n}>
-                  {n}개
-                </option>
-              ))}
-            </select>
-            <button
-              onClick={fetchQuestions}
-              className="bg-primary hover:bg-blue-600 text-white px-6 py-3 rounded-lg"
-            >
-              Test Start
-            </button>
+            <div className="flex items-center gap-4">
+              <select
+                value={numQuestions}
+                onChange={(e) => setNumQuestions(Number(e.target.value))}
+                className="px-4 py-2 border rounded-md"
+              >
+                {[1, 2, 3, 5, 10].map((n) => (
+                  <option key={n} value={n}>
+                    {n}개
+                  </option>
+                ))}
+              </select>
+              <button
+                onClick={fetchQuestions}
+                className="bg-primary hover:bg-blue-600 text-white px-6 py-3 rounded-lg"
+              >
+                Test Start
+              </button>
+            </div>
           </div>
         ) : isTestFinished ? (
           <div className="max-w-xl w-full p-6 bg-yellow-50 border rounded text-center">
@@ -258,6 +305,14 @@ const TestStart = () => {
               >
                 질문 다시 듣기
               </button>
+              {recordedAnswers[currentQuestionIndex] && (
+                <button
+                  onClick={() => playRecording(currentQuestionIndex)}
+                  className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700"
+                >
+                  내 답변 듣기
+                </button>
+              )}
               <button
                 onClick={proceedNextQuestion}
                 disabled={isFetchingFeedback}
@@ -270,6 +325,11 @@ const TestStart = () => {
                 다음 문제
               </button>
             </div>
+            {isRecording && (
+              <div className="mt-4 text-red-500 font-bold">
+                녹음 중... ({timeLeft}초 남음)
+              </div>
+            )}
           </>
         )}
       </div>

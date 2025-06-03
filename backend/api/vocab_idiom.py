@@ -1,12 +1,14 @@
 from fastapi import APIRouter, HTTPException, Query
 from pydantic import BaseModel, Field
-from vocab_idiom_mode import generate_vocab_question, check_vocab_answer, get_vocab_history
+from vocab_idiom_mode import get_vocab_items, check_vocab_answer, get_vocab_history
+import random
 
 router = APIRouter(tags=["Vocab/Idiom Mode"])
 
 class VocabQuestionResponse(BaseModel):
     id: int
     word: str
+    meaning: str
     # meaning은 문제 출제 시 숨길 수 있음
 
 class VocabFeedbackRequest(BaseModel):
@@ -25,13 +27,14 @@ class VocabHistoryItem(BaseModel):
 class VocabHistoryResponse(BaseModel):
     history: list[VocabHistoryItem]
 
-@router.get("/question", response_model=VocabQuestionResponse)
-async def api_generate_vocab_question(user_pk: int = Query(..., description="사용자 PK (DB 기본키)")):
+@router.get("/question", response_model=list[VocabQuestionResponse])
+async def api_generate_vocab_questions(user_pk: int = Query(..., description="사용자 PK (DB 기본키)")):
     try:
-        vocab = generate_vocab_question(user_pk)
-        if not vocab:
-            raise HTTPException(status_code=404, detail="단어 문제가 없습니다.")
-        return {"id": vocab["id"], "word": vocab["word"]}
+        vocab_list = get_vocab_items()
+        if len(vocab_list) < 4:
+            raise HTTPException(status_code=400, detail="단어가 4개 이상 필요합니다.")
+        choices = random.sample(vocab_list, 4)
+        return choices
     except Exception as e:
         print(f"Error in /api/vocab/question: {e}")
         raise HTTPException(status_code=500, detail="단어 문제 생성 중 오류가 발생했습니다.")

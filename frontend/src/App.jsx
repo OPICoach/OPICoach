@@ -18,6 +18,7 @@ import Note from "./pages/Note";
 import Edit from "./pages/Edit";
 import ExamHistory from "./pages/ExamHistory";
 import VocabPage from "./pages/VocabPage";
+import VocabStudyPage from "./pages/VocabStudyPage";
 
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
@@ -84,6 +85,7 @@ function App() {
             path="/vocab"
             element={isLoggedIn ? <VocabPage /> : <Navigate to="/login" replace />}
           />
+          <Route path="/vocab/study" element={<VocabStudyPage />} />
 
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

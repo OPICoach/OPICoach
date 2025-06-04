@@ -31,8 +31,8 @@ const menus = [
   { name: "Learn", icon: learnIcon, path: "/learn" },
   { name: "Note", icon: noteIcon, path: "/note" },
   { name: "Vocab/Idiom", icon: vocabIcon, path: "/vocab" },
-  { name: "Test", icon: testIcon, path: "/test" },
-  { name: "Exam History", icon: historyIcon, path: "/exam/history" },
+  { name: "Test", icon: testIcon, path: "/test/info" },
+  { name: "Test History", icon: historyIcon, path: "/test/history" },
 ];
 
 // 유저 네임 앞자리

@@ -11,12 +11,12 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Learn from "./pages/Learn";
-import Test from "./pages/Test";
+import TestInfo from "./pages/TestInfo";
 import TestStart from "./pages/TestStart";
 import TestFeedback from "./pages/TestFeedback";
 import Note from "./pages/Note";
 import Edit from "./pages/Edit";
-import ExamHistory from "./pages/ExamHistory";
+import TestHistory from "./pages/TestHistory";
 import VocabPage from "./pages/VocabPage";
 import VocabStudyPage from "./pages/VocabStudyPage";
 
@@ -61,17 +61,17 @@ function App() {
             element={isLoggedIn ? <Learn /> : <Navigate to="/login" replace />}
           />
           <Route
-            path="/test"
-            element={isLoggedIn ? <Test /> : <Navigate to="/login" replace />}
+            path="/test/info"
+            element={isLoggedIn ? <TestInfo /> : <Navigate to="/login" replace />}
           />
           <Route
-            path="/test/teststart"
+            path="/test/start"
             element={
               isLoggedIn ? <TestStart /> : <Navigate to="/login" replace />
             }
           />
           <Route
-            path="/testfeedback"
+            path="/test/feedback"
             element={
               isLoggedIn ? <TestFeedback /> : <Navigate to="/login" replace />
             }
@@ -80,7 +80,7 @@ function App() {
             path="/edit"
             element={isLoggedIn ? <Edit /> : <Navigate to="/login" replace />}
           />
-          <Route path="/exam/history" element={<ExamHistory />} />
+          <Route path="/test/history" element={<TestHistory />} />
           <Route
             path="/vocab"
             element={isLoggedIn ? <VocabPage /> : <Navigate to="/login" replace />}

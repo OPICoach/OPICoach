@@ -40,7 +40,7 @@ const LevelHistory = ({ historyData }) => {
   console.log('Valid history data:', validHistoryData);  // 변환된 데이터 확인
 
   return (
-    <div className="mt-6 p-6 bg-white rounded-lg shadow">
+    <div className="p-6 bg-white rounded-lg shadow">
       <h2 className="text-lg text-gray-700 font-medium mb-4">Level History</h2>
       <div className="flex justify-center">
         <div className="w-[70%] aspect-[3/1]">

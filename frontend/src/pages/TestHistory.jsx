@@ -10,7 +10,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import { FaPlay } from 'react-icons/fa';
 
-const ExamHistory = () => {
+const TestHistory = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [examHistory, setExamHistory] = useState([]);
@@ -97,7 +97,7 @@ const ExamHistory = () => {
           setSelectedExam(historyWithAudio[0]);
         }
       } catch (err) {
-        console.error('Error loading exam history:', err);
+        console.error('Error loading test history:', err);
         setError(err.message);
       } finally {
         setLoading(false);
@@ -121,7 +121,7 @@ const ExamHistory = () => {
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
-  if (!examHistory.length) return <div>No exam history found.</div>;
+  if (!examHistory.length) return <div>No test history found.</div>;
 
   return (
     <div className="flex flex-row h-screen bg-white">
@@ -135,12 +135,11 @@ const ExamHistory = () => {
       </div>
 
       <div className="flex flex-col flex-1 px-10 pt-8 pb-8 h-full">
-        <h2 className="text-2xl font-semibold mb-6 select-none">Exam History</h2>
+        <h2 className="text-2xl font-semibold mb-6 select-none">Test History</h2>
         
         <div className="flex flex-1 overflow-hidden space-x-6">
           {/* 시험 기록 목록 */}
           <div className="w-1/4 border border-gray-200 rounded-lg p-4 overflow-y-auto">
-            <h3 className="font-semibold mb-4">All Exams</h3>
             <ul>
               {examHistory.map((exam, index) => (
                 <li
@@ -156,6 +155,12 @@ const ExamHistory = () => {
                     <h4 className="text-lg font-semibold mb-2">Question {index + 1}</h4>
                     <p className="text-gray-600 mb-2">Type: {exam.exam_type}</p>
                     <p className="text-gray-600 mb-2">Score: {exam.score}</p>
+                    <div className="text-sm text-gray-500">
+                  <p className="text-sm text-gray-500">
+                    {new Date(exam.created_at).toLocaleString()}
+                    </p>
+
+                </div>
                   </div>
                 </li>
               ))}
@@ -164,10 +169,10 @@ const ExamHistory = () => {
 
           {/* 선택된 시험 상세 정보 */}
           <div className="flex-1 border border-gray-200 rounded-lg p-4 overflow-y-auto">
-            <h3 className="font-semibold mb-4">Exam Detail</h3>
             {selectedExam ? (
               <div className="space-y-6">
                 <div>
+                  <h4 className="text-2xl font-semibold mb-2">Test Details</h4>
                   <h4 className="text-lg font-semibold mb-2">Question</h4>
                   <div className="bg-white p-3 rounded border">
                     <p className="mb-2">{selectedExam.question}</p>
@@ -210,7 +215,7 @@ const ExamHistory = () => {
                 </div>
 
                 <div>
-                  <h4 className="text-lg font-semibold mb-2">피드백</h4>
+                  <h4 className="text-2xl font-semibold mb-2">Feedbacks from OPICoach</h4>
                   <div className="bg-white p-3 rounded border">
                     <div className="prose">
                       <ReactMarkdown
@@ -239,10 +244,6 @@ const ExamHistory = () => {
                     </div>
                   </div>
                 </div>
-
-                <div className="text-sm text-gray-500">
-                  {new Date(selectedExam.created_at).toLocaleString()}
-                </div>
               </div>
             ) : (
               <p>Select an exam to view details.</p>
@@ -254,4 +255,4 @@ const ExamHistory = () => {
   );
 };
 
-export default ExamHistory; 
+export default TestHistory; 

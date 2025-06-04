@@ -15,6 +15,7 @@ import axios from "axios";
 const TestStart = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [questions, setQuestions] = useState([]);
+  const [isLoadingTest, setIsLoadingTest] = useState(false);
   const [isTestStarted, setIsTestStarted] = useState(false);
   const [numQuestions, setNumQuestions] = useState(1);
   const [recordedAnswers, setRecordedAnswers] = useState([]);
@@ -108,6 +109,7 @@ const TestStart = () => {
   };
 
   const fetchQuestions = async () => {
+    setIsLoadingTest(true);
     if (!userPk) {
       alert("사용자 정보가 없습니다. 로그인 후 이용해주세요.");
       return;
@@ -251,7 +253,7 @@ const TestStart = () => {
       localStorage.setItem('examFeedbacks', JSON.stringify(feedbackData));
       
       // 피드백 페이지로 이동
-      navigate("/testfeedback");
+      navigate("/test/feedback");
     } catch (error) {
       console.error("피드백 저장 실패:", error);
       alert("피드백 저장 중 오류가 발생했습니다.");
@@ -259,107 +261,136 @@ const TestStart = () => {
   };
 
   return (
-    <div className="flex flex-row">
+    <div className="flex h-screen">
       <SideBar />
-      <div className="flex flex-col justify-center items-center w-full h-screen bg-white p-6">
+      <div className="ml-[210px] flex-1 flex justify-center items-center bg-white p-6">
         {!isTestStarted ? (
-          <div className="flex flex-col items-center gap-4">
-            <h2 className="text-2xl font-bold text-center">
-              문제 개수를 선택하세요
-              <br />
-              (문제 생성에 시간이 걸릴 수 있습니다.)
-            </h2>
-            <div className="flex items-center gap-4">
-              <select
-                value={numQuestions}
-                onChange={(e) => setNumQuestions(Number(e.target.value))}
-                className="px-4 py-2 border rounded-md"
-              >
-                {[1, 2, 3, 5, 10].map((n) => (
-                  <option key={n} value={n}>
-                    {n}개
-                  </option>
-                ))}
-              </select>
-              <select
-                value={aiModel}
-                onChange={(e) => setAiModel(e.target.value)}
-                className="px-4 py-2 border rounded-md"
-              >
-                <option value="gemini-2.0-flash">Gemini 2.0 Flash</option>
-                <option value="gemini-2.5-pro-preview-05-06">Gemini 2.5 Pro</option>
-              </select>
-              <button
-                onClick={fetchQuestions}
-                className="bg-primary hover:bg-blue-600 text-white px-6 py-3 rounded-lg"
-              >
-                Test Start
-              </button>
-            </div>
-          </div>
-        ) : isTestFinished ? (
-          <div className="max-w-xl w-full p-6 bg-yellow-50 border rounded text-center">
-            <h2 className="text-2xl font-bold mb-4">Test finished.</h2>
-            <h3 className="font-semibold mb-2">You can get your feedback.</h3>
-            <button
-              onClick={goToFeedbackPage}
-              className="mt-4 bg-primary text-white px-6 py-3 rounded hover:bg-blue-600"
-            >
-              Get Feedback
-            </button>
-            <button
-              onClick={() => {
-                setIsTestStarted(false);
-                setQuestions([]);
-                setFeedbacks([]);
-                setUserAnswer("");
-                setCurrentQuestionIndex(0);
-                setIsTestFinished(false);
-                setAudioURL(null);
-              }}
-              className="mt-6 bg-gray-600 text-white px-6 py-2 rounded hover:bg-gray-700"
-            >
-              Restart
-            </button>
-          </div>
+          <div className="flex flex-col justify-center items-center gap-6 p-6 bg-white rounded-2xl shadow-xl">
+  <h2 className="text-2xl font-bold text-center text-gray-800">
+    Please select the number of questions  
+    <br />
+    and AI Model to generate them.
+    <br />
+    <span className="text-sm text-gray-500">(It may take some time.)</span>
+  </h2>
+  
+  <div className="flex flex-wrap justify-center items-center gap-4 w-full max-w-xl">
+    <div className="flex flex-col items-start gap-1">
+      <select
+        value={numQuestions}
+        onChange={(e) => setNumQuestions(Number(e.target.value))}
+        className="px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      >
+        {[1, 2, 3, 5, 10].map((n) => (
+          <option key={n} value={n}>
+            {n}
+          </option>
+        ))}
+      </select>
+    </div>
+    <div className="flex flex-col items-start gap-1">
+      <select
+        value={aiModel}
+        onChange={(e) => setAiModel(e.target.value)}
+        className="px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      >
+        <option value="gemini-2.0-flash">Gemini 2.0 Flash</option>
+        <option value="gemini-2.5-pro-preview-05-06">Gemini 2.5 Pro</option>
+      </select>
+    </div>
+  </div>
+
+  <button
+    onClick={fetchQuestions}
+    className={`w-40 py-2 font-semibold rounded-lg text-white transition duration-300 ease-in-out ${
+      isLoadingTest ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"
+    }`}
+    disabled={isLoadingTest}
+  >
+    {isLoadingTest ? "Processing..." : "Start"}
+  </button>
+</div>
+
+                ) : isTestFinished ? (
+                <div className="max-w-md w-full p-8 bg-white border border-gray-200 rounded-2xl shadow text-center space-y-6">
+                  <div className="flex flex-col items-center">
+                    <div className="w-10 h-10 mb-2 rounded-full bg-green-500 flex items-center justify-center text-white text-lg font-bold">
+                      ✔
+                      </div>
+                      <h2 className="text-2xl font-bold text-gray-800">Test Completed</h2>
+                      <p className="text-gray-600">You can now check your feedback and try again if needed.</p>
+                      </div>
+                    <div className="flex flex-col gap-3">
+                      <button
+                        onClick={goToFeedbackPage}
+                        className="w-full bg-primary text-white py-3 rounded-lg font-medium hover:bg-blue-600 transition"
+                        >
+                          View Feedback
+                          </button>
+                          <button
+                          onClick={() => {
+                            setIsTestStarted(false);
+                            setQuestions([]);
+                            setFeedbacks([]);
+                            setUserAnswer("");
+                            setCurrentQuestionIndex(0);
+                            setIsTestFinished(false);
+                            setAudioURL(null);
+                            setIsLoadingTest(false);
+                          }}
+                          className="w-full bg-gray-200 text-gray-800 py-3 rounded-lg font-medium hover:bg-gray-300 transition"
+                          >
+                            Restart
+                            </button>
+                            </div>
+                          </div>          
         ) : (
           <>
-            <div className="mb-8 text-2xl font-bold">
-              Question {currentQuestionIndex + 1} / {questions.length}
-            </div>
-            <div className="mb-4 text-lg font-medium">
-              Time Left: {formatTime(timeLeft)}
-            </div>
-            <div className="flex gap-4">
-              <button
-                onClick={() => playQuestion(questions[currentQuestionIndex])}
-                className="bg-primary text-white px-4 py-2 rounded hover:bg-blue-600"
-              >
-                질문 다시 듣기
-              </button>
-              {recordedAnswers[currentQuestionIndex] && (
-                <button
-                  onClick={() => {
-                    console.log("Submit button clicked");  // 디버깅용 로그
-                    handleSubmit();
-                  }}
-                  disabled={isFetchingFeedback}
-                  className={`px-4 py-2 rounded text-white ${
-                    isFetchingFeedback
-                      ? "bg-gray-400"
-                      : "bg-green-600 hover:bg-green-700"
-                  }`}
-                >
-                  {isFetchingFeedback ? "처리 중..." : "다음 문제"}
-                </button>
-              )}
-            </div>
-            {isRecording && (
-              <div className="mt-4 text-red-500 font-bold">
-                녹음 중... ({timeLeft}초 남음)
-              </div>
-            )}
-          </>
+  <div className="max-w-md w-full p-8 bg-white border border-gray-200 rounded-2xl shadow text-center space-y-6 mx-auto">
+    <div className="space-y-2">
+      <div className="text-2xl font-bold text-gray-800">
+        Question {currentQuestionIndex + 1} / {questions.length}
+      </div>
+      <div className="text-lg font-semibold text-gray-600">
+        Time Left: <span className="text-primary font-bold">{formatTime(timeLeft)}</span>
+      </div>
+    </div>
+
+    <div className="flex flex-col gap-3">
+  <button
+    onClick={() => playQuestion(questions[currentQuestionIndex])}
+    className="w-full bg-primary text-white py-3 rounded-lg font-medium hover:bg-blue-600 transition"
+  >
+    Replay
+  </button>
+
+  <button
+    onClick={() => {
+      console.log("Submit button clicked"); // 디버깅용 로그
+      handleSubmit();
+    }}
+    disabled={
+      isFetchingFeedback || !recordedAnswers[currentQuestionIndex]
+    }
+    className={`w-full py-3 rounded-lg font-medium transition ${
+      !recordedAnswers[currentQuestionIndex] || isFetchingFeedback
+        ? "bg-gray-400 text-white cursor-not-allowed"
+        : "bg-green-600 text-white hover:bg-green-700"
+    }`}
+  >
+    {isFetchingFeedback ? "Processing..." : "Next"}
+  </button>
+</div>
+
+
+    {isRecording && (
+      <div className="text-red-600 font-semibold text-sm animate-pulse">
+        Recording... ({timeLeft} seconds left)
+      </div>
+    )}
+  </div>
+</>
+
         )}
       </div>
     </div>

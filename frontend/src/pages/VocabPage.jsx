@@ -38,7 +38,7 @@ const VocabPage = () => {
           <div className="mb-8 text-2xl font-semibold">{question.word}</div>
         ) : null}
         <button
-          className="px-8 py-3 bg-primary text-white rounded-lg text-lg font-semibold shadow hover:bg-blue-700 transition"
+          className="px-6 py-3 bg-primary text-white rounded-lg text-lg font-semibold shadow hover:bg-blue-700 transition"
           onClick={handleStart}
           disabled={loading}
         >

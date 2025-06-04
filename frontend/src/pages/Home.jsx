@@ -82,7 +82,7 @@ const Home = () => {
       >
         <SideBar />
       </div>
-      <div className="flex flex-col w-full h-screen bg-white px-12 mt-10 select-none">
+      <div className="flex flex-col w-full h-screen bg-white px-12 mt- 10 select-none">
         {userData?.topics_of_interest ? (
           <HomeExistUser
             userName={userData.name}

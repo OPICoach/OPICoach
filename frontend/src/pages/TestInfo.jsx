@@ -1,7 +1,7 @@
 import SideBar from "../components/sideBar/SideBar.jsx";
 import { useNavigate } from "react-router-dom";
 import OnboardingButton from "../components/homePage/OnboardingButton.jsx";
-import { sideBarState } from "../atom/sidebarAtom";
+import { sideBarState } from "../atom/sidebarAtom.js";
 import { useRecoilState } from "recoil";
 
 const Test = () => {
@@ -56,10 +56,10 @@ const Test = () => {
               <li>When you're ready, press Start to begin.</li>
             </ul>
           </div>
-          <div className="flex justify-center mt-6 sm:mt-10 md:mt-14 lg:mt-20">
+          <div className="flex-center mt-12 w-40 py-2 font-semibold rounded-lg text-white transition duration-300 ease-in-out">
             <OnboardingButton
               name="Start"
-              onClick={() => navigate("/test/teststart")}
+              onClick={() => navigate("/test/start")}
             />
           </div>
         </div>

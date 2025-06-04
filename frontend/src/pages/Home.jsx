@@ -14,34 +14,32 @@ const Home = () => {
 
   const handleOnboardingComplete = async (info) => {
     try {
-      const userData = {
+      const userDataToSend = {
         user_pk: userPk,
         past_opic_level: info.pastLevel,
         goal_opic_level: info.goalLevel,
         background: info.background,
         occupation_or_major: info.major,
-        topics_of_interest: info.topics
+        topics_of_interest: info.topics,
       };
-      
-      console.log('Sending user data:', userData);  // 데이터 확인용 로그
+
+      console.log("Sending user data:", userDataToSend); // 데이터 확인용 로그
 
       // 백엔드 API 호출하여 사용자 정보 업데이트
-      const response = await updateUserInfoAPI(userData);
+      const response = await updateUserInfoAPI(userDataToSend);
 
       if (response.status === "success") {
         // 로컬 상태 업데이트
         setUserData({
-          ...userData,
-          past_opic_level: info.pastLevel,
-          goal_opic_level: info.goalLevel,
-          background: info.background,
-          occupation_or_major: info.major,
-          topics_of_interest: info.topics,
-          level_history: [{
-            level: info.pastLevel,
-            score: 0,
-            date: new Date().toISOString()
-          }]
+          ...userDataToSend,
+          name: userData.name, // 기존 이름 유지
+          level_history: [
+            {
+              level: info.pastLevel,
+              score: 0,
+              date: new Date().toISOString(),
+            },
+          ],
         });
       } else {
         console.error("사용자 정보 업데이트 실패:", response.message);
@@ -55,23 +53,24 @@ const Home = () => {
     const fetchUserData = async () => {
       try {
         const response = await fetchUserInfo(userPk);
-        console.log('User data from API:', response);  // 디버그 로그 추가
-        if (response.status === 'success') {
+        console.log("User data from API:", response); // 디버그 로그 추가
+        if (response.status === "success") {
           setUserData(response.user);
-          console.log('Set user data:', response.user);  // 디버그 로그 추가
-          console.log('Level history:', response.user.level_history);  // level_history 확인
+          console.log("Set user data:", response.user); // 디버그 로그 추가
+          console.log("Level history:", response.user.level_history); // level_history 확인
         } else {
-          console.error('Failed to fetch user data:', response.message);
+          console.error("Failed to fetch user data:", response.message);
         }
       } catch (error) {
-        console.error('Error fetching user data:', error);
+        console.error("Error fetching user data:", error);
       }
     };
 
-    if (userPk) {  // userPk가 있을 때만 API 호출
+    if (userPk) {
+      // userPk가 있을 때만 API 호출
       fetchUserData();
     }
-  }, [userPk]);  // userPk가 변경될 때마다 실행
+  }, [userPk]); // userPk가 변경될 때마다 실행
 
   return (
     <div className="flex flex-row">

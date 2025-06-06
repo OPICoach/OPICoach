@@ -8,9 +8,14 @@ import {
   isRecordingState,
 } from "../atom/testAtom.js";
 import { userPkState } from "../atom/authAtoms.js";
-import { fetchExamQuestion, fetchExamFeedback, API_BASE_URL } from "../api/api.js";
+import {
+  fetchExamQuestion,
+  fetchExamFeedback,
+  API_BASE_URL,
+} from "../api/api.js";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { sideBarState } from "../atom/sidebarAtom.js";
 
 const TestStart = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -48,12 +53,14 @@ const TestStart = () => {
 
   const [aiModel, setAiModel] = useState("gemini-2.0-flash");
 
+  const open = useRecoilValue(sideBarState);
+
   // 녹음 시작 함수
   const startRecording = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       mediaRecorderRef.current = new MediaRecorder(stream, {
-        mimeType: 'audio/webm;codecs=opus'
+        mimeType: "audio/webm;codecs=opus",
       });
       audioChunksRef.current = [];
 
@@ -64,9 +71,11 @@ const TestStart = () => {
       };
 
       mediaRecorderRef.current.onstop = () => {
-        const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/webm;codecs=opus' });
+        const audioBlob = new Blob(audioChunksRef.current, {
+          type: "audio/webm;codecs=opus",
+        });
         const audioUrl = URL.createObjectURL(audioBlob);
-        setRecordedAnswers(prev => [...prev, audioUrl]);
+        setRecordedAnswers((prev) => [...prev, audioUrl]);
         setUserAnswer("녹음 완료");
         setRecordedBlob(audioBlob);
       };
@@ -86,7 +95,9 @@ const TestStart = () => {
     if (mediaRecorderRef.current && isRecording) {
       mediaRecorderRef.current.stop();
       setIsRecording(false);
-      mediaRecorderRef.current.stream.getTracks().forEach(track => track.stop());
+      mediaRecorderRef.current.stream
+        .getTracks()
+        .forEach((track) => track.stop());
     }
   };
 
@@ -96,12 +107,12 @@ const TestStart = () => {
       return;
     }
 
-    const audioBlob = new Blob([question.audio_data], { type: 'audio/mpeg' });
+    const audioBlob = new Blob([question.audio_data], { type: "audio/mpeg" });
     const audioUrl = URL.createObjectURL(audioBlob);
-    
+
     audioPlayerRef.current.src = audioUrl;
     audioPlayerRef.current.play();
-    
+
     audioPlayerRef.current.onended = () => {
       URL.revokeObjectURL(audioUrl);
       startRecording();
@@ -120,19 +131,19 @@ const TestStart = () => {
       for (let i = 0; i < numQuestions; i++) {
         const response = await fetchExamQuestion(userPk, aiModel);
         if (response) {
-          const questionText = response.headers['x-question-text'];
-          const questionNumber = response.headers['x-question-number'];
+          const questionText = response.headers["x-question-text"];
+          const questionNumber = response.headers["x-question-number"];
           const audioData = response.data;
-          
+
           if (!questionText) {
-            console.error('Question text is missing from response headers');
+            console.error("Question text is missing from response headers");
             continue;
           }
-          
+
           fetchedQuestions.push({
             question: questionText,
             questionNumber: questionNumber,
-            audio_data: audioData
+            audio_data: audioData,
           });
         }
       }
@@ -188,11 +199,11 @@ const TestStart = () => {
 
   const handleSubmit = async () => {
     if (isSubmitting) return;
-    
+
     try {
       setIsSubmitting(true);
       setIsFetchingFeedback(true);
-      
+
       if (!recordedBlob) {
         console.error("No recorded audio available");
         return;
@@ -203,20 +214,22 @@ const TestStart = () => {
         questionNumber: currentQuestionNumber,
         userPk: userPk,
         audioBlob: recordedBlob,
-        LLM_model: aiModel
+        LLM_model: aiModel,
       });
 
       if (feedback) {
-        setFeedbacks(prev => [...prev, feedback]);
+        setFeedbacks((prev) => [...prev, feedback]);
         if (feedback.progress !== undefined) {
           setProgress(feedback.progress);
         }
       }
-      
+
       if (currentQuestionIndex < questions.length - 1) {
-        setCurrentQuestionIndex(prev => prev + 1);
+        setCurrentQuestionIndex((prev) => prev + 1);
         setCurrentQuestion(questions[currentQuestionIndex + 1].question);
-        setCurrentQuestionNumber(questions[currentQuestionIndex + 1].questionNumber);
+        setCurrentQuestionNumber(
+          questions[currentQuestionIndex + 1].questionNumber
+        );
         setRecordedBlob(null);
         setUserAnswer("");
       } else {
@@ -233,7 +246,9 @@ const TestStart = () => {
   };
 
   const formatTime = (seconds) => {
-    const m = Math.floor(seconds / 60).toString().padStart(2, "0");
+    const m = Math.floor(seconds / 60)
+      .toString()
+      .padStart(2, "0");
     const s = (seconds % 60).toString().padStart(2, "0");
     return `${m}:${s}`;
   };
@@ -247,11 +262,11 @@ const TestStart = () => {
         questionNumber: questions[index].questionNumber,
         question_audio_path: `question_${userPk}_${questions[index].questionNumber}.mp3`,
         user_answer_audio_path: `user_answer_${userPk}_${questions[index].questionNumber}.mp3`,
-        userAnswer: feedback.user_answer // 사용자 답변 텍스트 추가
+        userAnswer: feedback.user_answer, // 사용자 답변 텍스트 추가
       }));
 
-      localStorage.setItem('examFeedbacks', JSON.stringify(feedbackData));
-      
+      localStorage.setItem("examFeedbacks", JSON.stringify(feedbackData));
+
       // 피드백 페이지로 이동
       navigate("/test/feedback");
     } catch (error) {
@@ -262,135 +277,152 @@ const TestStart = () => {
 
   return (
     <div className="flex h-screen">
-      <SideBar />
-      <div className="ml-[210px] flex-1 flex justify-center items-center bg-white p-6">
+      <div
+        className={`transition-all duration-300 ${
+          open ? "w-[230px] min-w-[230px]" : "w-0 min-w-0"
+        }`}
+        style={{ overflow: open ? "visible" : "hidden" }}
+      >
+        <SideBar />
+      </div>
+      <div className="flex-1 flex justify-center items-center bg-white p-6">
         {!isTestStarted ? (
           <div className="flex flex-col justify-center items-center gap-6 p-6 bg-white rounded-2xl shadow-xl">
-  <h2 className="text-2xl font-bold text-center text-gray-800">
-    Please select the number of questions  
-    <br />
-    and AI Model to generate them.
-    <br />
-    <span className="text-sm text-gray-500">(It may take some time.)</span>
-  </h2>
-  
-  <div className="flex flex-wrap justify-center items-center gap-4 w-full max-w-xl">
-    <div className="flex flex-col items-start gap-1">
-      <select
-        value={numQuestions}
-        onChange={(e) => setNumQuestions(Number(e.target.value))}
-        className="px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-      >
-        {[1, 2, 3, 5, 10].map((n) => (
-          <option key={n} value={n}>
-            {n}
-          </option>
-        ))}
-      </select>
-    </div>
-    <div className="flex flex-col items-start gap-1">
-      <select
-        value={aiModel}
-        onChange={(e) => setAiModel(e.target.value)}
-        className="px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-      >
-        <option value="gemini-2.0-flash">Gemini 2.0 Flash</option>
-        <option value="gemini-2.5-pro-preview-05-06">Gemini 2.5 Pro</option>
-      </select>
-    </div>
-  </div>
+            <h2 className="text-2xl font-bold text-center text-gray-800">
+              Please select the number of questions
+              <br />
+              and AI Model to generate them.
+              <br />
+              <span className="text-sm text-gray-500">
+                (It may take some time.)
+              </span>
+            </h2>
 
-  <button
-    onClick={fetchQuestions}
-    className={`w-40 py-2 font-semibold rounded-lg text-white transition duration-300 ease-in-out ${
-      isLoadingTest ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"
-    }`}
-    disabled={isLoadingTest}
-  >
-    {isLoadingTest ? "Processing..." : "Start"}
-  </button>
-</div>
+            <div className="flex flex-wrap justify-center items-center gap-4 w-full max-w-xl">
+              <div className="flex flex-col items-start gap-1">
+                <select
+                  value={numQuestions}
+                  onChange={(e) => setNumQuestions(Number(e.target.value))}
+                  className="px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                >
+                  {[1, 2, 3, 5, 10].map((n) => (
+                    <option key={n} value={n}>
+                      {n}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="flex flex-col items-start gap-1">
+                <select
+                  value={aiModel}
+                  onChange={(e) => setAiModel(e.target.value)}
+                  className="px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                >
+                  <option value="gemini-2.0-flash">Gemini 2.0 Flash</option>
+                  <option value="gemini-2.5-pro-preview-05-06">
+                    Gemini 2.5 Pro
+                  </option>
+                </select>
+              </div>
+            </div>
 
-                ) : isTestFinished ? (
-                <div className="max-w-md w-full p-8 bg-white border border-gray-200 rounded-2xl shadow text-center space-y-6">
-                  <div className="flex flex-col items-center">
-                    <div className="w-10 h-10 mb-2 rounded-full bg-green-500 flex items-center justify-center text-white text-lg font-bold">
-                      ✔
-                      </div>
-                      <h2 className="text-2xl font-bold text-gray-800">Test Completed</h2>
-                      <p className="text-gray-600">You can now check your feedback and try again if needed.</p>
-                      </div>
-                    <div className="flex flex-col gap-3">
-                      <button
-                        onClick={goToFeedbackPage}
-                        className="w-full bg-primary text-white py-3 rounded-lg font-medium hover:bg-blue-600 transition"
-                        >
-                          View Feedback
-                          </button>
-                          <button
-                          onClick={() => {
-                            setIsTestStarted(false);
-                            setQuestions([]);
-                            setFeedbacks([]);
-                            setUserAnswer("");
-                            setCurrentQuestionIndex(0);
-                            setIsTestFinished(false);
-                            setAudioURL(null);
-                            setIsLoadingTest(false);
-                          }}
-                          className="w-full bg-gray-200 text-gray-800 py-3 rounded-lg font-medium hover:bg-gray-300 transition"
-                          >
-                            Restart
-                            </button>
-                            </div>
-                          </div>          
+            <button
+              onClick={fetchQuestions}
+              className={`w-40 py-2 font-semibold rounded-lg text-white transition duration-300 ease-in-out ${
+                isLoadingTest
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-blue-500 hover:bg-blue-600"
+              }`}
+              disabled={isLoadingTest}
+            >
+              {isLoadingTest ? "Processing..." : "Start"}
+            </button>
+          </div>
+        ) : isTestFinished ? (
+          <div className="max-w-md w-full p-8 bg-white border border-gray-200 rounded-2xl shadow text-center space-y-6">
+            <div className="flex flex-col items-center">
+              <div className="w-10 h-10 mb-2 rounded-full bg-green-500 flex items-center justify-center text-white text-lg font-bold">
+                ✔
+              </div>
+              <h2 className="text-2xl font-bold text-gray-800">
+                Test Completed
+              </h2>
+              <p className="text-gray-600">
+                You can now check your feedback and try again if needed.
+              </p>
+            </div>
+            <div className="flex flex-col gap-3">
+              <button
+                onClick={goToFeedbackPage}
+                className="w-full bg-primary text-white py-3 rounded-lg font-medium hover:bg-blue-600 transition"
+              >
+                View Feedback
+              </button>
+              <button
+                onClick={() => {
+                  setIsTestStarted(false);
+                  setQuestions([]);
+                  setFeedbacks([]);
+                  setUserAnswer("");
+                  setCurrentQuestionIndex(0);
+                  setIsTestFinished(false);
+                  setAudioURL(null);
+                  setIsLoadingTest(false);
+                }}
+                className="w-full bg-gray-200 text-gray-800 py-3 rounded-lg font-medium hover:bg-gray-300 transition"
+              >
+                Restart
+              </button>
+            </div>
+          </div>
         ) : (
           <>
-  <div className="max-w-md w-full p-8 bg-white border border-gray-200 rounded-2xl shadow text-center space-y-6 mx-auto">
-    <div className="space-y-2">
-      <div className="text-2xl font-bold text-gray-800">
-        Question {currentQuestionIndex + 1} / {questions.length}
-      </div>
-      <div className="text-lg font-semibold text-gray-600">
-        Time Left: <span className="text-primary font-bold">{formatTime(timeLeft)}</span>
-      </div>
-    </div>
+            <div className="max-w-md w-full p-8 bg-white border border-gray-200 rounded-2xl shadow text-center space-y-6 mx-auto">
+              <div className="space-y-2">
+                <div className="text-2xl font-bold text-gray-800">
+                  Question {currentQuestionIndex + 1} / {questions.length}
+                </div>
+                <div className="text-lg font-semibold text-gray-600">
+                  Time Left:{" "}
+                  <span className="text-primary font-bold">
+                    {formatTime(timeLeft)}
+                  </span>
+                </div>
+              </div>
 
-    <div className="flex flex-col gap-3">
-  <button
-    onClick={() => playQuestion(questions[currentQuestionIndex])}
-    className="w-full bg-primary text-white py-3 rounded-lg font-medium hover:bg-blue-600 transition"
-  >
-    Replay
-  </button>
+              <div className="flex flex-col gap-3">
+                <button
+                  onClick={() => playQuestion(questions[currentQuestionIndex])}
+                  className="w-full bg-primary text-white py-3 rounded-lg font-medium hover:bg-blue-600 transition"
+                >
+                  Replay
+                </button>
 
-  <button
-    onClick={() => {
-      console.log("Submit button clicked"); // 디버깅용 로그
-      handleSubmit();
-    }}
-    disabled={
-      isFetchingFeedback || !recordedAnswers[currentQuestionIndex]
-    }
-    className={`w-full py-3 rounded-lg font-medium transition ${
-      !recordedAnswers[currentQuestionIndex] || isFetchingFeedback
-        ? "bg-gray-400 text-white cursor-not-allowed"
-        : "bg-green-600 text-white hover:bg-green-700"
-    }`}
-  >
-    {isFetchingFeedback ? "Processing..." : "Next"}
-  </button>
-</div>
+                <button
+                  onClick={() => {
+                    console.log("Submit button clicked"); // 디버깅용 로그
+                    handleSubmit();
+                  }}
+                  disabled={
+                    isFetchingFeedback || !recordedAnswers[currentQuestionIndex]
+                  }
+                  className={`w-full py-3 rounded-lg font-medium transition ${
+                    !recordedAnswers[currentQuestionIndex] || isFetchingFeedback
+                      ? "bg-gray-400 text-white cursor-not-allowed"
+                      : "bg-green-600 text-white hover:bg-green-700"
+                  }`}
+                >
+                  {isFetchingFeedback ? "Processing..." : "Next"}
+                </button>
+              </div>
 
-
-    {isRecording && (
-      <div className="text-red-600 font-semibold text-sm animate-pulse">
-        Recording... ({timeLeft} seconds left)
-      </div>
-    )}
-  </div>
-</>
-
+              {isRecording && (
+                <div className="text-red-600 font-semibold text-sm animate-pulse">
+                  Recording... ({timeLeft} seconds left)
+                </div>
+              )}
+            </div>
+          </>
         )}
       </div>
     </div>

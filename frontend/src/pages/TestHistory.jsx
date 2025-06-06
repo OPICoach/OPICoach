@@ -154,15 +154,16 @@ const TestHistory = () => {
                 <div className="text-black py-1">No tests available.</div>
               ) : (
                 examHistory.map((exam, index) => (
-                  <li key={index}>
-                    className=
-                    {`flex justify-between items-center mb-2 p-2 rounded-lg cursor-pointer ${
+                  <li
+                    key={index}
+                    className={`flex justify-between items-center mb-2 p-2 rounded-lg cursor-pointer ${
                       selectedExam?.question_audio_path ===
                       exam.question_audio_path
                         ? "bg-blue-100 font-semibold"
                         : "hover:bg-gray-100"
                     }`}
                     onClick={() => setSelectedExam(exam)}
+                  >
                     <div>
                       <h4 className="text-lg font-semibold mb-2">
                         Question {index + 1}

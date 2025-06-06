@@ -105,6 +105,7 @@ const SideBar = () => {
       setUserPk(null);
       setUserData(null);
       setLearnSessionPk(null);
+
       localStorage.removeItem("isLoggedIn");
       localStorage.removeItem("userPk");
       localStorage.removeItem("sessionPk");

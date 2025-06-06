@@ -168,9 +168,7 @@ const TestHistory = () => {
                       <h4 className="text-lg font-semibold mb-2">
                         Question {index + 1}
                       </h4>
-                      <p className="text-gray-600 mb-2">
-                        Type: {exam.exam_type}
-                      </p>
+
                       <p className="text-gray-600 mb-2">Score: {exam.score}</p>
                       <div className="text-sm text-gray-500">
                         <p className="text-sm text-gray-500">

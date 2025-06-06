@@ -7,11 +7,6 @@ import { useRecoilState } from "recoil";
 const HomeNewUser = ({ userName, testDate, onComplete }) => {
   const [survey, setSurvey] = useRecoilState(surveyState);
 
-  useEffect(() => {
-    setSurvey(true);
-    console.log("survey", survey);
-  }, []);
-
   const handleSurveyComplete = (answers) => {
     const [pastLevel, goalLevel, background, major, topics] = answers;
 

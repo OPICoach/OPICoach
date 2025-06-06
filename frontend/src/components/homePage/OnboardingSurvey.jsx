@@ -77,6 +77,7 @@ const OnboardingSurvey = ({ onComplete, initialData = [] }) => {
   const [answers, setAnswers] = useState([null, null, null, null, []]);
   const location = useLocation();
   const isEditPage = location.pathname === "/edit";
+  const [survey, setSurvey] = useRecoilState(surveyState);
 
   useEffect(() => {
     if (initialData.length > 0) {
@@ -125,6 +126,7 @@ const OnboardingSurvey = ({ onComplete, initialData = [] }) => {
 
   // 저장
   const handleSave = () => {
+    setSurvey(false);
     if (onComplete) onComplete(answers);
   };
 

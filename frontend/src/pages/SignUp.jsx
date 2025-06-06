@@ -5,18 +5,20 @@ import { useRecoilState } from "recoil";
 import { signUpDataState } from "../atom/authAtoms";
 import { signupUserAPI } from "../api/api";
 import { useState } from "react";
+import { surveyState } from "../atom/sidebarAtom";
 
 const SignUp = () => {
   const navigate = useNavigate();
   const [signUpData, setSignUpData] = useRecoilState(signUpDataState);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
+  const [survey, setSurvey] = useRecoilState(surveyState);
 
   const handleInputChange = (field, value) => {
     setSignUpData((prev) => ({
       ...prev,
       [field]: value,
     }));
-    setError(''); // 입력이 변경될 때마다 에러 메시지 초기화
+    setError(""); // 입력이 변경될 때마다 에러 메시지 초기화
   };
 
   const handleSignUp = async () => {
@@ -28,17 +30,18 @@ const SignUp = () => {
     };
     try {
       const response = await signupUserAPI(signUpInfo);
-      if (response.status === 'success') {
+      if (response.status === "success") {
         console.log("회원가입 성공:", response);
+        setSurvey(true);
         navigate("/login");
       } else {
-        setError(response.message || '회원가입에 실패했습니다.');
+        setError(response.message || "회원가입에 실패했습니다.");
       }
     } catch (error) {
       if (error.response) {
-        setError(error.response.data.message || '회원가입에 실패했습니다.');
+        setError(error.response.data.message || "회원가입에 실패했습니다.");
       } else {
-        setError('회원가입 요청 중 오류가 발생했습니다.');
+        setError("회원가입 요청 중 오류가 발생했습니다.");
       }
     }
   };

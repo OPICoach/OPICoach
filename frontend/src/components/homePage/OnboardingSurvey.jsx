@@ -3,6 +3,8 @@ import SurveyStep from "./SurveyStep";
 import { useNavigate, useLocation } from "react-router-dom";
 import OnboardingMessage from "./OnboardingMessage";
 import OnboardingButton from "./OnboardingButton";
+import { useRecoilState } from "recoil";
+import { surveyState } from "../../atom/sidebarAtom";
 
 const steps = [
   {

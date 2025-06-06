@@ -15,7 +15,11 @@ import {
   learnSessionPkState,
   aiLoadingState,
 } from "../../atom/learnAtom";
-import { learnOpenState, sideBarState } from "../../atom/sidebarAtom";
+import {
+  learnOpenState,
+  sideBarState,
+  surveyState,
+} from "../../atom/sidebarAtom";
 import { userPkState, userInfoState } from "../../atom/authAtoms";
 import {
   getLearningSessionAPI,
@@ -92,6 +96,8 @@ const SideBar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const [survey, setSurvey] = useRecoilState(surveyState);
+
   const initial = userData?.name ? getProfileInitial(userData.name) : "";
 
   const handleLogout = () => {
@@ -107,7 +113,7 @@ const SideBar = () => {
   };
 
   const handleTabMove = async (menu, currentSessionPk) => {
-    if (isAILoading) return;
+    if (isAILoading || survey) return;
 
     // Learn 탭이 아니고, currentSessionPk가 있을 때만 처리
     if (menu.name !== "Learn" && currentSessionPk) {
@@ -215,7 +221,7 @@ const SideBar = () => {
                   className={
                     "flex items-center w-full my-[10px] px-5 py-3 text-accent border-[#E5E7EB] rounded-lg transition cursor-pointer " +
                     (isActive ? "bg-white font-semibold" : "hover:bg-white") +
-                    (isAILoading
+                    (isAILoading || survey
                       ? " opacity-50 cursor-not-allowed"
                       : " cursor-pointer")
                   }

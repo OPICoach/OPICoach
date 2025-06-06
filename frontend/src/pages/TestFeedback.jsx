@@ -152,7 +152,6 @@ const TestFeedback = () => {
             );
           })}
 
-          {/* 버튼을 피드백 목록 아래 가운데 정렬 */}
           <div className="flex justify-center mt-6">
             <button
               onClick={() => navigate("/test/start")}

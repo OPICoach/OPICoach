@@ -9,6 +9,9 @@ pydantic-core==2.33.2
 python-dotenv==1.1.0
 python-multipart==0.0.20
 pyyaml==6.0.2
+openpyxl
+google-cloud-speech
+google-cloud-texttospeech
 
 # --- 인증 및 암호화 ---
 bcrypt==4.3.0
@@ -17,6 +20,7 @@ python-dateutil==2.9.0.post0
 # --- DB 관련 ---
 pymysql==1.1.1
 pypika==0.48.9
+chromadb
 
 # --- ML / NLP ---
 sentence-transformers==4.1.0
@@ -28,6 +32,8 @@ numpy==2.2.6
 tokenizers==0.21.1
 safetensors==0.5.3
 joblib==1.5.1
+pandas
+openai==1.12.0
 
 # --- HTTP 요청 ---
 httpx==0.27.2

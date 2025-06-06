@@ -100,11 +100,17 @@ const SideBar = () => {
 
   const initial = userData?.name ? getProfileInitial(userData.name) : "";
 
+  useEffect(() => {
+    // survey 상태가 변경되면 사이드바 리렌더링
+    
+  }, [setSurvey, survey]);
+
   const handleLogout = () => {
     if (window.confirm("로그아웃 하시겠습니까?")) {
       setUserPk(null);
       setUserData(null);
       setLearnSessionPk(null);
+
       localStorage.removeItem("isLoggedIn");
       localStorage.removeItem("userPk");
       localStorage.removeItem("sessionPk");

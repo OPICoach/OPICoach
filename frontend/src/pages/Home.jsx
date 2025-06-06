@@ -29,9 +29,6 @@ const Home = () => {
       // 백엔드 API 호출하여 사용자 정보 업데이트
       const response = await updateUserInfoAPI(userDataToSend);
 
-      setSurvey(false);
-      console.log("survey", survey);
-
       if (response.status === "success") {
         // 로컬 상태 업데이트
         setUserData({
@@ -75,6 +72,10 @@ const Home = () => {
       fetchUserData();
     }
   }, [userPk]); // userPk가 변경될 때마다 실행
+
+  useEffect(() => {
+    console.log("survey 상태 변경됨:", survey);
+  }, [survey]);
 
   return (
     <div className="flex flex-row">

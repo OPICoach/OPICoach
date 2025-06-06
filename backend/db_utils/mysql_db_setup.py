@@ -61,9 +61,9 @@ def create_users_table():
             email VARCHAR(255),
             past_opic_level ENUM('AL', 'IH', 'IM', 'IL', 'Or below', 'No experience taking the test') NOT NULL,
             goal_opic_level ENUM('AL', 'IH', 'IM', 'IL', 'Or below') NOT NULL,
-            background ENUM('student', 'office worker', 'freelancer', 'self employed', 'unemployed') NOT NULL,
-            occupation_or_major ENUM('none', 'computer science', 'business administration', 'marketing', 'visual design', 'physical education') NOT NULL,
-            topics_of_interest SET('shopping', 'movie', 'music', 'sports', 'reading books') NOT NULL DEFAULT '',
+            background ENUM('student', 'office worker', 'freelancer', 'self employed', 'unemployed', 'part-time worker') NOT NULL,
+            occupation_or_major ENUM('none', 'computer science', 'engineering', 'business administration', 'marketing', 'art', 'physical education', 'education', 'music', 'social science', 'humanities', 'other') NOT NULL,
+            topics_of_interest SET('shopping', 'movie', 'music', 'sports', 'reading books', 'travel', 'cooking', 'playing games', 'going to cafes', 'playing an instrument') NOT NULL DEFAULT '',
             progress FLOAT DEFAULT 0,
             level_history JSON,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP

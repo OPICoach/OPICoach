@@ -6,7 +6,7 @@ import OnboardingButton from "./OnboardingButton";
 
 const steps = [
   {
-    title: "1. What's your past OPIc level?",
+    title: "What's your past OPIc level?",
     options: [
       "AL",
       "IH",
@@ -18,35 +18,54 @@ const steps = [
     multiple: false,
   },
   {
-    title: "2. What's your goal level?",
+    title: "What's your goal level?",
     options: ["AL", "IH", "IM", "IL", "Or below"],
     multiple: false,
   },
   {
-    title: "3. Choose your background.",
+    title: "Choose your background.",
     options: [
       "student",
       "office worker",
       "freelancer",
+      "part-time worker",
       "self employed",
       "unemployed",
     ],
     multiple: false,
   },
   {
-    title: "4. What is your occupation or major?",
+    title: "What is your occupation or major?",
     options: [
       "computer science",
+      "engineering",
+      "natural science",
       "business administration",
       "marketing",
-      "visual design",
+      "art",
       "physical education",
+      "education",
+      "music",
+      "social science",
+      "humanities",
+      "other",
     ],
     multiple: false,
   },
   {
-    title: "5. Select 2-3 topics of interest.",
-    options: ["shopping", "movie", "music", "sports", "reading books"],
+    title: "Select 2-3 topics of interest.",
+    options: [
+      "shopping",
+      "movie",
+      "music",
+      "sports",
+      "reading books",
+      "travel",
+      "cooking",
+      "playing games",
+      "going to cafes",
+      "playing an instrument",
+    ],
     multiple: true,
   },
 ];
@@ -73,7 +92,9 @@ const OnboardingSurvey = ({ onComplete, initialData = [] }) => {
   const handleSelect = (option) => {
     const newAnswers = [...answers];
     if (steps[step].multiple) {
-      let selected = Array.isArray(newAnswers[step]) ? [...newAnswers[step]] : [];
+      let selected = Array.isArray(newAnswers[step])
+        ? [...newAnswers[step]]
+        : [];
       if (selected.includes(option)) {
         selected = selected.filter((item) => item !== option);
       } else if (selected.length < 3) {
@@ -127,12 +148,21 @@ const OnboardingSurvey = ({ onComplete, initialData = [] }) => {
       </div>
       <div className="flex justify-between mt-12">
         {step > 0 ? (
-          <button
-            className="bg-primary text-white px-6 py-2 rounded-lg font-medium text-base hover:bg-blue-600 transition"
-            onClick={handlePrev}
-          >
-            PREVIOUS
-          </button>
+          isEditPage && step === 1 ? (
+            <button
+              className="bg-gray-300 text-gray-500 px-6 py-2 rounded-lg font-medium text-base cursor-not-allowed"
+              disabled
+            >
+              PREVIOUS
+            </button>
+          ) : (
+            <button
+              className="bg-primary text-white px-6 py-2 rounded-lg font-medium text-base hover:bg-blue-600 transition"
+              onClick={handlePrev}
+            >
+              PREVIOUS
+            </button>
+          )
         ) : (
           <div />
         )}

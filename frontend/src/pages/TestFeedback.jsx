@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
 import SideBar from "../components/sideBar/SideBar.jsx";
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import rehypeRaw from 'rehype-raw';
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 import { API_BASE_URL } from "../api/api.js";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { sideBarState } from "../atom/sidebarAtom.js";
+import { useRecoilState } from "recoil";
 
 const TestFeedback = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [feedbacks, setFeedbacks] = useState([]);
+  const [open, setOpen] = useRecoilState(sideBarState);
 
   const navigate = useNavigate();
 
@@ -18,7 +21,7 @@ const TestFeedback = () => {
     const loadFeedbackData = async () => {
       try {
         setLoading(true);
-        const storedFeedbacks = localStorage.getItem('examFeedbacks');
+        const storedFeedbacks = localStorage.getItem("examFeedbacks");
 
         if (!storedFeedbacks) {
           setError("피드백 데이터를 찾을 수 없습니다.");
@@ -31,30 +34,32 @@ const TestFeedback = () => {
           parsedFeedbacks.map(async (feedback) => {
             try {
               const questionAudioPath = `${API_BASE_URL}/exam/audio/audio_files/${feedback.question_audio_path}`;
-              const questionResponse = await axios.get(
-                questionAudioPath,
-                { responseType: 'blob' }
+              const questionResponse = await axios.get(questionAudioPath, {
+                responseType: "blob",
+              });
+              const questionAudioUrl = URL.createObjectURL(
+                questionResponse.data
               );
-              const questionAudioUrl = URL.createObjectURL(questionResponse.data);
 
               const answerAudioPath = `${API_BASE_URL}/exam/audio/audio_files/${feedback.user_answer_audio_path}`;
-              const answerResponse = await axios.get(
-                answerAudioPath,
-                { responseType: 'blob' }
+              const answerResponse = await axios.get(answerAudioPath, {
+                responseType: "blob",
+              });
+              const userAnswerAudioUrl = URL.createObjectURL(
+                answerResponse.data
               );
-              const userAnswerAudioUrl = URL.createObjectURL(answerResponse.data);
 
               return {
                 ...feedback,
                 questionAudioUrl,
-                userAnswerAudioUrl
+                userAnswerAudioUrl,
               };
             } catch (error) {
-              console.error('Error fetching audio files:', error);
+              console.error("Error fetching audio files:", error);
               return {
                 ...feedback,
                 questionAudioUrl: null,
-                userAnswerAudioUrl: null
+                userAnswerAudioUrl: null,
               };
             }
           })
@@ -79,24 +84,38 @@ const TestFeedback = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <div className="flex flex-row flex-grow">
-        <SideBar />
-        <div className="max-w-3xl ml-[470px] p-4 space-y-6 bg-white border rounded shadow flex flex-col">
+        <div
+          className={`transition-all duration-300 ${
+            open ? "w-[230px] min-w-[230px]" : "w-0 min-w-0"
+          }`}
+          style={{ overflow: open ? "visible" : "hidden" }}
+        >
+          <SideBar />
+        </div>
+        <div className="max-w-3xl p-4 space-y-6 bg-white border rounded shadow flex flex-col">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-2xl font-bold">Test Result</h2>
           </div>
 
           {feedbacks.map((item, idx) => {
-            const processedMessage = item.feedback?.replace(/<br\s*\/?>/g, "\n\n") || "No content available.";
+            const processedMessage =
+              item.feedback?.replace(/<br\s*\/?>/g, "\n\n") ||
+              "No content available.";
 
             return (
-              <div key={idx} className="border p-4 rounded shadow-sm bg-gray-50">
+              <div
+                key={idx}
+                className="border p-4 rounded shadow-sm bg-gray-50"
+              >
                 <div className="mb-4">
-                  <h3 className="text-lg font-semibold mb-2">Question {idx + 1}</h3>
+                  <h3 className="text-lg font-semibold mb-2">
+                    Question {idx + 1}
+                  </h3>
                   <div className="bg-white p-3 rounded border">
                     <p className="mb-2">{item.question}</p>
                     {item.questionAudioUrl && (
-                      <audio 
-                        controls 
+                      <audio
+                        controls
                         className="w-full mt-2"
                         src={item.questionAudioUrl}
                       />
@@ -109,8 +128,8 @@ const TestFeedback = () => {
                   <div className="bg-white p-3 rounded border">
                     <p className="mb-2 text-gray-700">{item.userAnswer}</p>
                     {item.userAnswerAudioUrl && (
-                      <audio 
-                        controls 
+                      <audio
+                        controls
                         className="w-full mt-2"
                         src={item.userAnswerAudioUrl}
                       />
@@ -119,7 +138,9 @@ const TestFeedback = () => {
                 </div>
 
                 <div className="mb-4">
-                  <h3 className="text-lg font-semibold mb-2">Feedback from OPICoach</h3>
+                  <h3 className="text-lg font-semibold mb-2">
+                    Feedback from OPICoach
+                  </h3>
                   <div className="bg-white p-3 rounded border">
                     <div className="prose">
                       <ReactMarkdown
@@ -136,10 +157,16 @@ const TestFeedback = () => {
                             <h3 className="text-lg font-semibold" {...props} />
                           ),
                           ul: ({ node, ...props }) => (
-                            <ul className="list-disc pl-5 space-y-1" {...props} />
+                            <ul
+                              className="list-disc pl-5 space-y-1"
+                              {...props}
+                            />
                           ),
                           li: ({ node, ...props }) => (
-                            <li className="text-base leading-relaxed" {...props} />
+                            <li
+                              className="text-base leading-relaxed"
+                              {...props}
+                            />
                           ),
                         }}
                       >

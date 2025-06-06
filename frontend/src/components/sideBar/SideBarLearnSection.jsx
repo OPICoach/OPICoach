@@ -15,7 +15,7 @@ import {
   aiLoadingState,
 } from "../../atom/learnAtom";
 import { userPkState } from "../../atom/authAtoms";
-import { learnOpenState } from "../../atom/sidebarAtom";
+import { learnOpenState, surveyState } from "../../atom/sidebarAtom";
 
 const ChevronDownIcon = () => (
   <svg
@@ -78,6 +78,7 @@ const SideBarLearnSection = ({ menu, isActive }) => {
   const [sessionPk, setSessionPk] = useRecoilState(learnSessionPkState);
   const navigate = useNavigate();
   const [isAILoading, setIsAILoading] = useRecoilState(aiLoadingState);
+  const [survey, setSurvey] = useRecoilState(surveyState);
 
   // 이전 isActive 추적
   const prevIsActiveRef = useRef(isActive);
@@ -123,7 +124,7 @@ const SideBarLearnSection = ({ menu, isActive }) => {
 
   // Learn 탭 토글
   const handleLearnToggle = async () => {
-    if (isAILoading) return; // AI 로딩 중이면 무시
+    if (isAILoading || survey) return; // AI 로딩 중이면 무시
 
     if (!open) {
       setLoading(true);
@@ -170,7 +171,7 @@ const SideBarLearnSection = ({ menu, isActive }) => {
 
   // 세션 클릭 시 이전 세션 patch 후 이동
   const handleSessionClick = async (session) => {
-    if (isAILoading) return; // AI 로딩 중이면 무시
+    if (isAILoading || survey) return; // AI 로딩 중이면 무시
 
     if (sessionPk !== session.id) {
       await patchPrevSessionIfNeeded();
@@ -210,7 +211,7 @@ const SideBarLearnSection = ({ menu, isActive }) => {
         className={
           "flex items-center w-full my-[10px] px-5 py-3 text-accent border-[#E5E7EB] rounded-lg transition cursor-pointer " +
           (isActive ? "bg-white font-semibold" : "hover:bg-white") +
-          (isAILoading ? " opacity-50 cursor-not-allowed" : "")
+          (isAILoading || survey ? " opacity-50 cursor-not-allowed" : "")
         }
         style={{ outline: "none", border: "none", position: "relative" }}
       >
@@ -241,7 +242,9 @@ const SideBarLearnSection = ({ menu, isActive }) => {
                   className={
                     "py-2 px-2 rounded cursor-pointer transition " +
                     (sessionPk === session.id ? "bg-blue-100 font-bold" : "") +
-                    (isAILoading ? " opacity-50 cursor-not-allowed" : "")
+                    (isAILoading || survey
+                      ? " opacity-50 cursor-not-allowed"
+                      : "")
                   }
                   style={{
                     whiteSpace: "nowrap",

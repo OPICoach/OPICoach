@@ -5,10 +5,10 @@ import { sideBarState } from "../atom/sidebarAtom.js";
 import { fetchExamHistory, API_BASE_URL } from "../api/api.js";
 import SideBar from "../components/sideBar/SideBar.jsx";
 import axios from "axios";
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import rehypeRaw from 'rehype-raw';
-import { FaPlay } from 'react-icons/fa';
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
+import { FaPlay } from "react-icons/fa";
 
 const TestHistory = () => {
   const [loading, setLoading] = useState(true);
@@ -25,7 +25,7 @@ const TestHistory = () => {
       try {
         setLoading(true);
         const response = await fetchExamHistory(userPk);
-        
+
         if (!response.history) {
           setError("시험 기록 데이터를 찾을 수 없습니다.");
           return;
@@ -34,38 +34,45 @@ const TestHistory = () => {
         // 각 시험에 ID 추가하고 오디오 파일 가져오기
         const historyWithAudio = await Promise.all(
           response.history.map(async (exam) => {
-            const examId = exam.question_audio_path.match(/question_1_(\d+)\.mp3/)?.[1] || '0';
+            const examId =
+              exam.question_audio_path.match(/question_1_(\d+)\.mp3/)?.[1] ||
+              "0";
 
             try {
               // 질문 오디오 파일 가져오기
               const questionAudioPath = `${API_BASE_URL}/exam/audio/${exam.question_audio_path}`;
-              const questionResponse = await axios.get(
-                questionAudioPath,
-                { responseType: 'blob' }
+              const questionResponse = await axios.get(questionAudioPath, {
+                responseType: "blob",
+              });
+              const questionAudioUrl = URL.createObjectURL(
+                questionResponse.data
               );
-              const questionAudioUrl = URL.createObjectURL(questionResponse.data);
 
               // 답변 오디오 파일 가져오기
               const answerAudioPath = `${API_BASE_URL}/exam/audio/${exam.user_answer_audio_path}`;
-              const answerResponse = await axios.get(
-                answerAudioPath,
-                { responseType: 'blob' }
+              const answerResponse = await axios.get(answerAudioPath, {
+                responseType: "blob",
+              });
+              const userAnswerAudioUrl = URL.createObjectURL(
+                answerResponse.data
               );
-              const userAnswerAudioUrl = URL.createObjectURL(answerResponse.data);
 
               return {
                 ...exam,
                 id: examId,
                 questionAudioUrl,
-                userAnswerAudioUrl
+                userAnswerAudioUrl,
               };
             } catch (error) {
-              console.error(`Error fetching audio files for exam ${examId}:`, error);
+              console.error(
+                `Error fetching audio files for exam ${examId}:`,
+                error
+              );
               return {
                 ...exam,
                 id: examId,
                 questionAudioUrl: null,
-                userAnswerAudioUrl: null
+                userAnswerAudioUrl: null,
               };
             }
           })
@@ -81,7 +88,7 @@ const TestHistory = () => {
         // 오디오 URL을 개별 상태에 저장
         const newQuestionAudios = {};
         const newAnswerAudios = {};
-        historyWithAudio.forEach(exam => {
+        historyWithAudio.forEach((exam) => {
           if (exam.questionAudioUrl) {
             newQuestionAudios[exam.id] = exam.questionAudioUrl;
           }
@@ -97,7 +104,7 @@ const TestHistory = () => {
           setSelectedExam(historyWithAudio[0]);
         }
       } catch (err) {
-        console.error('Error loading test history:', err);
+        console.error("Error loading test history:", err);
         setError(err.message);
       } finally {
         setLoading(false);
@@ -110,18 +117,16 @@ const TestHistory = () => {
   // 컴포넌트가 언마운트될 때 URL 객체 해제
   useEffect(() => {
     return () => {
-      Object.values(questionAudios).forEach(url => {
+      Object.values(questionAudios).forEach((url) => {
         if (url) URL.revokeObjectURL(url);
       });
-      Object.values(answerAudios).forEach(url => {
+      Object.values(answerAudios).forEach((url) => {
         if (url) URL.revokeObjectURL(url);
       });
     };
   }, [questionAudios, answerAudios]);
 
-  if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
-  if (!examHistory.length) return <div>No test history found.</div>;
 
   return (
     <div className="flex flex-row h-screen bg-white">
@@ -135,35 +140,47 @@ const TestHistory = () => {
       </div>
 
       <div className="flex flex-col flex-1 px-10 pt-8 pb-8 h-full">
-        <h2 className="text-2xl font-semibold mb-6 select-none">Test History</h2>
-        
+        <h2 className="text-2xl font-semibold mb-6 select-none">
+          Test History
+        </h2>
+
         <div className="flex flex-1 overflow-hidden space-x-6">
           {/* 시험 기록 목록 */}
           <div className="w-1/4 border border-gray-200 rounded-lg p-4 overflow-y-auto">
             <ul>
-              {examHistory.map((exam, index) => (
-                <li
-                  key={index}
-                  className={`flex justify-between items-center mb-2 p-2 rounded-lg cursor-pointer ${
-                    selectedExam?.question_audio_path === exam.question_audio_path
-                      ? "bg-blue-100 font-semibold"
-                      : "hover:bg-gray-100"
-                  }`}
-                  onClick={() => setSelectedExam(exam)}
-                >
-                  <div>
-                    <h4 className="text-lg font-semibold mb-2">Question {index + 1}</h4>
-                    <p className="text-gray-600 mb-2">Type: {exam.exam_type}</p>
-                    <p className="text-gray-600 mb-2">Score: {exam.score}</p>
-                    <div className="text-sm text-gray-500">
-                  <p className="text-sm text-gray-500">
-                    {new Date(exam.created_at).toLocaleString()}
-                    </p>
-
-                </div>
-                  </div>
-                </li>
-              ))}
+              {loading ? (
+                <div className="text-black py-1">Loading...</div>
+              ) : examHistory.length === 0 ? (
+                <div className="text-black py-1">No tests available.</div>
+              ) : (
+                examHistory.map((exam, index) => (
+                  <li
+                    key={index}
+                    className={`flex justify-between items-center mb-2 p-2 rounded-lg cursor-pointer ${
+                      selectedExam?.question_audio_path ===
+                      exam.question_audio_path
+                        ? "bg-blue-100 font-semibold"
+                        : "hover:bg-gray-100"
+                    }`}
+                    onClick={() => setSelectedExam(exam)}
+                  >
+                    <div>
+                      <h4 className="text-lg font-semibold mb-2">
+                        Question {index + 1}
+                      </h4>
+                      <p className="text-gray-600 mb-2">
+                        Type: {exam.exam_type}
+                      </p>
+                      <p className="text-gray-600 mb-2">Score: {exam.score}</p>
+                      <div className="text-sm text-gray-500">
+                        <p className="text-sm text-gray-500">
+                          {new Date(exam.created_at).toLocaleString()}
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                ))
+              )}
             </ul>
           </div>
 
@@ -178,14 +195,20 @@ const TestHistory = () => {
                     <p className="mb-2">{selectedExam.question}</p>
                     {questionAudios[selectedExam.id] && (
                       <div key={`question-audio-${selectedExam.id}`}>
-                        <audio 
-                          controls 
+                        <audio
+                          controls
                           className="w-full mt-2"
                           onError={(e) => {
-                            console.error(`Error playing question audio for exam ${selectedExam.id}:`, e);
+                            console.error(
+                              `Error playing question audio for exam ${selectedExam.id}:`,
+                              e
+                            );
                           }}
                         >
-                          <source src={questionAudios[selectedExam.id]} type="audio/mpeg" />
+                          <source
+                            src={questionAudios[selectedExam.id]}
+                            type="audio/mpeg"
+                          />
                           Your browser does not support the audio element.
                         </audio>
                       </div>
@@ -199,14 +222,20 @@ const TestHistory = () => {
                     <p className="mb-2">{selectedExam.user_answer}</p>
                     {answerAudios[selectedExam.id] && (
                       <div key={`answer-audio-${selectedExam.id}`}>
-                        <audio 
-                          controls 
+                        <audio
+                          controls
                           className="w-full mt-2"
                           onError={(e) => {
-                            console.error(`Error playing answer audio for exam ${selectedExam.id}:`, e);
+                            console.error(
+                              `Error playing answer audio for exam ${selectedExam.id}:`,
+                              e
+                            );
                           }}
                         >
-                          <source src={answerAudios[selectedExam.id]} type="audio/mpeg" />
+                          <source
+                            src={answerAudios[selectedExam.id]}
+                            type="audio/mpeg"
+                          />
                           Your browser does not support the audio element.
                         </audio>
                       </div>
@@ -215,7 +244,9 @@ const TestHistory = () => {
                 </div>
 
                 <div>
-                  <h4 className="text-2xl font-semibold mb-2">Feedbacks from OPICoach</h4>
+                  <h4 className="text-2xl font-semibold mb-2">
+                    Feedbacks from OPICoach
+                  </h4>
                   <div className="bg-white p-3 rounded border">
                     <div className="prose">
                       <ReactMarkdown
@@ -232,14 +263,23 @@ const TestHistory = () => {
                             <h3 className="text-lg font-semibold" {...props} />
                           ),
                           ul: ({ node, ...props }) => (
-                            <ul className="list-disc pl-5 space-y-1" {...props} />
+                            <ul
+                              className="list-disc pl-5 space-y-1"
+                              {...props}
+                            />
                           ),
                           li: ({ node, ...props }) => (
-                            <li className="text-base leading-relaxed" {...props} />
+                            <li
+                              className="text-base leading-relaxed"
+                              {...props}
+                            />
                           ),
                         }}
                       >
-                        {selectedExam.feedback?.replace(/<br\s*\/?>/g, "\n\n") || "No content available."}
+                        {selectedExam.feedback?.replace(
+                          /<br\s*\/?>/g,
+                          "\n\n"
+                        ) || "No content available."}
                       </ReactMarkdown>
                     </div>
                   </div>
@@ -255,4 +295,4 @@ const TestHistory = () => {
   );
 };
 
-export default TestHistory; 
+export default TestHistory;

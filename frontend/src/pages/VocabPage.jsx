@@ -10,8 +10,6 @@ const VocabPage = () => {
   const [open] = useRecoilState(sideBarState);
   const [question, setQuestion] = useState(null);
   const [loading, setLoading] = useState(false);
-  const userPk = useRecoilValue(userPkState); 
-  // 이 userPkState에 pk 정보가 저장되고 업데이트 되면 수정되고 있습니다!
 
   const navigate = useNavigate();
 
@@ -30,9 +28,12 @@ const VocabPage = () => {
         <SideBar />
       </div>
       <div className="flex flex-col w-full h-screen bg-white px-12 select-none items-center justify-center">
-        <h1 className="text-3xl font-bold mb-4">Vocab / Idiom 학습</h1>
+        <h1 className="text-3xl font-bold mb-4">Vocab / Idiom Study</h1>
+        <p className="text-lg text-gray-600">
+          You can study English vocabulary and idioms here.
+        </p>
         <p className="text-lg text-gray-600 mb-8">
-          여기서 영어 단어와 숙어를 학습할 수 있습니다.
+          Questions are provided infinitely.
         </p>
         {question ? (
           <div className="mb-8 text-2xl font-semibold">{question.word}</div>

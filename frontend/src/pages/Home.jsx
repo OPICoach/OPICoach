@@ -4,13 +4,14 @@ import HomeNewUser from "../components/homePage/HomeNewUser";
 import { useRecoilState } from "recoil";
 import { userInfoState, userPkState } from "../atom/authAtoms.js";
 import { updateUserInfoAPI, fetchUserInfo } from "../api/api";
-import { sideBarState } from "../atom/sidebarAtom";
+import { sideBarState, surveyState } from "../atom/sidebarAtom";
 import { useEffect } from "react";
 
 const Home = () => {
   const [userData, setUserData] = useRecoilState(userInfoState);
   const [userPk, setUserPK] = useRecoilState(userPkState);
   const [open] = useRecoilState(sideBarState);
+  const [survey, setSurvey] = useRecoilState(surveyState);
 
   const handleOnboardingComplete = async (info) => {
     try {
@@ -27,6 +28,9 @@ const Home = () => {
 
       // 백엔드 API 호출하여 사용자 정보 업데이트
       const response = await updateUserInfoAPI(userDataToSend);
+
+      setSurvey(false);
+      console.log("survey", survey);
 
       if (response.status === "success") {
         // 로컬 상태 업데이트

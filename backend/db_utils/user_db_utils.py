@@ -149,7 +149,7 @@ def update_info(data):
             db.close()
             return {'status': 'fail', 'message': '유효하지 않은 goal_opic_level 값입니다.'}
 
-        if background in ['student', 'office worker', 'freelancer', 'self employed', 'unemployed']:
+        if background in ['student', 'office worker', 'freelancer', 'self employed', 'unemployed', 'part-time worker']:
             updates.append("background = %s")
             params.append(background)
         elif background is not None:

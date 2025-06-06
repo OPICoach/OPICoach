@@ -120,9 +120,12 @@ const TestStart = () => {
   };
 
   const fetchQuestions = async () => {
+    if (isLoadingTest) return;
+
     setIsLoadingTest(true);
     if (!userPk) {
       alert("사용자 정보가 없습니다. 로그인 후 이용해주세요.");
+      setIsLoadingTest(false);
       return;
     }
 
@@ -287,7 +290,7 @@ const TestStart = () => {
       </div>
       <div className="flex-1 flex justify-center items-center bg-white p-6">
         {!isTestStarted ? (
-          <div className="flex flex-col justify-center items-center gap-6 p-6 bg-white rounded-2xl shadow-xl">
+          <div className="flex flex-col justify-center items-center gap-6 p-6 bg-white rounded-2xl shadow-md">
             <h2 className="text-2xl font-bold text-center text-gray-800">
               Please select the number of questions
               <br />
@@ -331,7 +334,7 @@ const TestStart = () => {
               className={`w-40 py-2 font-semibold rounded-lg text-white transition duration-300 ease-in-out ${
                 isLoadingTest
                   ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-blue-500 hover:bg-blue-600"
+                  : "bg-primary hover:bg-blue-600"
               }`}
               disabled={isLoadingTest}
             >

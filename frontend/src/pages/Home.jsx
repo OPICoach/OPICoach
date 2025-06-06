@@ -42,6 +42,7 @@ const Home = () => {
             },
           ],
         });
+        setSurvey(false); // 온보딩 설문 종료
       } else {
         console.error("사용자 정보 업데이트 실패:", response.message);
       }
@@ -76,6 +77,14 @@ const Home = () => {
   useEffect(() => {
     console.log("survey 상태 변경됨:", survey);
   }, [survey]);
+
+  // HomeNewUser가 렌더링될 때만 setSurvey(true)
+  useEffect(() => {
+    const showOnboarding = !userData.topics_of_interest;
+    if (showOnboarding && !survey) {
+      setSurvey(true);
+    }
+  }, [userData]);
 
   return (
     <div className="flex flex-row">

@@ -139,10 +139,6 @@ const OnboardingSurvey = ({ onComplete, initialData = [] }) => {
       currentAnswer.length <= 3
     : !!currentAnswer;
 
-  useEffect(() => {
-    setSurvey(true);
-  }, []);
-
   return (
     <div className="bg-white rounded-xl shadow p-12 flex flex-col justify-between w-full">
       <div>

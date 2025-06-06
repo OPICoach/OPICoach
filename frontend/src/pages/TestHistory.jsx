@@ -126,7 +126,6 @@ const TestHistory = () => {
     };
   }, [questionAudios, answerAudios]);
 
-  if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
   return (
@@ -149,10 +148,10 @@ const TestHistory = () => {
           {/* 시험 기록 목록 */}
           <div className="w-1/4 border border-gray-200 rounded-lg p-4 overflow-y-auto">
             <ul>
-              {examHistory.length === 0 ? (
-                <div className="text-black py-1">
-                  No tests available.
-                </div>
+              {loading ? (
+                <div className="text-black py-1">Loading...</div>
+              ) : examHistory.length === 0 ? (
+                <div className="text-black py-1">No tests available.</div>
               ) : (
                 examHistory.map((exam, index) => (
                   <li key={index}>

@@ -215,7 +215,7 @@ async def generate_exam_feedback(
         print("="*50)
 
         # 피드백 점수 계산
-        score = await feedback_to_score(feedback, exam_type=exam_type, __model_name=_model_name)
+        score = await feedback_to_score(feedback, exam_type=exam_type, __model_name="gemini-2.0-flash")
         print(f"\033[1;35m⭐️ 피드백 점수:\033[0m {score}")
 
         # 사용자 진행도 업데이트

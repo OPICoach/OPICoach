@@ -53,7 +53,7 @@ async def text_to_speech(text: str, output_path: str):
         print(f"TTS 변환 중 오류 발생: {e}")
         return None
 
-async def speech_to_text(audio_path: str) -> str:
+async def speech_to_text(audio_path: str, _model_name: str = "latest_long") -> str:
     """음성 파일을 텍스트로 변환합니다."""
     try:
         client = speech.SpeechClient()
@@ -65,14 +65,18 @@ async def speech_to_text(audio_path: str) -> str:
             encoding=speech.RecognitionConfig.AudioEncoding.MP3,
             sample_rate_hertz=16000,
             language_code="en-US",
-            model="latest_long",
+            model=_model_name,
             use_enhanced=True,
             speech_contexts=[speech.SpeechContext(phrases=["opic", "opic test"], boost=20.0)]
         )
 
         response = client.recognize(config=config, audio=audio)
         if response.results:
-            transcript = response.results[0].alternatives[0].transcript
+            transcripts = []
+            for result in response.results:
+                if result.alternatives:
+                    transcripts.append(result.alternatives[0].transcript)
+            transcript = " ".join(transcripts)
             print(f"📝 인식된 음성: {transcript}")
             return transcript
         else:
@@ -291,5 +295,42 @@ if __name__ == "__main__":
         feedback = await generate_exam_feedback(question, user_answer, user_pk, 1, exam_type=exam_type)
         print(f"Generated Feedback: {feedback}")
 
+    async def test_speech_to_text():
+        audio_path = "audio_files/test_2.mp3"
+        text = await speech_to_text(audio_path)
+        print(f"Generated Text: {text}")
+
+    async def test_generate_exam_feedback():
+        import time
+        start = time.time()
+        print(f"Start time: {start}")
+
+        user_pk = 1  # 예시 사용자 PK
+        question = "Sometimes riding the subway or bus can be uncomfortable. Have you ever had any problems related to transportation? Were there traffic jams, or did something uncomfortable happen? What was the problem, and How did you deal with the situation?"
+        audio_path = "audio_files/test_3.mp3"
+        user_answer = await speech_to_text(audio_path)
+        question_number = 1
+        exam_type = "default"
+        # model_name = "gemini-2.0-flash"
+        # model_name = "gemini-2.5-flash-preview-05-20"
+        model_name = "gemini-2.5-pro-preview-05-06"
+        feedback = await generate_exam_feedback(
+            question=question,
+            user_answer=user_answer,
+            user_pk=user_pk,
+            question_number=question_number,
+            exam_type=exam_type,
+            _model_name=model_name
+        )
+        print(f"Generated Feedback: {feedback['feedback']}")
+        print(f"Feedback Score: {feedback['score']}")
+
+        end = time.time()
+        print(f"End time: {end}")
+        print(f"Total time taken: {end - start} seconds")
+
+
     # asyncio.run(test())
-    asyncio.run(test_with_type())
+    # asyncio.run(test_with_type())
+    asyncio.run(test_speech_to_text())
+    # asyncio.run(test_generate_exam_feedback())

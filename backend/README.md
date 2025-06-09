@@ -2,8 +2,8 @@
 
 # 가상 환경 설정
 backend 디랙토리로 이동
-python -m venv myenv         
-myenv\Scripts\activate
+python -m venv backend      
+backendenv\Scripts\activate
 pip install -r requirements.txt
 
 # API 키 세팅

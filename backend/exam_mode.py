@@ -65,7 +65,7 @@ async def speech_to_text(audio_path: str) -> str:
             encoding=speech.RecognitionConfig.AudioEncoding.MP3,
             sample_rate_hertz=16000,
             language_code="en-US",
-            model="latest_short",
+            model="latest_long",
             use_enhanced=True,
             speech_contexts=[speech.SpeechContext(phrases=["opic", "opic test"], boost=20.0)]
         )

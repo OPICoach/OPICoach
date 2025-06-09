@@ -82,7 +82,7 @@ const TestStart = () => {
 
       mediaRecorderRef.current.start();
       setIsRecording(true);
-      setTimeLeft(10);
+      setTimeLeft(90);
       setIsRunning(true);
     } catch (err) {
       console.error("녹음 시작 실패:", err);
@@ -95,6 +95,7 @@ const TestStart = () => {
     if (mediaRecorderRef.current && isRecording) {
       mediaRecorderRef.current.stop();
       setIsRecording(false);
+      setIsRunning(false);
       mediaRecorderRef.current.stream
         .getTracks()
         .forEach((track) => track.stop());
@@ -388,17 +389,22 @@ const TestStart = () => {
                 <div className="text-lg font-semibold text-gray-600">
                   Time Left:{" "}
                   <span className="text-primary font-bold">
-                    {formatTime(timeLeft)}
+                    {isRecording ? formatTime(timeLeft) : "00:00"}
                   </span>
                 </div>
               </div>
 
               <div className="flex flex-col gap-3">
                 <button
-                  onClick={() => playQuestion(questions[currentQuestionIndex])}
-                  className="w-full bg-primary text-white py-3 rounded-lg font-medium hover:bg-blue-600 transition"
+                  onClick={stopRecording}
+                  className={`w-full py-3 rounded-lg font-medium transition ${
+                    isRecording
+                      ? "bg-red-600 text-white hover:bg-red-700"
+                      : "bg-gray-400 text-white cursor-not-allowed"
+                  }`}
+                  disabled={!isRecording}
                 >
-                  Replay
+                  Stop
                 </button>
 
                 <button
@@ -407,10 +413,10 @@ const TestStart = () => {
                     handleSubmit();
                   }}
                   disabled={
-                    isFetchingFeedback || !recordedAnswers[currentQuestionIndex]
+                    isFetchingFeedback || !recordedAnswers[currentQuestionIndex] || isRecording
                   }
                   className={`w-full py-3 rounded-lg font-medium transition ${
-                    !recordedAnswers[currentQuestionIndex] || isFetchingFeedback
+                    !recordedAnswers[currentQuestionIndex] || isFetchingFeedback || isRecording
                       ? "bg-gray-400 text-white cursor-not-allowed"
                       : "bg-green-600 text-white hover:bg-green-700"
                   }`}

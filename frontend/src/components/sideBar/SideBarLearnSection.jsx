@@ -91,45 +91,12 @@ const SideBarLearnSection = ({ menu, isActive }) => {
     prevIsActiveRef.current = isActive;
   }, [isActive]);
 
-  // 이전 세션/메시지 추적용 ref
-  const prevSessionPkRef = useRef();
-  const prevMessagesRef = useRef();
-
-  // messages가 변경될 때마다 ref에 저장
-  useEffect(() => {
-    prevMessagesRef.current = messages;
-  }, [messages]);
-
-  // sessionPk가 변경될 때마다 ref에 저장
-  useEffect(() => {
-    prevSessionPkRef.current = sessionPk;
-  }, [sessionPk]);
-
-  const patchPrevSessionIfNeeded = async () => {
-    const prevPk = prevSessionPkRef.current;
-    const prevMsgs = prevMessagesRef.current;
-
-    try {
-      const res = await getLearningSessionAPI(userPk, prevPk);
-      const sessionTitle = getSafeSessionTitle(
-        prevMsgs,
-        prevPk,
-        res.data?.title
-      );
-      await patchLearningSessionAPI(userPk, prevPk, sessionTitle);
-    } catch (e) {
-      // 실패 시 무시 또는 로깅
-    }
-  };
-
   // Learn 탭 토글
   const handleLearnToggle = async () => {
     if (isAILoading || survey) return; // AI 로딩 중이면 무시
 
     if (!open) {
       setLoading(true);
-      // 탭 전환 전 patch
-      await patchPrevSessionIfNeeded();
       try {
         // 세션 목록 불러오기
         const res = await getLearningSessionsAPI(userPk);
@@ -172,10 +139,6 @@ const SideBarLearnSection = ({ menu, isActive }) => {
   // 세션 클릭 시 이전 세션 patch 후 이동
   const handleSessionClick = async (session) => {
     if (isAILoading || survey) return; // AI 로딩 중이면 무시
-
-    if (sessionPk !== session.id) {
-      await patchPrevSessionIfNeeded();
-    }
     setSessionPk(session.id);
     try {
       const res = await getLearningSessionAPI(userPk, session.id);

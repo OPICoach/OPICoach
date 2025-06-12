@@ -5,6 +5,7 @@ const VolumeTest = () => {
   const audioContextRef = useRef(null);
   const analyserRef = useRef(null);
   const microphoneRef = useRef(null);
+  const streamRef = useRef(null);
 
   useEffect(() => {
     let animationFrameId;
@@ -18,6 +19,8 @@ const VolumeTest = () => {
         const stream = await navigator.mediaDevices.getUserMedia({
           audio: true,
         });
+        streamRef.current = stream; // 스트림 저장
+
         microphoneRef.current =
           audioContextRef.current.createMediaStreamSource(stream);
         microphoneRef.current.connect(analyserRef.current);
@@ -30,7 +33,7 @@ const VolumeTest = () => {
           analyserRef.current.getByteFrequencyData(dataArray);
           const average =
             dataArray.reduce((acc, val) => acc + val, 0) / bufferLength;
-          setVolume(Math.min(100, Math.round(average * 1.5))); // 0-100 범위로 정규화
+          setVolume(Math.min(100, Math.round(average * 1.5)));
           animationFrameId = requestAnimationFrame(updateVolume);
         };
 
@@ -43,9 +46,15 @@ const VolumeTest = () => {
     initAudio();
 
     return () => {
+      // 애니메이션 프레임 해제
       cancelAnimationFrame(animationFrameId);
+      // 오디오 컨텍스트 종료
       if (audioContextRef.current) {
         audioContextRef.current.close();
+      }
+      // 마이크 스트림 해제 (사용 중지)
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach((track) => track.stop());
       }
     };
   }, []);

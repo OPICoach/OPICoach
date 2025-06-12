@@ -14,7 +14,10 @@ import {
   API_BASE_URL,
 } from "../api/api.js";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import {
+  checkMicrophonePermission,
+  checkMicrophoneActive,
+} from "../api/microphoneApi.js";
 import { sideBarState } from "../atom/sidebarAtom.js";
 
 const TestStart = () => {
@@ -54,6 +57,29 @@ const TestStart = () => {
   const [aiModel, setAiModel] = useState("gemini-2.0-flash");
 
   const open = useRecoilValue(sideBarState);
+
+  const [micPermission, setMicPermission] = useState("prompt"); // 'granted' | 'denied' | 'prompt'
+  const [micActive, setMicActive] = useState(false);
+
+  useEffect(() => {
+    // 권한 상태 체크
+    checkMicrophonePermission().then(setMicPermission);
+
+    // 실제 마이크 활성화 여부 체크
+    checkMicrophoneActive().then(setMicActive);
+
+    // 권한 변경 감지(지원 브라우저)
+    if (navigator.permissions && navigator.permissions.query) {
+      navigator.permissions
+        .query({ name: "microphone" })
+        .then((permissionStatus) => {
+          permissionStatus.onchange = () => {
+            setMicPermission(permissionStatus.state);
+            checkMicrophoneActive().then(setMicActive);
+          };
+        });
+    }
+  }, []);
 
   // 녹음 시작 함수
   const startRecording = async () => {
@@ -279,6 +305,18 @@ const TestStart = () => {
     }
   };
 
+  const handleStart = async () => {
+    // 권한 및 활성화 체크
+    const permission = await checkMicrophonePermission();
+    const active = await checkMicrophoneActive();
+    if (permission !== "granted" || !active) {
+      alert("마이크가 활성화되어 있지 않습니다. 마이크 권한을 허용해 주세요.");
+      return;
+    }
+    // 기존 fetchQuestions() 등 테스트 시작 로직 실행
+    fetchQuestions();
+  };
+
   return (
     <div className="flex h-screen">
       <div
@@ -301,6 +339,32 @@ const TestStart = () => {
                 (It may take some time.)
               </span>
             </h2>
+
+            <div className="flex items-center gap-2">
+              <span
+                className={`w-3 h-3 rounded-full ${
+                  micPermission === "granted" && micActive
+                    ? "bg-green-500"
+                    : micPermission === "denied"
+                    ? "bg-red-500"
+                    : "bg-yellow-400"
+                }`}
+                title={
+                  micPermission === "granted" && micActive
+                    ? "마이크 사용 가능"
+                    : micPermission === "denied"
+                    ? "마이크 접근 거부됨"
+                    : "마이크 권한 필요"
+                }
+              />
+              <span className="text-sm">
+                {micPermission === "granted" && micActive
+                  ? "마이크 활성"
+                  : micPermission === "denied"
+                  ? "마이크 차단됨"
+                  : "마이크 권한 필요"}
+              </span>
+            </div>
 
             <div className="flex flex-wrap justify-center items-center gap-4 w-full max-w-xl">
               <div className="flex flex-col items-start gap-1">
@@ -331,7 +395,7 @@ const TestStart = () => {
             </div>
 
             <button
-              onClick={fetchQuestions}
+              onClick={handleStart}
               className={`w-40 py-2 font-semibold rounded-lg text-white transition duration-300 ease-in-out ${
                 isLoadingTest
                   ? "bg-gray-400 cursor-not-allowed"
@@ -413,10 +477,14 @@ const TestStart = () => {
                     handleSubmit();
                   }}
                   disabled={
-                    isFetchingFeedback || !recordedAnswers[currentQuestionIndex] || isRecording
+                    isFetchingFeedback ||
+                    !recordedAnswers[currentQuestionIndex] ||
+                    isRecording
                   }
                   className={`w-full py-3 rounded-lg font-medium transition ${
-                    !recordedAnswers[currentQuestionIndex] || isFetchingFeedback || isRecording
+                    !recordedAnswers[currentQuestionIndex] ||
+                    isFetchingFeedback ||
+                    isRecording
                       ? "bg-gray-400 text-white cursor-not-allowed"
                       : "bg-green-600 text-white hover:bg-green-700"
                   }`}

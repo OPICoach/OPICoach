@@ -6,7 +6,12 @@ import {
 } from "../../atom/learnAtom";
 import { useState } from "react";
 
-const NoteCreate = ({ newNoteTitle, setNewNoteTitle, onCreateNote, onModelChange }) => {
+const NoteCreate = ({
+  newNoteTitle,
+  setNewNoteTitle,
+  onCreateNote,
+  onModelChange,
+}) => {
   const [learningSessionList] = useRecoilState(learningSessionListState);
   const [learnSessionId, setLearnSessionId] =
     useRecoilState(learnSessionPkState);

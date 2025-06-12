@@ -195,12 +195,17 @@ export async function deleteLearningSessionAPI(user_pk, session_pk) {
 // note
 
 // 학습 노트 생성
-export async function postLearningNoteAPI({ user_pk, session_pk, title, LLM_model = "gemini-2.0-flash" }) {
+export async function postLearningNoteAPI({
+  user_pk,
+  session_pk,
+  title,
+  LLM_model = "gemini-2.0-flash",
+}) {
   const response = await axios.post(`${API_BASE_URL}/note/notes/create`, {
     user_pk,
     session_pk,
     title,
-    LLM_model
+    LLM_model,
   });
   return response.data;
 }
@@ -257,7 +262,6 @@ export async function deleteLearningNoteAPI(user_pk, note_pk) {
   // }
 }
 
-
 // 테스트
 
 // 질문 생성
@@ -266,93 +270,100 @@ export const fetchExamQuestion = async (userPk, model = "gemini-2.0-flash") => {
     const response = await axios.get(`${API_BASE_URL}/exam/question`, {
       params: {
         user_pk: userPk,
-        LLM_model: model
+        LLM_model: model,
       },
-      responseType: 'blob'
+      responseType: "blob",
     });
     return response;
   } catch (error) {
-    console.error('Error fetching exam question:', error);
+    console.error("Error fetching exam question:", error);
     throw error;
   }
 };
 
 // 시험 피드백 요청
-export const fetchExamFeedback = async ({ question, questionNumber, userPk, audioBlob, LLM_model = "gemini-2.0-flash" }) => {
-    try {
-        const formData = new FormData();
-        // JSON 데이터를 문자열로 변환하여 전송
-        const requestData = {
-            question,
-            question_number: questionNumber,
-            user_pk: userPk,
-            LLM_model
-        };
-        
-        console.log('Sending request data:', requestData);
-        console.log('Audio blob type:', audioBlob.type);
-        
-        formData.append('request', JSON.stringify(requestData));
-        formData.append('user_answer_audio', audioBlob, 'answer.webm');
+export const fetchExamFeedback = async ({
+  question,
+  questionNumber,
+  userPk,
+  audioBlob,
+  LLM_model = "gemini-2.0-flash",
+}) => {
+  try {
+    const formData = new FormData();
+    // JSON 데이터를 문자열로 변환하여 전송
+    const requestData = {
+      question,
+      question_number: questionNumber,
+      user_pk: userPk,
+      LLM_model,
+    };
 
-        const response = await axios.post(
-            `${API_BASE_URL}/exam/feedback`,
-            formData,
-            {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                }
-            }
-        );
+    console.log("Sending request data:", requestData);
+    console.log("Audio blob type:", audioBlob.type);
 
-        if (!response.data.success) {
-            throw new Error(response.data.message || '피드백 생성 중 오류가 발생했습니다.');
-        }
+    formData.append("request", JSON.stringify(requestData));
+    formData.append("user_answer_audio", audioBlob, "answer.webm");
 
-        return response.data.data;
-    } catch (error) {
-        console.error('Error fetching exam feedback:', error);
-        if (error.response) {
-            throw new Error(error.response.data.message || '피드백 생성 중 오류가 발생했습니다.');
-        } else if (error.request) {
-            throw new Error('서버로부터 응답을 받지 못했습니다.');
-        } else {
-            throw new Error(error.message || '피드백 생성 중 오류가 발생했습니다.');
-        }
+    const response = await axios.post(
+      `${API_BASE_URL}/exam/feedback`,
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+
+    if (!response.data.success) {
+      throw new Error(
+        response.data.message || "피드백 생성 중 오류가 발생했습니다."
+      );
     }
+
+    return response.data.data;
+  } catch (error) {
+    console.error("Error fetching exam feedback:", error);
+    if (error.response) {
+      throw new Error(
+        error.response.data.message || "피드백 생성 중 오류가 발생했습니다."
+      );
+    } else if (error.request) {
+      throw new Error("서버로부터 응답을 받지 못했습니다.");
+    } else {
+      throw new Error(error.message || "피드백 생성 중 오류가 발생했습니다.");
+    }
+  }
 };
 
 // 오디오 파일 가져오기
 export const fetchAudioFile = async (filePath) => {
-    try {
-        const response = await axios.get(
-            `${API_BASE_URL}/exam/audio/${filePath}`,
-            {
-                responseType: 'arraybuffer'
-            }
-        );
-        return response.data;
-    } catch (error) {
-        console.error('Error fetching audio file:', error);
-        throw new Error('오디오 파일을 가져오는데 실패했습니다.');
-    }
+  try {
+    const response = await axios.get(`${API_BASE_URL}/exam/audio/${filePath}`, {
+      responseType: "arraybuffer",
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching audio file:", error);
+    throw new Error("오디오 파일을 가져오는데 실패했습니다.");
+  }
 };
 
 // 바이너리 데이터에서 특정 시퀀스를 찾는 함수
 function findSequence(array, sequence) {
-    for (let i = 0; i <= array.length - sequence.length; i++) {
-        let found = true;
-        for (let j = 0; j < sequence.length; j++) {
-            if (array[i + j] !== sequence[j]) {
-                found = false;
-                break;
-            }
-        }
-        if (found) {
-            return i;
-        }
+  for (let i = 0; i <= array.length - sequence.length; i++) {
+    let found = true;
+    for (let j = 0; j < sequence.length; j++) {
+      if (array[i + j] !== sequence[j]) {
+        found = false;
+        break;
+      }
     }
-    return -1;
+    if (found) {
+      return i;
+    }
+  }
+  return -1;
 }
 
 // MP3를 WAV로 변환하는 함수
@@ -361,7 +372,7 @@ async function convertToWav(mp3Blob) {
   const audioContext = new (window.AudioContext || window.webkitAudioContext)();
   const arrayBuffer = await mp3Blob.arrayBuffer();
   const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-  
+
   // WAV 파일 생성
   const wavBlob = await audioBufferToWav(audioBuffer);
   return wavBlob;
@@ -378,19 +389,19 @@ function audioBufferToWav(buffer) {
   let pos = 0;
 
   // WAV 헤더 작성
-  setUint32(0x46464952);                         // "RIFF"
-  setUint32(36 + length);                        // 파일 크기
-  setUint32(0x45564157);                         // "WAVE"
-  setUint32(0x20746d66);                         // "fmt " chunk
-  setUint32(16);                                 // fmt chunk 크기
-  setUint16(1);                                  // 오디오 포맷 (1 = PCM)
-  setUint16(numOfChan);                          // 채널 수
-  setUint32(buffer.sampleRate);                  // 샘플레이트
-  setUint32(buffer.sampleRate * 2 * numOfChan);  // 바이트레이트
-  setUint16(numOfChan * 2);                      // 블록 얼라인
-  setUint16(16);                                 // 비트 심도
-  setUint32(0x61746164);                         // "data" chunk
-  setUint32(length);                             // data chunk 크기
+  setUint32(0x46464952); // "RIFF"
+  setUint32(36 + length); // 파일 크기
+  setUint32(0x45564157); // "WAVE"
+  setUint32(0x20746d66); // "fmt " chunk
+  setUint32(16); // fmt chunk 크기
+  setUint16(1); // 오디오 포맷 (1 = PCM)
+  setUint16(numOfChan); // 채널 수
+  setUint32(buffer.sampleRate); // 샘플레이트
+  setUint32(buffer.sampleRate * 2 * numOfChan); // 바이트레이트
+  setUint16(numOfChan * 2); // 블록 얼라인
+  setUint16(16); // 비트 심도
+  setUint32(0x61746164); // "data" chunk
+  setUint32(length); // data chunk 크기
 
   // 채널 데이터 작성
   for (let i = 0; i < buffer.numberOfChannels; i++) {
@@ -408,7 +419,7 @@ function audioBufferToWav(buffer) {
     pos++;
   }
 
-  return new Blob([buffer2], { type: 'audio/wav' });
+  return new Blob([buffer2], { type: "audio/wav" });
 
   function setUint16(data) {
     view.setUint16(pos, data, true);
@@ -424,10 +435,12 @@ function audioBufferToWav(buffer) {
 // 저장된 시험 피드백 전체 가져오기
 export const fetchExamHistory = async (userPk) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/exam/history?user_pk=${userPk}`);
+    const response = await axios.get(
+      `${API_BASE_URL}/exam/history?user_pk=${userPk}`
+    );
     return response.data;
   } catch (error) {
-    console.error('Error fetching exam history:', error);
+    console.error("Error fetching exam history:", error);
     throw error;
   }
 };
@@ -438,7 +451,7 @@ export const fetchUserInfo = async (userPk) => {
     const response = await axios.get(`${API_BASE_URL}/users/info/${userPk}`);
     return response.data;
   } catch (error) {
-    console.error('Error fetching user info:', error);
+    console.error("Error fetching user info:", error);
     throw error;
   }
 };
@@ -446,9 +459,13 @@ export const fetchUserInfo = async (userPk) => {
 // 사용자 정보 업데이트 API
 export const updateUserInfo = async (userPk, userData) => {
   try {
-    const response = await axios.put(`${API_BASE_URL}/users/update_info/${userPk}`, userData);
+    const response = await axios.put(
+      `${API_BASE_URL}/users/update_info/${userPk}`,
+      userData
+    );
     return response.data;
   } catch (error) {
+    console.error("Error updating user info:", error);
     throw error;
   }
 };
@@ -456,9 +473,12 @@ export const updateUserInfo = async (userPk, userData) => {
 // 테스트 시작 API
 export const startTestAPI = async (userPk) => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/test/start`, { user_pk: userPk });
+    const response = await axios.post(`${API_BASE_URL}/test/start`, {
+      user_pk: userPk,
+    });
     return response.data;
   } catch (error) {
+    console.error("Error starting test:", error);
     throw error;
   }
 };
@@ -469,6 +489,7 @@ export const submitTestAPI = async (testData) => {
     const response = await axios.post(`${API_BASE_URL}/test/submit`, testData);
     return response.data;
   } catch (error) {
+    console.error("Error submitting test:", error);
     throw error;
   }
 };
@@ -479,6 +500,7 @@ export const fetchTestHistory = async (userPk) => {
     const response = await axios.get(`${API_BASE_URL}/test/history/${userPk}`);
     return response.data;
   } catch (error) {
+    console.error("Error fetching test history:", error);
     throw error;
   }
 };
@@ -488,7 +510,7 @@ export const fetchTestHistory = async (userPk) => {
 // 단어 문제 받아오기
 export async function fetchVocabQuestion(user_pk) {
   const response = await axios.get(`${API_BASE_URL}/vocab/question`, {
-    params: { user_pk }
+    params: { user_pk },
   });
   return response.data; // { id, word }
 }

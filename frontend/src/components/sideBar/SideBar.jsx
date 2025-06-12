@@ -14,11 +14,11 @@ import {
   messagesLearnState,
   learnSessionPkState,
   aiLoadingState,
+  learningSessionListState,
 } from "../../atom/learnAtom";
 import {
   learnOpenState,
   sideBarState,
-  surveyState,
 } from "../../atom/sidebarAtom";
 import { userPkState, userInfoState } from "../../atom/authAtoms";
 import {
@@ -92,11 +92,12 @@ const SideBar = () => {
   const resetLearnOpen = useResetRecoilState(learnOpenState);
   const [messages] = useRecoilState(messagesLearnState);
   const [isAILoading, setIsAILoading] = useRecoilState(aiLoadingState);
+  const [learningSessionList, setLearningSessionList] = useRecoilState(
+    learningSessionListState
+  );
 
   const navigate = useNavigate();
   const location = useLocation();
-
-  const [survey, setSurvey] = useRecoilState(surveyState);
 
   const initial = userData?.name ? getProfileInitial(userData.name) : "";
 
@@ -113,41 +114,8 @@ const SideBar = () => {
     }
   };
 
-  const handleTabMove = async (menu, currentSessionPk) => {
-    if (isAILoading || survey) return;
-
-    // Learn 탭이 아니고, currentSessionPk가 있을 때만 처리
-    if (menu.name !== "Learn" && currentSessionPk) {
-      try {
-        // 1. 세션 목록 조회
-        const sessionsResponse = await getLearningSessionsAPI(userPk);
-        const sessions = sessionsResponse.data.sessions || [];
-
-        // 2. 세션이 없으면 업데이트하지 않음
-        if (sessions.length === 0) {
-          navigate(menu.path);
-          return;
-        }
-
-        // 3. 세션이 있으면 기존 로직 실행
-        const sessionData = await getLearningSessionAPI(
-          userPk,
-          currentSessionPk
-        );
-        const serverTitle = sessionData.data.title;
-        const chatHistory = sessionData.data.chat_history || [];
-        const title = getSafeSessionTitle(
-          messages,
-          currentSessionPk,
-          serverTitle
-        );
-
-        await patchLearningSessionAPI(userPk, currentSessionPk, title);
-      } catch (e) {
-        console.error("세션 업데이트 실패:", e);
-        alert("세션 업데이트에 실패했습니다.");
-      }
-    }
+  const handleTabMove = async (menu) => {
+    if (isAILoading) return;
     navigate(menu.path);
   };
 
@@ -164,6 +132,23 @@ const SideBar = () => {
     };
     fetchUserInfo();
   }, [userPk, setUserData]);
+
+  useEffect(() => {
+    const fetchSessionList = async () => {
+      try {
+        if (userPk) {
+          const res = await getLearningSessionsAPI(userPk);
+          setLearningSessionList(res.data?.sessions || []);
+        } else {
+          setLearningSessionList([]); // userPk 없으면 목록 비움
+        }
+      } catch (error) {
+        console.error("세션 목록을 불러오는데 실패했습니다:", error);
+        setLearningSessionList([]);
+      }
+    };
+    fetchSessionList();
+  }, [userPk, setLearningSessionList]);
 
   return (
     <>
@@ -222,8 +207,8 @@ const SideBar = () => {
                   className={
                     "flex items-center w-full my-[10px] px-5 py-3 text-accent border-[#E5E7EB] rounded-lg transition cursor-pointer " +
                     (isActive ? "bg-white font-semibold" : "hover:bg-white") +
-                    (isAILoading || survey
-                      ? " opacity-50 cursor-not-allowed"
+                    (isAILoading
+                      ? " opacity-50 cursor-not-allowed pointer-events-none"
                       : " cursor-pointer")
                   }
                   style={{ outline: "none", border: "none" }}

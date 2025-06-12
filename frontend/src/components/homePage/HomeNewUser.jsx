@@ -1,11 +1,7 @@
 import OnboardingMessage from "./OnboardingMessage";
 import OnboardingSurvey from "./OnboardingSurvey";
-import { useState, useEffect } from "react";
-import { surveyState } from "../../atom/sidebarAtom";
-import { useRecoilState } from "recoil";
 
 const HomeNewUser = ({ userName, testDate, onComplete }) => {
-  const [survey, setSurvey] = useRecoilState(surveyState);
 
   const handleSurveyComplete = (answers) => {
     const [pastLevel, goalLevel, background, major, topics] = answers;

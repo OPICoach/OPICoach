@@ -4,14 +4,13 @@ import HomeNewUser from "../components/homePage/HomeNewUser";
 import { useRecoilState } from "recoil";
 import { userInfoState, userPkState } from "../atom/authAtoms.js";
 import { updateUserInfoAPI, fetchUserInfo } from "../api/api";
-import { sideBarState, surveyState } from "../atom/sidebarAtom";
+import { sideBarState } from "../atom/sidebarAtom";
 import { useEffect } from "react";
 
 const Home = () => {
   const [userData, setUserData] = useRecoilState(userInfoState);
   const [userPk, setUserPK] = useRecoilState(userPkState);
   const [open] = useRecoilState(sideBarState);
-  const [survey, setSurvey] = useRecoilState(surveyState);
 
   const handleOnboardingComplete = async (info) => {
     try {
@@ -42,7 +41,6 @@ const Home = () => {
             },
           ],
         });
-        setSurvey(false); // 온보딩 설문 종료
       } else {
         console.error("사용자 정보 업데이트 실패:", response.message);
       }
@@ -72,18 +70,17 @@ const Home = () => {
       // userPk가 있을 때만 API 호출
       fetchUserData();
     }
-  }, [userPk]); // userPk가 변경될 때마다 실행
-
-  useEffect(() => {
-    console.log("survey 상태 변경됨:", survey);
-  }, [survey]);
-
+  }, [userPk, setUserData]); // userPk가 변경될 때마다 실행
 
   return (
     <div className="flex flex-row">
       <div
         className={`transition-all duration-300 ${
           open ? "w-[230px] min-w-[230px]" : "w-0 min-w-0"
+        } ${
+          !userData?.topics_of_interest
+            ? "opacity-50 cursor-not-allowed pointer-events-none"
+            : ""
         }`}
         style={{ overflow: open ? "visible" : "hidden" }}
       >

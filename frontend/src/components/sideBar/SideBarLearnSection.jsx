@@ -15,7 +15,7 @@ import {
   aiLoadingState,
 } from "../../atom/learnAtom";
 import { userPkState } from "../../atom/authAtoms";
-import { learnOpenState, surveyState } from "../../atom/sidebarAtom";
+import { learnOpenState } from "../../atom/sidebarAtom";
 
 const ChevronDownIcon = () => (
   <svg
@@ -43,30 +43,6 @@ const ChevronUpIcon = () => (
   </svg>
 );
 
-function getSafeSessionTitle(messages, sessionPk, serverTitle) {
-  // 1. messages에서 첫 user 메시지 content
-  const userMsg = messages?.find?.(
-    (m) =>
-      m.role === "user" &&
-      typeof m.content === "string" &&
-      m.content.trim() !== ""
-  );
-  if (userMsg) {
-    const firstLine = userMsg.content.split("\n")[0];
-    if (firstLine) return firstLine;
-  }
-  // 2. 서버 title이 있으면 사용
-  if (
-    serverTitle &&
-    typeof serverTitle === "string" &&
-    serverTitle.trim() !== ""
-  ) {
-    return serverTitle.trim();
-  }
-  // 3. fallback: 세션 PK 기반
-  return `Session_${sessionPk ?? "Unknown"}`;
-}
-
 const SideBarLearnSection = ({ menu, isActive }) => {
   const [open, setOpen] = useRecoilState(learnOpenState);
   const [learningSessionList, setLearningSessionList] = useRecoilState(
@@ -78,7 +54,6 @@ const SideBarLearnSection = ({ menu, isActive }) => {
   const [sessionPk, setSessionPk] = useRecoilState(learnSessionPkState);
   const navigate = useNavigate();
   const [isAILoading, setIsAILoading] = useRecoilState(aiLoadingState);
-  const [survey, setSurvey] = useRecoilState(surveyState);
 
   // 이전 isActive 추적
   const prevIsActiveRef = useRef(isActive);
@@ -89,47 +64,14 @@ const SideBarLearnSection = ({ menu, isActive }) => {
       setOpen(true);
     }
     prevIsActiveRef.current = isActive;
-  }, [isActive]);
-
-  // 이전 세션/메시지 추적용 ref
-  const prevSessionPkRef = useRef();
-  const prevMessagesRef = useRef();
-
-  // messages가 변경될 때마다 ref에 저장
-  useEffect(() => {
-    prevMessagesRef.current = messages;
-  }, [messages]);
-
-  // sessionPk가 변경될 때마다 ref에 저장
-  useEffect(() => {
-    prevSessionPkRef.current = sessionPk;
-  }, [sessionPk]);
-
-  const patchPrevSessionIfNeeded = async () => {
-    const prevPk = prevSessionPkRef.current;
-    const prevMsgs = prevMessagesRef.current;
-
-    try {
-      const res = await getLearningSessionAPI(userPk, prevPk);
-      const sessionTitle = getSafeSessionTitle(
-        prevMsgs,
-        prevPk,
-        res.data?.title
-      );
-      await patchLearningSessionAPI(userPk, prevPk, sessionTitle);
-    } catch (e) {
-      // 실패 시 무시 또는 로깅
-    }
-  };
+  }, [isActive, setOpen]);
 
   // Learn 탭 토글
   const handleLearnToggle = async () => {
-    if (isAILoading || survey) return; // AI 로딩 중이면 무시
+    if (isAILoading) return; // AI 로딩 중이면 무시
 
     if (!open) {
       setLoading(true);
-      // 탭 전환 전 patch
-      await patchPrevSessionIfNeeded();
       try {
         // 세션 목록 불러오기
         const res = await getLearningSessionsAPI(userPk);
@@ -171,11 +113,7 @@ const SideBarLearnSection = ({ menu, isActive }) => {
 
   // 세션 클릭 시 이전 세션 patch 후 이동
   const handleSessionClick = async (session) => {
-    if (isAILoading || survey) return; // AI 로딩 중이면 무시
-
-    if (sessionPk !== session.id) {
-      await patchPrevSessionIfNeeded();
-    }
+    if (isAILoading) return; // AI 로딩 중이면 무시
     setSessionPk(session.id);
     try {
       const res = await getLearningSessionAPI(userPk, session.id);
@@ -211,7 +149,9 @@ const SideBarLearnSection = ({ menu, isActive }) => {
         className={
           "flex items-center w-full my-[10px] px-5 py-3 text-accent border-[#E5E7EB] rounded-lg transition cursor-pointer " +
           (isActive ? "bg-white font-semibold" : "hover:bg-white") +
-          (isAILoading || survey ? " opacity-50 cursor-not-allowed" : "")
+          (isAILoading
+            ? " opacity-50 cursor-not-allowed pointer-events-none"
+            : "")
         }
         style={{ outline: "none", border: "none", position: "relative" }}
       >
@@ -242,8 +182,8 @@ const SideBarLearnSection = ({ menu, isActive }) => {
                   className={
                     "py-2 px-2 rounded cursor-pointer transition " +
                     (sessionPk === session.id ? "bg-blue-100 font-bold" : "") +
-                    (isAILoading || survey
-                      ? " opacity-50 cursor-not-allowed"
+                    (isAILoading
+                      ? " opacity-50 cursor-not-allowed pointer-events-none"
                       : "")
                   }
                   style={{

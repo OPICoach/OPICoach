@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   postLearningResponseAPI,
   postLearningSessionAPI,
@@ -8,6 +8,7 @@ import {
 import SideBar from "../components/sideBar/SideBar.jsx";
 import MessageInput from "../components/chatPage/MessageInput.jsx";
 import MessageList from "../components/chatPage/MessageList.jsx";
+import InlineEditTitle from "../components/chatPage/InlineEditTitle.jsx";
 import { useRecoilState } from "recoil";
 import { userPkState } from "../atom/authAtoms.js";
 import {
@@ -21,8 +22,8 @@ import {
 import { sideBarState, loadingSessionsState } from "../atom/sidebarAtom.js";
 import { useNavigate } from "react-router-dom";
 
-function getSafeSessionTitle(messages, sessionPk) {
-  // 1. messages에서 첫 user 메시지 content 앞 10글자
+function getSafeSessionTitle(messages, sessionPk, serverTitle) {
+  // 1. messages에서 첫 user 메시지 content
   const userMsg = messages?.find?.(
     (m) =>
       m.role === "user" &&
@@ -32,6 +33,14 @@ function getSafeSessionTitle(messages, sessionPk) {
   if (userMsg) {
     const firstLine = userMsg.content.split("\n")[0];
     if (firstLine) return firstLine;
+  }
+  // 2. 서버 title이 있으면 사용
+  if (
+    serverTitle &&
+    typeof serverTitle === "string" &&
+    serverTitle.trim() !== ""
+  ) {
+    return serverTitle.trim();
   }
 
   // 3. fallback: 세션 PK 기반
@@ -48,10 +57,21 @@ const Learn = () => {
   const navigate = useNavigate();
   const [aiModel, setAiModel] = useRecoilState(aiModelState);
 
+  const [sessionTitle, setSessionTitle] = useState("");
+  const [learningSessionList, setLearningSessionList] = useRecoilState(
+    learningSessionListState
+  );
+
+  useEffect(() => {
+    // 현재 세션의 서버 title만 사용
+    const currentSession =
+      learningSessionList?.find((s) => s.id === sessionPk) || {};
+    setSessionTitle(currentSession.title ?? "");
+  }, [sessionPk, learningSessionList]);
+
   const handleNewSession = async () => {
     try {
-      let title = getSafeSessionTitle(messages, sessionPk);
-      await patchLearningSessionAPI(userPk, sessionPk, title);
+      await patchLearningSessionAPI(userPk, sessionPk, sessionTitle);
 
       const newSession = await postLearningSessionAPI(
         userPk,
@@ -88,8 +108,6 @@ const Learn = () => {
         LLM_model: aiModel,
       });
 
-      console.log("AI model:", aiModel);
-
       setMessages((prev) => {
         const lastIndex = prev.length - 1;
         if (prev[lastIndex]?.isLoading) {
@@ -100,6 +118,38 @@ const Learn = () => {
         }
         return [...prev, { role: "assistant", content: response.answer }];
       });
+
+      // user 메시지 개수를 계산
+      const updatedMessages = [...messages, newUserMessage];
+      const userMessageCount = updatedMessages.filter(
+        (m) =>
+          m.role === "user" &&
+          typeof m.content === "string" &&
+          m.content.trim() !== ""
+      ).length;
+
+      // user 메시지가 1개가 되는 순간에만 제목 자동 변경
+      if (userMessageCount === 1) {
+        // 첫 user 메시지의 앞 10글자(혹은 한 줄)
+        const firstUserMsg = updatedMessages.find(
+          (m) =>
+            m.role === "user" &&
+            typeof m.content === "string" &&
+            m.content.trim() !== ""
+        );
+        let newTitle = "";
+        if (firstUserMsg) {
+          newTitle = firstUserMsg.content.split("\n")[0];
+        }
+        if (newTitle) {
+          await patchLearningSessionAPI(userPk, sessionPk, newTitle);
+          // 세션 목록 최신화
+          const res = await getLearningSessionsAPI(userPk);
+          setLearningSessionList(res.data?.sessions || []);
+          setSessionTitle(newTitle);
+        }
+      }
+      // 이후에는 제목 자동 변경 없음 (직접 수정만 가능)
     } catch (error) {
       setMessages((prev) => {
         const lastIndex = prev.length - 1;
@@ -131,7 +181,18 @@ const Learn = () => {
       </div>
       <div className="flex flex-col flex-1 px-10 pt-8 pb-8 h-full">
         <div className="flex items-center justify-between mb-10">
-          <h2 className="text-2xl font-semibold select-none">Learn</h2>
+          <div className="flex items-center gap-4">
+            <h2 className="text-2xl font-semibold select-none">Learn</h2>
+            <InlineEditTitle
+              value={sessionTitle}
+              userPk={userPk}
+              sessionPk={sessionPk}
+              onSave={(newTitle) => setSessionTitle(newTitle)}
+              setLearningSessionList={setLearningSessionList}
+              disabled={!sessionPk}
+              messages={messages}
+            />
+          </div>
           <button
             onClick={handleNewSession}
             className="px-1 py-1 text-xl rounded-full bg-primary text-white hover:bg-blue-600 transition"

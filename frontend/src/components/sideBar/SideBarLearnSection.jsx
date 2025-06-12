@@ -64,7 +64,7 @@ const SideBarLearnSection = ({ menu, isActive }) => {
       setOpen(true);
     }
     prevIsActiveRef.current = isActive;
-  }, [isActive]);
+  }, [isActive, setOpen]);
 
   // Learn 탭 토글
   const handleLearnToggle = async () => {

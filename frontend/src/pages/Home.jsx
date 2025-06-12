@@ -70,7 +70,7 @@ const Home = () => {
       // userPk가 있을 때만 API 호출
       fetchUserData();
     }
-  }, [userPk]); // userPk가 변경될 때마다 실행
+  }, [userPk, setUserData]); // userPk가 변경될 때마다 실행
 
   return (
     <div className="flex flex-row">

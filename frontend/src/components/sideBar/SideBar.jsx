@@ -19,7 +19,6 @@ import {
 import {
   learnOpenState,
   sideBarState,
-  surveyState,
 } from "../../atom/sidebarAtom";
 import { userPkState, userInfoState } from "../../atom/authAtoms";
 import {
@@ -100,8 +99,6 @@ const SideBar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [survey, setSurvey] = useRecoilState(surveyState);
-
   const initial = userData?.name ? getProfileInitial(userData.name) : "";
 
   const handleLogout = () => {
@@ -118,7 +115,7 @@ const SideBar = () => {
   };
 
   const handleTabMove = async (menu) => {
-    if (isAILoading || survey) return;
+    if (isAILoading) return;
     navigate(menu.path);
   };
 
@@ -210,8 +207,8 @@ const SideBar = () => {
                   className={
                     "flex items-center w-full my-[10px] px-5 py-3 text-accent border-[#E5E7EB] rounded-lg transition cursor-pointer " +
                     (isActive ? "bg-white font-semibold" : "hover:bg-white") +
-                    (isAILoading || survey
-                      ? " opacity-50 cursor-not-allowed"
+                    (isAILoading
+                      ? " opacity-50 cursor-not-allowed pointer-events-none"
                       : " cursor-pointer")
                   }
                   style={{ outline: "none", border: "none" }}

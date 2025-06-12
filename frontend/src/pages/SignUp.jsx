@@ -5,13 +5,11 @@ import { useRecoilState } from "recoil";
 import { signUpDataState } from "../atom/authAtoms";
 import { signupUserAPI } from "../api/api";
 import { useState } from "react";
-import { surveyState } from "../atom/sidebarAtom";
 
 const SignUp = () => {
   const navigate = useNavigate();
   const [signUpData, setSignUpData] = useRecoilState(signUpDataState);
   const [error, setError] = useState("");
-  const [survey, setSurvey] = useRecoilState(surveyState);
 
   const handleInputChange = (field, value) => {
     setSignUpData((prev) => ({
@@ -32,7 +30,6 @@ const SignUp = () => {
       const response = await signupUserAPI(signUpInfo);
       if (response.status === "success") {
         console.log("회원가입 성공:", response);
-        setSurvey(true);
         navigate("/login");
       } else {
         setError(response.message || "회원가입에 실패했습니다.");

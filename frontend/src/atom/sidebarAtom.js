@@ -34,9 +34,3 @@ export const loadingSessionsState = atom({
   key: "loadingSessionsState",
   default: false,
 });
-
-// 사전 서베이 상태 관리
-export const surveyState = atom({
-  key: "surveyState",
-  default: false,
-});

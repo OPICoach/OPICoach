@@ -19,6 +19,9 @@ import {
   checkMicrophoneActive,
 } from "../api/microphoneApi.js";
 import { sideBarState } from "../atom/sidebarAtom.js";
+import { useSpeechRecognition } from "react-speech-recognition";
+import { useVolumeLevel, VolumeIndicator } from "react-volume-indicator";
+import VolumeTest from "../components/testPage/VolumeTest.jsx"; // Assuming you have a VolumeTest component
 
 const TestStart = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -60,6 +63,19 @@ const TestStart = () => {
 
   const [micPermission, setMicPermission] = useState("prompt"); // 'granted' | 'denied' | 'prompt'
   const [micActive, setMicActive] = useState(false);
+
+  const [startVolumeTest, stopVolumeTest, volume] = useVolumeLevel();
+  const [isVolumeTesting, setIsVolumeTesting] = useState(false);
+
+  const handleStartVolumeTest = () => {
+    startVolumeTest();
+    setIsVolumeTesting(true);
+  };
+
+  const handleStopVolumeTest = () => {
+    stopVolumeTest();
+    setIsVolumeTesting(false);
+  };
 
   useEffect(() => {
     // 권한 상태 체크
@@ -313,9 +329,17 @@ const TestStart = () => {
       alert("마이크가 활성화되어 있지 않습니다. 마이크 권한을 허용해 주세요.");
       return;
     }
-    // 기존 fetchQuestions() 등 테스트 시작 로직 실행
+
     fetchQuestions();
   };
+
+  // 음성 인식 상태 관리
+  const {
+    transcript, // 인식된 텍스트
+    listening, // 음성 인식 활성화 여부
+    resetTranscript,
+    browserSupportsSpeechRecognition,
+  } = useSpeechRecognition();
 
   return (
     <div className="flex h-screen">
@@ -359,14 +383,16 @@ const TestStart = () => {
               />
               <span className="text-sm">
                 {micPermission === "granted" && micActive
-                  ? "마이크 활성"
+                  ? "Microphone active"
                   : micPermission === "denied"
-                  ? "마이크 차단됨"
-                  : "마이크 권한 필요"}
+                  ? "Microphone blocked"
+                  : "Microphone permission needed"}
               </span>
             </div>
 
-            <div className="flex flex-wrap justify-center items-center gap-4 w-full max-w-xl">
+            <VolumeTest />
+
+            <div className="flex flex-wrap justify-center items-center gap-4 w-full max-w-xl mt-6">
               <div className="flex flex-col items-start gap-1">
                 <select
                   value={numQuestions}

@@ -3,6 +3,7 @@
 # 가상 환경 설정
 backend 디랙토리로 이동
 python -m venv backendenv
+
 backendenv\Scripts\activate
 pip install -r requirements.txt
 

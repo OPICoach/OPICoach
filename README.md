@@ -1,6 +1,8 @@
 # OPICoach
 
 ## 소개
+![image](https://github.com/user-attachments/assets/e794f8d8-9a33-4fc5-a505-f15993c0fe7f)
+<br>
 
 **오픽코치(OPIcoach)**는 OPIc(Oral Proficiency Interview, computer) 시험 준비를 위한 맞춤형 학습 플랫폼입니다. 취업 시장에서 OPIc의 중요성이 커짐에 따라, 분산된 학습 자료와 개인화 코칭의 부재라는 기존 OPIc 학습의 문제점을 해결하고자 개발되었습니다. 스픽(Spik)의 실시간 음성인식 및 피드백, ChatGPT의 개인화된 대화 기능 등 기존 플랫폼의 장점을 융합하여, 편리하고 개인 맞춤화된 OPIC 시험 지원 서비스를 제공합니다.
 
@@ -39,10 +41,10 @@
 ## 기술 스택
 
 ### Frontend
-- React, Tailwindcss, Recoil
+- React, Tailwindcss, Recoil, Vite
 
 ### Backend
-- Python, MySQL, ChromaDB, FastAPI, OpenAI API, Vite
+- Python, MySQL, ChromaDB, FastAPI, OpenAI API
 
 
 <br>

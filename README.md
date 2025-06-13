@@ -5,7 +5,6 @@
 
 **오픽코치(OPIcoach)**는 OPIc(Oral Proficiency Interview, computer) 시험 준비를 위한 맞춤형 학습 플랫폼입니다. 취업 시장에서 OPIc의 중요성이 커짐에 따라, 분산된 학습 자료와 개인화 코칭의 부재라는 기존 OPIc 학습의 문제점을 해결하고자 개발되었습니다. 스픽(Spik)의 실시간 음성인식 및 피드백, ChatGPT의 개인화된 대화 기능 등 기존 플랫폼의 장점을 융합하여, 편리하고 개인 맞춤화된 OPIC 시험 지원 서비스를 제공합니다.
 
----
 
 ## 주요 기능
 
@@ -35,7 +34,15 @@
 ### 7. 모의시험 기록(Test History)
 - 지난 모의시험 답변, 피드백 다시 보기 가능
 
----
+
+## 기술 스택
+
+### Frontend
+- React, Tailwindcss, Recoil
+
+### Backend
+- Python, MySQL, ChromaDB, FastAPI, OpenAI API, Vite
+
 
 ## 기술적 특징
 
@@ -48,13 +55,11 @@
 - **학습 자료 DB:**  
   - Youtube 등에서 다양한 OPIc 강의 영상을 수집하여 DB화
 
----
 
 ## 프로젝트 팀
 
 - 이준희, 강나현, 박민호, 박태준, 전지원
 
----
 
 ## 사용 예시
 
@@ -65,7 +70,6 @@
 5. Vocab/Idiom 퀴즈로 어휘력 강화
 6. Test에서 모의시험 응시 및 자동 피드백 확인
 
----
 
 ## 기대 효과
 
